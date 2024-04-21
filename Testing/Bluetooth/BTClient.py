@@ -1,12 +1,9 @@
 import socket
-import time
 
 message = '{"test":"True"}'
 
 client = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket. BTPROTO_RFCOMM)
 client.connect(("20:1e:88:18:14:ff", 4))
-
-time.sleep(2)
 
 try:
     client.send(message.encode("utf-8"))

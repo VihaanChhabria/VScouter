@@ -2,7 +2,7 @@ import socket
 
 message = '{"test":"True"}'
 
-client = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket. BTPROTO_RFCOMM)
+client = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
 client.connect(("20:1e:88:18:14:ff", 4))
 
 try:

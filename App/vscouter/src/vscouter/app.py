@@ -9,72 +9,70 @@ from toga.style.pack import COLUMN, ROW
 class VScouter(toga.App):
 
     def startup(self):
-        """Construct and show the Toga application.
+        """
+        Construct and show the Toga application.
 
         Usually, you would add your application to a main content box.
         We then create a main window (with a name matching the app), and
         show the main window.
         """
-        #matchScoutingBox = toga.Box(style=Pack(direction=COLUMN))
-        #pitScoutingBox = toga.Box()
-
-        displayBox = self.WindowGenerators.generateMainWin(self)
+        self.main_box = toga.Box(style=Pack(direction=COLUMN))
+        self.view_box = toga.Box()
         
+        ###
+        # Main Screen
+        first_view = toga.Button('First View', on_press=self.first_view, style=Pack(padding=2))
+        second_view = toga.Button('Second View', on_press=self.second_view, style=Pack(padding=2))
+
+        self.view_box.style = Pack(direction=ROW, padding=2)
+        self.view_box.add(first_view)
+        self.view_box.add(second_view)
+        ###
+        
+        self.main_box.add(self.view_box)
+
         self.main_window = toga.MainWindow(title=self.formal_name)
-        self.main_window.content = displayBox
+        self.main_window.content = self.main_box
         self.main_window.show()
-    
+
     class WindowGenerators():
-        def generateMainWin(self):
-            mainBox = toga.Box(style=Pack(direction=COLUMN))
 
-            mainBox.add(
-                toga.Button(
-                    "Match Scout", 
-                    on_press=self.change_window("MatchScout"), 
-                    style=Pack(padding=5)))
+        def generateMainWin(self, widget):
+            self.main_box.remove(self.view_box)
+
+            self.view_box = toga.Box()
+            self.view_box.style = Pack(direction=ROW, padding=2)
             
+            #screen_text = toga.Label('This screen will allow you to see your First View')
+            #self.view_box.add(screen_text)
             
-            mainBox.add(
-                toga.Button(
-                    "Pit Scout", 
-                    on_press=self.change_window("PitScout"), 
-                    style=Pack(padding=5)))
-
-            return mainBox
-        
-        def generateMatchScoutWin(self):
-            matchScoutBox = toga.Box(style=Pack(direction=COLUMN))
-
-            matchScoutBox.add(
-                toga.Button(
-                    "Return", 
-                    on_press=self.change_window("Main"), 
-                    style=Pack(padding=5)))
-            
-        def generatePitScoutWin(self):
-            matchScoutBox = toga.Box(style=Pack(direction=COLUMN))
-
-            matchScoutBox.add(
-                toga.Button(
-                    "Return", 
-                    on_press=self.change_window("Main"), 
-                    style=Pack(padding=5)))
-
-    def change_window(self, name):
-        def on_press(widget):
-            if name == "MatchScout":
-                displayBox = self.WindowGenerators.generateMatchScoutWin(self)
-            elif name == "PitScout":
-                displayBox = self.WindowGenerators.generatePitScoutWin(self)
-            else:
-                displayBox = self.WindowGenerators.generateMainWin(self)
-
-            self.main_window = toga.MainWindow(title=self.formal_name)
-            self.main_window.content = displayBox
+            self.main_box.add(self.view_box)
             self.main_window.show()
+
+
+        def generateMatchScoutWin(self, widget):
+            self.main_box.remove(self.view_box)
+
+            self.view_box = toga.Box()
+            self.view_box.style = Pack(direction=ROW, padding=2)
             
-        return on_press
+            #screen_text = toga.Label('This screen will allow you to see your First View')
+            #self.view_box.add(screen_text)
+            
+            self.main_box.add(self.view_box)
+            self.main_window.show()
+
+        def generatePitScoutWin(self, widget):
+            self.main_box.remove(self.view_box)
+
+            self.view_box = toga.Box()
+            self.view_box.style = Pack(direction=ROW, padding=2)
+
+            #screen_text = toga.Label('This screen will allow you to see your Second View')
+            #self.view_box.add(screen_text)
+
+            self.main_box.add(self.view_box)
+            self.main_window.show()
 
 
 def main():

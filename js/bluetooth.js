@@ -24,3 +24,5 @@ document.getElementById('blueConnect')
         .catch(error => { console.error(error); });
         
     });  
+
+//

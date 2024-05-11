@@ -14,7 +14,7 @@
 // document.addEventListener("blueConnect", () => blueConnect())
 // document.addEventListener("bluePush", () => bluePush())
 
-button.addEventListener('pointermove', function(event) {
+button.addEventListener('blueConnect', function(event) {
     navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
         optionalServices: ['battery_service'] // Required to access service later.

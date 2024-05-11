@@ -14,12 +14,13 @@
 // document.addEventListener("blueConnect", () => blueConnect())
 // document.addEventListener("bluePush", () => bluePush())
 
-button.addEventListener('blueConnect', function(event) {
-    navigator.bluetooth.requestDevice({
-        acceptAllDevices: true,
-        optionalServices: ['battery_service'] // Required to access service later.
-      })
-      .then(device => { /* … */ })
-      .catch(error => { console.error(error); });
-      
-});  
+document.getElementById('blueConnect')
+    .addEventListener('click', function(event) {
+        navigator.bluetooth.requestDevice({
+            acceptAllDevices: true,
+            optionalServices: ['battery_service'] // Required to access service later.
+        })
+        .then(device => { /* … */ })
+        .catch(error => { console.error(error); });
+        
+    });  

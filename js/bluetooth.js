@@ -17,12 +17,28 @@
 document.getElementById('blueConnect')
     .addEventListener('click', function(event) {
         navigator.bluetooth.requestDevice({
-            acceptAllDevices: true,
-            optionalServices: ['battery_service'] // Required to access service later.
-        })
-        .then(device => { /* … */ })
-        .catch(error => { console.error(error); });
-        
-    });  
+            filters: [{
+              services: [0x180D]
+            }]
+          })
+          .then(device => device.gatt.connect())
+          .then(server => {
+            return server.getPrimaryService(0x180D);
+          })
+          .then(service => {
+            return service.getCharacteristic(0x2A37);
+          })
+          .then(characteristic => {
+            characteristic.addEventListener('characteristicvaluechanged', handleBatteryLevelChanged);
+
+            return characteristic.readValue();
+          })
+          .then(value => {
+            console.log(`Status is ${value.getUint8(0)}`);
+          })          
+          .catch(error => { console.error(error); });        
+    });
+
+
 
 //

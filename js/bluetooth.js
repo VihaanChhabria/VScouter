@@ -1,53 +1,86 @@
-let bluetoothDevice = null;
+bluetoothDevice = null;
 
 document.getElementById('blueConnect')
-    .addEventListener('click', function(event) {
-        if (bluetoothDevice) {
-            getBlueStatus(bluetoothDevice, 0);
-        } else {
-            requestDevice();
-        }
-    });
+  .addEventListener('click', () => blueConnect());
 
-function requestDevice() {
-    navigator.bluetooth.requestDevice({
-        filters: [{
-            services: [0x180D]
-        }]
+document.getElementById('bluePush')
+  .addEventListener('click', () => bluePush())
+
+
+function blueConnect(){
+  navigator.bluetooth.requestDevice({
+    filters: [{
+      services: [0x180D]
+    }]
+  })
+  .then(device => {
+      bluetoothDevice = device; // Store the device
+      return forceConnect();
+  })
+  .catch(error => {
+      console.error('Error requesting Bluetooth device: ', error);
+  });
+}
+
+function bluePush(){
+  if (bluetoothDevice){
+    sendData()
+  } else {
+    blueConnect()
+  }
+}
+
+function sendData(){
+  bluetoothDevice
+    .then(server => {
+      return server.getPrimaryService(0x180D);
     })
-    .then(device => {
-        bluetoothDevice = device; // Store the device
-        return getBlueStatus(device, 0);
+    .then(service => {
+      return service.getCharacteristic(0x2A39);
+    })
+    .then(characteristic => {
+      return characteristic.writeValue(stringToArrayBuffer("test"));
+    })
+    .then(value => {
+      console.log(`Status is ${value.getUint8(0)}`);
     })
     .catch(error => {
-        console.error('Error requesting Bluetooth device: ', error);
+      console.error(error);
     });
 }
 
-function getBlueStatus(device, retries) {
+function forceConnect() {
   device.gatt.connect()
-  .then(server => {
-      return server.getPrimaryService(0x180D);
-  })
-  .then(service => {
-      return service.getCharacteristic(0x2A37);
-  })
-  .then(characteristic => {
-      return characteristic.readValue();
-  })
-  .then(value => {
-      console.log(`Status is ${value.getUint8(0)}`);
-  })
-  .catch(error => {
-    console.error('DOMException occurred: ', error);
-    if (error instanceof DOMException) {
-      if (retries < 5) { // Set a maximum number of retries
-        getBlueStatus(device, retries + 1)
+    .catch(error => {
+      console.error('DOMException occurred: ', error);
+      if (error instanceof DOMException) {
+        forceConnect()
       } else {
-        console.error('Max retries reached. Could not connect to Bluetooth device.');
+        console.error(error);
       }
-    } else {
+    });
+}
+
+function getStatus() {
+  bluetoothDevice
+    .then(server => {
+      return server.getPrimaryService(0x180D);
+    })
+    .then(service => {
+      return service.getCharacteristic(0x2A37);
+    })
+    .then(characteristic => {
+      return characteristic.readValue();
+    })
+    .then(value => {
+      console.log(`Status is ${value.getUint8(0)}`);
+    })
+    .catch(error => {
       console.error(error);
-    }
-  });
+    });
+}
+
+function stringToArrayBuffer(str) {
+  const encoder = new TextEncoder();
+  return encoder.encode(str);
 }

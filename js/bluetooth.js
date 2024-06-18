@@ -51,7 +51,7 @@ function sendData(){
 }
 
 function forceConnect() {
-  device.gatt.connect()
+  bluetoothDevice.gatt.connect()
     .catch(error => {
       console.error('DOMException occurred: ', error);
       if (error instanceof DOMException) {

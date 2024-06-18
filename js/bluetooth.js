@@ -1,53 +1,52 @@
-bluetoothDevice = null;
+let bluetoothDevice = null;
 
 document.getElementById('blueConnect')
   .addEventListener('click', () => blueConnect());
 
 document.getElementById('bluePush')
-  .addEventListener('click', () => bluePush())
+  .addEventListener('click', () => bluePush());
 
-
-function blueConnect(){
+function blueConnect() {
   navigator.bluetooth.requestDevice({
     filters: [{
       services: [0x180D]
     }]
   })
   .then(device => {
-      bluetoothDevice = device; // Store the device
-      return forceConnect();
+    bluetoothDevice = device;
+    return forceConnect();
   })
   .catch(error => {
-      console.error('Error requesting Bluetooth device: ', error);
+    console.error('Error requesting Bluetooth device: ', error);
   });
 }
 
-function bluePush(){
-  if (bluetoothDevice){
-    sendData()
+function bluePush() {
+  if (bluetoothDevice) {
+    sendData();
   } else {
-    blueConnect()
-    sendData()
+    blueConnect();
   }
 }
 
-function sendData(){
-  bluetoothDevice
-    .then(server => {
-      return server.getPrimaryService(0x180D);
-    })
-    .then(service => {
-      return service.getCharacteristic(0x2A39);
-    })
-    .then(characteristic => {
-      return characteristic.writeValue(stringToArrayBuffer("test"));
-    })
-    .then(value => {
-      console.log(`Status is ${value.getUint8(0)}`);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+function sendData() {
+  if (bluetoothDevice.gatt.connected) {
+    bluetoothDevice.gatt.getPrimaryService(0x180D)
+      .then(service => {
+        return service.getCharacteristic(0x2A39);
+      })
+      .then(characteristic => {
+        return characteristic.writeValue(stringToArrayBuffer("test"));
+      })
+      .then(value => {
+        console.log(`Status is ${value.getUint8(0)}`);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  } else {
+    console.error('Device is not connected.');
+  }
 }
 
 function forceConnect() {
@@ -55,7 +54,7 @@ function forceConnect() {
     .catch(error => {
       console.error('DOMException occurred: ', error);
       if (error instanceof DOMException) {
-        forceConnect()
+        forceConnect();
       } else {
         console.error(error);
       }
@@ -63,22 +62,23 @@ function forceConnect() {
 }
 
 function getStatus() {
-  bluetoothDevice
-    .then(server => {
-      return server.getPrimaryService(0x180D);
-    })
-    .then(service => {
-      return service.getCharacteristic(0x2A37);
-    })
-    .then(characteristic => {
-      return characteristic.readValue();
-    })
-    .then(value => {
-      console.log(`Status is ${value.getUint8(0)}`);
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  if (bluetoothDevice.gatt.connected) {
+    bluetoothDevice.gatt.getPrimaryService(0x180D)
+      .then(service => {
+        return service.getCharacteristic(0x2A37);
+      })
+      .then(characteristic => {
+        return characteristic.readValue();
+      })
+      .then(value => {
+        console.log(`Status is ${value.getUint8(0)}`);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  } else {
+    console.error('Device is not connected.');
+  }
 }
 
 function stringToArrayBuffer(str) {

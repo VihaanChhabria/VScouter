@@ -13,7 +13,6 @@
 
 // document.addEventListener("blueConnect", () => blueConnect())
 // document.addEventListener("bluePush", () => bluePush())
-
 document.getElementById('blueConnect')
     .addEventListener('click', function(event) {
         navigator.bluetooth.requestDevice({
@@ -29,8 +28,6 @@ document.getElementById('blueConnect')
             return service.getCharacteristic(0x2A37);
           })
           .then(characteristic => {
-            characteristic.addEventListener('characteristicvaluechanged', handleBatteryLevelChanged);
-
             return characteristic.readValue();
           })
           .then(value => {

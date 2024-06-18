@@ -27,6 +27,7 @@ function bluePush(){
     sendData()
   } else {
     blueConnect()
+    sendData()
   }
 }
 

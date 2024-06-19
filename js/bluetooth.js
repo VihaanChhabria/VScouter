@@ -32,7 +32,7 @@ async function checkAndSend() {
         statusValue = await getStatus()
         switch (statusValue) {
           case 1:
-            await cutAndSendData(localStorage["jsonData"] || "")
+            cutAndSendData(localStorage["jsonData"] || "")
             break
         
           default:
@@ -45,34 +45,34 @@ async function checkAndSend() {
   }
 }
 
-function cutAndSendData(stringData){
-  console.log('sending "' + stringData + '"')
+async function cutAndSendData(stringData) {
+  console.log('sending "' + stringData + '"');
 
-  fullEncodedStr = encodeString(stringData)
+  let fullEncodedStr = encodeString(stringData);
 
-  chunks = Math.ceil(fullEncodedStr.length/512)
-  chunkSize = fullEncodedStr.length/chunks
-  for(let i = 0; i < chunks; i++){
-    sendData(fullEncodedStr.subarray(i*chunkSize, (i+1)*chunkSize))
+  let chunks = Math.ceil(fullEncodedStr.length / 512);
+  let chunkSize = fullEncodedStr.length / chunks;
+
+  for (let i = 0; i < chunks; i++) {
+    let chunk = fullEncodedStr.subarray(i * chunkSize, (i + 1) * chunkSize);
+    await sendData(chunk);
   }
 }
 
-function sendData(data) {
+async function sendData(data) {
   if (bluetoothDevice.gatt.connected) {
-    bluetoothDevice.gatt.getPrimaryService(0x180D)
-      .then(service => {
-        return service.getCharacteristic(0x2A39)
-      })
-      .then(characteristic => {
-        return characteristic.writeValue(data)
-      })
-      .catch(error => {
-        console.error(error)
-      })
+    try {
+      const service = await bluetoothDevice.gatt.getPrimaryService(0x180D);
+      const characteristic = await service.getCharacteristic(0x2A39);
+      await characteristic.writeValue(data);
+    } catch (error) {
+      console.error('Error writing data:', error);
+    }
   } else {
-    console.error('Device is not connected.')
+    console.error('Device is not connected.');
   }
 }
+
 
 function forceConnect() {
   bluetoothDevice.gatt.connect()

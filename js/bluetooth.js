@@ -28,9 +28,11 @@ async function checkAndSend() {
     await new Promise(r => setTimeout(r, 30000));
     console.log("looping")
     if (bluetoothDevice) {
-      switch (getStatus()) {
+      statusValue = getStatus()
+      console.log(statusValue)
+      switch (statusValue) {
         case 1:
-          sendData("data :)");
+          sendData("data");
           break;
       
         default:
@@ -43,6 +45,7 @@ async function checkAndSend() {
 }
 
 function sendData(stringData) {
+  console.log(stringData)
   if (bluetoothDevice.gatt.connected) {
     bluetoothDevice.gatt.getPrimaryService(0x180D)
       .then(service => {

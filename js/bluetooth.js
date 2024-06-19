@@ -31,7 +31,7 @@ async function checkAndSend() {
       statusValue = await getStatus()
       switch (statusValue) {
         case 1:
-          sendData("data");
+          sendData(localStorage["jsonData"] || "");
           break;
       
         default:

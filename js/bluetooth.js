@@ -27,18 +27,20 @@ async function checkAndSend() {
   while (true) {
     await new Promise(r => setTimeout(r, 10000))
     console.log("looping")
-    if (bluetoothDevice.gatt.connected) {
-      statusValue = await getStatus()
-      switch (statusValue) {
-        case 1:
-          await cutAndSendData(localStorage["jsonData"] || "")
-          break
-      
-        default:
-          break
+    if (bluetoothDevice){
+      if (bluetoothDevice.gatt.connected) {
+        statusValue = await getStatus()
+        switch (statusValue) {
+          case 1:
+            await cutAndSendData(localStorage["jsonData"] || "")
+            break
+        
+          default:
+            break
+        }
+      } else {
+        blueConnect()
       }
-    } else {
-      blueConnect()
     }
   }
 }

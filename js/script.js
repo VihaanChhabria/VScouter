@@ -80,14 +80,7 @@ function saveData() {
 
         switch (elementType) {
             case INPUT_COUNTER:
-                data = input.innerText
-
-                if (((element == "matchNumber") || (element == "teamNumber") || (element == "initials")) && (data == "")){
-                    alert(`Please fill out ${element} to save`)
-                    console.log("alert?")
-                    return
-                }
-                
+                data = input.innerText                
                 data.innerText = 0
                 break
 
@@ -99,6 +92,12 @@ function saveData() {
             default:
                 //INPUT_TEXT
                 data = input.value
+
+                if (((element == "matchNumber") || (element == "teamNumber") || (element == "initials")) && (data == "")){
+                    alert(`Please fill out ${element} to save`)
+                    return
+                }
+
                 input.value = ""
                 break
         }

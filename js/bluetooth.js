@@ -39,7 +39,7 @@ async function checkAndSend() {
             break
         }
       } else {
-        blueConnect()
+        console.error('Device is not connected.');
       }
     }
   }

@@ -5,11 +5,17 @@ document.getElementById("save").addEventListener("click", () => saveData());
 
 
 const baseNames = [
-    "autoAmp",
-    "autoSpeaker",
-    "teleopAmp",
-    "teleopSpeaker",
-    "trap"
+    "autoAmpMade",
+    "autoSpeakerMade",
+    "teleopAmpMade",
+    "teleopSpeakerMade",
+    "trapMade",
+
+    "autoAmpMissed",
+    "autoSpeakerMissed",
+    "teleopAmpMissed",
+    "teleopSpeakerMissed",
+    "trapMissed"
 ];
 
 for (let index = 0; index < baseNames.length; index++) {

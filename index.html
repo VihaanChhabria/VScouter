@@ -1,117 +1,180 @@
 <!DOCTYPE html>
 
 <html lang="en" manifest="cache.appcache">
-  <head>
-    <title>VScouter</title>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=0.6">
-    <link rel="stylesheet" href="main.css" >
-    
-  </head>
 
-  <body>
-    <div class="UI-container">
-      <div class="Parent-Container">
-        <div class="Child-Container">
-          <button class="Save-Button" id="blueConnect">Bluetooth Connect</button>
-          <button class="Save-Button" id="bluePush">Bluetooth Push</button>
-        </div>
-        <div class="Child-Container">
-          <label class="Label" >Match Number</label
-          ><input autocomplete='off' autocomplete='off' type="text" id="matchNumber" class="Input-Field" >
-        </div>
-        <div class="Child-Container">
-          <label class="Label">Team Number</label
-          ><input autocomplete='off' type="text" id="teamNumber" class="Input-Field" >
-        </div>
-        <div class="Child-Container">
-          <label class="Label" >Scouter Initials</label
-          ><input type="text" id="initials" class="Input-Field" >
-        </div>
-        <div class="Child-Container">
-          <label class="Label">Auto Shots Made</label>
-          <div class="Group-Container">
-            <div>
-              <label class="Sub-Label">Amp</label>
-              <div class="Button-Container">
-                <button class="Button" id="autoAmpN">-</button>
-                <label class="Counter-Label" id="autoAmpLab">0</label>
-                <button class="Button" id="autoAmpP">+</button>
-              </div>
+<head>
+  <title>VScouter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+  <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+  <div class="UI-container">
+    <div class="Parent-Container">
+
+
+      <div class="Child-Container">
+        <button class="Save-Button" id="blueConnect">Bluetooth Connect</button>
+        <button class="Save-Button" id="bluePush">Bluetooth Push</button>
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Match Number</label><input autocomplete='off' autocomplete='off' type="text"
+          id="matchNumber" class="Input-Field">
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Team Number</label><input autocomplete='off' type="text" id="teamNumber"
+          class="Input-Field">
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Scouter Initials</label><input type="text" id="initials" class="Input-Field">
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Auto Shots Made</label>
+        <div class="Group-Container">
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoAmpMadeN">-</button>
+              <label class="Counter-Label" id="autoAmpMadeLab">0</label>
+              <button class="Button" id="autoAmpMadeP">+</button>
             </div>
-            <div>
-              <label class="Sub-Label">Speaker</label>
-              <div class="Button-Container">
-                <button class="Button" id="autoSpeakerN">-</button>
-                <label class="Counter-Label" id="autoSpeakerLab">0</label>
-                <button class="Button" id="autoSpeakerP">+</button>
-              </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoSpeakerMadeN">-</button>
+              <label class="Counter-Label" id="autoSpeakerMadeLab">0</label>
+              <button class="Button" id="autoSpeakeMaderP">+</button>
             </div>
           </div>
         </div>
-        <div class="Child-Container">
-          <label class="Label">Teleop Shots Made</label>
-          <div class="Group-Container">
-            <div>
-              <label class="Sub-Label">Amp</label>
-              <div class="Button-Container">
-                <button class="Button" id="teleopAmpN">-</button>
-                <label class="Counter-Label" id="teleopAmpLab">0</label>
-                <button class="Button" id="teleopAmpP">+</button>
-              </div>
-            </div>
-            <div>
-              <label class="Sub-Label">Speaker</label>
-              <div class="Button-Container">
-                <button class="Button" id="teleopSpeakerN">-</button>
-                <label class="Counter-Label" id="teleopSpeakerLab">0</label>
-                <button class="Button" id="teleopSpeakerP">+</button>
-              </div>
+
+        <label class="Label">Auto Shots Missed</label>
+        <div class="Group-Container">
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoAmpMissedN">-</button>
+              <label class="Counter-Label" id="autoAmpMissedLab">0</label>
+              <button class="Button" id="autoAmpMissedP">+</button>
             </div>
           </div>
-        </div>
-        <div class="Child-Container">
-          <label class="Label">Shots Made Trap</label>
-          <div class="Button-Container">
-            <button class="Button" id="trapN">-</button>
-            <label class="Counter-Label" id="trapLab">0</label>
-            <button class="Button" id="trapP">+</button>
-          </div>
-        </div>
-        <div class="Child-Container">
-          <label class="Label">Endgame/Misc</label>
-          <div class="Group-Container">
-            <div>
-              <label class="Sub-Label">Climbed</label
-              ><label
-                ><input autocomplete='off' class="Checkbox" type="checkbox" id="climbed" ><span></span
-              ></label>
-            </div>
-            <div>
-              <label class="Sub-Label">Buddy Climb</label
-              ><label
-                ><input autocomplete='off' class="Checkbox" type="checkbox" id="buddyClimb" ><span></span
-              ></label>
-            </div>
-            <div>
-              <label class="Sub-Label">Broke Down</label
-              ><label
-                ><input autocomplete='off' class="Checkbox" type="checkbox" id="brokeDown" ><span></span
-              ></label>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoSpeakerMissedN">-</button>
+              <label class="Counter-Label" id="autoSpeakerMissedLab">0</label>
+              <button class="Button" id="autoSpeakerMissedP">+</button>
             </div>
           </div>
-        </div>
-        <div class="Child-Container">
-          <label class="Label">Comments</label
-          ><textarea autocomplete='off' id="comments" class="Input-Field"></textarea>
-        </div>
-        <div class="Child-Container">
-          <button class="Save-Button" id="save">Save</button>
         </div>
       </div>
-    </div>
 
-    <script src="js/script.js"></script>
-    <script src="js/bluetooth.js"></script>
-  </body>
+
+      <div class="Child-Container">
+        <label class="Label">Teleop Shots Made</label>
+        <div class="Group-Container">
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopAmpMadeN">-</button>
+              <label class="Counter-Label" id="teleopAmpMadeLab">0</label>
+              <button class="Button" id="teleopAmpMadeP">+</button>
+            </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopSpeakerMadeN">-</button>
+              <label class="Counter-Label" id="teleopSpeakerMadeLab">0</label>
+              <button class="Button" id="teleopSpeakerMadeP">+</button>
+            </div>
+          </div>
+        </div>
+
+        <label class="Label">Teleop Shots Missed</label>
+        <div class="Group-Container">
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopAmpMissedN">-</button>
+              <label class="Counter-Label" id="teleopAmpMissedLab">0</label>
+              <button class="Button" id="teleopAmpMissedP">+</button>
+            </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopSpeakerMissedN">-</button>
+              <label class="Counter-Label" id="teleopSpeakerMissedLab">0</label>
+              <button class="Button" id="teleopSpeakerMissedP">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Shots Made In Trap</label>
+        <div class="Button-Container">
+          <button class="Button" id="trapMadeN">-</button>
+          <label class="Counter-Label" id="trapMadeLab">0</label>
+          <button class="Button" id="trapMadeP">+</button>
+        </div>
+
+        <label class="Label">Shots Missed In Trap</label>
+        <div class="Button-Container">
+          <button class="Button" id="trapMissedN">-</button>
+          <label class="Counter-Label" id="trapMissedLab">0</label>
+          <button class="Button" id="trapMissedP">+</button>
+        </div>
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Endgame/Misc</label>
+        <div class="Group-Container">
+          <div>
+            <label class="Sub-Label">Climbed</label><label><input autocomplete='off' class="Checkbox" type="checkbox"
+                id="climbed"><span></span></label>
+          </div>
+          <div>
+            <label class="Sub-Label">Buddy Climb</label><label><input autocomplete='off' class="Checkbox"
+                type="checkbox" id="buddyClimb"><span></span></label>
+          </div>
+          <div>
+            <label class="Sub-Label">Broke Down</label><label><input autocomplete='off' class="Checkbox" type="checkbox"
+                id="brokeDown"><span></span></label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="Child-Container">
+        <label class="Label">Comments</label><textarea autocomplete='off' id="comments" class="Input-Field"></textarea>
+      </div>
+
+
+      <div class="Child-Container">
+        <button class="Save-Button" id="save">Save</button>
+      </div>
+
+
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="js/bluetooth.js"></script>
+</body>
+
 </html>

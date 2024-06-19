@@ -6,6 +6,8 @@ document.getElementById('blueConnect')
 //document.getElementById('bluePush')
 //  .addEventListener('click', () => bluePush());
 
+checkAndSend()
+
 function blueConnect() {
   navigator.bluetooth.requestDevice({
     filters: [{

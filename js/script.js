@@ -1,4 +1,5 @@
-var jsonFull = ""
+jsonFull = ""
+localStorage["jsonData"] = jsonFull
 
 document.getElementById("save").addEventListener("click", () => saveData());
 
@@ -100,6 +101,7 @@ function saveData() {
     }
     jsonFile = jsonFile + "}";
     jsonFull = jsonFull + jsonFile + ", "
+    localStorage["jsonData"] = jsonFull
 
     const file = new Blob([jsonFile], { type: 'text/plain' });
 

@@ -72,29 +72,25 @@ function forceConnect() {
     });
 }
 
-function getStatus() {
-  statusValue = 0;
+async function getStatus() {
+  let statusValue = 0;
 
-  if (bluetoothDevice.gatt.connected) {
-    bluetoothDevice.gatt.getPrimaryService(0x180D)
-      .then(service => {
-        return service.getCharacteristic(0x2A37);
-      })
-      .then(characteristic => {
-        return characteristic.readValue();
-      })
-      .then(value => {
-        statusValue = value
-        console.log(`status is ${value.getUint8(0)}`);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  } else {
-    console.error('device is not connected.');
+  try {
+    if (bluetoothDevice.gatt.connected) {
+      const service = await bluetoothDevice.gatt.getPrimaryService(0x180D);
+      const characteristic = await service.getCharacteristic(0x2A37);
+      const value = await characteristic.readValue();
+      
+      statusValue = value.getUint8(0);
+      console.log(`Status is ${statusValue}`);
+    } else {
+      console.error('Device is not connected.');
+    }
+  } catch (error) {
+    console.error('Error reading status:', error);
   }
 
-  return statusValue
+  return statusValue;
 }
 
 function stringToArrayBuffer(str) {

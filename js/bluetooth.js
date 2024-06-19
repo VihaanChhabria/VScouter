@@ -27,11 +27,11 @@ async function checkAndSend() {
   while (true) {
     await new Promise(r => setTimeout(r, 10000))
     console.log("looping")
-    if (bluetoothDevice) {
+    if (bluetoothDevice.gatt.connected) {
       statusValue = await getStatus()
       switch (statusValue) {
         case 1:
-          sendData(localStorage["jsonData"] || "")
+          cutAndSendData(localStorage["jsonData"] || "")
           break
       
         default:
@@ -43,15 +43,26 @@ async function checkAndSend() {
   }
 }
 
-function sendData(stringData) {
+function cutAndSendData(stringData){
+  console.log('sending "' + stringData + '"')
+
+  fullEncodedStr = encodeString(stringData)
+
+  chunks = Math.ceil(fullEncodedStr.length/512)
+  chunkSize = fullEncodedStr.length/chunks
+  for(let i = 0; i < chunks; i++){
+    sendData(fullEncodedStr.subarray(i*chunkSize, (i+1)*chunkSize))
+  }
+}
+
+function sendData(data) {
   if (bluetoothDevice.gatt.connected) {
     bluetoothDevice.gatt.getPrimaryService(0x180D)
       .then(service => {
         return service.getCharacteristic(0x2A39)
       })
       .then(characteristic => {
-        console.log('sending "' + stringData + '"')
-        return characteristic.writeValue(encodeString(stringData))
+        return characteristic.writeValue(data)
       })
       .catch(error => {
         console.error(error)

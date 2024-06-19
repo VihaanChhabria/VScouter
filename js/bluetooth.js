@@ -24,6 +24,7 @@ function blueConnect() {
 async function checkAndSend() {
   while (true) {
     await new Promise(r => setTimeout(r, 30000));
+    console.log("looping")
     if (bluetoothDevice) {
       switch (getStatus()) {
         case 1:
@@ -46,6 +47,7 @@ function sendData(stringData) {
         return service.getCharacteristic(0x2A39);
       })
       .then(characteristic => {
+        console.log('sending "' + stringData + '"')
         return characteristic.writeValue(stringToArrayBuffer(stringData));
       })
       .catch(error => {
@@ -78,13 +80,13 @@ function getStatus() {
         return characteristic.readValue();
       })
       .then(value => {
-        console.log(`Status is ${value.getUint8(0)}`);
+        console.log(`status is ${value.getUint8(0)}`);
       })
       .catch(error => {
         console.error(error);
       });
   } else {
-    console.error('Device is not connected.');
+    console.error('device is not connected.');
   }
 }
 

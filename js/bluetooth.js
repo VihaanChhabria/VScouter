@@ -73,6 +73,8 @@ function forceConnect() {
 }
 
 function getStatus() {
+  statusValue = 0;
+
   if (bluetoothDevice.gatt.connected) {
     bluetoothDevice.gatt.getPrimaryService(0x180D)
       .then(service => {
@@ -82,6 +84,7 @@ function getStatus() {
         return characteristic.readValue();
       })
       .then(value => {
+        statusValue = value
         console.log(`status is ${value.getUint8(0)}`);
       })
       .catch(error => {
@@ -90,6 +93,8 @@ function getStatus() {
   } else {
     console.error('device is not connected.');
   }
+
+  return statusValue
 }
 
 function stringToArrayBuffer(str) {

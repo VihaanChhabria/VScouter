@@ -1,3 +1,27 @@
+document.getElementById("save").addEventListener("click", () => saveData());
+
+
+const baseNames = [
+    "autoAmp",
+    "autoSpeaker",
+    "teleopAmp",
+    "teleopSpeaker",
+    "trap"
+];
+
+for (let index = 0; index < baseNames.length; index++) {
+    const baseName = baseNames[index];
+    createCounter(baseName)
+}
+
+let bluetoothDevice = null;
+
+document.getElementById('blueConnect')
+  .addEventListener('click', () => blueConnect());
+
+checkAndSend()
+
+
 function createCounter(baseName) {
     const label = document.getElementById(baseName + "Lab");
 
@@ -89,18 +113,89 @@ function saveData() {
     URL.revokeObjectURL(link.href);
 }
 
-document.getElementById("save").addEventListener("click", () => saveData());
+function blueConnect() {
+  navigator.bluetooth.requestDevice({
+    filters: [{
+      services: [0x180D]
+    }]
+  })
+  .then(device => {
+    bluetoothDevice = device;
+    return forceConnect();
+  })
+  .catch(error => {
+    console.error('Error requesting Bluetooth device: ', error);
+  });
+}
 
+async function checkAndSend() {
+  while (true) {
+    await new Promise(r => setTimeout(r, 30000));
+    if (bluetoothDevice) {
+      switch (getStatus()) {
+        case 1:
+          sendData("data :)");
+          break;
+      
+        default:
+          break;
+      }
+    } else {
+      blueConnect();
+    }
+  }
+}
 
-const baseNames = [
-    "autoAmp",
-    "autoSpeaker",
-    "teleopAmp",
-    "teleopSpeaker",
-    "trap"
-];
+function sendData(stringData) {
+  if (bluetoothDevice.gatt.connected) {
+    bluetoothDevice.gatt.getPrimaryService(0x180D)
+      .then(service => {
+        return service.getCharacteristic(0x2A39);
+      })
+      .then(characteristic => {
+        return characteristic.writeValue(stringToArrayBuffer(stringData));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  } else {
+    console.error('Device is not connected.');
+  }
+}
 
-for (let index = 0; index < baseNames.length; index++) {
-    const baseName = baseNames[index];
-    createCounter(baseName)
+function forceConnect() {
+  bluetoothDevice.gatt.connect()
+    .catch(error => {
+      console.error('DOMException occurred: ', error);
+      if (error instanceof DOMException) {
+        forceConnect();
+      } else {
+        console.error(error);
+      }
+    });
+}
+
+function getStatus() {
+  if (bluetoothDevice.gatt.connected) {
+    bluetoothDevice.gatt.getPrimaryService(0x180D)
+      .then(service => {
+        return service.getCharacteristic(0x2A37);
+      })
+      .then(characteristic => {
+        return characteristic.readValue();
+      })
+      .then(value => {
+        console.log(`Status is ${value.getUint8(0)}`);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  } else {
+    console.error('Device is not connected.');
+  }
+}
+
+function stringToArrayBuffer(str) {
+  const encoder = new TextEncoder();
+  return encoder.encode(str);
 }

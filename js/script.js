@@ -71,29 +71,31 @@ function createCounter(baseName) {
 }
 
 function saveData() {
+    let currentData = {}
+
     for (let index = 0; index < dataInputs.length; index++) {
         const element = dataInputs[index][0][0]
         const elementType = dataInputs[index][0][1]
-        
+
         const input = document.getElementById(element)
-        data = ""
+        let data = ""
 
         switch (elementType) {
             case INPUT_COUNTER:
-                data = input.innerText                
-                data.innerText = 0
+                data = input.innerText
+                input.innerText = 0
                 break
 
             case INPUT_CHECKBOX:
                 data = input.checked
                 input.checked = false
                 break
-        
+
             default:
-                //INPUT_TEXT
+                // INPUT_TEXT
                 data = input.value
 
-                if (((element == "matchNumber") || (element == "teamNumber") || (element == "initials")) && (data == "")){
+                if (((element == "matchNumber") || (element == "teamNumber") || (element == "initials")) && (data == "")) {
                     alert(`Please fill out ${element} to save`)
                     return
                 }
@@ -102,29 +104,23 @@ function saveData() {
                 break
         }
 
-        dataInputs[index].push(data)
+        currentData[element] = data
     }
 
-    jsonFile = "{\n"
-    for (let index = 0; index < dataInputs.length; index++) {
-        const dataName = dataInputs[index][0][0]
-        const data = dataInputs[index][1]
-        
-        if (index == (dataInputs.length-1)){
-            jsonFile = jsonFile + '"' + dataName + '" : "' + data + '"\n'
-        }else{
-            jsonFile = jsonFile + '"' + dataName + '" : "' + data + '",\n'
-        }
+    const jsonFile = JSON.stringify(currentData, null, 2)
+
+    if (jsonFull) {
+        jsonFull += ", " + jsonFile
+    } else {
+        jsonFull = jsonFile
     }
-    jsonFile = jsonFile + "}"
-    jsonFull = jsonFull + jsonFile + ", "
     localStorage["jsonData"] = jsonFull
 
-    const file = new Blob([jsonFile], { type: 'text/plain' })
+    const file = new Blob([jsonFile], { type: 'application/json' })
 
     const link = document.createElement("a")
     link.href = URL.createObjectURL(file)
-    link.download = "M" + dataInputs[0][1] + "_T" + dataInputs[1][1] + ".json"
+    link.download = `M${currentData["matchNumber"]}_T${currentData["teamNumber"]}.json`
 
     link.click()
     URL.revokeObjectURL(link.href)

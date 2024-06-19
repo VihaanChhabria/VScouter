@@ -1,3 +1,21 @@
+var jsonFull = ""
+
+document.getElementById("save").addEventListener("click", () => saveData());
+
+
+const baseNames = [
+    "autoAmp",
+    "autoSpeaker",
+    "teleopAmp",
+    "teleopSpeaker",
+    "trap"
+];
+
+for (let index = 0; index < baseNames.length; index++) {
+    const baseName = baseNames[index];
+    createCounter(baseName)
+}
+
 function createCounter(baseName) {
     const label = document.getElementById(baseName + "Lab");
 
@@ -51,15 +69,18 @@ function saveData() {
         switch (elementType) {
             case INPUT_COUNTER:
                 data = input.innerText;
+                label.innerText = 0
                 break;
 
             case INPUT_CHECKBOX:
                 data = input.checked;
+                input.checked = false
                 break;
         
             default:
                 //INPUT_TEXT
                 data = input.value;
+                input.value = ""
                 break;
         }
 
@@ -78,6 +99,7 @@ function saveData() {
         }
     }
     jsonFile = jsonFile + "}";
+    jsonFull = jsonFull + jsonFile + ", "
 
     const file = new Blob([jsonFile], { type: 'text/plain' });
 
@@ -87,20 +109,4 @@ function saveData() {
 
     link.click();
     URL.revokeObjectURL(link.href);
-}
-
-document.getElementById("save").addEventListener("click", () => saveData());
-
-
-const baseNames = [
-    "autoAmp",
-    "autoSpeaker",
-    "teleopAmp",
-    "teleopSpeaker",
-    "trap"
-];
-
-for (let index = 0; index < baseNames.length; index++) {
-    const baseName = baseNames[index];
-    createCounter(baseName)
 }

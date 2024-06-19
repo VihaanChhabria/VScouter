@@ -1,4 +1,4 @@
-let bluetoothDevice = null;
+bluetoothDevice = null;
 
 document.getElementById('blueConnect')
   .addEventListener('click', () => blueConnect());
@@ -29,7 +29,6 @@ async function checkAndSend() {
     console.log("looping")
     if (bluetoothDevice) {
       statusValue = await getStatus()
-      console.log(statusValue)
       switch (statusValue) {
         case 1:
           sendData("data");

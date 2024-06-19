@@ -69,7 +69,7 @@ function saveData() {
         switch (elementType) {
             case INPUT_COUNTER:
                 data = input.innerText;
-                label.innerText = 0
+                data.innerText = 0
                 break;
 
             case INPUT_CHECKBOX:

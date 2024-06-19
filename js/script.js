@@ -84,6 +84,7 @@ function saveData() {
 
                 if (((element == "matchNumber") || (element == "teamNumber") || (element == "initials")) && (data == "")){
                     alert(`Please fill out ${element} to save`)
+                    console.log("alert?")
                     return
                 }
                 

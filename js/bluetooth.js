@@ -31,7 +31,7 @@ async function checkAndSend() {
       statusValue = await getStatus()
       switch (statusValue) {
         case 1:
-          cutAndSendData(localStorage["jsonData"] || "")
+          await cutAndSendData(localStorage["jsonData"] || "")
           break
       
         default:

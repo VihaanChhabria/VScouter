@@ -25,10 +25,10 @@ function blueConnect() {
 
 async function checkAndSend() {
   while (true) {
-    await new Promise(r => setTimeout(r, 30000));
+    await new Promise(r => setTimeout(r, 10000));
     console.log("looping")
     if (bluetoothDevice) {
-      statusValue = getStatus()
+      statusValue = await getStatus()
       console.log(statusValue)
       switch (statusValue) {
         case 1:

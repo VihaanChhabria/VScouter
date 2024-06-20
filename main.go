@@ -62,10 +62,10 @@ func main() {
 		if retrieveData == "y" {
 			for appNum := 0; appNum < 6; appNum++ {
 				statusCharacteristic.Write([]byte{uint8(appNum)})
-				for fullData != "" {
+				for singleData != "" {
 
 				}
-				time.Sleep(4)
+				time.Sleep(4 * time.Second)
 
 				fullData = fullData + singleData + ", "
 				singleData = ""
@@ -75,9 +75,9 @@ func main() {
 			jsonFile, _ := os.Create("output.json")
 
 			jsonFile.WriteString(fullData)
+			jsonFile.Close()
 		}
 		retrieveData = "n"
-
 	}
 }
 

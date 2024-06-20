@@ -60,15 +60,16 @@ func main() {
 		fmt.Scan(&retrieveData)
 
 		if retrieveData == "y" {
-			for appNum := 0; appNum < 6; appNum++ {
+			for appNum := 1; appNum <= 1; appNum++ {
 				statusCharacteristic.Write([]byte{uint8(appNum)})
 				for singleData != "" {
 
 				}
-				time.Sleep(4 * time.Second)
+				time.Sleep(2 * time.Second)
 
 				fullData = fullData + singleData + ", "
 				singleData = ""
+				println("\n\n\n\n\n\n\nFull Data:\n" + fullData)
 			}
 			fullData = fullData + "}"
 

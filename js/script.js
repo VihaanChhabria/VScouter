@@ -1,32 +1,8 @@
-jsonFull = ""
-localStorage["jsonData"] = jsonFull
+sonFull = localStorage.getItem("jsonData") ? JSON.parse(localStorage.getItem("jsonData")) : "[]";
 
-INPUT_TEXT = "text"
-INPUT_COUNTER = "counter"
-INPUT_CHECKBOX = "checkbox"
+let jsonArray = JSON.parse(jsonFull);
 
-dataInputs = [
-    [["matchNumber", INPUT_TEXT]],
-    [["teamNumber", INPUT_TEXT]],
-    [["initials", INPUT_TEXT]],
-    [["autoAmpMadeLab", INPUT_COUNTER]],
-    [["autoAmpMissedLab", INPUT_COUNTER]],
-    [["autoSpeakerMadeLab", INPUT_COUNTER]],
-    [["autoSpeakerMissedLab", INPUT_COUNTER]],
-    [["teleopAmpMadeLab", INPUT_COUNTER]],
-    [["teleopAmpMissedLab", INPUT_COUNTER]],
-    [["teleopSpeakerMadeLab", INPUT_COUNTER]],
-    [["teleopSpeakerMissedLab", INPUT_COUNTER]],
-    [["trapMadeLab", INPUT_COUNTER]],
-    [["trapMissedLab", INPUT_COUNTER]],
-    [["climbed", INPUT_CHECKBOX]],
-    [["buddyClimb", INPUT_CHECKBOX]],
-    [["brokeDown", INPUT_CHECKBOX]],
-    [["comments", INPUT_TEXT]]
-]
-
-document.getElementById("save").addEventListener("click", () => saveData())
-
+document.getElementById("save").addEventListener("click", () => saveData());
 
 const baseNames = [
     "autoAmpMade",
@@ -34,94 +10,87 @@ const baseNames = [
     "teleopAmpMade",
     "teleopSpeakerMade",
     "trapMade",
-
     "autoAmpMissed",
     "autoSpeakerMissed",
     "teleopAmpMissed",
     "teleopSpeakerMissed",
     "trapMissed"
-]
-
-
+];
 
 for (let index = 0; index < baseNames.length; index++) {
-    const baseName = baseNames[index]
-    createCounter(baseName)
+    const baseName = baseNames[index];
+    createCounter(baseName);
 }
 
 function createCounter(baseName) {
-    const label = document.getElementById(baseName + "Lab")
+    const label = document.getElementById(baseName + "Lab");
 
-    const increaseButton = document.getElementById(baseName + "P")
-    const decreaseButton = document.getElementById(baseName + "N")
+    const increaseButton = document.getElementById(baseName + "P");
+    const decreaseButton = document.getElementById(baseName + "N");
 
-    increaseButton.addEventListener("click", () => increase(label))
-    decreaseButton.addEventListener("click", () => decrease(label))
+    increaseButton.addEventListener("click", () => increase(label));
+    decreaseButton.addEventListener("click", () => decrease(label));
 
     function increase(label) {
-        label.innerText = parseInt(label.innerText) + 1
+        label.innerText = parseInt(label.innerText) + 1;
     }
 
     function decrease(label) {
-        const value = parseInt(label.innerText)
+        const value = parseInt(label.innerText);
         if (value > 0) {
-            label.innerText = value - 1
+            label.innerText = value - 1;
         }
     }
 }
 
 function saveData() {
-    let currentData = {}
+    let currentData = {};
 
     for (let index = 0; index < dataInputs.length; index++) {
-        const element = dataInputs[index][0][0]
-        const elementType = dataInputs[index][0][1]
+        const element = dataInputs[index][0][0];
+        const elementType = dataInputs[index][0][1];
 
-        const input = document.getElementById(element)
-        let data = ""
+        const input = document.getElementById(element);
+        let data = "";
 
         switch (elementType) {
             case INPUT_COUNTER:
-                data = input.innerText
-                input.innerText = 0
-                break
-
+                data = input.innerText;
+                input.innerText = 0;
+                break;
             case INPUT_CHECKBOX:
-                data = input.checked
-                input.checked = false
-                break
-
+                data = input.checked;
+                input.checked = false;
+                break;
             default:
                 // INPUT_TEXT
-                data = input.value
+                data = input.value;
 
                 if (((element == "matchNumber") || (element == "teamNumber") || (element == "initials")) && (data == "")) {
-                    alert(`Please fill out ${element} to save`)
-                    return
+                    alert(`Please fill out ${element} to save`);
+                    return;
                 }
 
-                input.value = ""
-                break
+                input.value = "";
+                break;
         }
 
-        currentData[element] = data
+        currentData[element] = data;
     }
 
-    const jsonFile = JSON.stringify(currentData, null, 2)
+    jsonArray.push(currentData);
 
-    if (jsonFull) {
-        jsonFull += ", " + jsonFile
-    } else {
-        jsonFull = jsonFile
-    }
-    localStorage["jsonData"] = jsonFull
+    jsonFull = JSON.stringify(jsonArray);
 
-    const file = new Blob([jsonFile], { type: 'application/json' })
+    localStorage.setItem("jsonData", jsonFull);
 
-    const link = document.createElement("a")
-    link.href = URL.createObjectURL(file)
-    link.download = `M${currentData["matchNumber"]}_T${currentData["teamNumber"]}.json`
+    const jsonFile = JSON.stringify(currentData, null, 2);
+    const file = new Blob([jsonFile], { type: 'application/json' });
 
-    link.click()
-    URL.revokeObjectURL(link.href)
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = `M${currentData["matchNumber"]}_T${currentData["teamNumber"]}.json`;
+
+    link.click();
+    URL.revokeObjectURL(link.href);
 }

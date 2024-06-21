@@ -52,13 +52,8 @@ function checkAndSend() {
     if (bluetoothDevice.gatt.connected) {
       statusValue = getStatus()
       console.log(localStorage["jsonData"])
-      switch (statusValue) {
-        case 1:
-          cutAndSendData(localStorage["jsonData"] || "")
-          break
-      
-        default:
-          break
+      if (statusValue == 1) {
+        cutAndSendData(localStorage["jsonData"] || "")
       }
     } else {
       console.error('Device is not connected.');

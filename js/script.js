@@ -1,4 +1,4 @@
-sonFull = localStorage.getItem("jsonData") ? JSON.parse(localStorage.getItem("jsonData")) : "[]";
+jsonFull = localStorage.getItem("jsonData") ? JSON.parse(localStorage.getItem("jsonData")) : "[]";
 
 let jsonArray = JSON.parse(jsonFull);
 

@@ -3,10 +3,27 @@ bluetoothDevice = null
 document.getElementById('blueConnect')
   .addEventListener('click', () => blueConnect())
 
-//document.getElementById('bluePush')
-//  .addEventListener('click', () => bluePush())
-
 setInterval(checkAndSend, 15000)
+
+setInterval(alertBluetooth, 1000)
+blinkAlert = 1
+
+function alertBluetooth() {
+  alertButton = document.getElementById('alertBluetooth')
+  if (bluetoothDevice) {
+    alertButton.innerText = "You are connected to the bluetooth network."
+    alertButton.style.background = "#EE5622"
+  } else {
+    if (blinkAlert == 1) {
+      alertButton.style.background = "#FF0000"
+    } else {
+      alertButton.style.background = "#000000"
+    }
+    blinkAlert = blinkAlert * -1
+
+    alertButton.innerText = "Please connect to the bluetooth network!"
+  }
+}
 
 function blueConnect() {
   navigator.bluetooth.requestDevice({
@@ -16,12 +33,18 @@ function blueConnect() {
   })
   .then(device => {
     bluetoothDevice = device
+    device.addEventListener('gattserverdisconnected', onDisconnected);
     return forceConnect()
   })
   .catch(error => {
     console.error('Error requesting Bluetooth device: ', error)
   })
 }
+
+function onDisconnected(event) {
+  bluetoothDevice = null
+}
+
 
 function checkAndSend() {
   console.log("looping")

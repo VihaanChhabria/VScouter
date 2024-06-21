@@ -11,8 +11,8 @@ import (
 var adapter = bluetooth.DefaultAdapter
 
 var data uint8 = 0
-var fullData string = "{"
-var singleData string = ""
+var fullData string = ""
+var singleData []string
 
 func main() {
 	println("starting")
@@ -46,7 +46,7 @@ func main() {
 					if len(value) > 0 {
 						recievedData := string(value)
 						println("Received data: ", recievedData+"\n\n\n")
-						singleData = singleData + recievedData
+						singleData = append(singleData, recievedData)
 					}
 				},
 			},
@@ -62,14 +62,20 @@ func main() {
 		if retrieveData == "y" {
 			for appNum := 1; appNum <= 1; appNum++ {
 				statusCharacteristic.Write([]byte{uint8(appNum)})
-				for singleData != "" {
 
+				time.Sleep(17 * time.Second)
+				statusCharacteristic.Write([]byte{uint8(0)})
+
+				singleData = removeDuplicateStr(singleData)
+
+				fullData = fullData + ", "
+				for _, item := range singleData {
+					fullData = fullData + item
 				}
-				time.Sleep(2 * time.Second)
 
-				fullData = fullData + singleData + ", "
-				singleData = ""
+				singleData = []string{}
 				println("\n\n\n\n\n\n\nFull Data:\n" + fullData)
+
 			}
 			fullData = fullData + "}"
 
@@ -77,6 +83,8 @@ func main() {
 
 			jsonFile.WriteString(fullData)
 			jsonFile.Close()
+
+			fullData = ""
 		}
 		retrieveData = "n"
 	}
@@ -86,4 +94,25 @@ func must(action string, err error) {
 	if err != nil {
 		panic("failed to " + action + ": " + err.Error())
 	}
+}
+
+func removeDuplicateStr(strSlice []string) []string {
+	var nonRepeat []string
+
+	for _, item := range strSlice {
+		if !contains(nonRepeat, item) {
+			nonRepeat = append(nonRepeat, item)
+		}
+	}
+
+	return nonRepeat
+}
+
+func contains(slice []string, str string) bool {
+	for _, v := range slice {
+		if v == str {
+			return true
+		}
+	}
+	return false
 }

@@ -102,14 +102,14 @@ function forceConnect() {
     })
 }
 
-async function getStatus() {
+function getStatus() {
   let statusValue = 0
 
   try {
     if (bluetoothDevice.gatt.connected) {
-      const service = await bluetoothDevice.gatt.getPrimaryService(0x180D)
-      const characteristic = await service.getCharacteristic(0x2A37)
-      const value = await characteristic.readValue()
+      const service = bluetoothDevice.gatt.getPrimaryService(0x180D)
+      const characteristic = service.getCharacteristic(0x2A37)
+      const value = characteristic.readValue()
       
       statusValue = value.getUint8(0)
       console.log(`Status is ${statusValue}`)

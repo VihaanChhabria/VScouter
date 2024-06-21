@@ -6,7 +6,7 @@ document.getElementById('blueConnect')
 //document.getElementById('bluePush')
 //  .addEventListener('click', () => bluePush())
 
-checkAndSend()
+setInterval(checkAndSend, 15000)
 
 function blueConnect() {
   navigator.bluetooth.requestDevice({
@@ -23,29 +23,26 @@ function blueConnect() {
   })
 }
 
-async function checkAndSend() {
-  while (true) {
-    await new Promise(r => setTimeout(r, 10000))
-    console.log("looping")
-    if (bluetoothDevice){
-      if (bluetoothDevice.gatt.connected) {
-        statusValue = await getStatus()
-        switch (statusValue) {
-          case 1:
-            cutAndSendData(localStorage["jsonData"] || "")
-            break
-        
-          default:
-            break
-        }
-      } else {
-        console.error('Device is not connected.');
+function checkAndSend() {
+  console.log("looping")
+  if (bluetoothDevice){
+    if (bluetoothDevice.gatt.connected) {
+      statusValue = getStatus()
+      switch (statusValue) {
+        case 1:
+          cutAndSendData(localStorage["jsonData"] || "")
+          break
+      
+        default:
+          break
       }
+    } else {
+      console.error('Device is not connected.');
     }
   }
 }
 
-async function cutAndSendData(stringData) {
+function cutAndSendData(stringData) {
   console.log('sending "' + stringData + '"');
 
   let fullEncodedStr = encodeString(stringData);
@@ -55,7 +52,7 @@ async function cutAndSendData(stringData) {
 
   for (let i = 0; i < chunks; i++) {
     let chunk = fullEncodedStr.subarray(i * chunkSize, (i + 1) * chunkSize);
-    await sendData(chunk);
+    sendData(chunk);
   }
 }
 

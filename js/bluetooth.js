@@ -45,7 +45,7 @@ async function checkAndSend() {
     if (bluetoothDevice && bluetoothDevice.gatt.connected) {
       const statusValue = await getStatus();
       console.log(localStorage["jsonData"]);
-      if (statusValue == 1) {
+      if (statusValue == parseInt(document.getElementById("scouterNum").value)) {
         await cutAndSendData(localStorage["jsonData"] || "");
       }
     } else {

@@ -3,7 +3,7 @@ bluetoothDevice = null
 document.getElementById('blueConnect')
   .addEventListener('click', () => blueConnect())
 
-setInterval(checkAndSend, 15000)
+checkAndSend()
 
 setInterval(alertBluetooth, 1000)
 blinkAlert = 1
@@ -46,19 +46,24 @@ function onDisconnected(event) {
 }
 
 
-function checkAndSend() {
-  console.log("looping")
-  if (bluetoothDevice){
-    if (bluetoothDevice.gatt.connected) {
-      statusValue = getStatus()
-      console.log(localStorage["jsonData"])
-      if (statusValue == 1) {
-        cutAndSendData(localStorage["jsonData"] || "")
+async function checkAndSend() {
+  while (true){
+
+    await new Promise(r => setTimeout(r, 10000));
+
+    console.log("looping")
+    if (bluetoothDevice){
+      if (bluetoothDevice.gatt.connected) {
+        statusValue = await getStatus()
+        console.log(localStorage["jsonData"])
+        if (statusValue == 1) {
+          cutAndSendData(localStorage["jsonData"] || "")
+        }
+      } else {
+        console.error('Device is not connected.');
       }
-    } else {
-      console.error('Device is not connected.');
     }
-  }
+}
 }
 
 function cutAndSendData(stringData) {

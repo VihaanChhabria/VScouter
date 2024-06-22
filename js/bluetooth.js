@@ -1,27 +1,28 @@
-bluetoothDevice = null
+let bluetoothDevice = null;
+let gattOperationLock = false;
 
 document.getElementById('blueConnect')
-  .addEventListener('click', () => blueConnect())
+  .addEventListener('click', () => blueConnect());
 
-checkAndSend()
+checkAndSend();
 
-setInterval(alertBluetooth, 1000)
-blinkAlert = 1
+setInterval(alertBluetooth, 1000);
+let blinkAlert = 1;
 
 function alertBluetooth() {
-  alertButton = document.getElementById('alertBluetooth')
-  if (bluetoothDevice) {
-    alertButton.innerText = "You are connected to the bluetooth network."
-    alertButton.style.background = "#EE5622"
+  const alertButton = document.getElementById('alertBluetooth');
+  if (bluetoothDevice && bluetoothDevice.gatt.connected) {
+    alertButton.innerText = "You are connected to the Bluetooth network.";
+    alertButton.style.background = "#EE5622";
   } else {
     if (blinkAlert == 1) {
-      alertButton.style.background = "#FF0000"
+      alertButton.style.background = "#FF0000";
     } else {
-      alertButton.style.background = "#0000FF"
+      alertButton.style.background = "#0000FF";
     }
-    blinkAlert = blinkAlert * -1
+    blinkAlert = blinkAlert * -1;
 
-    alertButton.innerText = "Please connect to the bluetooth network!"
+    alertButton.innerText = "Please connect to the Bluetooth network!";
   }
 }
 
@@ -32,41 +33,41 @@ function blueConnect() {
     }]
   })
   .then(device => {
-    bluetoothDevice = device
+    bluetoothDevice = device;
     device.addEventListener('gattserverdisconnected', onDisconnected);
-    return forceConnect()
+    return forceConnect();
   })
   .catch(error => {
-    console.error('Error requesting Bluetooth device: ', error)
-  })
+    console.error('Error requesting Bluetooth device: ', error);
+  });
 }
 
 function onDisconnected(event) {
-  bluetoothDevice = null
+  bluetoothDevice = null;
 }
-
 
 async function checkAndSend() {
-  while (true){
-
+  while (true) {
     await new Promise(r => setTimeout(r, 10000));
 
-    console.log("looping")
-    if (bluetoothDevice){
-      if (bluetoothDevice.gatt.connected) {
-        statusValue = await getStatus()
-        console.log(localStorage["jsonData"])
+    console.log("looping");
+    if (bluetoothDevice && bluetoothDevice.gatt.connected) {
+      try {
+        const statusValue = await getStatus();
+        console.log(localStorage["jsonData"]);
         if (statusValue == 1) {
-          await cutAndSendData(localStorage["jsonData"] || "")
+          cutAndSendData(localStorage["jsonData"] || "");
         }
-      } else {
-        console.error('Device is not connected.');
+      } catch (error) {
+        console.error('Error in checkAndSend loop:', error);
       }
+    } else {
+      console.error('Device is not connected.');
     }
-}
+  }
 }
 
-async function cutAndSendData(stringData) {
+function cutAndSendData(stringData) {
   console.log('sending "' + stringData + '"');
 
   let fullEncodedStr = encodeString(stringData);
@@ -81,54 +82,62 @@ async function cutAndSendData(stringData) {
 }
 
 async function sendData(data) {
-  if (bluetoothDevice.gatt.connected) {
+  if (!gattOperationLock) {
+    gattOperationLock = true;
     try {
       const service = await bluetoothDevice.gatt.getPrimaryService(0x180D);
       const characteristic = await service.getCharacteristic(0x2A39);
       await characteristic.writeValue(data);
     } catch (error) {
       console.error('Error writing data:', error);
+    } finally {
+      gattOperationLock = false;
     }
   } else {
-    console.error('Device is not connected.');
+    console.error('Device is not connected or operation already in progress.');
+    sendData(data)
   }
 }
 
-
-function forceConnect() {
-  bluetoothDevice.gatt.connect()
-    .catch(error => {
-      console.error('DOMException occurred: ', error)
-      if (error instanceof DOMException) {
-        forceConnect()
-      } else {
-        console.error(error)
+async function forceConnect() {
+  while (true) {
+    try {
+      await bluetoothDevice.gatt.connect();
+      break; // Exit loop on successful connection
+    } catch (error) {
+      console.error('DOMException occurred: ', error);
+      if (!(error instanceof DOMException)) {
+        break; // Exit loop if it's not a DOMException
       }
-    })
+    }
+  }
 }
 
 async function getStatus() {
-  let statusValue = 0
+  let statusValue = 0;
 
-  try {
-    if (bluetoothDevice.gatt.connected) {
-      const service = await bluetoothDevice.gatt.getPrimaryService(0x180D)
-      const characteristic = await service.getCharacteristic(0x2A37)
-      const value = await characteristic.readValue()
-      
-      statusValue = value.getUint8(0)
-      console.log(`Status is ${statusValue}`)
-    } else {
-      console.error('Device is not connected.')
+  if (!gattOperationLock) {
+    gattOperationLock = true;
+    try {
+      const service = await bluetoothDevice.gatt.getPrimaryService(0x180D);
+      const characteristic = await service.getCharacteristic(0x2A37);
+      const value = await characteristic.readValue();
+      statusValue = value.getUint8(0);
+      console.log(`Status is ${statusValue}`);
+    } catch (error) {
+      console.error('Error reading status:', error);
+    } finally {
+      gattOperationLock = false;
     }
-  } catch (error) {
-    console.error('Error reading status:', error)
+  } else {
+    console.error('Device is not connected or operation already in progress.');
+    getStatus()
   }
 
-  return statusValue
+  return statusValue;
 }
 
 function encodeString(str) {
-  const encoder = new TextEncoder()
-  return encoder.encode(str)
+  const encoder = new TextEncoder();
+  return encoder.encode(str);
 }

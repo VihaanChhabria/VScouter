@@ -17,7 +17,7 @@ function alertBluetooth() {
     if (blinkAlert == 1) {
       alertButton.style.background = "#FF0000"
     } else {
-      alertButton.style.background = "#000000"
+      alertButton.style.background = "#0000FF"
     }
     blinkAlert = blinkAlert * -1
 

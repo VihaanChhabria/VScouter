@@ -58,10 +58,11 @@ async function cutAndSendData(stringData) {
   console.log('sending "' + stringData + '"');
 
   const fullEncodedStr = encodeString(stringData);
-  const chunkSize = 512;
+  const chunkSize = 500;
 
   for (let i = 0; i < fullEncodedStr.length; i += chunkSize) {
     const chunk = fullEncodedStr.subarray(i, i + chunkSize);
+    console.log(`Sending chunk of length: ${chunk.length}`);
     await sendData(chunk);
   }
 }
@@ -71,12 +72,12 @@ async function sendData(data) {
     try {
       const service = await bluetoothDevice.gatt.getPrimaryService(0x180D);
       const characteristic = await service.getCharacteristic(0x2A39);
-      console.log(data)
+      console.log(data);
       await characteristic.writeValue(data);
     } catch (error) {
       console.error('Error writing data; trying again:', error);
       await new Promise(r => setTimeout(r, 2000));
-      sendData(data)
+      await sendData(data);
     }
   } else {
     console.error('Device is not connected.');

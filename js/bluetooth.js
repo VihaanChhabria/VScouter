@@ -57,7 +57,7 @@ async function checkAndSend() {
         statusValue = await getStatus()
         console.log(localStorage["jsonData"])
         if (statusValue == 1) {
-          cutAndSendData(localStorage["jsonData"] || "")
+          await cutAndSendData(localStorage["jsonData"] || "")
         }
       } else {
         console.error('Device is not connected.');
@@ -66,7 +66,7 @@ async function checkAndSend() {
 }
 }
 
-function cutAndSendData(stringData) {
+async function cutAndSendData(stringData) {
   console.log('sending "' + stringData + '"');
 
   let fullEncodedStr = encodeString(stringData);

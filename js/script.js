@@ -92,11 +92,13 @@ function saveData() {
             default:
                 // INPUT_TEXT
                 data = input.value
-                if (((element === "matchNumber") || (element === "teamNumber") || (element === "initials")) && (data === "")) {
+                if (((element === "matchNumber") || (element === "teamNumber") || (element === "initials") || (element === "scouterNum")) && (data === "")) {
                     alert(`Please fill out ${element} to save`)
                     return
                 }
-                input.value = ""
+                if (element != "scouterNum") {
+                    input.value = ""
+                }
                 break
         }
 

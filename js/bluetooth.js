@@ -71,6 +71,7 @@ async function sendData(data) {
     try {
       const service = await bluetoothDevice.gatt.getPrimaryService(0x180D);
       const characteristic = await service.getCharacteristic(0x2A39);
+      console.log(data)
       await characteristic.writeValue(data);
     } catch (error) {
       console.error('Error writing data; trying again:', error);

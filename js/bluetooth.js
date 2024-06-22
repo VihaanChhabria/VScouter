@@ -46,7 +46,6 @@ async function checkAndSend() {
       const statusValue = await getStatus();
       console.log(localStorage["jsonData"]);
       if (statusValue == 1) {
-        await new Promise(r => setTimeout(r, 2000));
         await cutAndSendData(localStorage["jsonData"] || "");
       }
     } else {
@@ -74,7 +73,9 @@ async function sendData(data) {
       const characteristic = await service.getCharacteristic(0x2A39);
       await characteristic.writeValue(data);
     } catch (error) {
-      console.error('Error writing data:', error);
+      console.error('Error writing data; trying again:', error);
+      await new Promise(r => setTimeout(r, 2000));
+      sendData(data)
     }
   } else {
     console.error('Device is not connected.');

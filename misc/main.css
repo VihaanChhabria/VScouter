@@ -12,8 +12,12 @@
 html, body {
     margin: 0;
     padding: 0;
+    min-height: 100%;
 }  
-  
+
+body {
+    background-color: var(--color-background);
+}
 
 .UI-container {
     display: flex;
@@ -43,6 +47,8 @@ html, body {
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--color-text);
+    display: block;
+    padding-top: 20px;
 }
 
 .Counter-Label {

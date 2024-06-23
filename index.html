@@ -9,6 +9,7 @@
   <body>
     <div class="UI-container">
       <div class="Parent-Container">
+
         <!-- Initial Section -->
         <div id="initial" class="section">
           <div class="Child-Container">
@@ -69,8 +70,10 @@
             </div>
           </div>
           <div class="Child-Container">
-            <button class="Save-Button" onclick="showSection('initial')">Back</button>
-            <button class="Save-Button" onclick="showSection('teleop')">Next</button>
+            <div class="Button-Container">
+              <button class="Save-Button" onclick="showSection('initial')">Back</button>
+              <button class="Save-Button" onclick="showSection('teleop')">Next</button>
+            </div>
           </div>
         </div>
 
@@ -117,8 +120,10 @@
             </div>
           </div>
           <div class="Child-Container">
-            <button class="Save-Button" onclick="showSection('auto')">Back</button>
-            <button class="Save-Button" onclick="showSection('endgame')">Next</button>
+            <div class="Button-Container">
+              <button class="Save-Button" onclick="showSection('auto')">Back</button>
+              <button class="Save-Button" onclick="showSection('endgame')">Next</button>
+            </div>
           </div>
         </div>
 
@@ -156,8 +161,10 @@
             <label class="Label">Comments</label><textarea autocomplete='off' id="comments" class="Input-Field"></textarea>
           </div>
           <div class="Child-Container">
-            <button class="Save-Button" onclick="showSection('teleop')">Back</button>
-            <button class="Save-Button" onclick="showSection('initial')" id="save">Save</button>
+            <div class="Button-Container"></div>
+              <button class="Save-Button" onclick="showSection('teleop')">Back</button>
+              <button class="Save-Button" onclick="showSection('initial')" id="save">Save</button>
+            </div>
           </div>
         </div>
       </div>

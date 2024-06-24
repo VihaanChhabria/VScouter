@@ -17,10 +17,6 @@ html, body {
 
 body {
     background-color: var(--color-background);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .UI-container {
@@ -28,32 +24,27 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--color-background);
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 
 .Parent-Container {
     width: 95%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1vh
 }
 
 .Child-Container {
+    background-color: #edf2f7;
+    padding: 2vh;
+    border-radius: 1vh;
     background-color: var(--color-child-background);
-    padding: 1rem;
-    border-radius: 0.37rem;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex-grow: 1;
+    margin: .7vh;
 }
 
 .Label {
-    font-size: 2.25rem;
+    font-size: 4vh;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--color-text);
@@ -64,7 +55,7 @@ body {
     font-size: xx-large;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 0.5cm;
+    padding: 2.5vh;
     display: flex;
     align-items: center;
     color: var(--color-text);
@@ -72,43 +63,42 @@ body {
 
 .Input-Field {
     width: 97%;
-    border: 1px solid #d1d5db;
-    border-radius: 0.37rem;
-    padding: 0.5rem;
+    border-radius: 1vh;
+    padding: 1.3vh;
     outline: none;
     box-shadow: none;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.75rem;
+    font-size: 3vh;
     resize: none;
     color: var(--color-input-text);
     background-color: var(--color-input-background);
     border-color: var(--color-input-background);
-    margin-bottom: 20px;
+    margin-bottom: 1.25vh;
 }
 
 .Button {
+    flex: 1;
     color: var(--color-text);
-    border-radius: 0.37rem;
-    padding: 0.5rem;
+    border-radius: 1vh;
+    padding: 1vh;
     font-family: Arial, Helvetica, sans-serif;
     font-size: x-large;
     font-weight: bolder;
+    height: 12.5vh;
     background-color: var(--color-button);
     border-color: var(--color-button);
-    height: 100%;
-    flex: 1;
 }
 
 .Save-Button {
     background-color: var(--color-button);
     border-color: var(--color-button);
     color: var(--color-text);
-    border-radius: 0.37rem;
-    padding: 2rem;
+    border-radius: 1vh;
+    padding: 3.5vh;
     font-family: Arial, Helvetica, sans-serif;
     font-size: xx-large;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 1.25vh;
 }
 
 .Button:hover {
@@ -120,14 +110,13 @@ body {
 }
 
 .Group-Container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 0.5vh
 }
 
 .Sub-Label {
-    font-size: 1.6rem;
+    font-size: 3.25vh;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--color-text);
@@ -136,12 +125,11 @@ body {
 .Button-Container {
     display: flex;
     justify-content: space-between;
-    flex-grow: 1;
 }
 
 .Checkbox {
-    width: 40px;
-    height: 50px;
+    width: 5vh;
+    height: 5vh;
     vertical-align:middle;
     accent-color: var(--color-checkbox);
     background: #252422;

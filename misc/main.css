@@ -92,6 +92,7 @@ body {
     height: calc((100vh - (var(--size-label) * 2) - (var(--size-sub-label) * 4) - var(--size-save-button) - (var(--size-ui-padding)*4))/4);
     background-color: var(--color-button);
     border-color: var(--color-button);
+    touch-action: manipulation;
 }
 
 
@@ -105,6 +106,7 @@ body {
     font-size: xx-large;
     width: 100%;
     margin-bottom: 1.25vh;
+    touch-action: manipulation;
 }
 
 .Button:hover {
@@ -139,4 +141,5 @@ body {
     vertical-align:middle;
     accent-color: var(--color-checkbox);
     background: #252422;
+    touch-action: manipulation;
 }

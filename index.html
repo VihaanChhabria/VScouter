@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" manifest="manifest.appcache">
+
 <head>
   <title>VScouter</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.6, user-scalable=no">
   <link rel="stylesheet" href="misc/main.css">
 </head>
+
 <body>
   <div class="UI-container">
     <div class="Parent-Container">
@@ -17,9 +19,12 @@
           <button class="Save-Button" id="blueConnect">Bluetooth Connect</button>
         </div>
         <div class="Child-Container">
-          <label class="Label">Scouter Number</label><input autocomplete='off' type="text" id="scouterNum" class="Input-Field">
-          <label class="Label">Match Number</label><input autocomplete='off' type="text" id="matchNumber" class="Input-Field">
-          <label class="Label">Team Number</label><input autocomplete='off' type="text" id="teamNumber" class="Input-Field">
+          <label class="Label">Scouter Number</label><input autocomplete='off' type="text" id="scouterNum"
+            class="Input-Field">
+          <label class="Label">Match Number</label><input autocomplete='off' type="text" id="matchNumber"
+            class="Input-Field">
+          <label class="Label">Team Number</label><input autocomplete='off' type="text" id="teamNumber"
+            class="Input-Field">
           <label class="Label">Scouter Initials</label><input type="text" id="initials" class="Input-Field">
         </div>
         <div class="Child-Container">
@@ -31,39 +36,39 @@
       <div id="auto" class="section" style="display:none;">
         <div class="Child-Container">
           <label class="Label">Auto Shots Made</label>
-            <div>
-              <label class="Sub-Label">Amp</label>
-              <div class="Button-Container">
-                <button class="Button" id="autoAmpMadeN">-</button>
-                <label class="Counter-Label" id="autoAmpMadeLab">0</label>
-                <button class="Button" id="autoAmpMadeP">+</button>
-              </div>
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoAmpMadeN">-</button>
+              <label class="Counter-Label" id="autoAmpMadeLab">0</label>
+              <button class="Button" id="autoAmpMadeP">+</button>
             </div>
-            <div>
-              <label class="Sub-Label">Speaker</label>
-              <div class="Button-Container">
-                <button class="Button" id="autoSpeakerMadeN">-</button>
-                <label class="Counter-Label" id="autoSpeakerMadeLab">0</label>
-                <button class="Button" id="autoSpeakerMadeP">+</button>
-              </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoSpeakerMadeN">-</button>
+              <label class="Counter-Label" id="autoSpeakerMadeLab">0</label>
+              <button class="Button" id="autoSpeakerMadeP">+</button>
             </div>
+          </div>
           <label class="Label">Auto Shots Missed</label>
-            <div>
-              <label class="Sub-Label">Amp</label>
-              <div class="Button-Container">
-                <button class="Button" id="autoAmpMissedN">-</button>
-                <label class="Counter-Label" id="autoAmpMissedLab">0</label>
-                <button class="Button" id="autoAmpMissedP">+</button>
-              </div>
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoAmpMissedN">-</button>
+              <label class="Counter-Label" id="autoAmpMissedLab">0</label>
+              <button class="Button" id="autoAmpMissedP">+</button>
             </div>
-            <div>
-              <label class="Sub-Label">Speaker</label>
-              <div class="Button-Container">
-                <button class="Button" id="autoSpeakerMissedN">-</button>
-                <label class="Counter-Label" id="autoSpeakerMissedLab">0</label>
-                <button class="Button" id="autoSpeakerMissedP">+</button>
-              </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="autoSpeakerMissedN">-</button>
+              <label class="Counter-Label" id="autoSpeakerMissedLab">0</label>
+              <button class="Button" id="autoSpeakerMissedP">+</button>
             </div>
+          </div>
         </div>
         <div class="Child-Container">
           <div class="Button-Container">
@@ -77,39 +82,47 @@
       <div id="teleop" class="section" style="display:none;">
         <div class="Child-Container">
           <label class="Label">Teleop Shots Made</label>
-            <div>
-              <label class="Sub-Label">Amp</label>
-              <div class="Button-Container">
-                <button class="Button" id="teleopAmpMadeN">-</button>
-                <label class="Counter-Label" id="teleopAmpMadeLab">0</label>
-                <button class="Button" id="teleopAmpMadeP">+</button>
-              </div>
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopAmpMadeN">-</button>
+              <label class="Counter-Label" id="teleopAmpMadeLab">0</label>
+              <button class="Button" id="teleopAmpMadeP">+</button>
             </div>
-            <div>
-              <label class="Sub-Label">Speaker</label>
-              <div class="Button-Container">
-                <button class="Button" id="teleopSpeakerMadeN">-</button>
-                <label class="Counter-Label" id="teleopSpeakerMadeLab">0</label>
-                <button class="Button" id="teleopSpeakerMadeP">+</button>
-              </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopSpeakerMadeN">-</button>
+              <label class="Counter-Label" id="teleopSpeakerMadeLab">0</label>
+              <button class="Button" id="teleopSpeakerMadeP">+</button>
             </div>
+          </div>
           <label class="Label">Teleop Shots Missed</label>
-            <div>
-              <label class="Sub-Label">Amp</label>
-              <div class="Button-Container">
-                <button class="Button" id="teleopAmpMissedN">-</button>
-                <label class="Counter-Label" id="teleopAmpMissedLab">0</label>
-                <button class="Button" id="teleopAmpMissedP">+</button>
-              </div>
+          <div>
+            <label class="Sub-Label">Amp</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopAmpMissedN">-</button>
+              <label class="Counter-Label" id="teleopAmpMissedLab">0</label>
+              <button class="Button" id="teleopAmpMissedP">+</button>
             </div>
-            <div>
-              <label class="Sub-Label">Speaker</label>
-              <div class="Button-Container">
-                <button class="Button" id="teleopSpeakerMissedN">-</button>
-                <label class="Counter-Label" id="teleopSpeakerMissedLab">0</label>
-                <button class="Button" id="teleopSpeakerMissedP">+</button>
-              </div>
+          </div>
+          <div>
+            <label class="Sub-Label">Speaker</label>
+            <div class="Button-Container">
+              <button class="Button" id="teleopSpeakerMissedN">-</button>
+              <label class="Counter-Label" id="teleopSpeakerMissedLab">0</label>
+              <button class="Button" id="teleopSpeakerMissedP">+</button>
             </div>
+          </div>
+
+          <label class="Label">Notes Fed</label>
+          <label class="Sub-Label">﹒</label>
+          <div class="Button-Container">
+            <button class="Button" id="notesFedN">-</button>
+            <label class="Counter-Label" id="notesFedLab">0</label>
+            <button class="Button" id="notesFedP">+</button>
+          </div>
         </div>
         <div class="Child-Container">
           <div class="Button-Container">
@@ -139,27 +152,31 @@
           <label class="Label">Endgame/Misc</label>
           <div class="Group-Container">
             <div>
-              <label class="Sub-Label">Climbed</label><label><input autocomplete='off' class="Checkbox" type="checkbox" id="climbed"><span></span></label>
+              <label class="Sub-Label">Climbed</label><label><input autocomplete='off' class="Checkbox" type="checkbox"
+                  id="climbed"><span></span></label>
             </div>
             <div>
-              <label class="Sub-Label">Buddy Climb</label><label><input autocomplete='off' class="Checkbox" type="checkbox" id="buddyClimb"><span></span></label>
+              <label class="Sub-Label">Buddy Climb</label><label><input autocomplete='off' class="Checkbox"
+                  type="checkbox" id="buddyClimb"><span></span></label>
             </div>
             <div>
-              <label class="Sub-Label">Broke Down</label><label><input autocomplete='off' class="Checkbox" type="checkbox" id="brokeDown"><span></span></label>
+              <label class="Sub-Label">Broke Down</label><label><input autocomplete='off' class="Checkbox"
+                  type="checkbox" id="brokeDown"><span></span></label>
             </div>
           </div>
         </div>
         <div class="Child-Container">
-          <label class="Label">Comments</label><textarea autocomplete='off' id="comments" class="Input-Field"></textarea>
+          <label class="Label">Comments</label><textarea autocomplete='off' id="comments"
+            class="Input-Field"></textarea>
         </div>
         <div class="Child-Container">
           <div class="Button-Container"></div>
-            <button class="Save-Button" onclick="showSection('teleop')">Back</button>
-            <button class="Save-Button" onclick="showSection('initial')" id="save">Save</button>
-          </div>
+          <button class="Save-Button" onclick="showSection('teleop')">Back</button>
+          <button class="Save-Button" onclick="showSection('initial')" id="save">Save</button>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="js/script.js"></script>
@@ -167,7 +184,7 @@
   <script>
     function showSection(section) {
       // Hide all sections
-      document.querySelectorAll('.section').forEach(function(section) {
+      document.querySelectorAll('.section').forEach(function (section) {
         section.style.display = 'none';
       });
       // Show the selected section
@@ -177,4 +194,5 @@
     }
   </script>
 </body>
+
 </html>

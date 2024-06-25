@@ -18,6 +18,7 @@ const dataInputs = [
     ["teleopAmpMissedLab", INPUT_COUNTER],
     ["teleopSpeakerMadeLab", INPUT_COUNTER],
     ["teleopSpeakerMissedLab", INPUT_COUNTER],
+    ["notesFedLab", INPUT_COUNTER],
     ["trapMadeLab", INPUT_COUNTER],
     ["trapMissedLab", INPUT_COUNTER],
     ["climbed", INPUT_CHECKBOX],
@@ -39,7 +40,9 @@ const baseNames = [
     "autoSpeakerMissed",
     "teleopAmpMissed",
     "teleopSpeakerMissed",
-    "trapMissed"
+    "trapMissed",
+
+    "notesFed"
 ]
 
 for (let index = 0; index < baseNames.length; index++) {

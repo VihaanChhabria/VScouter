@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"time"
 
@@ -15,7 +16,18 @@ var fullData string = ""
 var singleData []string
 
 func main() {
-	println("starting")
+
+	getMatches := ""
+	fmt.Println("Do you want to download a new match schedule? (y/n)")
+	fmt.Scan(&getMatches)
+
+	if getMatches == "y" {
+		DownloadMatches()
+	}
+	openedMatchesFile, _ := os.Open("file.txt")
+	matchesFile, _ := io.ReadAll(openedMatchesFile)
+
+	fmt.Println("starting")
 	must("enable BLE stack", adapter.Enable())
 
 	adv := adapter.DefaultAdvertisement()
@@ -27,6 +39,7 @@ func main() {
 	must("start adv", adv.Start())
 
 	var statusCharacteristic bluetooth.Characteristic
+	var matchesCharacteristics bluetooth.Characteristic
 	var dataCharacteristic bluetooth.Characteristic
 
 	must("add service", adapter.AddService(&bluetooth.Service{
@@ -39,13 +52,19 @@ func main() {
 				Flags:  bluetooth.CharacteristicReadPermission,
 			},
 			{
+				Handle: &matchesCharacteristics,
+				UUID:   bluetooth.CharacteristicUUIDRestingHeartRate,
+				Value:  matchesFile,
+				Flags:  bluetooth.CharacteristicReadPermission,
+			},
+			{
 				Handle: &dataCharacteristic,
 				UUID:   bluetooth.CharacteristicUUIDHeartRateControlPoint,
 				Flags:  bluetooth.CharacteristicWritePermission,
 				WriteEvent: func(client bluetooth.Connection, offset int, value []byte) {
 					if len(value) > 0 {
 						recievedData := string(value)
-						println("Received data: ", recievedData+"\n\n\n")
+						fmt.Println("Received data: ", recievedData+"\n\n\n")
 						singleData = append(singleData, recievedData)
 					}
 				},
@@ -53,10 +72,10 @@ func main() {
 		},
 	}))
 
-	println("looping")
+	fmt.Println("looping")
 	retrieveData := ""
 	for {
-		println("retrieve data? (y/n)")
+		fmt.Println("retrieve data? (y/n)")
 		fmt.Scan(&retrieveData)
 
 		if retrieveData == "y" {
@@ -74,7 +93,7 @@ func main() {
 				}
 
 				singleData = []string{}
-				println("\n\n\n\n\n\n\nFull Data:\n" + fullData)
+				fmt.Println("\n\n\n\n\n\n\nFull Data:\n" + fullData)
 				fullData = fullData + "]"
 
 				jsonFile, _ := os.Create("output/" + time.Now().String() + ".json")

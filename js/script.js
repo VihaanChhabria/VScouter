@@ -48,6 +48,15 @@ for (let index = 0; index < baseNames.length; index++) {
     createCounter(baseName)
 }
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(reg => console.log('Service Worker registered'))
+            .catch(err => console.log(`Service Worker error: ${err}`));
+    });
+}
+  
 function createCounter(baseName) {
     const label = document.getElementById(baseName + "Lab")
 

@@ -15,11 +15,11 @@
       <div id="dev-options" class="section">
         <div class="Child-Container">
           <label class="Label">Do Not Touch Unless Told So!</label>
-          <button class="Save-Button" id="clearMatchCache">Clear Match Cache</button>
-          <button class="Save-Button" id="clearScoutingCache">Clear Scouting Cache</button>
+          <button class="Save-Button" id="clearMatchDetailsCache">Clear Match Details Cache</button>
+          <button class="Save-Button" id="clearScoutingCache" onclick="localStorage[jsonData] = ''">Clear Scouting Cache</button>
         </div>
         <div class="Child-Container">
-          <button class="Save-Button" onclick="showSection('initial1')">Back</button>
+          <button class="Save-Button" onclick="showSection('initial')">Back</button>
         </div>
       </div>
 

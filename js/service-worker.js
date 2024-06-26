@@ -1,7 +1,7 @@
 const CACHE_NAME = 'v1';
 const CACHE_ASSETS = [
   '/index.html',
-  '/main.css',
+  '/misc/main.css',
   '/js/script.js',
   '/js/bluetooth.js'
 ];

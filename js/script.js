@@ -1,5 +1,4 @@
 let jsonFull = ""
-localStorage["jsonData"] = jsonFull
 
 const INPUT_TEXT = "text"
 const INPUT_COUNTER = "counter"

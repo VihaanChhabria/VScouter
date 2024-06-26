@@ -12,8 +12,22 @@
   <div class="UI-container">
     <div class="Parent-Container">
 
+      <div id="dev-options" class="section">
+        <div class="Child-Container">
+          <label class="Label">Do Not Touch Unless Told So!</label>
+          <button class="Save-Button" id="clearMatchCache">Clear Match Cache</button>
+          <button class="Save-Button" id="clearScoutingCache">Clear Scouting Cache</button>
+        </div>
+        <div class="Child-Container">
+          <button class="Save-Button" onclick="showSection('initial1')">Back</button>
+        </div>
+      </div>
+
       <!-- Initial Section -->
       <div id="initial" class="section">
+        <div class="Child-Container">
+          <button class="Save-Button" onclick="showSection('dev-options')">Developer Options</button>
+        </div>
         <div class="Child-Container">
           <button class="Save-Button" id="alertBluetooth">Please connect to the bluetooth network!</button>
           <button class="Save-Button" id="blueConnect">Bluetooth Connect</button>

@@ -42,9 +42,9 @@ async function checkAndSend() {
     await new Promise(r => setTimeout(r, 10000));
 
     console.log("looping");
+    console.log(localStorage["jsonData"]);
     if (bluetoothDevice && bluetoothDevice.gatt.connected) {
       const statusValue = await getStatus();
-      console.log(localStorage["jsonData"]);
       if (statusValue == parseInt(document.getElementById("scouterNum").value)) {
         await cutAndSendData(localStorage["jsonData"] || "");
       }

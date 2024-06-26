@@ -1,4 +1,3 @@
-// Initial setup
 let jsonFull = ""
 localStorage["jsonData"] = jsonFull
 

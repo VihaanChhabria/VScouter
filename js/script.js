@@ -51,7 +51,7 @@ for (let index = 0; index < baseNames.length; index++) {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker
-            .register('/js/service-worker.js')
+            .register('/service-worker.js')
             .then(reg => console.log('Service Worker registered'))
             .catch(err => console.log(`Service Worker error: ${err}`));
     });

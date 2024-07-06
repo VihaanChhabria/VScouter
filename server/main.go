@@ -11,9 +11,12 @@ import (
 
 var adapter = bluetooth.DefaultAdapter
 
-var data uint8 = 0
+var scoutingStatus uint8 = 0
 var fullData string = ""
 var singleData []string
+
+var matchesStatus uint8 = 0
+var matchesStatusCount int = 0
 
 func main() {
 
@@ -24,8 +27,23 @@ func main() {
 	if getMatches == "y" {
 		DownloadMatches()
 	}
-	openedMatchesFile, _ := os.Open("file.txt")
-	matchesFile, _ := io.ReadAll(openedMatchesFile)
+	openedMatchesFile, _ := os.Open("matches.json")
+	matchesData, _ := io.ReadAll(openedMatchesFile)
+	fmt.Println(string(matchesData))
+
+	cutMatchesNum := (len(matchesData) / 400) + 1
+	var cutMatches [][]byte
+	for i := 0; i < cutMatchesNum; i++ {
+		if i == (cutMatchesNum - 1) {
+			cutMatches = append(cutMatches, matchesData[(i*400):])
+			fmt.Println(string(matchesData[(i * 400):]))
+			fmt.Println("last")
+		} else {
+			cutMatches = append(cutMatches, matchesData[(i*400):((i+1)*400)])
+			fmt.Println(string(matchesData[(i * 400):((i + 1) * 400)]))
+			fmt.Println(i)
+		}
+	}
 
 	fmt.Println("starting")
 	must("enable BLE stack", adapter.Enable())
@@ -38,27 +56,23 @@ func main() {
 	}))
 	must("start adv", adv.Start())
 
-	var statusCharacteristic bluetooth.Characteristic
-	var matchesCharacteristics bluetooth.Characteristic
-	var dataCharacteristic bluetooth.Characteristic
+	var scoutingStatusCharacteristic bluetooth.Characteristic
+	var scoutingDataCharacteristic bluetooth.Characteristic
+
+	var matchesDataCharacteristics bluetooth.Characteristic
+	var matchesStatusCharacteristics bluetooth.Characteristic
 
 	must("add service", adapter.AddService(&bluetooth.Service{
 		UUID: bluetooth.ServiceUUIDHeartRate,
 		Characteristics: []bluetooth.CharacteristicConfig{
 			{
-				Handle: &statusCharacteristic,
+				Handle: &scoutingStatusCharacteristic,
 				UUID:   bluetooth.CharacteristicUUIDHeartRateMeasurement,
-				Value:  []byte{data},
+				Value:  []byte{scoutingStatus},
 				Flags:  bluetooth.CharacteristicReadPermission,
 			},
 			{
-				Handle: &matchesCharacteristics,
-				UUID:   bluetooth.CharacteristicUUIDRestingHeartRate,
-				Value:  matchesFile,
-				Flags:  bluetooth.CharacteristicReadPermission,
-			},
-			{
-				Handle: &dataCharacteristic,
+				Handle: &scoutingDataCharacteristic,
 				UUID:   bluetooth.CharacteristicUUIDHeartRateControlPoint,
 				Flags:  bluetooth.CharacteristicWritePermission,
 				WriteEvent: func(client bluetooth.Connection, offset int, value []byte) {
@@ -66,6 +80,38 @@ func main() {
 						recievedData := string(value)
 						fmt.Println("Received data: ", recievedData+"\n\n\n")
 						singleData = append(singleData, recievedData)
+					}
+				},
+			},
+
+			{
+				Handle: &matchesDataCharacteristics,
+				UUID:   bluetooth.CharacteristicUUIDRestingHeartRate,
+				Value:  cutMatches[0],
+				Flags:  bluetooth.CharacteristicReadPermission,
+			},
+			{
+				Handle: &matchesStatusCharacteristics,
+				UUID:   bluetooth.CharacteristicUUIDMaximumRecommendedHeartRate,
+				Value:  []byte{matchesStatus},
+				Flags:  bluetooth.CharacteristicWritePermission | bluetooth.CharacteristicReadPermission,
+				WriteEvent: func(client bluetooth.Connection, offset int, value []byte) {
+					if len(value) > 0 {
+						recievedData := string(value)
+						fmt.Println("Received matchesStatus value: ", recievedData)
+						if recievedData == "1" {
+							if len(cutMatches) > (matchesStatusCount) {
+								matchesDataCharacteristics.Write(cutMatches[matchesStatusCount])
+								fmt.Println(string(cutMatches[matchesStatusCount]))
+								matchesStatusCharacteristics.Write([]byte{uint8(0)})
+								fmt.Println("Wrote match data chunk and updated status to 0")
+								matchesStatusCount += 1
+							} else {
+								matchesStatusCharacteristics.Write([]byte{uint8(2)})
+								fmt.Println("All matches sent, updated status to 2")
+								matchesStatusCount = 0
+							}
+						}
 					}
 				},
 			},
@@ -81,10 +127,10 @@ func main() {
 		if retrieveData == "y" {
 			for appNum := 1; appNum <= 1; appNum++ {
 				fullData = "["
-				statusCharacteristic.Write([]byte{uint8(appNum)})
+				scoutingStatusCharacteristic.Write([]byte{uint8(appNum)})
 
 				time.Sleep(15 * time.Second)
-				statusCharacteristic.Write([]byte{uint8(0)})
+				scoutingStatusCharacteristic.Write([]byte{uint8(0)})
 
 				singleData = removeDuplicateStr(singleData)
 

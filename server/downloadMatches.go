@@ -8,7 +8,6 @@ import (
 	"os"
 )
 
-const APIKey string = "zrIZUPFafyou5btf6uG8SqCAbE9gcOwNIed1qsPagIXKITVLD74VphJ8uGdu9Eqd"
 const eventKey string = "2024njdd"
 const baseURL string = "https://www.thebluealliance.com/api/v3"
 
@@ -23,7 +22,13 @@ type Matches struct {
 }
 
 func DownloadMatches() {
-	matches, _ := getEventMatches(eventKey)
+
+	APIKeyFile, _ := os.Open("/home/vihaan/keys/TBAKey.txt")
+	APIKeyByte, _ := io.ReadAll(APIKeyFile)
+	APIKeyByte = APIKeyByte[0:(len(APIKeyByte) - 1)]
+	APIKey := string(APIKeyByte)
+
+	matches, _ := getEventMatches(eventKey, APIKey)
 
 	var matchesRearranged []MatchDetails
 	for matchNum, match := range matches {
@@ -40,7 +45,6 @@ func DownloadMatches() {
 	}
 	defer file.Close()
 
-	// Write the JSON to the file
 	_, err = file.Write(jsonFile)
 	if err != nil {
 		fmt.Println("Error writing to file:", err)
@@ -48,9 +52,9 @@ func DownloadMatches() {
 	}
 }
 
-func getEventMatches(eventKey string) ([]map[string]interface{}, error) {
+func getEventMatches(eventKey string, APIKey string) ([]map[string]interface{}, error) {
 	url := fmt.Sprintf("%s/event/%s/matches/simple", baseURL, eventKey)
-	body, err := fetchAPI(url)
+	body, err := fetchAPI(url, APIKey)
 	if err != nil {
 		return nil, err
 	}
@@ -63,7 +67,7 @@ func getEventMatches(eventKey string) ([]map[string]interface{}, error) {
 	return matches, nil
 }
 
-func fetchAPI(url string) ([]byte, error) {
+func fetchAPI(url string, APIKey string) ([]byte, error) {
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %v", err)

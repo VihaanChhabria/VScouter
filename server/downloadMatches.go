@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-const eventKey string = "2024njdd"
+const eventKey string = "2024mrcmp"
 const baseURL string = "https://www.thebluealliance.com/api/v3"
 
 type MatchDetails struct {

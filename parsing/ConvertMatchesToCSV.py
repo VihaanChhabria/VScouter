@@ -2,13 +2,13 @@ import json
 import csv
 
 MATCHES_JSON_DIR = "server/matches.json"
-OUTPUT_DIR = "parsing/matches.csv"
+OUTPUT_DIR = "parsing/matchesData.csv"
 
 ALLIANCES = ["redAlliance", "blueAlliance"]
 
 BASE_NAMES = ["matchNumber", "alliance", "teamNumber"]
 
-matchesJSON = json.load(open(MATCHES_JSON_DIR))["matches"]
+matchesJSON = json.load(open(MATCHES_JSON_DIR, 'r'))["matches"]
 
 fullCSV = []
 fullCSV.append(BASE_NAMES)

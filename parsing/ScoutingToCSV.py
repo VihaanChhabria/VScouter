@@ -3,7 +3,7 @@ import csv
 import json
 
 DATA_DIR = "server/output"
-CSV_FILE = "parsing/data.csv"
+CSV_FILE = "parsing/data/scoutingData.csv"
 
 BASE_NAMES = ["matchNumber", "teamNumber", 'initials', 
               "autoAmpMadeLab", "autoAmpMissedLab", "autoSpeakerMadeLab", 
@@ -20,10 +20,7 @@ for jsonFile in os.listdir(DATA_DIR):
         matchData = []
         for BASE_NAME in BASE_NAMES:
             matchData.append(jsonFileMatch[BASE_NAME])
-            print(jsonFileMatch[BASE_NAME])
         fullCSV.append(matchData)
-
-print(fullCSV)
 
 with open(CSV_FILE, 'w', newline='') as file:
     writer = csv.writer(file)

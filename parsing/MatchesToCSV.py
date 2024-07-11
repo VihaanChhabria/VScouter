@@ -2,7 +2,7 @@ import json
 import csv
 
 MATCHES_JSON_DIR = "server/matches.json"
-OUTPUT_DIR = "parsing/matchesData.csv"
+OUTPUT_DIR = "parsing/data/matchesData.csv"
 
 ALLIANCES = ["redAlliance", "blueAlliance"]
 

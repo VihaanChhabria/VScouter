@@ -1,0 +1,607 @@
+matchNumber,teamNumber,initials,autoSpeakerMade,autoSpeakerMissed,autoAmpMade,autoAmpMissed,teleopAmpMade,teleopAmpMissed,teleopSpeakerMade,teleopSpeakerMissed,notesFed,trapMade,trapMissed,climbed,buddyClimb,brokeDown,comments
+1,1257,RA,0,0,0,0,4,0,0,0,,0,0,0,0,0,They did good amp but failed to make consistent speaker shots. The bot moved well.
+1,1640,TB,4,0,0,0,1,0,5,0,,0,0,0,0,0,
+1,2607,ME,0,0,0,0,4,0,0,0,,0,0,1,0,0,
+1,3142,VC,1,0,0,0,0,0,5,0,,0,0,1,0,0,
+1,321,SJ,1,0,0,0,0,0,2,0,,0,0,0,0,0,
+1,365,TB,1,0,0,0,5,0,3,0,0,0,0,1,0,0,Good amp
+1,4573,SF,1,0,0,0,0,0,2,0,,0,0,0,0,0,
+2,3314,LB,3,0,0,0,5,0,2,0,,0,0,0,0,0,
+2,7045,TB,1,0,0,0,0,0,6,0,,0,0,1,0,0,
+2,8513,VC,1,0,0,0,2,0,2,0,,0,0,1,0,0,Failed to trap
+2,341,ME,1,0,0,0,3,0,3,0,,0,0,0,0,0,
+2,2191,SF,0,0,0,0,2,0,0,0,,0,0,1,0,0,
+3,1089,TB,1,0,0,0,4,0,1,0,,0,0,0,0,0,
+3,2539,RA,4,0,0,0,0,0,2,0,,1,0,1,0,0,almost got a centerline in the auto. They can shoot almost instantly after stopping.
+3,834,SF,1,0,0,0,0,0,5,0,,0,0,1,0,0,
+3,2720,LB,1,0,0,0,0,0,2,0,,0,0,0,0,0,
+3,1676,ME,1,0,0,0,3,0,3,0,,0,0,1,0,0,
+3,1807,LB,2,0,0,0,0,0,2,0,,0,0,1,1,0,
+3,5181,VC,1,0,0,0,0,0,5,0,,0,0,1,1,0,
+4,2495,TB,1,0,0,0,0,0,6,0,,0,0,1,1,0,
+4,5401,ME,0,0,0,0,0,0,6,0,,0,0,0,0,0,
+4,1218,VC,2,0,0,0,1,0,5,0,,0,0,1,0,0,
+4,1923,RA,1,0,0,0,9,0,8,0,,0,0,1,0,0,There auto was interupted by allies.
+4,9027,SF,1,0,0,0,0,0,3,0,,0,0,1,0,0,
+5,7110,CH,1,0,0,0,0,0,5,0,,0,0,1,0,0,
+5,293,MI,0,0,0,0,1,0,1,0,,0,0,0,0,0,Not sure about auto match 5 red 2
+5,1279,SG,2,0,0,0,0,0,11,0,,0,0,0,0,0,
+5,103,WL,1,0,0,0,0,0,3,0,,0,0,1,0,0,Amazing kept shooting notes for teammates to shoot in the speaker/amp
+5,5438,LB,0,0,0,0,0,0,0,0,,0,0,0,0,0,Didn't make it to the match
+5,555,RA,3,0,0,0,1,0,4,0,,0,0,0,0,0,Picked up a fourth auto note but did not fire despite being in position to. Missed a lot of shots on the speaker and one in the auto.
+6,11,,0,0,1,0,5,0,0,0,,0,0,1,0,0,Tried to pick up from center line but failed. Tried to trap but failed. They are a very good amp bot.
+6,1391,SG,0,0,0,0,0,0,4,0,,0,0,1,0,0,Picked up and fed notes to teammates
+6,1403,WL,2,0,0,0,5,0,2,0,,0,0,1,1,0,
+6,6226,CH,0,0,0,0,0,0,0,0,,0,0,1,0,0,Brought notes to people
+6,4361,MI,0,0,0,0,0,0,4,0,,0,0,1,1,0,
+6,9094,LB,2,0,0,0,0,0,8,0,,0,0,1,0,0,
+7,427,SG,3,0,0,0,3,0,4,0,,0,0,0,0,0,
+7,3637,MI,2,0,0,0,0,0,4,0,,0,0,0,0,0,
+7,1811,RA,1,0,0,0,0,0,5,0,,0,0,0,0,0,Tank drive! Good touch it own it intake.
+7,316,,1,0,0,0,3,0,5,0,,0,0,0,0,0,
+7,219,CH,3,0,0,0,0,0,7,0,,0,0,0,0,0,
+7,9015,LB,1,0,0,0,4,0,0,0,,0,0,0,0,0,
+8,56,CH,1,0,0,0,0,0,8,0,,0,0,1,0,0,
+8,5992,RA,0,0,0,0,6,0,0,0,,0,0,0,0,0,Missed every auto shot. Comically talk which makes them very unstable.
+8,75,SG,0,0,0,0,0,0,2,0,,0,0,1,1,0,Fed notes to alliance
+8,714,LB,2,0,0,0,0,0,4,0,,0,0,1,0,0,
+8,4285,WL,0,0,0,0,0,0,5,0,,0,0,0,0,0,
+8,4342,MI,1,0,0,0,4,0,3,0,,0,0,1,1,0,
+9,5684,AV,1,0,0,0,1,0,3,0,0,0,0,0,0,0,
+9,102,CJ,0,0,0,0,4,0,0,0,0,0,0,0,0,0,
+9,2590,AO,4,0,0,0,0,0,4,0,1,0,0,1,0,0,
+9,1168,RA,3,0,0,0,4,0,5,0,0,0,0,0,0,0,They have a good scoring bot but they move around the field very slowly.
+9,7414,SJ,3,0,0,0,0,0,8,0,0,0,0,0,0,0,
+9,365,DD ,1,0,0,0,3,0,4,0,0,0,0,1,1,0,
+10,222,AO,0,0,0,0,0,0,3,0,0,1,0,1,0,0,
+10,223,RA,2,0,0,0,3,0,1,0,0,0,0,1,0,0,Did very well at the end but took a while to get going. Did not miss any shots was very accurate slow moving across the field.
+10,6921,CJ,2,0,0,0,1,0,4,0,0,0,0,1,0,0,
+10,5895,DD,2,0,0,0,5,0,5,0,0,0,0,1,0,0,
+10,2722,SJ,1,0,0,0,2,0,3,0,0,0,0,0,0,0,Tried harmony bonus but failed to climb enough height
+10,484,AV,1,0,0,0,0,0,2,0,0,0,0,1,0,0,Tried to buddy climb and they got up but team 2722 didn't get off the ground.
+11,7045,AO,0,0,0,0,0,0,5,0,0,0,0,1,0,0,
+11,834,SJ,1,0,0,0,0,0,4,0,0,0,0,1,1,0,
+11,3142,DD,1,0,0,0,0,0,1,0,1,0,0,1,0,0,Only human player intake
+11,1807,AV,5,0,0,0,5,0,4,0,0,0,0,1,0,0,
+11,4573,cj ,0,0,0,0,0,0,2,0,0,0,0,1,1,0,shuttled some of the match
+12,3314,AV,1,0,0,0,2,0,6,0,0,1,0,1,0,0,Had really good quick outside shooting.
+12,1640,CJ,2,0,0,0,0,0,3,0,0,0,0,1,0,0,
+12,1676,DD,2,0,0,0,5,0,4,0,0,1,0,1,0,0,
+12,103,AO,1,0,0,0,0,0,4,0,1,0,0,1,0,0,
+12,2191,SJ,0,0,0,0,4,0,0,0,0,0,0,0,0,0,
+12,9027,RA,1,0,0,0,0,0,7,0,0,0,0,0,0,0,They missed a few shots at first but then they pulled it together and scored consistently.
+13,2607,RA,1,0,0,0,5,0,4,0,0,0,0,1,0,0,Might be able to buddy climb but went up to early. They had fast rotation across the field and consistent scoring.
+13,7110,AO,0,0,0,0,0,0,0,0,0,0,0,1,0,0,Had a decent attempt at defense
+13,293,VC,1,0,0,0,0,0,2,0,1,0,0,0,0,0,
+13,5401,DD,4,0,0,0,0,0,5,0,0,0,0,1,0,0,
+13,272,SF,1,0,0,0,4,0,2,0,0,0,0,0,0,0,
+13,9094,ME,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+14,1257,AO,0,0,0,0,5,0,2,0,0,0,0,0,0,0,
+14,2539,VC,1,0,0,0,3,0,1,0,1,1,0,1,0,0,
+14,1279,ME,0,0,0,0,1,0,3,0,1,0,0,1,0,0,
+14,1391,DD,1,0,0,0,0,0,3,0,1,0,0,1,0,0,
+14,219,SF,1,0,0,0,0,0,8,0,0,0,0,1,0,0,
+14,9015,RA,1,0,0,0,2,0,3,0,0,0,0,0,0,0,The auto could be a 4 piece with a little tuning. They have potential the shooter is very powerful and can maybe shoot from further away.
+15,427,AO,3,0,0,0,2,0,3,0,0,0,0,0,0,0,
+15,11,SF,0,0,1,0,3,0,0,0,0,0,0,0,0,0,
+15,8513,DD,1,0,0,0,2,0,4,0,0,0,0,0,0,0,
+15,1403,VC,3,0,0,0,0,0,9,0,0,2,0,1,0,0,
+15,2720,RA,2,0,0,0,3,0,3,0,0,0,0,0,0,0,They had consistent scoring but they rotated around the field very slow.
+15,4285,ME,1,0,0,0,0,0,2,0,1,0,0,0,0,0,
+16,56,VC,1,0,0,0,0,0,8,0,0,0,0,0,0,0,"Tried to climb, failed 3 not auto, slow pickup"
+16,102,Sb,0,0,0,0,5,0,0,0,0,0,0,0,0,0,"Made a shot at speaker and missed
+Attempted climb"
+16,1218,SF,1,0,0,0,5,0,1,0,0,0,0,1,0,0,
+16,3637,ME,1,0,0,0,0,0,2,0,1,0,0,1,1,0,
+16,4361,AO,1,0,0,0,0,0,4,0,0,0,0,0,0,0,
+16,5181,RA,1,0,0,0,0,0,6,0,0,0,0,1,0,0,Went for center line in auto but missed. Good scoring slow rotation.
+17,2590,WL,1,0,0,0,2,0,2,0,0,0,0,0,1,0,
+17,7414,MI,4,0,0,0,0,0,7,0,0,0,0,0,0,0,
+17,1811,LB,1,0,0,0,0,0,4,0,0,0,0,1,0,0,
+17,4342,AO,3,0,0,0,4,0,2,0,0,0,0,0,0,0,
+17,5438,VC,0,0,0,0,0,0,0,0,0,0,0,0,0,1,Did not show
+17,484,RA,1,0,0,0,2,0,5,0,0,0,0,1,0,0,Standard round good speed consistent scoring. They could q!so score from a but if distance they didn't just have to come up close.
+18,5684,WL,2,0,0,0,0,0,4,0,0,0,0,1,0,0,
+18,2495,WL,0,0,0,0,3,0,1,0,0,0,0,1,1,0,
+18,1089,AO,1,0,0,0,2,0,1,0,1,0,0,0,0,0,
+18,1168,MI,3,0,0,0,1,0,5,0,0,0,0,0,0,0,
+18,714,SG,1,0,0,0,0,0,5,0,0,0,0,1,1,0,
+18,5895,RA,2,0,0,0,4,0,5,0,0,0,0,0,0,0,Peddie seemed much slower and they goobed their auto
+18,321,LB,0,0,0,0,0,0,2,0,0,0,0,0,0,0,
+19,222,WL,0,0,0,0,0,0,1,0,0,0,0,1,0,0,
+19,6921,Sb,3,0,0,0,1,0,3,0,0,0,0,1,0,0,"Got a note stuck in their bot that stoped them from getting more.
+The third price may have been 75 I started scouting them at the end by accident."
+19,75,LB,2,0,0,0,0,0,5,0,1,0,0,1,1,0,
+19,2722,SG,0,0,0,0,5,0,5,0,0,0,0,1,1,0,
+19,316,AO,2,0,0,0,4,0,3,0,0,0,0,1,0,0,
+19,555,MI,1,0,0,0,0,0,1,0,1,0,0,0,0,0,
+20,223,LB,1,0,0,0,1,0,3,0,1,0,0,0,0,0,
+20,5992,MI,0,0,0,0,2,0,1,0,0,0,0,0,0,0,
+20,341,Sb,3,0,0,0,3,0,7,0,0,0,0,0,1,0,May have missed a game piece during auto
+20,6226,SG,0,0,1,0,6,0,0,0,0,0,0,0,0,0,
+20,365,AO,1,0,0,0,4,0,2,0,1,0,0,1,1,0,
+21,2539,Sb,2,0,0,0,0,0,9,0,1,1,0,1,0,0,May have miscounted the number of notes by one
+21,1640,TB,2,0,0,0,3,0,1,0,1,0,0,1,0,0,
+21,9094,AO,1,0,0,0,2,0,3,0,0,0,0,0,0,0,
+21,1923,,1,0,0,0,0,0,7,0,0,0,0,1,0,0,Tried to get the rings on the centre line but they just missed them.
+21,219,SJ,0,0,0,0,0,0,8,0,0,0,0,1,0,0,Missed 2 shots in speaker during auto
+21,2191,CJ,1,0,0,0,6,0,0,0,0,0,0,0,0,0,
+22,11,AO,0,0,0,0,4,0,0,0,1,0,0,1,0,0,
+22,2607,Sb,4,0,0,0,0,0,4,0,1,0,0,1,1,0,Got distracted with around 60-30 seconds left
+22,7110,AV,1,0,0,0,0,0,5,0,0,0,0,1,0,0,
+22,1807,TB,3,0,0,0,2,0,4,0,1,0,0,1,1,0,
+22,103,SJ,3,0,0,0,0,0,4,0,0,0,0,1,0,0,Spent majority of troop stage passing notes to alliance. Several attempts for trap but failed.
+22,9015,CJ,0,0,0,0,4,0,1,0,0,0,0,0,0,0,Possible shooter\amp feeder broken
+23,56,TB,3,0,0,0,2,0,4,0,0,0,0,0,0,0,
+23,3314,SJ,3,0,0,0,4,0,1,0,0,1,0,1,0,0,
+23,7045,Sb,2,0,0,0,0,0,0,0,1,0,0,1,1,0,"Was a little distracted this match May have scored a note or two I missed 
+Went to centerline but did pick up I believe
+Got note stuck in bot
+Shot a note out of arena"
+23,1218,AV,1,0,0,0,1,0,1,0,0,0,0,1,0,0,Inconsistent shot and spent a good thirty seconds trying to get a ring unstuck from their bot.
+23,1279,AO,1,0,0,0,0,0,6,0,0,0,0,1,1,0,
+23,2720, CJ,3,0,0,0,0,0,6,0,0,0,0,1,0,0,
+24,1257,AV,0,0,0,0,1,0,0,0,0,0,0,0,0,1,Got a ring stuck in their bot and played some pretty good defense until they deadbotted
+24,834,TB,1,0,0,0,0,0,4,0,0,0,0,1,0,0,
+24,8513,CJ,2,0,0,0,3,0,2,0,0,1,0,1,0,0,
+24,1676,SJ,2,0,0,0,2,0,4,0,0,0,0,1,0,0,
+24,7414,Sb,4,0,0,0,2,0,1,0,0,0,0,0,0,1,Stoped moving very well after hitting 1676 and had to park early
+24,1811,AO,0,0,0,0,0,0,3,0,0,0,0,0,0,0,
+25,3637,TB,2,0,0,0,3,0,5,0,0,0,0,0,0,0,
+25,4285,VC,1,0,0,0,0,0,5,0,0,0,0,0,0,0,Lost count of speaker notes
+25,5181,MI,1,0,0,0,0,0,10,0,0,0,0,0,0,0,
+25,5438,AO,3,0,0,0,2,0,3,0,0,0,0,0,0,0,
+25,484,Sb,0,0,0,0,0,0,3,0,0,0,0,0,0,0,"Intake took some notes in oddly and had to spit them out
+May have missed a note or two"
+26,2590,ME,1,0,0,0,1,0,0,0,0,0,0,0,0,0,
+26,293,AO,3,0,0,0,2,0,4,0,1,0,0,0,0,0,
+26,2722,MI,1,0,0,0,5,0,1,0,0,0,0,1,0,0,
+26,4361,Sb,1,0,0,0,3,0,2,0,0,0,0,1,0,0,Took a while to intake at one point
+26,321,VC,3,0,0,0,0,0,2,0,1,0,0,1,0,0,
+26,9027,TB,0,0,0,0,0,0,2,0,0,0,0,0,0,0,
+27,6921,AO,0,0,0,0,1,0,6,0,0,0,0,0,0,0,
+27,714,LB,1,0,0,0,0,0,0,0,1,0,0,1,0,0,Just lobbed the whole time
+27,5401,VC,4,0,0,0,0,0,4,0,0,0,0,0,0,1,Had connection issues
+27,3142,MI,1,0,0,0,3,0,1,0,1,0,0,0,0,0,
+27,365,MR,1,0,0,0,2,0,1,0,1,0,0,0,0,0,
+27,4342,RA,3,0,0,0,2,0,1,0,0,0,0,1,0,0,Intake broke and then the bot stated moving very slowly and very weird.
+28,102,AO,0,0,0,0,0,0,0,0,1,0,0,0,0,0,
+28,427,TB,1,0,0,0,0,0,6,0,0,0,0,0,0,0,
+28,75,VC,1,0,0,0,0,0,4,0,1,0,0,1,1,0,
+28,341,RA,2,0,0,0,6,0,3,0,0,0,0,0,0,0,Did amazing at first but seemed to break something and became unable to score almost did a buddy climb but was to slow.
+28,6226,MI,0,0,1,0,3,0,0,0,0,0,0,1,1,0,
+28,555,ME,1,0,0,0,0,0,3,0,0,0,0,1,1,0,
+29,222,AO,1,0,1,0,0,0,4,0,0,0,0,1,0,0,
+29,2495,SG,1,0,0,0,0,0,1,0,0,0,0,1,0,0,"Shooter broken, played defense"
+29,5992,MI,2,0,0,0,5,0,2,0,0,0,0,0,0,0,
+29,1391,WL,0,0,0,0,0,0,4,0,1,0,0,0,0,0,Did better before the reset
+29,1403,SJ,2,0,0,0,2,0,3,0,0,0,0,1,0,1,
+29,316,TB,1,0,0,0,3,0,4,0,0,0,0,1,1,0,
+30,5684,AO,1,0,0,0,3,0,3,0,0,0,0,0,0,1,may need to redo match
+30,223,SG,2,0,0,0,1,0,5,0,0,0,0,0,0,0,
+30,1089,WL,0,0,0,0,2,0,4,0,0,0,0,1,0,0,
+30,272,MI,1,0,0,0,2,0,4,0,0,1,0,1,0,0,
+30,5895,Sb,2,0,0,0,5,0,4,0,1,0,0,1,0,0,"Lobbed one note
+May have scored one more in speaker and one less in amp"
+30,4573,RA,1,0,0,0,0,0,3,0,1,0,0,0,0,1,They broke down at the very end otherwise they had pretty consistent capabilities.
+31,56,RA,1,0,0,0,2,0,3,0,0,0,0,0,0,0,Tried to grab from center line but failed. Struggled to intake off the floor.
+31,7110,Sb,0,0,0,0,0,0,0,0,0,0,0,0,0,1,"Played defense did ok but nothing special
+Stoped under opponents stage but got pushed out by 2720"
+31,8513,SG,0,0,0,0,3,0,2,0,0,0,0,1,0,0,
+31,2720,AO,3,0,0,0,3,0,0,0,1,0,0,0,0,0,
+31,1811,WL,1,0,0,0,0,0,4,0,0,0,0,1,0,0,
+31,1923,VC,3,0,0,0,4,0,6,0,0,0,0,0,0,0,
+32,3314,,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+32,1640,Sb,3,0,0,0,5,0,4,0,1,0,0,1,0,0,Lobbed one note
+32,2539,VC,5,0,0,0,0,0,6,0,0,1,0,1,0,0,
+32,11,SG,0,0,1,0,3,0,0,0,0,0,0,0,0,0,
+32,1279,RA,1,0,0,0,0,0,4,0,0,0,0,0,0,0,Inconsistent speaker scoring. Tried to buddy climb but failed.
+32,1807,AO,2,0,0,0,2,0,3,0,1,0,0,0,0,0,
+32,484,WL,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Played defense because it broke
+33,3314,CJ,3,0,0,0,3,0,2,0,0,1,0,1,0,0,
+33,293,Sb,4,0,0,0,0,0,7,0,0,0,0,0,0,0,
+33,4285,AO,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+33,2722,RA,1,0,0,0,3,0,3,0,0,0,0,0,0,0,Missed a shot at the end and slow cycle times.
+33,7414,SG,4,0,0,0,2,0,2,0,0,0,0,0,0,1,Hit by another bot
+33,9015,VC,1,0,0,0,0,0,0,0,1,0,0,0,0,1,Had connection issues and kept turning off and on
+34,2590,CJ,3,0,0,0,2,0,3,0,0,0,0,0,0,1,Disabled after note jammed in intake
+34,2607,RA,4,0,0,0,3,0,5,0,0,0,0,1,0,0,started to miss amp shots after the first shot. Can shoot windbreaker from distance. Attempted to buddy climb but the other bot failed. Very quick rotation and reliable distance shooting.
+34,9094,AV,1,0,0,0,4,0,2,0,0,0,0,0,0,0,
+34,5181,LB,1,0,0,0,0,0,0,0,1,0,0,0,0,0,
+34,219,SJ,3,0,0,0,0,0,6,0,0,0,0,0,0,0,
+35,222,,2,0,0,0,3,0,2,0,0,0,0,1,0,0,
+35,1168,SJ,4,0,0,0,4,0,3,0,0,0,0,0,0,0,
+35,5401,Cc,4,0,0,0,0,0,5,0,0,0,0,0,0,1,Disconnected after a small bump
+35,714,LB,2,0,0,0,0,0,0,0,1,0,0,1,1,0,
+35,341,AV,3,0,0,0,4,0,3,0,0,0,0,1,0,0,
+35,1676,RA,2,0,0,0,2,0,4,0,0,1,0,0,0,0,The bot is fast and the driver is good. They have consistent scoring. The shooter is slow to get into position and they lose valuable time setting up for scoring.
+35,4361,TB,0,0,0,0,3,0,4,0,0,0,0,1,1,0,Did not see the auto
+35,555,CJ,1,0,0,0,0,0,3,0,0,0,0,0,0,1,"2x tech fouls blocking stage, got hit and stopped moving under stage"
+36,1257,TB,1,0,0,0,1,0,0,0,0,0,0,0,0,1,Collided with another robot in auto and stopped for half the match
+36,2495,SJ,1,0,0,0,4,0,5,0,0,0,0,0,0,0,Insufficient time for climbing
+36,7045,AV,1,0,0,0,0,0,3,0,0,0,0,1,0,0,Attempted buddy climb did not have enough time.
+36,6921,RA,2,0,0,0,1,0,7,0,0,0,0,0,0,0,Solid shooting but missed an amp shot in the beginning. Good rotation speed.
+36,3637,CJ,2,0,0,0,1,0,4,0,1,0,0,1,0,0,"Note jammed at 40 seconds, started playing defense"
+36,6226,LB,0,0,1,0,5,0,0,0,0,0,0,0,0,0,
+37,5992,SF,1,0,0,0,3,0,2,0,0,0,0,0,0,0,
+37,5401,TB,4,0,0,0,0,0,5,0,0,0,0,0,0,0,Spent last 30 seconds dead
+37,4573,SM,1,0,0,0,0,0,7,0,0,0,0,0,0,0,"Only missed one shot in speaker , decent at maneuvering around defense"
+37,316,VC,4,0,0,0,3,0,4,0,1,0,0,0,0,0,Failed climb and was heavily defended
+37,5438,RA,0,0,0,0,0,0,2,0,0,0,0,0,0,0,Missed the center line grab but went for it. Played very good defence in the begging. Missed an amp shot. Went for the buddy climb but then other bot took to long.
+38,222,TB,0,0,1,0,2,0,4,0,0,0,0,1,0,0,
+38,834,RA,1,0,0,0,0,0,3,0,0,0,0,0,0,0,Got stolen from on the centerline during auto. Missed several speaker shots.
+38,1403,SM,2,0,0,0,3,0,2,0,0,0,0,1,0,0,"Missed 3 speaker shots, struggled to pick up notes by source for two of the notes they picked up"
+38,5895,SF,0,0,0,0,3,0,5,0,0,0,0,1,0,0,
+38,103,,3,0,0,0,1,0,4,0,0,0,0,0,0,0,
+38,9027,VC,1,0,0,0,0,0,0,0,0,0,0,1,0,0,Played defense and missed all shots in trap and speaker
+39,223,VC,3,0,0,0,0,0,4,0,1,0,0,1,0,0,Note got stuck in bot in last 45 seconds
+39,5684,SM,1,0,0,0,2,0,5,0,0,0,0,0,0,0,"Attempted to climb didn't make it off ground, attempted to pick note up from center line from teleop but slightly off"
+39,427,SF,2,0,0,0,0,0,0,0,0,0,0,0,0,1,
+39,1218,RA,3,0,0,0,0,0,4,0,0,0,0,0,0,0,Almost a 4 piece auto. Looked like they might be able too trap but ran out of time. Very slow rotation speed across the field. Tried to defend sort of?
+39,3142,TB,1,0,0,0,3,0,2,0,0,0,0,1,0,0,
+39,1391,Cc,2,0,0,0,0,0,6,0,1,0,0,1,1,0,
+40,1089,TB,1,0,0,0,4,0,2,0,0,0,0,1,0,0,
+40,75,Sb,2,0,0,0,0,0,1,0,1,0,0,0,0,0,"Messed up buddy climb
+Most likely sorred one more piece
+Loved all of tele pretty much"
+40,272,SF,0,0,0,0,2,0,1,0,0,1,0,1,0,0,
+40,321,SM,1,0,0,0,0,0,3,0,0,0,0,0,0,0,"Played defense in the beginning, attempted climb but didn't make it up in time"
+40,103,RA,4,0,0,0,0,0,5,0,1,0,0,0,0,0,Missed center line grab for 5 piece auto. Missed speaker shots and struggled against defenders.
+40,4342,VC,4,0,0,0,1,0,0,0,0,0,0,1,0,0,Note got stuck in bot and played defence
+41,8513,TB,1,0,0,0,4,0,1,0,0,0,0,0,0,0,
+41,1279,RA,1,0,0,0,0,0,2,0,0,0,0,0,0,1,!looks like they can not amp.
+41,4285,Sb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Lobbed most of early match
+Made every shot this match they attempted
+1807stoped them from potentially making a last second climb
+Seemed to almost tip a bit when contacted"
+41,1807,SG,0,0,0,0,1,0,6,0,1,0,0,0,0,0,Drew an endgame penalty
+41,365,MI,2,0,0,0,5,0,1,0,0,0,0,0,0,0,
+41,219,ME,1,0,0,0,0,0,0,0,0,0,0,0,0,0,
+42,56,MI,1,0,0,0,0,0,4,0,0,0,0,0,0,0,
+42,11,RA,0,0,0,0,7,0,0,0,1,0,0,1,0,0,Might be able to get a two piece amp auto with some tuning. Might be able to trap but the climber broke. The broken climber still got the bot off the ground.
+42,2607,SG,4,0,0,0,5,0,3,0,0,0,0,0,0,0,Attempted buddy climb but didn't make it off the ground
+42,1676,TB,2,0,0,0,0,0,8,0,1,0,0,1,1,0,
+42,1811,ME,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+42,555,Sb,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Didn't run auto
+Dropped one note off not lobbying
+May have scored one note early on I missed
+Switched to defense, played some good defense at times"
+43,2495,Sb,0,0,0,0,3,0,2,0,0,0,0,1,0,0,"Auto set them up to pick up a note from the c line after auto
+shooter went in reverse multiple times when trying to score in speaker spitting out the note"
+43,1640,SG,3,0,0,0,5,0,4,0,0,0,0,0,0,0,
+43,2590,TB,0,0,0,0,0,0,4,0,1,0,0,1,0,0,
+43,293,RA,1,0,0,0,1,0,2,0,0,0,0,0,0,1,Seemed to have trouble controlling before breaking down briefly. Once they came back movement seemed to improve. Missed several speaker shots.
+43,341,MI,1,0,0,0,3,0,5,0,0,0,0,0,0,0,
+43,2720,ME,1,0,0,0,0,0,5,0,1,0,0,1,0,0,
+44,3314,MI,3,0,0,0,3,0,1,0,1,1,0,1,0,0,
+44,7110,SG,2,0,0,0,1,0,5,0,0,0,0,0,0,0,"Missed climb, review auto data Match 44 7110"
+44,714,ME,0,0,0,0,1,0,3,0,0,0,0,0,0,0,
+44,4361,Sb,0,0,0,0,2,0,5,0,0,0,0,0,0,0,"May have scored one piece in auto
+Just shot their preload in auto"
+44,7414,TB,3,0,0,0,0,0,0,0,0,0,0,0,0,0,Had some trouble steering and shooting in teleop
+44,4573,RA,1,0,0,0,0,0,4,0,0,0,0,0,0,0,Slow rotation around the field and missed several speaker shots.
+45,5992,VC,1,0,0,0,5,0,4,0,0,0,0,0,0,0,Got feed to
+45,2539,SJ,2,0,0,0,0,0,4,0,0,0,0,1,0,0,Stuck below blue stage. Failed trap shot due to time limit
+45,6921,TB,2,0,0,0,1,0,3,0,0,0,0,0,0,0,
+45,3637,RA,0,0,0,0,3,0,1,0,1,0,0,0,0,0,Attempted to take from centerline but failed. didn't try to climb.
+45,1811,,0,0,0,0,0,0,1,0,0,0,0,1,0,0,
+45,9027,Sb,0,0,0,0,0,0,0,0,0,0,0,1,0,0,"Just ran shot and do nothing auto
+Got distracted by 2539 tipping so might have scored a few notes.
+Played ok defense but probably shouldn't be picked for it though"
+46,834,RA,1,0,0,0,0,0,4,0,0,0,0,0,0,0,Potentials 3 piece auto two from center. Missed speaker shot. Made a shot from the speaker.
+46,1168,SJ,4,0,0,0,6,0,10,0,0,0,0,0,0,0,Excellent teamwork scored 133 excluding stage score. High accuracy shooting mechanism
+46,3142,Sb,2,0,0,0,0,0,1,0,1,0,0,0,0,0,Tried to climb with a second left
+46,1391,AV,4,0,0,0,0,0,3,0,1,0,0,0,0,0,Attempted buddy climb but something went wrong with their arm.
+46,2191,TB,0,0,0,0,5,0,1,0,0,0,0,0,0,0,
+47,427,SJ,0,0,0,0,0,0,0,0,0,0,0,0,0,1,No motion from start to end
+47,7045,AV,0,0,0,0,0,0,2,0,0,0,0,1,0,0,
+47,5895,CJ,3,0,0,0,1,0,11,0,0,0,0,0,0,0,
+47,4342,LB,4,0,0,0,3,0,3,0,0,0,0,1,0,0,
+47,316,TB,2,0,0,0,4,0,4,0,0,0,0,1,1,0,
+47,5181,RA,2,0,0,0,0,0,3,0,1,0,0,1,1,0,Slow but consistent scoring and buddy climb.
+48,223,RA,3,0,0,0,0,0,4,0,1,0,0,0,0,0,Missed the amp several times. Note stuck in robot for 10 seconds. Missed speaker shot.
+48,102,CJ,3,0,0,0,4,0,1,0,0,0,0,0,0,0,Attempted climb
+48,1089,AV,1,0,0,0,0,0,3,0,0,0,0,1,0,0,Attempted buddy climb their partner didn't climb.
+48,321,TB,3,0,0,0,0,0,0,0,0,0,0,1,0,0,Intake broke
+48,9094,LB,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Got two notes stuck in shooter in auto and couldn't do anything
+48,5438,SJ,0,0,0,0,0,0,0,0,0,0,0,0,0,1,No motion from start to last minute. Played defense after that. Missed one of its arm during stage
+49,222,RA,1,0,0,0,0,0,5,0,0,0,0,0,0,0,Attempted a three piece auto. Might be able to trap?
+49,1257,VC,1,0,0,0,0,0,1,0,0,0,0,0,0,0,Played defence and failed to place in amp
+49,272,SF,0,0,0,0,5,0,4,0,0,0,0,1,0,0,
+49,2722,TB,0,0,0,0,3,0,4,0,0,0,0,0,0,0,
+49,103,SM,3,0,0,0,0,0,4,0,1,0,0,0,0,0,Shot lots of notes from source towards speaker to shoot when amplified
+49,1923,LB,2,0,0,0,5,0,2,0,0,1,0,0,0,0,
+50,75,SM,1,0,0,0,1,0,3,0,1,0,0,0,0,0,"Attempted buddy climb but didn't make it up in time, struggled to score some in amp"
+50,5401,VC,4,0,0,0,0,0,12,0,0,0,0,1,0,0,Was Fed to
+50,1218,TB,1,0,0,0,1,0,5,0,0,0,0,1,0,0,
+50,6226,LB,0,0,1,0,3,0,0,0,0,0,0,1,0,0,
+50,9015,RA,1,0,0,0,2,0,3,0,1,0,0,0,0,0,Can climb but was to slow.
+50,484,SF,0,0,0,0,1,0,0,0,0,0,0,1,0,0,
+51,2495,VC,0,0,0,0,0,0,6,0,0,0,0,1,1,0,Auton was 1 note but missed and then parks near middle
+51,4285,TB,3,0,0,0,0,0,4,0,1,0,0,0,0,0,
+51,4361,SF,0,0,0,0,7,0,1,0,0,0,0,1,0,0,
+51,4573,LB,1,0,0,0,0,0,2,0,0,0,0,0,0,0,
+51,365,Sb,1,0,0,0,5,0,2,0,1,0,0,1,0,0,"Auto went to center but didn't pick note up
+Took so time intaking at times"
+51,555,SM,4,0,0,0,0,0,4,0,0,0,0,1,1,0,Got note stuck under robot for part of the match but got it out in time to score notes in speaker
+52,5992,VC,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Played defence at source;played clean but got in 1640s way
+52,1640,SF,3,0,0,0,5,0,3,0,0,0,0,0,0,0,
+52,1403,Sb,2,0,0,0,6,0,3,0,0,0,0,0,0,1,"Likely scored  more I was distracted
+Stopped working at the amp at one point
+I missed it they got the climb"
+52,7414,SM,0,0,0,0,1,0,2,0,0,0,0,0,0,1,"Missed their auto shot, died in field at 35 seconds left, struggled to shoot one of their notes into speaker"
+52,1807,TB,1,0,0,0,0,0,0,0,1,0,0,0,0,0,Lots of lobbing
+53,5684,Sb,1,0,0,0,3,0,5,0,0,0,0,0,0,0,"Didn't go to climb
+May have scored a note or two more"
+53,293,LB,4,0,0,0,0,0,1,0,0,0,0,0,0,1,
+53,3142,TB,1,0,0,0,2,0,5,0,0,0,0,0,0,0,
+53,3637,ME,1,0,0,0,0,0,4,0,1,0,0,0,0,0,
+53,1676,MI,4,0,0,0,2,0,3,0,1,1,0,1,0,0,
+53,2191,SG,1,0,0,0,2,0,1,0,0,0,0,0,0,0,Missed most speaker shots
+54,2607,MI,3,0,0,0,3,0,3,0,0,0,0,0,0,0,
+54,714,TB,1,0,0,0,0,0,2,0,1,0,0,1,0,0,Lobster
+54,1279,ME,1,0,0,0,0,0,4,0,0,0,0,0,0,0,
+54,341,Sb,2,0,0,0,1,0,7,0,0,0,0,1,1,0,"Lost track of the number of notes in auto
+Amp kept not working"
+54,9027,SG,0,0,0,0,0,0,2,0,1,0,0,1,0,0,"Short on speaker shots, no auton"
+55,102,SG,1,0,0,0,4,0,0,0,0,0,0,0,0,0,Hit by another robot while trying to climb
+55,7110,ME,0,0,0,0,0,0,2,0,0,0,0,0,0,0,
+55,1811,MI,1,0,0,0,3,0,5,0,0,0,0,1,0,0,
+55,4342,Sb,3,0,0,0,4,0,1,0,0,0,0,0,0,0,"Got slowed by 7110 a good bit
+Didn't get buddy climb with partner with seconds left"
+56,222,SG,1,0,0,0,1,0,4,0,0,0,0,1,0,0,
+56,427,RA,3,0,0,0,3,0,7,0,0,0,0,0,0,0,4 piece was stolen from them by allied auto. Amazing work team work helped them score 12 notes but looks like no climb.
+56,7045,ME,1,0,0,0,0,0,1,0,0,0,0,1,0,0,
+56,11,TB,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Shooter broke
+56,321,Sb,0,0,0,0,0,0,0,0,0,0,0,1,0,0,"played vary good defense
+Left community auto"
+56,9094,MI,2,0,0,0,4,0,6,0,0,0,0,1,0,0,
+57,223,Sb,3,0,0,0,2,0,4,0,0,0,0,0,0,0,"I believe their partners interfered with auto 
+I was distracted probably scored more"
+57,1257,AV,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
+57,1168,SJ,2,0,0,0,4,0,5,0,0,0,0,0,0,0,
+57,2720,TB,2,0,0,0,0,0,0,0,0,0,0,0,0,0,"Got tied up by blue feeder, was watching lunatecs to pay attention to 2720"
+57,103,RA,1,0,0,0,0,0,2,0,1,0,0,0,0,0,Stolen from by 316! what happened chat.
+57,316,CJ,3,0,0,0,1,0,6,0,1,0,0,0,0,0,
+58,56,AD,0,0,0,0,1,0,6,0,0,0,0,1,0,0,
+58,75,SJ,1,0,0,0,0,0,4,0,0,0,0,1,1,0,
+58,8513,LB,1,0,0,0,3,0,2,0,0,1,0,1,0,0,Sister's was able to trap and did generally good scoring didn't miss at all.
+58,1391,AV,4,0,0,0,0,0,4,0,1,0,0,1,1,0,
+58,2722,CJ,3,0,0,0,1,0,5,0,0,0,0,0,0,0,Attempted crime
+59,2539,SJ,0,0,0,0,0,0,0,0,0,0,0,1,0,1,Was disabled for half of the match. Played passing me defense after that
+59,2590,LB,1,0,0,0,0,0,5,0,1,1,0,1,0,0,
+59,5895,AD,5,0,0,0,5,0,6,0,0,0,0,0,0,0,
+59,6226,CJ,0,0,0,0,0,0,0,0,1,0,0,1,0,0,
+59,1923,AV,0,0,0,0,4,0,2,0,0,0,0,1,0,0,
+59,484,RA,1,0,0,0,0,0,1,0,0,0,0,1,0,0,Playing as a defence bot and scoring in free time. Very good defence bot. Shooter broke. Very quick climb.
+60,6921,RA,3,0,0,0,1,0,4,0,0,0,0,1,0,0,Attempted to buddy climb decided they couldn't and pivoted rapidly. Extremely fast climb.
+60,834,CJ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Shooter not working and climber likely not working
+60,1218,LB,1,0,0,0,2,0,3,0,0,0,0,1,0,0,
+60,0,,2,0,0,0,1,0,5,0,0,0,0,0,0,0,Missed shots frequently
+60,272,AV,1,0,0,0,4,0,4,0,0,1,0,1,0,0,
+61,5684,VC,1,0,0,0,2,0,6,0,0,0,0,1,0,0,Auton tried to pick up from center but failed
+61,2495,MI,1,0,0,0,3,0,2,0,0,0,0,1,1,0,
+61,1640,CJ,4,0,0,0,1,0,0,0,1,0,0,0,0,0,Jammed note played defense
+61,7414,DJ,3,0,0,0,0,0,4,0,0,0,0,0,0,0,
+61,5181,Sb,1,0,0,0,0,0,7,0,0,0,0,1,1,0,"Ran one note auto
+Probably scored one more note in speaker"
+61,555,RA,1,0,0,0,0,0,2,0,0,0,0,1,1,0,Tried to grab from center. Shooter is slow and inconsistent.
+62,2607,RA,3,0,0,0,0,0,5,0,1,0,0,1,1,0,shot from the center line twice only missed one. Using there range to lib rounds very fast. Very very fast rotation they scored low because they ferried instead for the beginning of the matvh.
+62,3142,MI,1,0,0,0,7,0,4,0,0,0,0,0,0,0,
+62,1403,DJ,0,0,0,0,5,0,3,0,0,0,0,1,0,0,Really well during teleop however there auto didn't do anything
+62,4285,VC,2,0,0,0,0,0,3,0,1,0,0,0,0,0,Fed most of the match
+62,4361,CJ,1,0,0,0,0,0,4,0,0,0,0,1,0,0,
+62,219,Sb,4,0,0,0,0,0,6,0,0,0,0,1,1,0,Were going for center centerline note but 1403 auto interfered might have just collected the note though
+63,222,VC,0,0,1,0,0,0,8,0,0,0,0,1,0,0,Got penalized in auto as they shot a ring outside of the alliance zone
+63,7110,Sb,0,0,0,0,0,0,3,0,0,0,0,0,0,0,"Missed seeing thier auto shot
+Also May have had one more note in speaker in tele
+Toword the end they were driving around the field and am not sure if they were trying to play defense or what"
+63,1279,RA,2,0,0,0,0,0,6,0,0,0,0,0,0,0,Missed one speaker in auto. Inconsistent shooting.
+63,3637,SF,2,0,0,0,6,0,2,0,1,0,0,0,0,0,
+63,321,MI,1,0,0,0,0,0,0,0,0,0,0,0,0,0,Mostly played defense
+63,2191,DJ,1,0,0,0,2,0,0,0,0,0,0,0,0,0,It seems there intake broke during the match
+64,223,Sb,3,0,0,0,0,0,5,0,1,0,0,0,0,0,"Begain the match by lobbing did not take when they started scoring but probably around 30-40seconds into tele
+Probably scored one more note"
+64,3314,TB,0,0,0,0,0,0,0,0,0,0,0,0,0,1,Spent teleop disconnected or broken down
+64,2720,VC,0,0,0,0,0,0,6,0,1,0,0,0,0,0,Tried to climb but failed
+64,9094,MI,1,0,0,0,3,0,3,0,0,0,0,1,0,0,
+64,4342,SF,4,0,0,0,4,0,4,0,0,0,0,1,0,0,
+64,9027,AD,2,0,0,0,0,0,6,0,0,0,0,1,0,0,
+65,102,VC,1,0,0,0,1,0,0,0,0,0,0,0,0,1,Fell over
+65,7045,LB,1,0,0,0,0,0,4,0,0,0,0,0,0,0,
+65,714,ME,1,0,0,0,0,0,6,0,0,0,0,0,0,0,
+65,1391,SF,0,0,0,0,0,0,8,0,1,0,0,0,0,0,
+65,2722,TB,1,0,0,0,4,0,2,0,0,0,0,1,0,0,
+65,1811,Sb,2,0,0,0,0,0,5,0,1,0,0,1,0,0,"Lobbed one note
+Almost tipped when they stopped
+Their robot get over top of an opponents bumpers briefly
+Played some somewhat ok defense"
+66,1257,VC,0,0,0,0,1,0,0,0,0,0,0,0,0,0,Missed Auton preloaded and then played defense at source
+66,11,Sb,0,0,0,0,4,0,0,0,0,0,0,0,0,1,"Amp only robot are ok
+Climber appeared to have broken during the match but still climbed"
+66,75,ME,1,0,0,0,0,0,1,0,1,0,0,1,1,0,
+66,5401,LB,4,0,0,0,0,0,4,0,0,0,0,1,1,0,
+66,341,SF,4,0,0,0,4,0,2,0,0,0,0,1,1,0,
+66,5895,TB,3,0,0,0,3,0,4,0,1,0,0,1,1,0,
+67,56,MI,3,0,0,0,0,0,3,0,0,0,0,0,0,0,
+67,427,SG,1,0,0,0,4,0,3,0,0,0,0,0,0,0,
+67,2590,LB,4,0,0,0,0,0,3,0,1,1,0,1,0,0,
+67,272,ME,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
+67,1807,TB,2,0,0,0,3,0,3,0,1,0,0,1,1,0,
+67,316,AO,3,0,0,0,4,0,4,0,0,0,0,1,0,0,
+68,6921,TB,3,0,0,0,4,0,3,0,0,0,0,1,0,0,
+68,834,AO,1,0,0,0,0,0,3,0,0,0,0,1,0,0,
+68,6226,SG,0,0,1,0,4,0,0,0,0,0,0,1,0,0,
+68,4573,MI,2,0,0,0,0,0,7,0,0,0,0,1,1,0,
+68,103,LB,1,0,0,0,1,0,1,0,1,0,0,1,0,0,
+68,484,ME,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
+69,1089,LB,1,0,0,0,1,0,6,0,0,0,0,1,0,0,
+69,1676,AO,3,0,0,0,2,0,3,0,0,1,0,1,0,0,
+69,365,TB,0,0,0,0,4,0,3,0,0,0,0,1,0,0,
+69,1923,VC,3,0,0,0,5,0,7,0,0,0,0,0,0,0,"Didn't have time to climb, overall good shooting"
+69,9015,SJ,1,0,0,0,0,0,1,0,0,0,0,0,0,0,Played passing for the whole match. Accidentally shot few notes out of the arena
+69,5438,CJ,0,0,0,0,0,0,0,0,0,0,0,1,0,0,Played defense near source whole match
+70,5992,AO,0,0,0,0,3,0,3,0,0,0,0,0,0,0,
+70,2539,CJ,2,0,0,0,0,0,3,0,1,1,0,1,0,0,Really good at shuttling
+70,1168,TB,2,0,0,0,1,0,2,0,1,0,0,0,0,0,
+70,293,LB,2,0,0,0,0,0,5,0,0,0,0,0,0,0,
+70,1218,SJ,2,0,0,0,0,0,5,0,0,0,0,1,0,0,
+70,8513,AV,0,0,0,0,7,0,5,0,0,1,0,1,0,0,
+71,222,AV,0,0,0,0,7,0,4,0,0,0,0,1,1,0,Arm didn't seem to work during auton
+71,3142,LB,1,0,0,0,0,0,3,0,1,0,0,0,0,0,
+71,1279,SJ,1,0,0,0,0,0,7,0,0,0,0,1,1,0,
+71,2720,CJ,2,0,0,0,0,0,3,0,1,0,0,0,0,0,
+71,7414,AO,4,0,0,0,0,0,6,0,0,0,0,0,0,0,
+71,9094,TB,1,0,0,0,6,0,2,0,0,0,0,0,0,0,
+72,2495,TB,1,0,0,0,4,0,4,0,0,0,0,0,0,0,
+72,7110,AO,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
+72,1391,SJ,5,0,0,0,0,0,4,0,0,0,0,1,0,0,spent most of the time passing
+72,4285,LB,4,0,0,0,0,0,2,0,1,0,0,0,0,0,
+72,5181,AV,2,0,0,0,0,0,10,0,0,0,0,1,1,0,
+72,2191,CJ,0,0,0,0,4,0,1,0,0,0,0,1,1,0,
+73,5684,LB,1,0,0,0,2,0,5,0,0,0,0,1,0,0,
+73,3314,AO,1,0,0,0,3,0,2,0,0,1,0,1,0,0,
+73,11,VC,0,0,0,0,2,0,0,0,0,0,0,0,0,0,Amp only bot
+73,5401,TB,4,0,0,0,0,0,6,0,0,0,0,0,0,0,
+73,4361,SF,1,0,0,0,4,0,4,0,0,0,0,1,0,0,
+73,1811,SM,3,0,0,0,0,0,2,0,1,0,0,1,0,0,Seemed a bit slow with driving across field
+74,1257,SF,1,0,0,0,0,0,1,0,1,0,0,0,0,0,
+74,7045,SM,1,0,0,0,0,0,1,0,1,0,0,1,0,0,Driving was slow and missed most of attempted speaker shots
+74,272,LB,0,0,0,0,5,0,2,0,0,0,0,0,0,0,
+74,1403,VC,3,0,0,0,8,0,4,0,0,0,0,0,0,0,Was Fed to the whole room time
+74,555,AO,3,0,0,0,0,0,3,0,1,0,0,0,0,0,
+74,9027,TB,1,0,0,0,0,0,5,0,0,0,0,1,0,0,
+75,223,VC,3,0,0,0,1,0,6,0,0,0,0,1,1,0,
+75,75,RA,1,0,0,0,0,0,3,0,1,0,0,1,0,0,Quick rotation and consistent scoring they scored open because of lobbing.
+75,834,TB,3,0,0,0,3,0,0,0,0,0,0,1,0,0,
+75,3637,SM,1,0,0,0,0,0,1,0,1,0,0,1,0,0,Shot a good amount of notes to speaker from source for alliance then got a note stuck near the last 30 seconds
+75,321,Sb,1,0,0,0,0,0,0,0,0,0,0,0,0,0,"Auto stoped before the centerline
+Took a bit to intake and got a note stuck in thier bot
+Played with pretty good defense
+Didn't get the last second buddy or single climb"
+75,1807,SF,0,0,2,0,6,0,4,0,1,0,0,1,1,0,
+76,56,TB,1,0,0,0,0,0,6,0,0,0,0,1,1,0,
+76,1640,VC,4,0,0,0,5,0,3,0,0,0,0,1,0,0,
+76,4573,SM,0,0,0,0,0,0,9,0,0,0,0,1,0,0,"Missed their auto shots,but quick cycles"
+76,9015,Sb,0,0,0,0,2,0,2,0,0,0,0,1,0,0,Might have missed some notes
+76,5438,SF,1,0,0,0,1,0,1,0,0,0,0,0,0,1,
+77,427,TB,3,0,0,0,4,0,2,0,0,0,0,0,0,0,
+77,1089,RA,1,0,0,0,2,0,6,0,0,0,0,1,0,0,Good consistent shooting no misses. Takes a second to get into the amp. Intooter
+77,6921,ME,0,0,0,0,0,0,2,0,0,0,0,1,0,0,
+77,8513,SG,1,0,0,0,3,0,2,0,0,0,0,0,0,0,Consistent and efficient shooting
+77,365,MI,3,0,0,0,3,0,0,0,1,0,0,1,0,0,
+78,2607,MI,2,0,0,0,2,0,2,0,1,0,0,0,0,0,
+78,1168,TB,4,0,0,0,1,0,1,0,1,0,0,0,0,0,
+78,6226,RA,0,0,1,0,3,0,0,0,0,0,0,1,1,0,Didn't lob cause no shooter but they did ferry. Tank drive. Low points because lots of ferrying
+78,1923,ME,0,0,0,0,0,0,3,0,0,0,0,1,0,0,
+78,4342,SG,4,0,0,0,0,0,3,0,0,0,0,1,0,0,Played good but halfway was damaged by stage and played defense the rest of match
+79,2590,RA,1,0,0,0,0,0,3,0,0,1,0,1,0,0,Missed a few shots.
+79,1218,,3,0,0,0,3,0,4,0,0,0,0,1,0,0,
+79,5895,SG,2,0,0,0,4,0,4,0,0,0,0,0,0,0,Tried but missed climb
+79,1676,ME,2,0,0,0,0,0,4,0,1,1,0,0,0,0,
+79,219,MI,1,0,0,0,0,0,1,0,0,0,0,0,0,0,
+80,102,Sb,2,0,0,0,1,0,2,0,1,0,0,0,0,0,"I believe they could have picked a note from the centerline had it not been taken
+I was a bit distracted"
+80,2539,RA,1,0,0,0,0,0,2,0,1,0,0,0,0,0,Tried to grab from center line. They spent a massive amount of time lobing and not scoring. Failed to climb but looks like they can given time.
+80,714,ME,1,0,0,0,0,0,3,0,0,0,0,1,0,0,
+80,293,TB,1,0,0,0,1,0,0,0,0,0,0,0,0,0,Was distracted by lunatecs
+80,103,MI,4,0,0,0,0,0,5,0,1,0,0,1,1,0,
+80,316,SG,2,0,0,0,5,0,7,0,0,0,0,1,1,0,
+81,5684,CJ,2,0,0,0,3,0,2,0,0,0,0,0,0,1,"Hit and broke down near stage,took a foul"
+81,7045,SJ,1,0,0,0,0,0,2,0,0,0,0,1,0,0,Was not able to shoot very well also had ring stuck in robot for 15 seconds ish
+81,7110,RA,0,0,0,0,0,0,1,0,0,0,0,0,0,0,Missed several speaker shots. Trying to be a defence bot but did poorly.
+81,272,TB,1,0,0,0,4,0,2,0,0,1,0,1,0,0,
+81,1403,Sb,2,0,0,0,3,0,5,0,1,0,0,0,0,0,"Four note auto messed up
+May have scored one more note 
+Messed up climb
+Lobbed like two or three notes"
+82,222,TB,1,0,1,0,4,0,1,0,1,0,0,0,0,0,
+82,223,SJ,1,0,0,0,1,0,4,0,0,0,0,1,1,0,
+82,5401,CJ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+82,7414,RA,3,0,0,0,0,0,6,0,1,0,0,0,0,0,Good shooting but slow to rotate.
+82,555,VC,1,0,0,0,4,0,1,0,0,0,0,1,0,0,Was a little slow when picking up and placing in amp
+82,2191,Sb,0,0,0,0,1,0,1,0,0,0,0,1,0,0,"Stayed in place in auto
+Note fell out of their intake \shooter into bot for time 
+Played defence"
+83,2495,SJ,0,0,0,0,4,0,1,0,0,0,0,1,1,0,
+83,75,TB,1,0,0,0,0,0,4,0,1,0,0,0,0,0,
+83,834,AV,3,0,0,0,0,0,4,0,0,0,0,1,0,0,
+83,1279,CJ,2,0,0,0,0,0,7,0,0,0,0,1,1,0,
+83,9015,LB,3,0,0,0,4,0,1,0,1,0,0,0,0,0,
+84,6921,CJ,2,0,0,0,4,0,2,0,0,0,0,1,0,0,
+84,1391,TB,1,0,0,0,0,0,0,0,1,0,0,1,0,0,Lobster
+84,2720,AV,1,0,0,0,0,0,3,0,1,0,0,0,0,0,
+84,365,Sb,1,0,0,0,3,0,7,0,0,0,0,1,1,0,"Didn't shoot second note in auto
+While filling in data I may have missed two notes in speaker and one in amp"
+84,5181,SJ,3,0,0,0,0,0,8,0,0,0,0,0,0,0,
+85,427,LB,3,0,0,0,5,0,1,0,0,0,0,0,0,0,
+85,1168,VC,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+85,4285,TB,3,0,0,0,0,0,5,0,0,0,0,0,0,0,
+85,321,AV,1,0,0,0,0,0,3,0,0,0,0,0,0,0,
+85,4573,SM,0,0,0,0,0,0,2,0,0,0,0,0,0,0,"Missed auto shot, started playing defense in the middle of match"
+85,1811,Cc,2,0,0,0,0,0,5,0,0,0,0,1,0,1,
+86,341,VC,6,0,5,0,0,0,0,0,0,0,0,1,1,0,Failed 3 note far Auton
+86,3637,Cc,0,0,0,0,0,0,0,0,0,0,0,1,0,1,These are real stats
+86,1676,AV,4,0,0,0,4,0,6,0,0,1,0,1,0,0,
+86,2722,LB,1,0,0,0,3,0,4,0,0,0,0,1,0,0,
+86,1807,SM,2,0,0,0,0,0,4,0,1,0,0,1,1,0,Shot several from source for them and their alliance to use during amplification
+86,4342,TB,3,0,0,0,4,0,4,0,0,0,0,1,0,0,
+87,102,SM,0,0,0,0,0,0,0,0,1,0,0,1,0,0,Lobbied a lot of notes for their alliance but also got two stuck on the stage microphones
+87,3314,Cc,3,0,0,0,6,0,5,0,0,1,0,1,0,0,
+87,2539,LB,1,0,0,0,0,0,3,0,1,1,0,1,0,0,
+87,5895,VC,1,0,0,0,2,0,4,0,1,0,0,1,0,0,Auton messed up even though nobody touched them
+87,1923,SF,0,0,0,0,6,0,5,0,1,1,0,1,0,0,
+87,5438,TB,0,0,0,0,0,0,1,0,0,0,0,0,0,0,
+88,56,TB,1,0,0,0,3,0,3,0,0,0,0,0,0,0,
+88,1257,LB,1,0,0,0,2,0,0,0,0,0,0,0,0,0,
+88,1089,VC,2,0,0,0,2,0,5,0,1,0,0,0,0,0,Failed climb and auto was good as they were hit multiple times but they readjusted
+88,293,SM,3,0,0,0,0,0,5,0,0,0,0,0,0,0,Missed picking up one of the notes in auto
+88,6226,SF,0,0,0,0,5,0,0,0,0,0,0,1,1,0,
+88,219,Cc,3,0,0,0,0,0,8,0,0,0,0,0,0,0,
+89,2607,Cc,4,0,0,0,5,0,3,0,0,0,0,1,0,0,
+89,1218,MI,2,0,0,0,2,0,3,0,0,0,0,1,0,0,
+89,9094,Sb,2,0,0,0,2,0,2,0,0,0,0,1,0,1,"Were constant stopping
+Shot a note out in auto
+May have scored one more note in tele"
+89,316,ME,2,0,0,0,0,0,3,0,0,0,0,1,1,0,
+89,484,SG,0,0,0,0,1,0,0,0,0,0,0,1,1,0,"No auto, played defense"
+90,2590,SG,1,0,0,0,0,0,2,0,1,0,0,0,0,0,"Really good lobbing bot, tipped upside down while climbing"
+90,11,Cc,0,0,2,0,6,0,0,0,0,0,0,1,0,0,
+90,8513,TB,5,0,0,0,0,0,4,0,0,1,0,1,0,0,
+90,3142,MI,1,0,0,0,4,0,6,0,0,0,0,0,0,0,
+90,103,ME,1,0,0,0,2,0,4,0,1,0,0,1,0,0,
+91,223,TB,4,0,0,0,0,0,3,0,0,0,0,1,0,0,
+91,7045,ME,1,0,0,0,0,0,4,0,1,0,0,1,0,0,
+91,7110,SG,1,0,0,0,0,0,3,0,0,0,0,1,0,0,"Struggled to pick up notes, played defense"
+91,1403,Cc,2,0,0,0,5,0,2,0,0,0,0,1,0,0,
+91,5181,MI,1,0,0,0,0,0,8,0,0,0,0,0,0,0,Attempted to climb but failed to do so
+91,9015,CH,2,0,0,0,0,0,0,0,0,0,0,1,0,0,
+92,222,MI,1,0,1,0,1,0,6,0,0,0,0,0,0,0,Attempted to harmony but time ran out
+92,75,TB,2,0,0,0,3,0,1,0,0,0,0,1,1,0,
+92,365,ME,1,0,0,0,2,0,2,0,0,0,0,0,0,0,
+92,4573,Cc,3,0,0,0,0,0,3,0,0,0,0,1,0,1,Intake broke
+92,9027,SG,1,0,0,0,0,0,2,0,0,0,0,0,0,0,Missed climb
+93,427,CJ,2,0,0,0,1,0,2,0,0,0,0,0,0,0,
+93,1640,Cc,2,0,0,0,2,0,4,0,0,0,0,0,0,1,Discon
+93,1168,SJ,1,0,0,0,2,0,4,0,0,0,0,0,0,0,
+93,834,AV,3,0,0,0,0,0,3,0,0,0,0,0,0,0,
+93,2722,TB,1,0,0,0,5,0,3,0,0,0,0,1,0,0,
+94,5684,CJ,0,0,0,0,2,0,5,0,0,0,0,1,0,0,
+94,6921,SJ,0,0,0,0,6,0,0,0,0,0,0,1,0,0,Insufficient force delivered when going for speaker
+94,1279,Cc,1,0,0,0,0,0,5,0,0,0,0,1,1,0,
+94,341,HHH,1,0,0,0,0,0,2,0,0,0,0,0,1,0,They shot notes into on to their side to feed the other bots
+94,4285,AV,4,0,0,0,0,0,7,0,0,0,0,0,0,0,
+94,1923,TB,2,0,0,0,7,0,7,0,0,0,0,0,0,0,
+95,56,SJ,1,0,0,0,0,0,4,0,0,0,0,1,0,0,Ambiguous climbing and also buddy climbimg
+95,2495,TB,1,0,0,0,5,0,5,0,0,0,0,1,0,0,
+95,2539,Cc,2,0,0,0,3,0,0,0,1,0,0,1,0,0,Failed trap
+95,272,HHH,1,0,0,0,1,0,0,0,0,0,0,0,0,0,Note got stuck in their intake and couldn't shoot
+95,4361,CJ,0,0,0,0,2,0,2,0,0,0,0,0,0,0,
+95,4342,AV,4,0,0,0,3,0,1,0,0,0,0,1,0,0,
+96,102,TB,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
+96,1257,CJ,1,0,0,0,2,0,1,0,0,0,0,0,0,0,Disabled a couple times for a few seconds
+96,293,SJ,3,0,0,0,0,0,1,0,0,0,0,0,0,1,Disabled during the match
+96,1807,Cc,3,0,0,0,5,0,3,0,0,0,0,0,0,0,auto on amp side
+96,2191,AV,0,0,0,0,2,0,0,0,0,0,0,1,0,0,
+96,484,HHH,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Played pretty good defense
+

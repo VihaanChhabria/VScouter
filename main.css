@@ -1,0 +1,145 @@
+:root {
+    --color-background: #EE5622;
+    --color-child-background: #252422;
+    --color-input-background : #403d39;
+    --color-input-text : #fffcf2;
+    --color-text : #fffcf2;
+    --color-button : #EE5622;
+    --color-button-selected : #EB5E28;
+    --color-checkbox : #EE5622;
+
+    --size-label: 4vh;
+    --size-sub-label: 3.25vh;
+    --size-save-button: 3.5vh;
+    --size-ui-padding: 2vh;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}  
+
+body {
+    background-color: var(--color-background);
+}
+
+.UI-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    padding-top: var(--size-ui-padding);
+    padding-bottom: var(--size-ui-padding);
+}
+
+.Parent-Container {
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1vh
+}
+
+.Child-Container {
+    background-color: #edf2f7;
+    padding: 2vh;
+    border-radius: 1vh;
+    background-color: var(--color-child-background);
+    margin: .7vh;
+}
+
+.Label {
+    font-size: var(--size-label);
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+    display: block;
+}
+
+.Counter-Label {
+    font-size: xx-large;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2.5vh;
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+}
+
+.Input-Field {
+    width: 97%;
+    border-radius: 1vh;
+    padding: 1.3vh;
+    outline: none;
+    box-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vh;
+    resize: none;
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    border-color: var(--color-input-background);
+    margin-bottom: 1.25vh;
+}
+
+.Button {
+    flex: 1;
+    color: var(--color-text);
+    border-radius: 1vh;
+    padding: 1vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    font-weight: bolder;
+    height: calc((100vh - (var(--size-label) * 2) - (var(--size-sub-label) * 4) - var(--size-save-button) - (var(--size-ui-padding)*4))/4);
+    background-color: var(--color-button);
+    border-color: var(--color-button);
+    touch-action: manipulation;
+}
+
+
+.Save-Button {
+    background-color: var(--color-button);
+    border-color: var(--color-button);
+    color: var(--color-text);
+    border-radius: 1vh;
+    padding: var(--size-save-button);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    width: 100%;
+    margin-bottom: 1.25vh;
+    touch-action: manipulation;
+}
+
+.Button:hover {
+    background-color: var(--color-button-selected)
+}
+
+.Save-Button:hover {
+    background-color: var(--color-button-selected)
+}
+
+.Group-Container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 0.5vh
+}
+
+.Sub-Label {
+    font-size: var(--size-sub-label);
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-text);
+}
+
+.Button-Container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Checkbox {
+    width: 5vh;
+    height: 5vh;
+    vertical-align:middle;
+    accent-color: var(--color-checkbox);
+    background: #252422;
+    touch-action: manipulation;
+}

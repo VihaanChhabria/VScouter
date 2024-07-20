@@ -57,21 +57,6 @@ if ("serviceWorker" in navigator) {
     });
 }
 
-document.getElementById("updateWebsiteButton").addEventListener("click", forceUpdate);
-
-function forceUpdate() {
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.getRegistration().then((registration) => {
-            if (registration && registration.waiting) {
-                registration.waiting.postMessage("skipWaiting");
-                registration.addEventListener("controllerchange", () => {
-                    window.location.reload();
-                });
-            }
-        });
-    }
-}
-
 function createCounter(baseName) {
     const label = document.getElementById(baseName + "Lab");
 

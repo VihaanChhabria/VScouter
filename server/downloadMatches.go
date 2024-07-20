@@ -102,7 +102,7 @@ func getMatchTeams(match map[string]interface{}) ([]string, []string) {
 		if redAlliance, ok := alliances["red"].(map[string]interface{}); ok {
 			if teams, ok := redAlliance["team_keys"].([]interface{}); ok {
 				for _, team := range teams {
-					redTeams = append(redTeams, team.(string))
+					redTeams = append(redTeams, team.(string)[3:])
 				}
 			}
 		}
@@ -110,7 +110,7 @@ func getMatchTeams(match map[string]interface{}) ([]string, []string) {
 		if blueAlliance, ok := alliances["blue"].(map[string]interface{}); ok {
 			if teams, ok := blueAlliance["team_keys"].([]interface{}); ok {
 				for _, team := range teams {
-					blueTeams = append(blueTeams, team.(string))
+					blueTeams = append(blueTeams, team.(string)[3:])
 				}
 			}
 		}

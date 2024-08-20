@@ -1,12 +1,14 @@
 import React from "react";
 
 import ProceedBackButton from "../components/ProceedBackButton";
+import SelectAlliance from "../components/SelectAlliance";
 
 const HomePage = () => {
   return (
-    <body bgcolor="red">
+    <>
       <ProceedBackButton />
-    </body>
+      <SelectAlliance />
+    </>
   );
 };
 

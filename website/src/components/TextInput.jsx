@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52 }) => {
-
   const [text, setText] = useState("");
 
   return (

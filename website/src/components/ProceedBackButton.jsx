@@ -1,6 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProceedBackButton = ({ back = false }) => {
+const ProceedBackButton = ({ back = false, nextPage = "/" }) => {
   const containerStyle = {
     border: "7px solid #1D1E1E",
     width: "315.37px",
@@ -21,9 +22,11 @@ const ProceedBackButton = ({ back = false }) => {
     fontWeight: "bold",
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
-      <div style={containerStyle} onClick={() => console.log("clicked")}>
+      <div style={containerStyle} onClick={() => navigate(nextPage)}>
         <h1 style={textStyle}>{back ? "Back" : "Proceed"}</h1>
       </div>
     </>

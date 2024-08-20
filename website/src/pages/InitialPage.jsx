@@ -8,7 +8,7 @@ import SelectTeam from "../components/SelectTeam";
 const HomePage = () => {
   return (
     <>
-      <ProceedBackButton />
+      <ProceedBackButton nextPage="/initial-auto"/>
       <SelectAlliance />
       <TextInput question="Match Number" coordX={10} coordY={179.52}/>
       <TextInput question="Scouter Initials" coordX={10} coordY={275}/>

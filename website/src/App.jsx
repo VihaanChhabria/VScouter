@@ -8,14 +8,15 @@ import {
 
 import MainLayout from "./layouts/MainLayout"
 
-import HomePage from "./pages/HomePage";
+import InitialPage from "./pages/InitialPage";
+import InitialAutoPage from "./pages/InitialAutoPage";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        {/* <Route path="/jobs" element={<JobsPage />} /> */}
+        <Route index element={<InitialPage />} />
+        <Route path="/initial-auto" element={<InitialAutoPage />} />
       </Route>
     )
   );

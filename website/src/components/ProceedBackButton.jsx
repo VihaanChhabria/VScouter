@@ -16,6 +16,12 @@ const ProceedBackButton = ({ back = false, nextPage = "/", coordX = null, coordY
     bottom: "10px",
   };
 
+  if (back) {
+    containerStyle.left = "10px";
+  } else {
+    containerStyle.right = "10px";
+  }
+
   if (coordX) {
     containerStyle.left = `${coordX}px`;
   }
@@ -23,24 +29,14 @@ const ProceedBackButton = ({ back = false, nextPage = "/", coordX = null, coordY
     containerStyle.top = `${coordY}px`;
   }
 
-  if (back) {
-    containerStyle.left = "10px";
-  } else {
-    containerStyle.right = "10px";
-  }
-
-  const textStyle = {
-    color: "#FFFFFF",
-    fontSize: "24px",
-    fontWeight: "bold",
-  };
-
   const navigate = useNavigate();
 
   return (
     <>
       <div style={containerStyle} onClick={() => navigate(nextPage)}>
-        <h1 style={textStyle}>{back ? "Back" : "Proceed"}</h1>
+        <h1 style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: "bold" }}>
+          {back ? "Back" : "Proceed"}
+        </h1>
       </div>
     </>
   );

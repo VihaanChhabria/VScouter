@@ -4,7 +4,7 @@ import blueField from "../assets/Blue_Alliance_Auto_Start.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
 
-const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158 }) => {
+const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158}) => {
   const [rotate, setRotate] = useState(false);
 
   return (

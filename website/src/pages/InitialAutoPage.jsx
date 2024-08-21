@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProceedBackButton from "../components/ProceedBackButton";
 import AutoStartImage from "../components/AutoStartImage";
 import NoShowButton from "../components/NoShowButton";
+import AutoStartCounter from "../components/AutoStartCounter";
 
 const InitialAutoPage = () => {
   const [noShow, setNoShow] = useState(false);
@@ -11,6 +12,7 @@ const InitialAutoPage = () => {
       <ProceedBackButton nextPage={noShow ? `/endgame` : `/auto-note-counter`} />
       <AutoStartImage />
       <NoShowButton noShow={noShow} setNoShow={setNoShow}/>
+      <AutoStartCounter />
       <ProceedBackButton back={true} nextPage="/" />
     </>
   );

@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 
-const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52 }) => {
-  const [text, setText] = useState("");
+const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, setTextValue }) => {
+  const [upperText, setUpperText] = useState("");
+
+  const typedText = (e) => {
+    setUpperText(e.target.value.toUpperCase());
+    
+    if (setTextValue != "") {
+      setTextValue(e.target.value);
+    } else {
+      setTextValue(null);
+    }
+  };
 
   return (
     <>
@@ -31,8 +41,7 @@ const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52 }) 
           type="text"
           name=""
           id=""
-          value={text}
-          onChange={(e) => setText(e.target.value.toUpperCase())}
+          onChange={(e) => setUpperText(e.target.value.toUpperCase())}
           style={{
             border: "4px solid #1D1E1E",
             borderRadius: "10px",

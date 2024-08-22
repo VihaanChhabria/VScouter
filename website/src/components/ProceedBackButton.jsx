@@ -1,8 +1,26 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ProceedBackButton = ({ back = false, nextPage = "/", coordX = null, coordY = null }) => {
-  console.log(back ? "10" : "0");
+const ProceedBackButton = ({
+  back = false,
+  nextPage = "/",
+  coordX = null,
+  coordY = null,
+  inputs,
+}) => {
+
+  const navigate = useNavigate();
+  const proceedClick = () => {
+    console.log(inputs)
+    const hasNull = Object.values(inputs).some((val) => val === null);
+    if (hasNull) {
+      toast.error("Fill In All Fields To Proceed");
+    }else{
+      navigate(nextPage);
+    }
+  };
   const containerStyle = {
     border: "7px solid #1D1E1E",
     width: `${back ? "121" : "315.37"}px`,
@@ -29,11 +47,9 @@ const ProceedBackButton = ({ back = false, nextPage = "/", coordX = null, coordY
     containerStyle.top = `${coordY}px`;
   }
 
-  const navigate = useNavigate();
-
   return (
     <>
-      <div style={containerStyle} onClick={() => navigate(nextPage)}>
+      <div style={containerStyle} onClick={proceedClick}>
         <h1 style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: "bold" }}>
           {back ? "Back" : "Proceed"}
         </h1>

@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const SelectAlliance = ({ coordX = 10, coordY = 10 }) => {
+const SelectAlliance = ({ coordX = 10, coordY = 10, setAlliance }) => {
   const [redSelected, setRedSelected] = useState(false);
   const [blueSelected, setBlueSelected] = useState(false);
+
+  const clickAlliance = (alliance) => {
+    if (alliance === "red") {
+      setRedSelected(!redSelected);
+      setBlueSelected(false);
+    } else if (alliance === "blue") {
+      setBlueSelected(!blueSelected);
+      setRedSelected(false);
+    }
+  };
+
+  useEffect(() => {
+    if (redSelected && !blueSelected) {
+      setAlliance("red");
+    } else if (!redSelected && blueSelected) {
+      setAlliance("blue");
+    } else {
+      setAlliance(null);
+    }
+  }, [redSelected, blueSelected]);
 
   return (
     <>
@@ -45,10 +65,7 @@ const SelectAlliance = ({ coordX = 10, coordY = 10 }) => {
               marginLeft: "16.085px",
               marginRight: "9.99px",
             }}
-            onClick={() => {
-              setRedSelected(!redSelected);
-              setBlueSelected(false);
-            }}
+            onClick={() => clickAlliance("red")}
           ></div>
           {/* Blue */}
           <div
@@ -59,10 +76,7 @@ const SelectAlliance = ({ coordX = 10, coordY = 10 }) => {
               border: `${blueSelected ? "20px" : "4px"} solid #1D1E1E`,
               borderRadius: "10px",
             }}
-            onClick={() => {
-              setBlueSelected(!blueSelected);
-              setRedSelected(false);
-            }}
+            onClick={() => clickAlliance("blue")}
           ></div>
         </div>
       </div>

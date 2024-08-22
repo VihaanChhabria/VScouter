@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const NoShowButton = ({ coordX = 606, coordY = 72, noShow, setNoShow }) => {
-  const [clicked, setClicked] = useState(false);
 
   return (
     <>
@@ -10,7 +9,7 @@ const NoShowButton = ({ coordX = 606, coordY = 72, noShow, setNoShow }) => {
           width: "315px",
           height: "78px",
           backgroundColor: "#4A4A4A",
-          border: `${clicked ? "20" : "7"}px solid #1D1E1E`,
+          border: `${noShow ? "20" : "7"}px solid #1D1E1E`,
           borderRadius: "15px",
           position: "absolute",
           left: `${coordX}px`,
@@ -20,7 +19,6 @@ const NoShowButton = ({ coordX = 606, coordY = 72, noShow, setNoShow }) => {
           alignItems: "center",
         }}
         onClick={() => {
-          setClicked(!clicked);
           setNoShow(!noShow);
         }}
       >

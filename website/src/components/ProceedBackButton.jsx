@@ -8,7 +8,7 @@ const ProceedBackButton = ({
   nextPage = "/",
   coordX = null,
   coordY = null,
-  inputs,
+  inputs = {},
 }) => {
 
   const navigate = useNavigate();

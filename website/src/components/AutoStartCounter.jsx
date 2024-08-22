@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const AutoStartCounter = ({ coordX = 439, coordY = 40 }) => {
-  const [counter, setCounter] = useState(1);
+const AutoStartCounter = ({ coordX = 439, coordY = 40, startCounter, setStartCounter }) => {
+  const [counter, setCounter] = useState(startCounter == null ? 1 : startCounter);
 
   const checkCounterAndSet = (setTo) => {
     if (setTo > 4) {
@@ -10,6 +10,7 @@ const AutoStartCounter = ({ coordX = 439, coordY = 40 }) => {
       setCounter(1);
     } else {
       setCounter(setTo);
+      setStartCounter(setTo);
     }
   };
 

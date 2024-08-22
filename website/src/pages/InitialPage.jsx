@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
@@ -17,18 +17,27 @@ const InitialPage = () => {
   const [scouterInitials, setScouterInitials] = useState(states?.inputs?.scouterInitials || null);
   const [selectTeam, setSelectTeam] = useState(states?.inputs?.selectTeam || null);
 
+  let newInputs = {
+    ...(states?.inputs || {}),
+    alliance: alliance,
+    matchNumber: matchNumber,
+    scouterInitials: scouterInitials,
+    selectTeam: selectTeam,
+  };
+
+  useEffect(() => {
+    newInputs = {
+      ...(states?.inputs || {}),
+      alliance: alliance,
+      matchNumber: matchNumber,
+      scouterInitials: scouterInitials,
+      selectTeam: selectTeam,
+    };
+  }, [alliance, matchNumber, scouterInitials, selectTeam]);
 
   return (
     <>
-      <ProceedBackButton
-        nextPage="/initial-auto"
-        inputs={{
-          alliance: alliance,
-          matchNumber: matchNumber,
-          scouterInitials: scouterInitials,
-          selectTeam: selectTeam,
-        }}
-      />
+      <ProceedBackButton nextPage="/initial-auto" inputs={newInputs} />
       <SelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
       <TextInput
         question="Match Number"
@@ -45,7 +54,6 @@ const InitialPage = () => {
         setTextValue={setScouterInitials}
       />
       <SelectTeam defaultSelectTeam={selectTeam} setSelectTeam={setSelectTeam} />
-      
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
@@ -8,17 +8,37 @@ import AutoStartCounter from "../components/AutoStartCounter";
 
 const InitialAutoPage = () => {
   const location = useLocation();
-  const { inputs } = location.state;
+  const states = location.state;
 
-  const [noShow, setNoShow] = useState(false);
+  const [noShow, setNoShow] = useState(states?.inputs?.noShow || false);
+  const [startCounter, setStartCounter] = useState(states?.inputs?.startCounter || null);
+
+  let newInputs = {
+    ...states?.inputs || {},
+    noShow: noShow,
+    ...(startCounter !== null ? { startCounter } : {}),
+  };
+
+  useEffect(() => {
+    newInputs = {
+      ...states?.inputs || {},
+      noShow: noShow,
+      startCounter: startCounter,
+    }
+  }, [noShow, startCounter]);
 
   return (
     <>
-      <ProceedBackButton nextPage={noShow ? `/endgame` : `/auto-note-counter`} />
+      <ProceedBackButton
+        nextPage={noShow ? `/endgame` : `/auto-note-counter`}
+        inputs={{ noShow: noShow, startCounter: startCounter }}
+      />
       <AutoStartImage />
       <NoShowButton noShow={noShow} setNoShow={setNoShow} />
-      <AutoStartCounter />
-      <ProceedBackButton back={true} nextPage="/" inputs={inputs}/>
+      {!noShow && (
+        <AutoStartCounter startCounter={startCounter} setStartCounter={setStartCounter} />
+      )}
+      <ProceedBackButton back={true} nextPage="/" inputs={newInputs} />
     </>
   );
 };

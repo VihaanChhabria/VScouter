@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const SelectAlliance = ({ coordX = 10, coordY = 10, setAlliance }) => {
-  const [redSelected, setRedSelected] = useState(false);
-  const [blueSelected, setBlueSelected] = useState(false);
+const SelectAlliance = ({ coordX = 10, coordY = 10, currentAlliance, setAlliance }) => {
+  const [redSelected, setRedSelected] = useState(currentAlliance === "red");
+  const [blueSelected, setBlueSelected] = useState(currentAlliance === "blue");
 
   const clickAlliance = (alliance) => {
     if (alliance === "red") {

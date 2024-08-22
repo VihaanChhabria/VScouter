@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SelectTeamButton from "./SelectTeamButton";
 
-const SelectTeam = ({ coordX = 306, coordY = 10, setSelectTeam }) => {
-  const [team1Status, setTeam1Status] = useState(false);
-  const [team2Status, setTeam2Status] = useState(false);
-  const [team3Status, setTeam3Status] = useState(false);
-  const [customTeamStatus, setCustomTeamStatus] = useState(false);
+const SelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSelectTeam }) => {
+  const [team1Status, setTeam1Status] = useState(defaultSelectTeam === "0001"); // TODO: make this actually work with json
+  const [team2Status, setTeam2Status] = useState(defaultSelectTeam === "0002");
+  const [team3Status, setTeam3Status] = useState(defaultSelectTeam === "0003");
+  const [customTeamStatus, setCustomTeamStatus] = useState(
+    defaultSelectTeam != "0001" && defaultSelectTeam != "0002" && defaultSelectTeam != "0003" && defaultSelectTeam != null
+  );
+
+  const [customTeamValue, setCustomTeamValue] = useState(
+    defaultSelectTeam != "0001" && defaultSelectTeam != "0002" && defaultSelectTeam != "0003" && defaultSelectTeam != null
+      ? defaultSelectTeam
+      : ""
+  );
 
   const clickTeam = (currentTeamType, currentTeamStatus) => {
     if (currentTeamType === "1") {
@@ -33,19 +41,21 @@ const SelectTeam = ({ coordX = 306, coordY = 10, setSelectTeam }) => {
       setTeam2Status(false);
       setTeam3Status(false);
     }
+  };
 
+  useEffect(() => {
     if (team1Status) {
       setSelectTeam("0001");
     } else if (team2Status) {
       setSelectTeam("0002");
     } else if (team3Status) {
       setSelectTeam("0003");
-    } else if (customTeamStatus) {
-      setSelectTeam("0004");
+    } else if (customTeamStatus && customTeamValue != "") {
+      setSelectTeam(customTeamValue);
     } else {
       setSelectTeam(null);
     }
-  };
+  }, [team1Status, team2Status, team3Status, customTeamStatus, customTeamValue]);
 
   return (
     <>
@@ -97,8 +107,6 @@ const SelectTeam = ({ coordX = 306, coordY = 10, setSelectTeam }) => {
           <h1 style={{ color: "#FFFFFF", fontSize: "20px" }}>Custom (put team # only):</h1>
           <input
             type="text"
-            name=""
-            id=""
             style={{
               border: "4px solid #1D1E1E",
               borderRadius: "10px",
@@ -109,6 +117,8 @@ const SelectTeam = ({ coordX = 306, coordY = 10, setSelectTeam }) => {
               marginLeft: "4px",
             }}
             onClick={() => clickTeam("custom", customTeamStatus)}
+            value={customTeamValue}
+            onChange={(e) => setCustomTeamValue(e.target.value)}
           />
         </div>
       </div>

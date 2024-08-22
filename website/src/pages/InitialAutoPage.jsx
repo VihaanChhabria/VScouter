@@ -8,8 +8,7 @@ import AutoStartCounter from "../components/AutoStartCounter";
 
 const InitialAutoPage = () => {
   const location = useLocation();
-  const { inputs } = location.state
-  console.log(inputs)
+  const { inputs } = location.state;
 
   const [noShow, setNoShow] = useState(false);
 
@@ -19,7 +18,7 @@ const InitialAutoPage = () => {
       <AutoStartImage />
       <NoShowButton noShow={noShow} setNoShow={setNoShow} />
       <AutoStartCounter />
-      <ProceedBackButton back={true} nextPage="/" />
+      <ProceedBackButton back={true} nextPage="/" inputs={inputs}/>
     </>
   );
 };

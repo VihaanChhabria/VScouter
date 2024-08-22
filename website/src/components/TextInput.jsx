@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, setTextValue }) => {
-  const [upperText, setUpperText] = useState("");
+const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, defaultText, setTextValue }) => {
+  const [upperText, setUpperText] = useState(defaultText === null ? "" : defaultText.toUpperCase());
 
   useEffect(() => {
     if (upperText != "") {
@@ -37,8 +37,6 @@ const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, se
         </h1>
         <input
           type="text"
-          name=""
-          id=""
           value={upperText}
           onChange={(e) => setUpperText(e.target.value.toUpperCase())}
           style={{

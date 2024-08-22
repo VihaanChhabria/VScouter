@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,12 +13,11 @@ const ProceedBackButton = ({
 
   const navigate = useNavigate();
   const proceedClick = () => {
-    console.log(inputs)
     const hasNull = Object.values(inputs).some((val) => val === null);
     if (hasNull) {
       toast.error("Fill In All Fields To Proceed");
     }else{
-      navigate(nextPage);
+      navigate(nextPage, { state: { inputs } });
     }
   };
   const containerStyle = {
@@ -49,11 +48,12 @@ const ProceedBackButton = ({
 
   return (
     <>
-      <div style={containerStyle} onClick={proceedClick}>
+      <div style={containerStyle} onClick={back ? (() => navigate(nextPage, { state: { inputs } })) : proceedClick}>
         <h1 style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: "bold" }}>
           {back ? "Back" : "Proceed"}
         </h1>
       </div>
+      <ToastContainer />
     </>
   );
 };

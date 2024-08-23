@@ -8,6 +8,7 @@ import {
 
 import MainLayout from "./layouts/MainLayout";
 
+import HomePage from "./pages/HomePage";
 import GameStartPage from "./pages/GameStartPage";
 import AutoStartPage from "./pages/AutoStartPage";
 import AutoScoringPage from "./pages/AutoScoringPage";
@@ -18,7 +19,8 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<GameStartPage />} />
+        <Route index element={<HomePage />} />
+        <Route path="/game-start" element={<GameStartPage />} />
         <Route path="/auto-start" element={<AutoStartPage />} />
         <Route path="/auto-scoring" element={<AutoScoringPage />} />
         <Route path="/teleop-scoring" element={<TeleopScoringPage />} />

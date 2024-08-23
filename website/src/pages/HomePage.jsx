@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
 
-const EndgameScoringPage = () => {
+const HomePage = () => {
   const location = useLocation();
   const states = location.state;
 
@@ -11,18 +11,10 @@ const EndgameScoringPage = () => {
 
   return (
     <>
-    <h1>EndgameScoringPage</h1>
+      <h1>HomePage</h1>
 
       <ProceedBackButton
         nextPage={`/game-start`}
-        inputs={{
-          ...(states?.inputs || {}),
-          // __: __,
-        }}
-      />
-      <ProceedBackButton
-        back={true}
-        nextPage="/teleop-scoring"
         inputs={{
           ...(states?.inputs || {}),
           // __: __,
@@ -32,4 +24,4 @@ const EndgameScoringPage = () => {
   );
 };
 
-export default EndgameScoringPage;
+export default HomePage;

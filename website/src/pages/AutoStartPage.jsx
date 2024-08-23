@@ -20,7 +20,7 @@ const AutoStartPage = () => {
       {!noShow && (
         <AutoStartCounter startCounter={startCounter} setStartCounter={setStartCounter} />
       )}
-      
+
       <ProceedBackButton
         nextPage={noShow ? `/endgame` : `/auto-scoring`}
         inputs={{
@@ -31,7 +31,7 @@ const AutoStartPage = () => {
       />
       <ProceedBackButton
         back={true}
-        nextPage="/"
+        nextPage="/game-start"
         inputs={{
           ...(states?.inputs || {}),
           noShow: noShow,

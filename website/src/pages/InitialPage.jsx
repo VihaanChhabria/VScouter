@@ -17,27 +17,19 @@ const InitialPage = () => {
   const [scouterInitials, setScouterInitials] = useState(states?.inputs?.scouterInitials || null);
   const [selectTeam, setSelectTeam] = useState(states?.inputs?.selectTeam || null);
 
-  let newInputs = {
-    ...(states?.inputs || {}),
-    alliance: alliance,
-    matchNumber: matchNumber,
-    scouterInitials: scouterInitials,
-    selectTeam: selectTeam,
-  };
-
-  useEffect(() => {
-    newInputs = {
-      ...(states?.inputs || {}),
-      alliance: alliance,
-      matchNumber: matchNumber,
-      scouterInitials: scouterInitials,
-      selectTeam: selectTeam,
-    };
-  }, [alliance, matchNumber, scouterInitials, selectTeam]);
 
   return (
     <>
-      <ProceedBackButton nextPage="/initial-auto" inputs={newInputs} />
+      <ProceedBackButton
+        nextPage="/initial-auto"
+        inputs={{
+          ...(states?.inputs || {}),
+          alliance: alliance,
+          matchNumber: matchNumber,
+          scouterInitials: scouterInitials,
+          selectTeam: selectTeam,
+        }}
+      />
       <SelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
       <TextInput
         question="Match Number"

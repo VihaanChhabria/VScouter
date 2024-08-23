@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
 import blueField from "../assets/Blue_Alliance_Auto_Start.png";
+import redField from "../assets/Red_Alliance_Auto_Start.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
 
-const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158}) => {
+const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158, alliance = "blue" }) => {
   const [rotate, setRotate] = useState(false);
 
   return (
     <>
       <div
         style={{
-          backgroundImage: `url(${blueField})`,
+          backgroundImage: `url(${alliance == "blue" ? blueField: redField})`,
           width: "420px",
           height: "430px",
           animationName: rotate ? "rotateRight" : "rotateLeft",
@@ -21,7 +22,7 @@ const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158}) => {
       >
         <AutoStartNumberSection
           number="1"
-          coordX={46}
+          coordX={alliance == "blue" ? 44 : 256}
           coordY={46}
           width={118}
           height={71}
@@ -29,7 +30,7 @@ const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158}) => {
         />
         <AutoStartNumberSection
           number="2"
-          coordX={46}
+          coordX={alliance == "blue" ? 44 : 256}
           coordY={117}
           width={118}
           height={57}
@@ -37,7 +38,7 @@ const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158}) => {
         />
         <AutoStartNumberSection
           number="3"
-          coordX={46}
+          coordX={alliance == "blue" ? 44 : 256}
           coordY={174}
           width={118}
           height={79}
@@ -45,7 +46,7 @@ const AutoStartImage = ({ buttonCoordX = 606, buttonCoordY = 158}) => {
         />
         <AutoStartNumberSection
           number="4"
-          coordX={46}
+          coordX={alliance == "blue" ? 44 : 256}
           coordY={253}
           width={118}
           height={79}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProceedBackButton = ({
   back = false,
@@ -10,14 +10,21 @@ const ProceedBackButton = ({
   coordY = null,
   inputs = {},
 }) => {
-
   const navigate = useNavigate();
   const proceedClick = () => {
-    const hasNull = Object.values(inputs).some((val) => val === null);
-    if (hasNull) {
-      toast.error("Fill In All Fields To Proceed");
-    }else{
+    
+    if (back) {
+      inputs = Object.fromEntries(
+        Object.entries(inputs).filter(([key, value]) => value !== null)
+      );
       navigate(nextPage, { state: { inputs } });
+    } else {
+      const hasNull = Object.values(inputs).some((val) => val === null);
+      if (hasNull) {
+        toast.error("Fill In All Fields To Proceed");
+      } else {
+        navigate(nextPage, { state: { inputs } });
+      }
     }
   };
   const containerStyle = {
@@ -48,7 +55,7 @@ const ProceedBackButton = ({
 
   return (
     <>
-      <div style={containerStyle} onClick={back ? (() => navigate(nextPage, { state: { inputs } })) : proceedClick}>
+      <div style={containerStyle} onClick={proceedClick}>
         <h1 style={{ color: "#FFFFFF", fontSize: "24px", fontWeight: "bold" }}>
           {back ? "Back" : "Proceed"}
         </h1>

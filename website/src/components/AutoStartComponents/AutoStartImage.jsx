@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import blueField from "../assets/Blue_Alliance_Auto_Start.png";
-import redField from "../assets/Red_Alliance_Auto_Start.png";
+import blueField from "../../assets/Blue_Alliance_Auto_Start.png";
+import redField from "../../assets/Red_Alliance_Auto_Start.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
 

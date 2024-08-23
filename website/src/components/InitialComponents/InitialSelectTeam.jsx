@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SelectTeamButton from "./SelectTeamButton";
+import SelectTeamButton from "./InitialSelectTeamButton";
 
-const SelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSelectTeam }) => {
+const InitialSelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSelectTeam }) => {
   const [team1Status, setTeam1Status] = useState(defaultSelectTeam === "0001"); // TODO: make this actually work with json
   const [team2Status, setTeam2Status] = useState(defaultSelectTeam === "0002");
   const [team3Status, setTeam3Status] = useState(defaultSelectTeam === "0003");
@@ -126,4 +126,4 @@ const SelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSelectTea
   );
 };
 
-export default SelectTeam;
+export default InitialSelectTeam;

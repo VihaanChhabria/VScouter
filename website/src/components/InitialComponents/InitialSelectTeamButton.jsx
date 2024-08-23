@@ -1,6 +1,6 @@
 import React from "react";
 
-const SelectTeamButton = ({
+const InitialSelectTeamButton = ({
   currentTeamType,
   currentTeamStatus,
   clickTeam,
@@ -30,4 +30,4 @@ const SelectTeamButton = ({
   );
 };
 
-export default SelectTeamButton;
+export default InitialSelectTeamButton;

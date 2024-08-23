@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const SelectAlliance = ({ coordX = 10, coordY = 10, currentAlliance, setAlliance }) => {
+const InitialSelectAlliance = ({ coordX = 10, coordY = 10, currentAlliance, setAlliance }) => {
   const [redSelected, setRedSelected] = useState(currentAlliance === "red");
   const [blueSelected, setBlueSelected] = useState(currentAlliance === "blue");
 
@@ -84,4 +84,4 @@ const SelectAlliance = ({ coordX = 10, coordY = 10, currentAlliance, setAlliance
   );
 };
 
-export default SelectAlliance;
+export default InitialSelectAlliance;

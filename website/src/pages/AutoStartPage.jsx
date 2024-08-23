@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import AutoStartImage from "../components/AutoStartImage";
-import NoShowButton from "../components/NoShowButton";
-import AutoStartCounter from "../components/AutoStartCounter";
+import AutoStartImage from "../components/AutoStartComponents/AutoStartImage";
+import AutoStartNoShowButton from "../components/AutoStartComponents/AutoStartNoShowButton";
+import AutoStartCounter from "../components/AutoStartComponents/AutoStartCounter";
 
-const InitialAutoPage = () => {
+const AutoStartPage = () => {
   const location = useLocation();
   const states = location.state;
 
@@ -15,19 +15,20 @@ const InitialAutoPage = () => {
 
   return (
     <>
+      <AutoStartImage alliance={states?.inputs?.alliance || "blue"} />
+      <AutoStartNoShowButton noShow={noShow} setNoShow={setNoShow} />
+      {!noShow && (
+        <AutoStartCounter startCounter={startCounter} setStartCounter={setStartCounter} />
+      )}
+      
       <ProceedBackButton
-        nextPage={noShow ? `/endgame` : `/auto-note-counter`}
+        nextPage={noShow ? `/endgame` : `/auto-scoring`}
         inputs={{
           ...(states?.inputs || {}),
           noShow: noShow,
           startCounter: startCounter,
         }}
       />
-      <AutoStartImage alliance={states?.inputs?.alliance || "blue"} />
-      <NoShowButton noShow={noShow} setNoShow={setNoShow} />
-      {!noShow && (
-        <AutoStartCounter startCounter={startCounter} setStartCounter={setStartCounter} />
-      )}
       <ProceedBackButton
         back={true}
         nextPage="/"
@@ -41,4 +42,4 @@ const InitialAutoPage = () => {
   );
 };
 
-export default InitialAutoPage;
+export default AutoStartPage;

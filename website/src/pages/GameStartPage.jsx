@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import SelectAlliance from "../components/SelectAlliance";
+import SelectAlliance from "../components/InitialComponents/InitialSelectAlliance";
 import TextInput from "../components/TextInput";
-import SelectTeam from "../components/SelectTeam";
+import SelectTeam from "../components/InitialComponents/InitialSelectTeam";
 
-const InitialPage = () => {
+const GameStartPage = () => {
   const location = useLocation();
   const states = location.state;
 
@@ -17,19 +15,8 @@ const InitialPage = () => {
   const [scouterInitials, setScouterInitials] = useState(states?.inputs?.scouterInitials || null);
   const [selectTeam, setSelectTeam] = useState(states?.inputs?.selectTeam || null);
 
-
   return (
     <>
-      <ProceedBackButton
-        nextPage="/initial-auto"
-        inputs={{
-          ...(states?.inputs || {}),
-          alliance: alliance,
-          matchNumber: matchNumber,
-          scouterInitials: scouterInitials,
-          selectTeam: selectTeam,
-        }}
-      />
       <SelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
       <TextInput
         question="Match Number"
@@ -46,8 +33,19 @@ const InitialPage = () => {
         setTextValue={setScouterInitials}
       />
       <SelectTeam defaultSelectTeam={selectTeam} setSelectTeam={setSelectTeam} />
+
+      <ProceedBackButton
+        nextPage="/auto-start"
+        inputs={{
+          ...(states?.inputs || {}),
+          alliance: alliance,
+          matchNumber: matchNumber,
+          scouterInitials: scouterInitials,
+          selectTeam: selectTeam,
+        }}
+      />
     </>
   );
 };
 
-export default InitialPage;
+export default GameStartPage;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NoShowButton = ({ coordX = 606, coordY = 72, noShow, setNoShow }) => {
+const AutoStartNoShowButton = ({ coordX = 606, coordY = 72, noShow, setNoShow }) => {
 
   return (
     <>
@@ -28,4 +28,4 @@ const NoShowButton = ({ coordX = 606, coordY = 72, noShow, setNoShow }) => {
   );
 };
 
-export default NoShowButton;
+export default AutoStartNoShowButton;

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import blueField from "../../assets/Blue_Alliance_Auto_Start.png";
-import redField from "../../assets/Red_Alliance_Auto_Start.png";
+import blueField from "../../assets/AutoStartMapImages/Blue_Alliance.png";
+import redField from "../../assets/AutoStartMapImages/Red_Alliance.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
 
-const AutoStartImage = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "blue" }) => {
+const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "blue" }) => {
   const [rotate, setRotate] = useState(false);
 
   return (
@@ -30,7 +30,7 @@ const AutoStartImage = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance =
           coordY={10.7}
           width={12.66}
           height={16.51}
-          rotate={rotate}
+          rotated={rotate}
         />
         <AutoStartNumberSection
           number="2"
@@ -38,7 +38,7 @@ const AutoStartImage = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance =
           coordY={27.21}
           width={12.66}
           height={13.26}
-          rotate={rotate}
+          rotated={rotate}
         />
         <AutoStartNumberSection
           number="3"
@@ -46,7 +46,7 @@ const AutoStartImage = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance =
           coordY={40.47}
           width={12.66}
           height={18.37}
-          rotate={rotate}
+          rotated={rotate}
         />
         <AutoStartNumberSection
           number="4"
@@ -54,7 +54,7 @@ const AutoStartImage = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance =
           coordY={58.84}
           width={12.66}
           height={18.37}
-          rotate={rotate}
+          rotated={rotate}
         />
       </div>
 
@@ -80,4 +80,4 @@ const AutoStartImage = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance =
   );
 };
 
-export default AutoStartImage;
+export default AutoStartMap;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import AutoStartImage from "../components/AutoStartComponents/AutoStartImage";
+import AutoStartMap from "../components/AutoStartComponents/AutoStartMap";
 import AutoStartNoShowButton from "../components/AutoStartComponents/AutoStartNoShowButton";
 import AutoStartCounter from "../components/AutoStartComponents/AutoStartCounter";
 
@@ -15,7 +15,7 @@ const AutoStartPage = () => {
 
   return (
     <>
-      <AutoStartImage alliance={states?.inputs?.alliance || "blue"} />
+      <AutoStartMap alliance={states?.inputs?.alliance || "blue"} />
       <AutoStartNoShowButton noShow={noShow} setNoShow={setNoShow} />
       {!noShow && (
         <AutoStartCounter startCounter={startCounter} setStartCounter={setStartCounter} />

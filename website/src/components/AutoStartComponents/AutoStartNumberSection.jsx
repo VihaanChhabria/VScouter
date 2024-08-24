@@ -6,7 +6,7 @@ const AutoStartNumberSection = ({
   coordY = 0,
   width = 10.84,
   height = 16.51,
-  rotate = false,
+  rotated = false,
 }) => {
   return (
     <>
@@ -22,7 +22,7 @@ const AutoStartNumberSection = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          transform: rotate ? "rotate(180deg)" : "rotate(0deg)",
+          transform: rotated ? "rotate(180deg)" : "rotate(0deg)",
         }}
       >
         <h1 style={{ color: "#000000", fontSize: "5.58vh" }}>{number}</h1>

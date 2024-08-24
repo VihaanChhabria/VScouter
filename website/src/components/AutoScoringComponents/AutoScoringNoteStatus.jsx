@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
-const AutoScoringNoteStatus = (coordX = 0, coordY = 0) => {
-  const [status, setStatus] = useState("Not Picked");
+const AutoScoringNoteStatus = ({
+  coordX = 0,
+  coordY = 0,
+  rotated = false,
+  status,
+  setStatus,
+}) => {
   const baseStyle = {
     position: "absolute",
     left: `${coordX}vw`,
@@ -20,6 +25,7 @@ const AutoScoringNoteStatus = (coordX = 0, coordY = 0) => {
         ? "rgba(255, 149, 149, 0.5)"
         : "rgba(217, 217, 217, 0.5)",
     userSelect: "none",
+    transform: rotated ? "rotate(180deg)" : "rotate(0deg)",
   };
 
   const changeStatus = () => {
@@ -34,7 +40,7 @@ const AutoScoringNoteStatus = (coordX = 0, coordY = 0) => {
   return (
     <>
       <div style={baseStyle} onClick={changeStatus}>
-        <h1 style={{ color: "#000000", fontSize: "5.58vh", fontWeight: "bold" }}>{status}</h1>
+        <h1 style={{ color: "#000000", fontSize: "5.0vh", fontWeight: "bold" }}>{status}</h1>
       </div>
     </>
   );

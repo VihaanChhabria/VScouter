@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AutoStartCounter = ({ coordX = 439, coordY = 40, startCounter, setStartCounter }) => {
+const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, startCounter, setStartCounter }) => {
   const [counter, setCounter] = useState(startCounter == null ? 1 : startCounter);
 
   const checkCounterAndSet = (setTo) => {
@@ -15,10 +15,10 @@ const AutoStartCounter = ({ coordX = 439, coordY = 40, startCounter, setStartCou
   };
 
   const plusMinusButtonStyle = {
-    width: "100px",
-    height: "100px",
+    width: "10.73vw",
+    height: "23.26vh",
     backgroundColor: "#BBBBBB",
-    borderRadius: "20px",
+    borderRadius: "4.65vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -26,7 +26,7 @@ const AutoStartCounter = ({ coordX = 439, coordY = 40, startCounter, setStartCou
 
   const plusMinusTextStyle = {
     color: "#000000",
-    fontSize: "72px",
+    fontSize: "16.74vh",
     fontWeight: "bold",
     userSelect: "none",
   };
@@ -35,12 +35,12 @@ const AutoStartCounter = ({ coordX = 439, coordY = 40, startCounter, setStartCou
       <div
         style={{
           backgroundColor: "#242424",
-          borderRadius: "20px",
-          width: "150px",
-          height: "350px",
+          borderRadius: "4.65vh",
+          width: "16.09vw",
+          height: "81.4vh",
           position: "absolute",
-          left: `${coordX}px`,
-          top: `${coordY}px`,
+          left: `${coordX}vw`,
+          top: `${coordY}vh`,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-evenly",
@@ -52,14 +52,14 @@ const AutoStartCounter = ({ coordX = 439, coordY = 40, startCounter, setStartCou
         </div>
         <div
           style={{
-            width: "100px",
-            height: "60px",
+            width: "10.73vw",
+            height: "13.95vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <h1 style={{ color: "#FFFFFF", fontSize: "64px", fontWeight: "bold" }}>{counter}</h1>
+          <h1 style={{ color: "#FFFFFF", fontSize: "14.88vh", fontWeight: "bold" }}>{counter}</h1>
         </div>
         <div style={plusMinusButtonStyle} onClick={() => checkCounterAndSet(counter - 1)}>
           <h1 style={plusMinusTextStyle}>−</h1>

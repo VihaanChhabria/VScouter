@@ -4,8 +4,8 @@ const AutoStartNumberSection = ({
   number = "1",
   coordX = 0,
   coordY = 0,
-  width = 101,
-  height = 71,
+  width = 10.84,
+  height = 16.51,
   rotate = false,
 }) => {
   return (
@@ -13,19 +13,19 @@ const AutoStartNumberSection = ({
       <div
         style={{
           position: "absolute",
-          left: `${coordX}px`,
-          top: `${coordY}px`,
-          width: `${width}px`,
-          height: `${height}px`,
+          left: `${coordX}vw`,
+          top: `${coordY}vh`,
+          width: `${width}vw`,
+          height: `${height}vh`,
           backgroundColor: "rgba(217, 217, 217, 0.5)",
-          border: "5px solid #5A5A5A",
+          border: "1.16vh solid #5A5A5A",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           transform: rotate ? "rotate(180deg)" : "rotate(0deg)",
         }}
       >
-        <h1 style={{ color: "#000000", fontSize: "24px" }}>{number}</h1>
+        <h1 style={{ color: "#000000", fontSize: "5.58vh" }}>{number}</h1>
       </div>
     </>
   );

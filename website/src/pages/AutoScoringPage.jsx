@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
+import AutoScoringNoteStatus from "../components/AutoScoringComponents/AutoScoringNoteStatus";
 
 const AutoScoringPage = () => {
   const location = useLocation();
@@ -11,7 +12,7 @@ const AutoScoringPage = () => {
 
   return (
     <>
-      <h1>AutoScoringPage</h1>
+      <AutoScoringNoteStatus />
 
       <ProceedBackButton
         nextPage={`/teleop-scoring`}

@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, defaultText, setTextValue}) => {
+const TextInput = ({
+  question = "Match Number",
+  coordX = 10,
+  coordY = 179.52,
+  defaultText,
+  setTextValue,
+}) => {
   const [upperText, setUpperText] = useState(defaultText === null ? "" : defaultText.toUpperCase());
 
   useEffect(() => {
@@ -16,21 +22,21 @@ const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, de
       <div
         style={{
           border: "7px solid #1D1E1E",
-          width: "262.16px",
-          height: "85.52px",
+          width: "28.12vw",
+          height: "19.89vh",
           backgroundColor: "#242424",
-          borderRadius: "15px",
+          borderRadius: "3.49vh",
           position: "absolute",
-          left: `${coordX}px`,
-          top: `${coordY}px`,
+          left: `${coordX}vw`,
+          top: `${coordY}vh`,
         }}
       >
         <h1
           style={{
             color: "#FFFFFF",
-            fontSize: "24px",
+            fontSize: "5.58vh",
             fontWeight: "bold",
-            paddingLeft: "10px",
+            paddingLeft: "1.07vw",
           }}
         >
           {question}
@@ -40,14 +46,15 @@ const TextInput = ({ question = "Match Number", coordX = 10, coordY = 179.52, de
           value={upperText}
           onChange={(e) => setUpperText(e.target.value.toUpperCase())}
           style={{
-            border: "4px solid #1D1E1E",
-            borderRadius: "10px",
+            border: "0.93vh solid #1D1E1E",
+            borderRadius: "2.33vh",
             backgroundColor: "#4A4A4A",
             color: "#FFFFFF",
-            width: "242.44px",
-            height: "38.18px",
-            marginLeft: "4px",
-            marginTop: "-4.5px",
+            width: "26.01vw",
+            height: "8.88vh",
+            marginLeft: "0.43vw",
+            marginTop: "-1.05vh",
+            fontSize: "4.0vh",
           }}
         />
       </div>

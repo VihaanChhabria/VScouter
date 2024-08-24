@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SelectTeamButton from "./InitialSelectTeamButton";
 
-const InitialSelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSelectTeam }) => {
+const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, setSelectTeam }) => {
   const [team1Status, setTeam1Status] = useState(defaultSelectTeam === "0001"); // TODO: make this actually work with json
   const [team2Status, setTeam2Status] = useState(defaultSelectTeam === "0002");
   const [team3Status, setTeam3Status] = useState(defaultSelectTeam === "0003");
@@ -62,22 +62,22 @@ const InitialSelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSe
       <div
         style={{
           border: "7px solid #1D1E1E",
-          width: "616px",
-          height: "234px",
+          width: "66.09vw",
+          height: "54.42vh",
           backgroundColor: "#242424",
-          borderRadius: "15px",
+          borderRadius: "3.49vh",
           position: "absolute",
-          left: `${coordX}px`,
-          top: `${coordY}px`,
+          left: `${coordX}vw`,
+          top: `${coordY}vh`,
         }}
       >
         <div style={{}}>
           <h1
             style={{
               color: "#FFFFFF",
-              fontSize: "24px",
+              fontSize: "5.58vh",
               fontWeight: "bold",
-              paddingLeft: "10px",
+              paddingLeft: "1.07vw",
             }}
           >
             Select Team
@@ -103,18 +103,18 @@ const InitialSelectTeam = ({ coordX = 306, coordY = 10, defaultSelectTeam, setSe
           />
         </div>
 
-        <div style={{ paddingLeft: "16px", display: "flex" }}>
-          <h1 style={{ color: "#FFFFFF", fontSize: "20px" }}>Custom (put team # only):</h1>
+        <div style={{ paddingLeft: "1.72vw", display: "flex" }}>
+          <h1 style={{ color: "#FFFFFF", fontSize: "4.2vh" }}>Custom (put team # only):</h1>
           <input
             type="text"
             style={{
-              border: "4px solid #1D1E1E",
-              borderRadius: "10px",
+              border: "0.93vh solid #1D1E1E",
+              borderRadius: "2.33vh",
               backgroundColor: `#${customTeamStatus ? "393939" : "6C6C6C"}`,
               color: "#FFFFFF",
-              width: "345px",
-              height: "38.18px",
-              marginLeft: "4px",
+              width: "37.02vw",
+              height: "8.88vh",
+              marginLeft: "0.43vw",
             }}
             onClick={() => clickTeam("custom", customTeamStatus)}
             value={customTeamValue}

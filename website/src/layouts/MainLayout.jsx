@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const MainLayout = () => {
   return (
-    <div style={{ backgroundColor: "#3A3B3E", height: screen.height }}>
+    <div style={{ backgroundColor: "#3A3B3E", height: window.innerHeight }}>
       <Outlet/>
     </div>
   );

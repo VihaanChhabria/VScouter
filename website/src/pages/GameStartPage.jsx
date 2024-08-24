@@ -20,15 +20,15 @@ const GameStartPage = () => {
       <SelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
       <TextInput
         question="Match Number"
-        coordX={10}
-        coordY={179.52}
+        coordX={1.07}
+        coordY={41.75}
         defaultText={matchNumber}
         setTextValue={setMatchNumber}
       />
       <TextInput
         question="Scouter Initials"
-        coordX={10}
-        coordY={275}
+        coordX={1.07}
+        coordY={63.95}
         defaultText={scouterInitials}
         setTextValue={setScouterInitials}
       />

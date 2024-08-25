@@ -43,22 +43,16 @@ const TeleopScoringPage = () => {
       {/* Render the TeleopScoringMap component to show the map and the counters */}
       <TeleopScoringMap
         alliance={states?.inputs?.alliance || "blue"}
-        counts={{
-          ampMadeCount,
-          ampMissedCount,
-          speakerMadeCount,
-          speakerMissedCount,
-          fedMadeCount,
-          fedMissedCount,
-        }}
-        setCounts={{
-          setAmpMadeCount,
-          setAmpMissedCount,
-          setSpeakerMadeCount,
-          setSpeakerMissedCount,
-          setFedMadeCount,
-          setFedMissedCount,
-        }}
+        counts={[
+          [ampMadeCount, ampMissedCount],
+          [speakerMadeCount, speakerMissedCount],
+          [fedMadeCount, fedMissedCount],
+        ]}
+        setCounts={[
+          [setAmpMadeCount, setAmpMissedCount],
+          [setSpeakerMadeCount, setSpeakerMissedCount],
+          [setFedMadeCount, setFedMissedCount],
+        ]}
       />
 
       {/* Render the ProceedBackButton to navigate to the next page and pass in the selected data as props */}

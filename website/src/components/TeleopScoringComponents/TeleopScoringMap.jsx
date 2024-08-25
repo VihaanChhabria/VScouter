@@ -36,6 +36,31 @@ const TeleopScoringMap = ({
   const [rotate, setRotate] = useState(false);
   const [remove, setRemove] = useState(false);
 
+  // Info for the scoring counters
+  const counterInfo = [
+    {
+      coordX: 4.5,
+      coordY: 10.7,
+      width: 15,
+      height: 37.9,
+      type: "Amp",
+    },
+    {
+      coordX: 4.5,
+      coordY: 48.6,
+      width: 15,
+      height: 51.5,
+      type: "Speaker",
+    },
+    {
+      coordX: 34.5,
+      coordY: 10.7,
+      width: 14.45,
+      height: 89.4,
+      type: "Fed",
+    },
+  ];
+
   return (
     <>
       {/* The map and the scoring counters */}
@@ -53,92 +78,42 @@ const TeleopScoringMap = ({
           top: "0vh",
         }}
       >
-        {/* The counter for the made amp rings */}
-        <TeleopScoringCounter
-          coordX={4.5}
-          coordY={10.7}
-          width={15}
-          height={37.9}
-          message="Amp Made:"
-          backgroundColor="rgba(174, 243, 142, 0.5)"
-          rotated={rotate}
-          removed={remove}
-          setRemoved={setRemove}
-          count={counts.ampMadeCount}
-          setCount={setCounts.setAmpMadeCount}
-        />
-        {/* The counter for the missed amp rings */}
-        <TeleopScoringCounter
-          coordX={19.5}
-          coordY={10.7}
-          width={15}
-          height={37.9}
-          message="Amp Missed:"
-          backgroundColor="rgba(255, 149, 149, 0.5)"
-          rotated={rotate}
-          removed={remove}
-          setRemoved={setRemove}
-          count={counts.ampMissedCount}
-          setCount={setCounts.setAmpMissedCount}
-        />
+        {/* Generating the scoring counters */}
+        {counterInfo.map((countInfo, index) => (
+          <div key={index}>
+            {/* Made Counter */}
+            <TeleopScoringCounter
+              coordX={countInfo.coordX}
+              coordY={countInfo.coordY}
+              width={countInfo.width}
+              height={countInfo.height}
+              message={countInfo.type + " Made:"}
+              backgroundColor="rgba(174, 243, 142, 0.5)"
+              rotated={rotate}
+              removed={remove}
+              setRemoved={setRemove}
+              count={counts[index][0]}
+              setCount={setCounts[index][0]}
+              key={index + "0"}
+            />
 
-        {/* The counter for the made speaker rings */}
-        <TeleopScoringCounter
-          coordX={4.5}
-          coordY={48.6}
-          width={15}
-          height={51.5}
-          message="Speaker Made:"
-          backgroundColor="rgba(174, 243, 142, 0.5)"
-          rotated={rotate}
-          removed={remove}
-          setRemoved={setRemove}
-          count={counts.speakerMadeCount}
-          setCount={setCounts.setSpeakerMadeCount}
-        />
-        {/* The counter for the missed speaker rings */}
-        <TeleopScoringCounter
-          coordX={19.5}
-          coordY={48.6}
-          width={15}
-          height={51.5}
-          message="Speaker Missed:"
-          backgroundColor="rgba(255, 149, 149, 0.5)"
-          rotated={rotate}
-          removed={remove}
-          setRemoved={setRemove}
-          count={counts.speakerMissedCount}
-          setCount={setCounts.setSpeakerMissedCount}
-        />
-
-        {/* The counter for the made fed rings */}
-        <TeleopScoringCounter
-          coordX={34.5}
-          coordY={10.7}
-          width={14.45}
-          height={89.4}
-          message="Fed Made:"
-          backgroundColor="rgba(174, 243, 142, 0.5)"
-          rotated={rotate}
-          removed={remove}
-          setRemoved={setRemove}
-          count={counts.fedMadeCount}
-          setCount={setCounts.setFedMadeCount}
-        />
-        {/* The counter for the missed fed rings */}
-        <TeleopScoringCounter
-          coordX={48.95}
-          coordY={10.7}
-          width={14.45}
-          height={89.4}
-          message="Fed Missed:"
-          backgroundColor="rgba(255, 149, 149, 0.5)"
-          rotated={rotate}
-          removed={remove}
-          setRemoved={setRemove}
-          count={counts.fedMissedCount}
-          setCount={setCounts.setFedMissedCount}
-        />
+            {/* Missed Counter */}
+            <TeleopScoringCounter
+              coordX={countInfo.coordX + countInfo.width}
+              coordY={countInfo.coordY}
+              width={countInfo.width}
+              height={countInfo.height}
+              message={countInfo.type + " Missed:"}
+              backgroundColor="rgba(255, 149, 149, 0.5)"
+              rotated={rotate}
+              removed={remove}
+              setRemoved={setRemove}
+              count={counts[index][1]}
+              setCount={setCounts[index][1]}
+              key={index + "1"}
+            />
+          </div>
+        ))}
       </div>
 
       {/* The flip button */}

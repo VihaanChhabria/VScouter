@@ -4,10 +4,20 @@ import { useLocation } from "react-router-dom";
 import ProceedBackButton from "../components/ProceedBackButton";
 import TeleopScoringMap from "../components/TeleopScoringComponents/TeleopScoringMap";
 
+/**
+ * Renders a component representing the Teleop Scoring Page.
+ *
+ * To be used when the teleop period starts, collecting information about the number of rings each robot made and missed in the amp, speaker and when feeding.
+ *
+ * @return {JSX.Element} The component representing the Teleop Scoring Page.
+ */
 const TeleopScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
+  /**
+   * Initialize state with the passed in state from the previous page, or null if no state was passed in
+   */
   const [ampMadeCount, setAmpMadeCount] = useState(
     states?.inputs?.teleopRingCounts?.ampMadeCount || 0
   );
@@ -28,9 +38,9 @@ const TeleopScoringPage = () => {
   const [fedMissedCount, setFedMissedCount] = useState(
     states?.inputs?.fteleopRingCounts?.edMissedCount || 0
   );
-
   return (
     <>
+      {/* Render the TeleopScoringMap component to show the map and the counters */}
       <TeleopScoringMap
         alliance={states?.inputs?.alliance || "blue"}
         counts={{
@@ -51,6 +61,7 @@ const TeleopScoringPage = () => {
         }}
       />
 
+      {/* Render the ProceedBackButton to navigate to the next page and pass in the selected data as props */}
       <ProceedBackButton
         nextPage={`/endgame-scoring`}
         inputs={{
@@ -65,6 +76,8 @@ const TeleopScoringPage = () => {
           },
         }}
       />
+
+      {/* Button to go back to the previous page and pass in the selected data as props*/}
       <ProceedBackButton
         back={true}
         coordX={51.04}

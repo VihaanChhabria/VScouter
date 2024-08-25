@@ -1,9 +1,18 @@
 import React from "react";
 
+/**
+ * A React functional component that renders a button to toggle the 'no show' state.
+ *
+ * @param {number} coordX - The x-coordinate of the button's position.
+ * @param {number} coordY - The y-coordinate of the button's position.
+ * @param {boolean} noShow - The current 'no show' state.
+ * @param {function} setNoShow - A function to update the 'no show' state.
+ * @return {JSX.Element} The rendered component.
+ */
 const AutoStartNoShowButton = ({ coordX = 65.02, coordY = 16.74, noShow, setNoShow }) => {
-
   return (
     <>
+      {/* Render the 'no show' button */}
       <div
         style={{
           width: "33.8vw",

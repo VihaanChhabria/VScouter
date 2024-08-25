@@ -1,5 +1,16 @@
 import React from "react";
 
+/**
+ * Renders a number section for the Auto Start Map.
+ *
+ * @param {string} number - The number to be displayed.
+ * @param {number} coordX - The x-coordinate of the section.
+ * @param {number} coordY - The y-coordinate of the section.
+ * @param {number} width - The width of the section.
+ * @param {number} height - The height of the section.
+ * @param {boolean} rotated - Whether the section should be rotated.
+ * @return {JSX.Element} The rendered component.
+ */
 const AutoStartNumberSection = ({
   number = "1",
   coordX = 0,

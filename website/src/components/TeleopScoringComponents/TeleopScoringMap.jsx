@@ -2,8 +2,27 @@ import React, { useState } from "react";
 
 import blueField from "../../assets/TeleopScoringMapImages/Blue_Alliance.png";
 import redField from "../../assets/TeleopScoringMapImages/Red_Alliance.png";
+
 import TeleopScoringCounter from "./TeleopScoringCounter";
 
+/**
+ * Renders a map for where the robot scores
+ *
+ * Has a remove button to remove the accidental increases in the counts.
+ *
+ * The map can be flipped between blue and red alliances, and it includes a flip button to rotate based on perspective.
+ *
+ * Collects information about the number of rings each robot made and missed in the amp, speaker and when feeding.
+ *
+ * @prop {number} flipButtonCoordX - The x-coordinate of the flip button.
+ * @prop {number} flipButtonCoordY - The y-coordinate of the flip button.
+ * @prop {number} removeButtonCoordX - The x-coordinate of the remove button.
+ * @prop {number} removeButtonCoordY - The y-coordinate of the remove button.
+ * @prop {string} alliance - The alliance color selected.
+ * @prop {object} counts - An object containing the current counts for each scoring category.
+ * @prop {object} setCounts - An object containing functions to update the counts for each scoring category.
+ * @return {JSX.Element} The rendered component.
+ */
 const TeleopScoringMap = ({
   flipButtonCoordX = 65.02,
   flipButtonCoordY = 36.74,
@@ -18,6 +37,7 @@ const TeleopScoringMap = ({
 
   return (
     <>
+      {/* The map and the scoring counters */}
       <div
         style={{
           backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
@@ -32,6 +52,7 @@ const TeleopScoringMap = ({
           top: "0vh",
         }}
       >
+        {/* The counter for the made amp rings */}
         <TeleopScoringCounter
           coordX={4.5}
           coordY={10.7}
@@ -45,6 +66,7 @@ const TeleopScoringMap = ({
           count={counts.ampMadeCount}
           setCount={setCounts.setAmpMadeCount}
         />
+        {/* The counter for the missed amp rings */}
         <TeleopScoringCounter
           coordX={19.5}
           coordY={10.7}
@@ -59,6 +81,7 @@ const TeleopScoringMap = ({
           setCount={setCounts.setAmpMissedCount}
         />
 
+        {/* The counter for the made speaker rings */}
         <TeleopScoringCounter
           coordX={4.5}
           coordY={48.6}
@@ -72,6 +95,7 @@ const TeleopScoringMap = ({
           count={counts.speakerMadeCount}
           setCount={setCounts.setSpeakerMadeCount}
         />
+        {/* The counter for the missed speaker rings */}
         <TeleopScoringCounter
           coordX={19.5}
           coordY={48.6}
@@ -86,6 +110,7 @@ const TeleopScoringMap = ({
           setCount={setCounts.setSpeakerMissedCount}
         />
 
+        {/* The counter for the made fed rings */}
         <TeleopScoringCounter
           coordX={34.5}
           coordY={10.7}
@@ -99,6 +124,7 @@ const TeleopScoringMap = ({
           count={counts.fedMadeCount}
           setCount={setCounts.setFedMadeCount}
         />
+        {/* The counter for the missed fed rings */}
         <TeleopScoringCounter
           coordX={48.95}
           coordY={10.7}
@@ -114,6 +140,7 @@ const TeleopScoringMap = ({
         />
       </div>
 
+      {/* The flip button */}
       <div
         style={{
           width: "33.8vw",
@@ -133,6 +160,7 @@ const TeleopScoringMap = ({
         <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Flip Field</h1>
       </div>
 
+      {/* The remove button */}
       <div
         style={{
           width: "33.8vw",

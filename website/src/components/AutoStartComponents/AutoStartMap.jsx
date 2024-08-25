@@ -5,14 +5,24 @@ import redField from "../../assets/AutoStartMapImages/Red_Alliance.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
 
+/**
+ * Renders a map for where the robot starts.
+ * The map can be flipped between blue and red alliances, and it includes a flip button to rotate based on perspective.
+ *
+ * @param {number} buttonCoordX - x-coordinate of the flip button
+ * @param {number} buttonCoordY - y-coordinate of the flip button
+ * @param {string} alliance - alliance of the map (either "blue" or "red")
+ * @return {JSX.Element} The rendered component.
+ */
 const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "blue" }) => {
   const [rotate, setRotate] = useState(false);
 
   return (
     <>
+      {/* Render the map for the robot to start */}
       <div
         style={{
-          backgroundImage: `url(${alliance == "blue" ? blueField: redField})`,
+          backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
           backgroundSize: "cover",
           width: "45.06vw",
           height: "100.0vh",
@@ -24,6 +34,7 @@ const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "
           top: "0vh",
         }}
       >
+        {/* Render the numbers for the robot to start */}
         <AutoStartNumberSection
           number="1"
           coordX={alliance == "blue" ? 4.72 : 27.47}
@@ -58,6 +69,7 @@ const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "
         />
       </div>
 
+      {/* Flip Button */}
       <div
         style={{
           width: "33.8vw",

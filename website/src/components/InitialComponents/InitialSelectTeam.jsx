@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
+
 import SelectTeamButton from "./InitialSelectTeamButton";
 
+/**
+ * Renders a component for selecting a team.
+ *
+ * @param {number} coordX - The X coordinate of the component.
+ * @param {number} coordY - The Y coordinate of the component.
+ * @param {string} defaultSelectTeam - The default selected team.
+ * @param {Function} setSelectTeam - The function to set the selected team.
+ * @return {JSX.Element} The rendered component.
+ */
 const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, setSelectTeam }) => {
+  // States for the team selection
   const [team1Status, setTeam1Status] = useState(defaultSelectTeam === "0001"); // TODO: make this actually work with json
   const [team2Status, setTeam2Status] = useState(defaultSelectTeam === "0002");
   const [team3Status, setTeam3Status] = useState(defaultSelectTeam === "0003");
@@ -9,12 +20,14 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
     defaultSelectTeam != "0001" && defaultSelectTeam != "0002" && defaultSelectTeam != "0003" && defaultSelectTeam != null
   );
 
+  // State for the custom team value
   const [customTeamValue, setCustomTeamValue] = useState(
     defaultSelectTeam != "0001" && defaultSelectTeam != "0002" && defaultSelectTeam != "0003" && defaultSelectTeam != null
       ? defaultSelectTeam
       : ""
   );
 
+  // Function to handle team selection
   const clickTeam = (currentTeamType, currentTeamStatus) => {
     if (currentTeamType === "1") {
       setTeam1Status(!currentTeamStatus);
@@ -43,6 +56,7 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
     }
   };
 
+  // Effect to set the selected team
   useEffect(() => {
     if (team1Status) {
       setSelectTeam("0001");
@@ -59,6 +73,7 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
 
   return (
     <>
+      {/* Container */}
       <div
         style={{
           border: "7px solid #1D1E1E",
@@ -72,6 +87,7 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
         }}
       >
         <div style={{}}>
+          {/* Question */}
           <h1
             style={{
               color: "#FFFFFF",
@@ -83,6 +99,7 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
             Select Team
           </h1>
 
+          {/* Selectors */}
           <SelectTeamButton
             currentTeamType={"1"}
             currentTeamStatus={team1Status}
@@ -103,6 +120,7 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
           />
         </div>
 
+        {/* Custom Team Selector */}
         <div style={{ paddingLeft: "1.72vw", display: "flex" }}>
           <h1 style={{ color: "#FFFFFF", fontSize: "4.2vh" }}>Custom (put team # only):</h1>
           <input

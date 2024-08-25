@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * Renders a component for selecting an alliance.
+ *
+ * @param {number} props.coordX - The x-coordinate of the component.
+ * @param {number} props.coordY - The y-coordinate of the component.
+ * @param {string} props.currentAlliance - The current alliance.
+ * @param {function} props.setAlliance - The function to set the alliance.
+ * @return {JSX.Element} The rendered component.
+ */
 const InitialSelectAlliance = ({ coordX = 1.07, coordY = 2.33, currentAlliance, setAlliance }) => {
   const [redSelected, setRedSelected] = useState(currentAlliance === "red");
   const [blueSelected, setBlueSelected] = useState(currentAlliance === "blue");
 
+  /**
+   * Click handler for the alliance selection.
+   * @param {string} alliance - The alliance to select.
+   */
   const clickAlliance = (alliance) => {
     if (alliance === "red") {
       setRedSelected(!redSelected);
@@ -14,6 +27,9 @@ const InitialSelectAlliance = ({ coordX = 1.07, coordY = 2.33, currentAlliance, 
     }
   };
 
+  /**
+   * Updates the alliance state based on the selected value.
+   */
   useEffect(() => {
     if (redSelected && !blueSelected) {
       setAlliance("red");
@@ -34,9 +50,9 @@ const InitialSelectAlliance = ({ coordX = 1.07, coordY = 2.33, currentAlliance, 
           height: "37.2vh",
           backgroundColor: "#242424",
           borderRadius: "3.49vh",
-          position: "absolute", // Set position to absolute
-          top: `${coordY}vh`, // Set top coordinate
-          left: `${coordX}vw`, // Set left coordinate
+          position: "absolute",
+          top: `${coordY}vh`,
+          left: `${coordX}vw`,
         }}
       >
         {/* Text */}

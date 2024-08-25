@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
 import AutoStartMap from "../components/AutoStartComponents/AutoStartMap";
 import AutoStartNoShowButton from "../components/AutoStartComponents/AutoStartNoShowButton";
 import AutoStartCounter from "../components/AutoStartComponents/AutoStartCounter";
+import ToggleButton from "../components/ToggleButton";
 
 /**
  * Renders a component representing the Auto Start page.
@@ -21,13 +22,27 @@ const AutoStartPage = () => {
   const [noShow, setNoShow] = useState(states?.inputs?.noShow || false);
   const [startCounter, setStartCounter] = useState(states?.inputs?.startCounter || 1);
 
+  useEffect(() => {
+    if (noShow) {
+      setStartCounter(0);
+    }
+  }, [noShow]);
+
   return (
     <>
       {/* Render the auto start map */}
       <AutoStartMap alliance={states?.inputs?.alliance || "blue"} />
 
       {/* Button to select whether the robot showed up or not */}
-      <AutoStartNoShowButton noShow={noShow} setNoShow={setNoShow} />
+      <ToggleButton
+        coordX={65.02}
+        coordY={16.74}
+        width={33.8}
+        height={18.14}
+        question="No Show"
+        state={noShow}
+        setState={setNoShow}
+      />
 
       {/* If the robot showed up, render the counter to select the start position */}
       {!noShow && (

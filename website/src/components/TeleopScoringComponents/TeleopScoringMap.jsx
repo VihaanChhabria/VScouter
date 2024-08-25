@@ -4,6 +4,7 @@ import blueField from "../../assets/TeleopScoringMapImages/Blue_Alliance.png";
 import redField from "../../assets/TeleopScoringMapImages/Red_Alliance.png";
 
 import TeleopScoringCounter from "./TeleopScoringCounter";
+import ToggleButton from "../ToggleButton";
 
 /**
  * Renders a map for where the robot scores
@@ -141,45 +142,26 @@ const TeleopScoringMap = ({
       </div>
 
       {/* The flip button */}
-      <div
-        style={{
-          width: "33.8vw",
-          height: "23.72vh",
-          backgroundColor: "#4A4A4A",
-          border: `${rotate ? "4.65" : "1.63"}vh solid #1D1E1E`,
-          borderRadius: "3.49vh",
-          position: "absolute",
-          left: `${flipButtonCoordX}vw`,
-          top: `${flipButtonCoordY}vh`,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        onClick={() => setRotate(!rotate)}
-      >
-        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Flip Field</h1>
-      </div>
+      <ToggleButton
+        coordX={flipButtonCoordX}
+        coordY={flipButtonCoordY}
+        width={33.8}
+        height={23.72}
+        question="Flip Field"
+        state={rotate}
+        setState={setRotate}
+      />
 
       {/* The remove button */}
-      <div
-        style={{
-          width: "33.8vw",
-          height: "23.72vh",
-          backgroundColor: "#4A4A4A",
-          border: `${remove ? "4.65" : "1.63"}vh solid #1D1E1E`,
-          borderRadius: "3.49vh",
-          position: "absolute",
-          left: `${removeButtonCoordX}vw`,
-          top: `${removeButtonCoordY}vh`,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          userSelect: "none",
-        }}
-        onClick={() => setRemove(!remove)}
-      >
-        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Remove Count</h1>
-      </div>
+      <ToggleButton
+        coordX={removeButtonCoordX}
+        coordY={removeButtonCoordY}
+        width={33.8}
+        height={23.72}
+        question="Remove Count"
+        state={remove}
+        setState={setRemove}
+      />
     </>
   );
 };

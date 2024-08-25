@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React from 'react'
 
 /**
- * A React functional component that renders a counter to select the auto start position.
+ * A React component that renders a counter to select the endgame scoring trap count.
  *
  * @param {number} coordX - The x-coordinate of the counter's position.
  * @param {number} coordY - The y-coordinate of the counter's position.
- * @param {number} startCounter - The initial value of the counter.
- * @param {function} setStartCounter - A function to update the initial value of the counter.
+ * @param {number} counter - The initial value of the counter.
+ * @param {function} setCounter - A function to update the initial value of the counter.
  * @return {JSX.Element} The rendered component.
  */
-const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) => {
+const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter }) => {
 
   const checkCounterAndSet = (setTo) => {
-    if (setTo > 4) {
-      setCounter(4);
-    } else if (setTo < 1) {
-      setCounter(1);
+    if (setTo > 3) {
+      setCounter(3);
+    } else if (setTo < 0) {
+      setCounter(0);
     } else {
       setCounter(setTo);
     }
   };
 
   const plusMinusButtonStyle = {
-    width: "10.73vw",
-    height: "23.26vh",
+    width: "8.91vw",
+    height: "13.09vh",
     backgroundColor: "#BBBBBB",
     borderRadius: "4.65vh",
     display: "flex",
@@ -33,7 +33,7 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
 
   const plusMinusTextStyle = {
     color: "#000000",
-    fontSize: "16.74vh",
+    fontSize: "11.16vh",
     fontWeight: "bold",
     userSelect: "none",
   };
@@ -44,8 +44,8 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
         style={{
           backgroundColor: "#242424",
           borderRadius: "4.65vh",
-          width: "16.09vw",
-          height: "81.4vh",
+          width: "13.3vw",
+          height: "41.86vh",
           position: "absolute",
           left: `${coordX}vw`,
           top: `${coordY}vh`,
@@ -63,14 +63,14 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
         {/* Counter Number */}
         <div
           style={{
-            width: "10.73vw",
-            height: "13.95vh",
+            width: "8.87vw",
+            height: "5vh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <h1 style={{ color: "#FFFFFF", fontSize: "14.88vh", fontWeight: "bold" }}>{counter}</h1>
+          <h1 style={{ color: "#FFFFFF", fontSize: "7.44vh", fontWeight: "bold" }}>{counter}</h1>
         </div>
 
         {/* Minus Button */}
@@ -82,4 +82,4 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
   );
 };
 
-export default AutoStartCounter;
+export default EndgameScoringTrapCounter

@@ -20,7 +20,7 @@ const AutoStartPage = () => {
 
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
   const [noShow, setNoShow] = useState(states?.inputs?.noShow || false);
-  const [startCounter, setStartCounter] = useState(states?.inputs?.startCounter || 1);
+  const [startCounter, setStartCounter] = useState(states?.inputs?.autoStartPos || 1);
 
   useEffect(() => {
     if (noShow) {
@@ -46,7 +46,7 @@ const AutoStartPage = () => {
 
       {/* If the robot showed up, render the counter to select the start position */}
       {!noShow && (
-        <AutoStartCounter startCounter={startCounter} setStartCounter={setStartCounter} />
+        <AutoStartCounter counter={startCounter} setCounter={setStartCounter} />
       )}
 
       {/* Button to proceed to the next page (either endgame or auto scoring based on if the robot showed up) and pass in the selected data as props */}
@@ -55,7 +55,7 @@ const AutoStartPage = () => {
         inputs={{
           ...(states?.inputs || {}),
           noShow: noShow,
-          startCounter: startCounter,
+          autoStartPos: startCounter,
         }}
       />
 
@@ -66,7 +66,7 @@ const AutoStartPage = () => {
         inputs={{
           ...(states?.inputs || {}),
           noShow: noShow,
-          startCounter: startCounter,
+          autoStartPos: startCounter,
         }}
       />
     </>

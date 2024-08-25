@@ -17,7 +17,6 @@ const AutoScoringNoteStatus = ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(217, 217, 217, 0.5)",
     backgroundColor:
       status == "Picked And Shot"
         ? "rgba(174, 243, 142, 0.5)"

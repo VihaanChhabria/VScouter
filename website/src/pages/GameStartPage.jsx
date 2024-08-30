@@ -47,7 +47,7 @@ const GameStartPage = () => {
       />
 
       {/* Render the SelectTeam component to select which team to scout */}
-      <SelectTeam defaultSelectTeam={selectTeam} setSelectTeam={setSelectTeam} />
+      <SelectTeam defaultSelectTeam={selectTeam} setSelectTeam={setSelectTeam} selectedMatch={matchNumber} selectedAlliance={alliance} />
 
       {/* Render the ProceedBackButton to navigate to the next page and pass in the selected data as props */}
       <ProceedBackButton

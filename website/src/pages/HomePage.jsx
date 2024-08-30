@@ -1,25 +1,19 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-
 import ProceedBackButton from "../components/ProceedBackButton";
 
 const HomePage = () => {
-  const location = useLocation();
-  const states = location.state;
-
-  // const [__, set__] = useState(states?.inputs?.__ || null);
-
   return (
     <>
-      <h1>HomePage</h1>
-
       <ProceedBackButton
-        nextPage={`/game-start`}
-        inputs={{
-          ...(states?.inputs || {}),
-          // __: __,
-        }}
+        nextPage={`/settings`}
+        width={14.91}
+        height={17.84}
+        coordX={1.07}
+        coordY={2.33}
+        message={"Settings"}
       />
+
+      <ProceedBackButton nextPage={`/game-start`} />
     </>
   );
 };

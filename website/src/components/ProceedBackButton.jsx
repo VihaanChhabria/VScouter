@@ -9,6 +9,9 @@ const ProceedBackButton = ({
   coordX = null,
   coordY = null,
   inputs = {},
+  width = null,
+  height = null,
+  message = null,
 }) => {
   const navigate = useNavigate();
   const proceedClick = () => {
@@ -53,11 +56,18 @@ const ProceedBackButton = ({
     containerStyle.top = `${coordY}vh`;
   }
 
+  if (width) {
+    containerStyle.width = `${width}vw`;
+  }
+  if (height) {
+    containerStyle.height = `${height}vh`;
+  }
+
   return (
     <>
       <div style={containerStyle} onClick={proceedClick}>
         <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>
-          {back ? "Back" : "Proceed"}
+          {back ? "Back" : message ? message : "Proceed"}
         </h1>
       </div>
       <ToastContainer />

@@ -11,21 +11,40 @@ import SelectTeamButton from "./InitialSelectTeamButton";
  * @param {Function} setSelectTeam - The function to set the selected team.
  * @return {JSX.Element} The rendered component.
  */
-const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, setSelectTeam }) => {
+const InitialSelectTeam = ({
+  coordX = 32.83,
+  coordY = 2.33,
+  defaultSelectTeam,
+  setSelectTeam,
+  selectedMatch,
+  selectedAlliance,
+}) => {
   // States for the team selection
   const [team1Status, setTeam1Status] = useState(defaultSelectTeam === "0001"); // TODO: make this actually work with json
   const [team2Status, setTeam2Status] = useState(defaultSelectTeam === "0002");
   const [team3Status, setTeam3Status] = useState(defaultSelectTeam === "0003");
   const [customTeamStatus, setCustomTeamStatus] = useState(
-    defaultSelectTeam != "0001" && defaultSelectTeam != "0002" && defaultSelectTeam != "0003" && defaultSelectTeam != null
+    defaultSelectTeam != "0001" &&
+      defaultSelectTeam != "0002" &&
+      defaultSelectTeam != "0003" &&
+      defaultSelectTeam != null
   );
 
   // State for the custom team value
   const [customTeamValue, setCustomTeamValue] = useState(
-    defaultSelectTeam != "0001" && defaultSelectTeam != "0002" && defaultSelectTeam != "0003" && defaultSelectTeam != null
+    defaultSelectTeam != "0001" &&
+      defaultSelectTeam != "0002" &&
+      defaultSelectTeam != "0003" &&
+      defaultSelectTeam != null
       ? defaultSelectTeam
       : ""
   );
+
+  // https://github.com/VihaanChhabria/VScouter/blob/main/server/matches.json
+  fetch("https://raw.githubusercontent.com/VihaanChhabria/VScouter/main/server/matches.json")
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err));
 
   // Function to handle team selection
   const clickTeam = (currentTeamType, currentTeamStatus) => {
@@ -133,6 +152,7 @@ const InitialSelectTeam = ({ coordX = 32.83, coordY = 2.33, defaultSelectTeam, s
               width: "37.02vw",
               height: "8.88vh",
               marginLeft: "0.43vw",
+              fontSize: "4.0vh",
             }}
             onClick={() => clickTeam("custom", customTeamStatus)}
             value={customTeamValue}

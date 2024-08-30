@@ -51,7 +51,7 @@ const AutoStartPage = () => {
 
       {/* Button to proceed to the next page (either endgame or auto scoring based on if the robot showed up) and pass in the selected data as props */}
       <ProceedBackButton
-        nextPage={noShow ? `/endgame` : `/auto-scoring`}
+        nextPage={noShow ? `/endgame-scoring` : `/auto-scoring`}
         inputs={{
           ...(states?.inputs || {}),
           noShow: noShow,

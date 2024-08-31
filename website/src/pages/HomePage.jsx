@@ -1,5 +1,6 @@
 import React from "react";
 import ProceedBackButton from "../components/ProceedBackButton";
+import { ToastContainer } from "react-toastify";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       />
 
       <ProceedBackButton nextPage={`/game-start`} />
+      <ToastContainer />
     </>
   );
 };

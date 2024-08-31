@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import SelectAlliance from "../components/InitialComponents/InitialSelectAlliance";
-import TextInput from "../components/TextInput";
-import SelectTeam from "../components/InitialComponents/InitialSelectTeam";
+import GameStartSelectAlliance from "../components/GameStartComponents/GameStartSelectAlliance";
+import GameStartTextInput from "../components/GameStartComponents/GameStartTextInput";
+import GameStartSelectTeam from "../components/GameStartComponents/GameStartSelectTeam";
 
 /**
  * Renders a component representing the Game Start Page.
@@ -26,10 +26,10 @@ const GameStartPage = () => {
   return (
     <>
       {/* Render the SelectAlliance component to select which alliance to scout */}
-      <SelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
+      <GameStartSelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
 
       {/* Render the TextInput component to take in the match number */}
-      <TextInput
+      <GameStartTextInput
         question="Match Number"
         coordX={1.07}
         coordY={41.75}
@@ -38,7 +38,7 @@ const GameStartPage = () => {
       />
 
       {/* Render the TextInput component to take in the scouter's initials */}
-      <TextInput
+      <GameStartTextInput
         question="Scouter Initials"
         coordX={1.07}
         coordY={63.95}
@@ -47,7 +47,12 @@ const GameStartPage = () => {
       />
 
       {/* Render the SelectTeam component to select which team to scout */}
-      <SelectTeam defaultSelectTeam={selectTeam} setSelectTeam={setSelectTeam} selectedMatch={matchNumber} selectedAlliance={alliance} />
+      <GameStartSelectTeam
+        defaultSelectTeam={selectTeam}
+        setSelectTeam={setSelectTeam}
+        selectedMatch={matchNumber}
+        selectedAlliance={alliance ? alliance+"Alliance" : null}
+      />
 
       {/* Render the ProceedBackButton to navigate to the next page and pass in the selected data as props */}
       <ProceedBackButton
@@ -59,6 +64,14 @@ const GameStartPage = () => {
           scouterInitials: scouterInitials,
           selectTeam: selectTeam,
         }}
+      />
+
+      <ProceedBackButton
+        nextPage="/"
+        width={14.91}
+        height={17.84}
+        coordX={49}
+        back={true}
       />
     </>
   );

@@ -15,7 +15,9 @@ const SettingsViewMatchData = () => {
           left: "2.15vw",
           overflow: "scroll",
         }}
-      ><h1 style={{ color: "#FFFFFF", fontSize: "2vh"}}>{localStorage.getItem("matchesData")}</h1></div>
+      >
+        <h1 style={{ color: "#FFFFFF", fontSize: "2vh" }}>{localStorage.getItem("matchData")}</h1>
+      </div>
     </>
   );
 };

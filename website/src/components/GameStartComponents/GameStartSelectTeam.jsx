@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import SelectTeamButton from "./InitialSelectTeamButton";
+import SelectTeamButton from "./GameStartSelectTeamButton";
 
 /**
  * Renders a component for selecting a team.
@@ -19,32 +19,38 @@ const InitialSelectTeam = ({
   selectedMatch,
   selectedAlliance,
 }) => {
+
+  let baseTeams = [];
+  try {
+    baseTeams =
+      selectedMatch > JSON.parse(localStorage.getItem("matchData")).length
+        ? JSON.parse(localStorage.getItem("matchData"))[0]
+        : JSON.parse(localStorage.getItem("matchData"))[selectedMatch || 0];
+    baseTeams = baseTeams[selectedAlliance ? selectedAlliance : "redAlliance"];
+  } catch {
+    baseTeams = ["0001", "0002", "0003"];
+  }
+
   // States for the team selection
-  const [team1Status, setTeam1Status] = useState(defaultSelectTeam === "0001"); // TODO: make this actually work with json
-  const [team2Status, setTeam2Status] = useState(defaultSelectTeam === "0002");
-  const [team3Status, setTeam3Status] = useState(defaultSelectTeam === "0003");
+  const [team1Status, setTeam1Status] = useState(defaultSelectTeam === baseTeams[0]); // TODO: make this actually work with json
+  const [team2Status, setTeam2Status] = useState(defaultSelectTeam === baseTeams[1]);
+  const [team3Status, setTeam3Status] = useState(defaultSelectTeam === baseTeams[2]);
   const [customTeamStatus, setCustomTeamStatus] = useState(
-    defaultSelectTeam != "0001" &&
-      defaultSelectTeam != "0002" &&
-      defaultSelectTeam != "0003" &&
+    defaultSelectTeam != baseTeams[0] &&
+      defaultSelectTeam != baseTeams[1] &&
+      defaultSelectTeam != baseTeams[2] &&
       defaultSelectTeam != null
   );
 
   // State for the custom team value
   const [customTeamValue, setCustomTeamValue] = useState(
-    defaultSelectTeam != "0001" &&
-      defaultSelectTeam != "0002" &&
-      defaultSelectTeam != "0003" &&
+    defaultSelectTeam != baseTeams[0] &&
+      defaultSelectTeam != baseTeams[1] &&
+      defaultSelectTeam != baseTeams[2] &&
       defaultSelectTeam != null
       ? defaultSelectTeam
       : ""
   );
-
-  // https://github.com/VihaanChhabria/VScouter/blob/main/server/matches.json
-  fetch("https://raw.githubusercontent.com/VihaanChhabria/VScouter/main/server/matches.json")
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.error(err));
 
   // Function to handle team selection
   const clickTeam = (currentTeamType, currentTeamStatus) => {
@@ -78,11 +84,11 @@ const InitialSelectTeam = ({
   // Effect to set the selected team
   useEffect(() => {
     if (team1Status) {
-      setSelectTeam("0001");
+      setSelectTeam(baseTeams[0]);
     } else if (team2Status) {
-      setSelectTeam("0002");
+      setSelectTeam(baseTeams[1]);
     } else if (team3Status) {
-      setSelectTeam("0003");
+      setSelectTeam(baseTeams[2]);
     } else if (customTeamStatus && customTeamValue != "") {
       setSelectTeam(customTeamValue);
     } else {
@@ -123,19 +129,19 @@ const InitialSelectTeam = ({
             currentTeamType={"1"}
             currentTeamStatus={team1Status}
             clickTeam={clickTeam}
-            teamName="0001 - Team 1"
+            teamName={baseTeams[0]}
           />
           <SelectTeamButton
             currentTeamType={"2"}
             currentTeamStatus={team2Status}
             clickTeam={clickTeam}
-            teamName="0002 - Team 2"
+            teamName={baseTeams[1]}
           />
           <SelectTeamButton
             currentTeamType={"3"}
             currentTeamStatus={team3Status}
             clickTeam={clickTeam}
-            teamName="0003 - Team 3"
+            teamName={baseTeams[2]}
           />
         </div>
 

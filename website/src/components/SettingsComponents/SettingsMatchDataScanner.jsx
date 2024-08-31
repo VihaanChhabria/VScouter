@@ -5,10 +5,13 @@ import { Scanner } from "@yudiel/react-qr-scanner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToggleButton from "../ToggleButton";
+import { useNavigate } from "react-router-dom";
 
 const SettingsMatchDataScanner = () => {
   const [matchDataURL, setMatchDataURL] = useState("");
   const [useManual, setUseManual] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (useManual) {
@@ -26,9 +29,13 @@ const SettingsMatchDataScanner = () => {
       const fullData = await res.json();
       const matches = fullData.matches;
 
-      localStorage.setItem("matchesData", JSON.stringify(matches));
-      
-      toast.success("Match Data Fetched: " + JSON.parse(localStorage.getItem("matchesData"))[0].redAlliance[0]);
+      localStorage.setItem("matchData", JSON.stringify(matches));
+
+      toast.success(
+        "Match Data Fetched: " + JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
+      );
+
+      navigate("/");
     } catch (err) {
       toast.error("Invalid URL");
       console.log(err);
@@ -140,7 +147,6 @@ const SettingsMatchDataScanner = () => {
             right: "1.7vw",
             textAlign: "center",
           }}
-          onClick={() => doneClick()}
         >
           <h1
             style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold", lineHeight: "7vh" }}
@@ -165,6 +171,7 @@ const SettingsMatchDataScanner = () => {
             justifyContent: "center",
             alignItems: "center",
           }}
+          onClick={() => doneClick()}
         >
           <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Done</h1>
         </div>

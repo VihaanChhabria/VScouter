@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {toast} from "react-toastify";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import ToggleButton from "../components/ToggleButton";
 import SettingsMatchDataScanner from "../components/SettingsComponents/SettingsMatchDataScanner";
 import SettingsButton from "../components/SettingsComponents/SettingsButton";
 import SettingsViewMatchData from "../components/SettingsComponents/SettingsViewMatchData";
@@ -11,6 +11,18 @@ const SettingsPage = () => {
   const [matchDataClearClicked, setMatchDataClearClicked] = useState(false);
   const [scoutDataClearClicked, setScoutDataClearClicked] = useState(false);
   const [viewScoutingData, setViewScoutingData] = useState(false);
+
+  useEffect(() => {
+    if (matchDataClearClicked) {
+      localStorage.setItem("matchData", "");
+      setMatchDataClearClicked(false);
+      toast.success("Cleared Match Data");
+    } else if (scoutDataClearClicked) {
+      localStorage.setItem("scoutingData", "");
+      setScoutDataClearClicked(false);
+      toast.success("Cleared Scouting Data");
+    }
+  }, [matchDataClearClicked, scoutDataClearClicked]);
 
   return (
     <>
@@ -48,7 +60,10 @@ const SettingsPage = () => {
         />
       </div>
 
-      {matchDataGetClicked && <SettingsMatchDataScanner />}
+      {matchDataGetClicked && (
+        <SettingsMatchDataScanner state={matchDataGetClicked} setState={setMatchDataGetClicked} />
+      )}
+
       {viewScoutingData && <SettingsViewMatchData />}
 
       {matchDataGetClicked || viewScoutingData ? (
@@ -71,9 +86,7 @@ const SettingsPage = () => {
             setViewScoutingData(false);
           }}
         >
-          <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>
-            Back
-          </h1>
+          <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Back</h1>
         </div>
       ) : (
         <ProceedBackButton

@@ -3,6 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+/**
+ * A button component that navigates to the next page in the app.
+ *
+ * By default, it will navigate to the root page of the app.
+ * If the "back" prop is set to true, it will navigate to the previous page.
+ * If the "nextPage" prop is set, it will navigate to that page instead.
+ * If the "inputs" prop is set, it will pass those inputs as props to the next page.
+ * If the "coordX" and "coordY" props are set, the button will be positioned at those coordinates.
+ * If the "width" and "height" props are set, the button will have those dimensions.
+ * If the "message" prop is set, the button will display that message.
+ *
+ * @param {bool} back - Whether to navigate to the previous page or not.
+ * @param {string} nextPage - The page to navigate to.
+ * @param {object} inputs - The inputs to pass to the next page.
+ * @param {number} coordX - The x-coordinate to position the button at.
+ * @param {number} coordY - The y-coordinate to position the button at.
+ * @param {number} width - The width of the button.
+ * @param {number} height - The height of the button.
+ * @param {string} message - The message to display on the button.
+ */
 const ProceedBackButton = ({
   back = false,
   nextPage = "/",

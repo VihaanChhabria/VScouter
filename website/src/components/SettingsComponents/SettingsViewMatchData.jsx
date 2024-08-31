@@ -1,5 +1,8 @@
 import React from "react";
 
+/**
+ * @returns A component that displays the current match data stored in local storage.
+ */
 const SettingsViewMatchData = () => {
   return (
     <>

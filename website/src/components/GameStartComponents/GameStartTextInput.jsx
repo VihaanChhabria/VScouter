@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * A component that renders a text input with a given question and a button that saves the input to a given state.
+ *
+ * @param {string} question - The question to be displayed above the text input.
+ * @param {number} coordX - The x-coordinate of the text input.
+ * @param {number} coordY - The y-coordinate of the text input.
+ * @param {string} defaultText - The default text of the text input.
+ * @param {function} setTextValue - The function to set the text input value to.
+ */
 const TextInput = ({
   question = "Match Number",
   coordX = 10,
@@ -7,9 +16,13 @@ const TextInput = ({
   defaultText,
   setTextValue,
 }) => {
-  const [upperText, setUpperText] = useState(defaultText === null ? "" : defaultText.toUpperCase());
+  const [upperText, setUpperText] = useState(
+    // If the defaultText is null, set the state to an empty string, otherwise set it to the defaultText in uppercase
+    defaultText === null ? "" : defaultText.toUpperCase()
+  );
 
   useEffect(() => {
+    // If the upperText is not empty, set the textValue to the upperText, otherwise set it to null
     if (upperText != "") {
       setTextValue(upperText);
     } else {

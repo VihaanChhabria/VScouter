@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 import ProceedBackButton from "../components/ProceedBackButton";
 import SettingsMatchDataScanner from "../components/SettingsComponents/SettingsMatchDataScanner";
 import SettingsButton from "../components/SettingsComponents/SettingsButton";
 import SettingsViewMatchData from "../components/SettingsComponents/SettingsViewMatchData";
 
+/**
+ * A page for the user to access settings such as clearing match data, viewing match data, and getting match data.
+ *
+ * @return {JSX.Element} The rendered component.
+ */
 const SettingsPage = () => {
   const [matchDataGetClicked, setMatchDataGetClicked] = useState(false);
   const [matchDataClearClicked, setMatchDataClearClicked] = useState(false);
@@ -13,6 +18,10 @@ const SettingsPage = () => {
   const [viewScoutingData, setViewScoutingData] = useState(false);
 
   useEffect(() => {
+    /**
+     * If the user has clicked the clear match data button, clear the local storage for match data and notify the user.
+     * If the user has clicked the clear scouting data button, clear the local storage for scouting data and notify the user.
+     */
     if (matchDataClearClicked) {
       localStorage.setItem("matchData", "");
       setMatchDataClearClicked(false);
@@ -26,6 +35,7 @@ const SettingsPage = () => {
 
   return (
     <>
+      {/* Container for the settings buttons */}
       <div
         style={{
           display: "flex",
@@ -37,6 +47,7 @@ const SettingsPage = () => {
           marginTop: "10vh",
         }}
       >
+        {/* Settings Buttons */}
         <SettingsButton
           question="Get Match Data"
           state={matchDataGetClicked}
@@ -60,12 +71,15 @@ const SettingsPage = () => {
         />
       </div>
 
+      {/* If the user has clicked the get match data button, render the SettingsMatchDataScanner component */}
       {matchDataGetClicked && (
         <SettingsMatchDataScanner state={matchDataGetClicked} setState={setMatchDataGetClicked} />
       )}
 
+      {/* If the user has clicked the view matches data button, render the SettingsViewMatchData component */}
       {viewScoutingData && <SettingsViewMatchData />}
 
+      {/* If the user has clicked the back button, render the ProceedBackButton component to navigate back to the main page */}
       {matchDataGetClicked || viewScoutingData ? (
         <div
           style={{

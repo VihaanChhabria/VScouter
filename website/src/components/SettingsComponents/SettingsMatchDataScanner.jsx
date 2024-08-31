@@ -7,12 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import ToggleButton from "../ToggleButton";
 import { useNavigate } from "react-router-dom";
 
-  /**
-   * This component is used to fetch match data from a given URL.
-   * The user can either scan a QR code or enter the URL manually.
-   * Once the data is fetched, the user is navigated to the home page.
-   * @returns A JSX element containing the QR code scanner, manual input, and a done button in a container.
-   */
+/**
+ * This component is used to fetch match data from a given URL.
+ * The user can either scan a QR code or enter the URL manually.
+ * Once the data is fetched, the user is navigated to the home page.
+ * @returns A JSX element containing the QR code scanner, manual input, and a done button in a container.
+ */
 const SettingsMatchDataScanner = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
   const [useManual, setUseManual] = useState(false); // Indicating if the text box should be used to get the URL
@@ -145,29 +145,6 @@ const SettingsMatchDataScanner = () => {
             state={useManual}
             setState={setUseManual}
           />
-        </div>
-
-        {/* Request Camera Permissions Button //TODO: Implement this */}
-        <div
-          style={{
-            border: "1.63vh solid #1D1E1E",
-            borderRadius: "2.33vh",
-            backgroundColor: "#4A4A4A",
-            color: "#FFFFFF",
-            width: "25.0vw",
-            height: "17.84vh",
-            fontSize: "4.0vh",
-            position: "absolute",
-            top: "2.33vh",
-            right: "1.7vw",
-            textAlign: "center",
-          }}
-        >
-          <h1
-            style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold", lineHeight: "7vh" }}
-          >
-            Request Camera Permissions
-          </h1>
         </div>
 
         {/* Done Button */}

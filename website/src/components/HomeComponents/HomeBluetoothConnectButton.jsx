@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-toastify";
+
+import {
+  BluetoothDeviceContext,
+} from "../../contexts/BluetoothDeviceContext";
 
 const bluetoothService = 0x180d;
 
 const HomeBluetoothConnectButton = () => {
+  const { bluetoothDevice, setBluetoothDevice } = useContext(BluetoothDeviceContext);
+
   const connectBluetooth = async () => {
     try {
       // Requesting the device with filter of the bluetooth service
@@ -11,12 +17,11 @@ const HomeBluetoothConnectButton = () => {
         filters: [{ services: [bluetoothService] }],
       });
 
-      const server = await device.gatt.connect(); // Connecting to the device
+      setBluetoothDevice(await device.gatt.connect()); // Connecting to the device
 
-      toast.success("Connected To Bluetooth");
-
+      toast.success("Connected To Bluetooth" + bluetoothDevice.name);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       toast.error("Failed To Connect To Bluetooth");
     }
   };

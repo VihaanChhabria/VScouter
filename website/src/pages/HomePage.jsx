@@ -1,6 +1,7 @@
 import React from "react";
 import ProceedBackButton from "../components/ProceedBackButton";
 import { ToastContainer } from "react-toastify";
+import HomeBluetoothConnectButton from "../components/HomeComponents/HomeBluetoothConnectButton";
 
 const HomePage = () => {
   return (
@@ -14,7 +15,10 @@ const HomePage = () => {
         message={"Settings"}
       />
 
-      <ProceedBackButton nextPage={`/game-start`} />
+      <HomeBluetoothConnectButton />
+
+      <ProceedBackButton nextPage={`/game-start`} message={"Game Start"} />
+
       <ToastContainer />
     </>
   );

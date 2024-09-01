@@ -3,11 +3,12 @@ import ProceedBackButton from "../components/ProceedBackButton";
 import { ToastContainer } from "react-toastify";
 import HomeBluetoothConnectButton from "../components/HomeComponents/HomeBluetoothConnectButton";
 import { BluetoothDeviceProvider } from "../contexts/BluetoothDeviceContext";
+import HomeFullscreenButton from "../components/HomeComponents/HomeFullscreenButton";
 
 const HomePage = () => {
   
   return (
-    <>
+    <>    
       <ProceedBackButton
         nextPage={`/settings`}
         width={14.91}
@@ -17,6 +18,8 @@ const HomePage = () => {
         message={"Settings"}
       />
 
+      <HomeFullscreenButton />
+
       <BluetoothDeviceProvider>
         <HomeBluetoothConnectButton />
       </BluetoothDeviceProvider>
@@ -24,6 +27,7 @@ const HomePage = () => {
       <ProceedBackButton nextPage={`/game-start`} message={"Game Start"} />
 
       <ToastContainer />
+      
     </>
   );
 };

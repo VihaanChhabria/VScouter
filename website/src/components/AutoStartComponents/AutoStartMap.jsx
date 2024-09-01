@@ -26,7 +26,7 @@ const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "
           backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
           backgroundSize: "cover",
           width: "45.06vw",
-          height: "100.0vh",
+          height: "100vh",
           animationName: rotate ? "rotateRight" : "rotateLeft",
           animationDuration: "400ms",
           transform: rotate ? "rotate(180deg)" : "rotate(0deg)",

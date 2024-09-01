@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 
 	"tinygo.org/x/bluetooth"
 )
@@ -38,8 +39,6 @@ func main() {
 
 	status = 0
 
-	fmt.Println(fullData)
-
 	characteristics := initBluetoothSever()
 	statusCharacteristic := characteristics[0]
 
@@ -52,6 +51,19 @@ func main() {
 
 		if retrieveData == "y" {
 			statusCharacteristic.Write([]byte{1})
+
+			for i := 0; i < 15; i++ {
+				fmt.Println("Status Turning Off In :", 15-i)
+				time.Sleep(1 * time.Second)
+			}
+			
+			statusCharacteristic.Write([]byte{0})
+
+			for i := 0; i < 100; i++ {
+				fmt.Println("")
+			}
+
+			fmt.Println("Received Data: ", fullData)
 		}
 		retrieveData = "n"
 	}
@@ -93,6 +105,8 @@ func initBluetoothSever() []bluetooth.Characteristic {
 			} else {
 				fullData = append(fullData, Data{newData.ID, []DataPart{{newData.Part, newData.Data}}})
 			}
+
+			fmt.Println(fullData)
 		},
 	}
 

@@ -17,9 +17,11 @@ const HomeBluetoothConnectButton = () => {
         filters: [{ services: [bluetoothService] }],
       });
 
-      setBluetoothDevice(await device.gatt.connect()); // Connecting to the device
+      await device.gatt.connect(); // Connecting to the device
 
-      toast.success("Connected To Bluetooth" + bluetoothDevice.name);
+      setBluetoothDevice(device)
+
+      toast.success("Connected To Bluetooth" + device.gatt.connected);
     } catch (error) {
       console.log(error);
       toast.error("Failed To Connect To Bluetooth");

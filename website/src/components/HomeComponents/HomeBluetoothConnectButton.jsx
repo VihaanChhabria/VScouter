@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
 
-import {
-  BluetoothDeviceContext,
-} from "../../contexts/BluetoothDeviceContext";
+import { BluetoothDeviceContext } from "../../contexts/BluetoothDeviceContext";
 
 const bluetoothService = 0x180d;
 
@@ -18,8 +16,11 @@ const HomeBluetoothConnectButton = () => {
       });
 
       await device.gatt.connect(); // Connecting to the device
+      device.addEventListener("gattserverdisconnected", () => {
+        setBluetoothDevice(null);
+      });
 
-      setBluetoothDevice(device)
+      setBluetoothDevice(device);
 
       toast.success("Connected To Bluetooth" + device.gatt.connected);
     } catch (error) {

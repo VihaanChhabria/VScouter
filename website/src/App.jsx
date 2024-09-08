@@ -1,9 +1,8 @@
-import { useState } from "react";
 import {
-  Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
+  Route,
 } from "react-router-dom";
 
 import MainLayout from "./layouts/MainLayout";
@@ -15,6 +14,7 @@ import AutoScoringPage from "./pages/AutoScoringPage";
 import TeleopScoringPage from "./pages/TeleopScoringPage";
 import EndgameScoringPage from "./pages/EndgameScoringPage";
 import SettingsPage from "./pages/SettingsPage";
+
 import { BluetoothDeviceProvider } from "./contexts/BluetoothDeviceContext";
 
 function App() {
@@ -34,7 +34,6 @@ function App() {
         <Route path="/auto-scoring" element={<AutoScoringPage />} />
         <Route path="/teleop-scoring" element={<TeleopScoringPage />} />
         <Route path="/endgame-scoring" element={<EndgameScoringPage />} />
-
         <Route path="/settings" element={<SettingsPage />} />
       </Route>
     )

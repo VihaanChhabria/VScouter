@@ -22,7 +22,7 @@ const HomeBluetoothConnectButton = () => {
 
       setBluetoothDevice(device);
 
-      toast.success("Connected To Bluetooth" + device.gatt.connected);
+      toast.success("Connected To Bluetooth: " + device.gatt.connected);
     } catch (error) {
       console.log(error);
       toast.error("Failed To Connect To Bluetooth");

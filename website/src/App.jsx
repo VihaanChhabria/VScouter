@@ -15,11 +15,19 @@ import AutoScoringPage from "./pages/AutoScoringPage";
 import TeleopScoringPage from "./pages/TeleopScoringPage";
 import EndgameScoringPage from "./pages/EndgameScoringPage";
 import SettingsPage from "./pages/SettingsPage";
+import { BluetoothDeviceProvider } from "./contexts/BluetoothDeviceContext";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
+      <Route
+        path="/"
+        element={
+          <BluetoothDeviceProvider>
+            <MainLayout />
+          </BluetoothDeviceProvider>
+        }
+      >
         <Route index element={<HomePage />} />
         <Route path="/game-start" element={<GameStartPage />} />
         <Route path="/auto-start" element={<AutoStartPage />} />

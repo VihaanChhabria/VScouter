@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 import {
@@ -27,18 +27,16 @@ const MainLayout = () => {
   }, [bluetoothDevice]);
 
   return (
-    <BluetoothDeviceProvider>
-      <div
-        style={{
-          backgroundColor: "#3A3B3E",
-          height: window.innerHeight,
-          width: "100vw",
-          overflow: "hidden",
-        }}
-      >
-        <Outlet />
-      </div>
-    </BluetoothDeviceProvider>
+    <div
+      style={{
+        backgroundColor: "#3A3B3E",
+        height: window.innerHeight,
+        width: "100vw",
+        overflow: "hidden",
+      }}
+    >
+      <Outlet />
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -34,19 +34,29 @@ const ProceedBackButton = ({
   message = null,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const proceedClick = () => {
-    
     if (back) {
-      inputs = Object.fromEntries(
-        Object.entries(inputs).filter(([key, value]) => value !== null)
-      );
+      inputs = Object.fromEntries(Object.entries(inputs).filter(([key, value]) => value !== null));
       navigate(nextPage, { state: { inputs } });
     } else {
       const hasNull = Object.values(inputs).some((val) => val === null);
       if (hasNull) {
         toast.error("Fill In All Fields To Proceed");
       } else {
-        navigate(nextPage, { state: { inputs } });
+        if (nextPage == "/game-start" && location.pathname == "/endgame-scoring") {
+          const fullData = {
+            data: (JSON.parse(localStorage.getItem("scoutingData"))?.data || []),
+          };
+          fullData.data.push({ ...Object.values(inputs) });
+
+          localStorage.setItem("scoutingData", JSON.stringify(fullData));
+          console.log(fullData);
+          navigate(nextPage);
+        } else {
+          navigate(nextPage, { state: { inputs } });
+        }
       }
     }
   };

@@ -52,7 +52,6 @@ const ProceedBackButton = ({
           fullData.data.push({ ...Object.values(inputs) });
 
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
-          console.log(fullData);
           navigate(nextPage);
         } else {
           navigate(nextPage, { state: { inputs } });

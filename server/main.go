@@ -96,17 +96,16 @@ func initBluetoothSever() []bluetooth.Characteristic {
 		Handle: &dataCharacteristic,
 		UUID:   bluetoothCharacteristicData,
 		Flags:  bluetooth.CharacteristicWritePermission,
-		WriteEvent: func(client bluetooth.Connection, offset int, value []byte) {
+		WriteEvent: func(client bluetooth.Connection, offset int, incomingData []byte) {
 			var newData NewData
-			json.Unmarshal(value, &newData)
+			fmt.Println(string(incomingData))
+			json.Unmarshal(incomingData, &newData)
 
 			if idInList(newData.ID, fullData) {
 				fullData[0].data = append(fullData[newData.ID].data, DataPart{newData.Part, newData.Data})
 			} else {
 				fullData = append(fullData, Data{newData.ID, []DataPart{{newData.Part, newData.Data}}})
 			}
-
-			fmt.Println(fullData)
 		},
 	}
 

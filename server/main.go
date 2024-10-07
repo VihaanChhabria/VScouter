@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"os"
+	"sort"
 	"time"
 
 	"tinygo.org/x/bluetooth"
@@ -15,20 +17,20 @@ var adapter = bluetooth.DefaultAdapter
 var status uint8
 
 type DataPart struct {
-	partNumber int
-	data       string
+	PartNumber int
+	Data       string
 }
 type Data struct {
-	id   int
-	data []DataPart
+	ID   int
+	Data []DataPart
 }
 
 var fullData []Data
 
 type NewData struct {
-	ID   int    `json:"id"`
-	Part int    `json:"part"`
-	Data string `json:"data"`
+	ScouterNumber int    `json:"scouterNumber"`
+	DataPart      int    `json:"dataPart"`
+	Data          string `json:"data"`
 }
 
 var bluetoothService bluetooth.UUID = bluetooth.ServiceUUIDHeartRate
@@ -46,7 +48,7 @@ func main() {
 	retrieveData := "n"
 	for {
 		// Prompt user to retrieve data
-		fmt.Println("retrieve data? (y/n)")
+		fmt.Println("retrieve or download data? (y/d)")
 		fmt.Scan(&retrieveData)
 
 		if retrieveData == "y" {
@@ -56,22 +58,31 @@ func main() {
 				fmt.Println("Status Turning Off In :", 15-i)
 				time.Sleep(1 * time.Second)
 			}
-			
+
 			statusCharacteristic.Write([]byte{0})
 
 			for i := 0; i < 100; i++ {
 				fmt.Println("")
 			}
 
-			fmt.Println("Received Data: ", fullData)
+			if len(fullData) != 0 {
+				organizeData()
+
+				fmt.Println("Received Data: ", fullData)
+
+			} else {
+				fmt.Println("No Data Received")
+			}
+		} else if retrieveData == "d" {
+			downloadData(combineData())
 		}
-		retrieveData = "n"
+		retrieveData = ""
 	}
 }
 
 func initBluetoothSever() []bluetooth.Characteristic {
 
-	fmt.Println("starting")
+	fmt.Println("Starting...")
 	must("enable BLE stack", adapter.Enable())
 
 	// Starts displaying the network to other devices
@@ -101,10 +112,10 @@ func initBluetoothSever() []bluetooth.Characteristic {
 			fmt.Println(string(incomingData))
 			json.Unmarshal(incomingData, &newData)
 
-			if idInList(newData.ID, fullData) {
-				fullData[0].data = append(fullData[newData.ID].data, DataPart{newData.Part, newData.Data})
+			if idInList(newData.ScouterNumber, fullData) {
+				fullData[0].Data = append(fullData[newData.ScouterNumber].Data, DataPart{newData.DataPart, newData.Data})
 			} else {
-				fullData = append(fullData, Data{newData.ID, []DataPart{{newData.Part, newData.Data}}})
+				fullData = append(fullData, Data{newData.ScouterNumber, []DataPart{{newData.DataPart, newData.Data}}})
 			}
 		},
 	}
@@ -120,11 +131,45 @@ func initBluetoothSever() []bluetooth.Characteristic {
 
 func idInList(id int, list []Data) bool {
 	for _, data := range list {
-		if data.id == id {
+		if data.ID == id {
 			return true
 		}
 	}
 	return false
+}
+
+func organizeData() {
+	for i := range fullData {
+		sort.Slice(fullData[i].Data, func(a, b int) bool {
+			return fullData[i].Data[a].Data < fullData[i].Data[b].Data
+		})
+	}
+}
+
+func combineData() []map[string]interface{} {
+	var fullyParsedData []map[string]interface{}
+	for scouterDataPartsNum := range fullData {
+		combinedStringsScouterData := ""
+		for partNum := range fullData[scouterDataPartsNum].Data {
+			combinedStringsScouterData += fullData[scouterDataPartsNum].Data[partNum].Data
+		}
+
+		var combinedScouterData map[string]interface{}
+		json.Unmarshal([]byte(combinedStringsScouterData), &combinedScouterData)
+		fullyParsedData = append(fullyParsedData, combinedScouterData)
+	}
+
+	return fullyParsedData
+}
+
+func downloadData(jsonData []map[string]interface{}) {
+	file, _ := os.Create("output.json")
+	defer file.Close()
+
+	jsonBytes, _ := json.Marshal(jsonData)
+	_, _ = file.Write(jsonBytes)
+
+	fmt.Println("JSON data has been written to output.json")
 }
 
 // Helper function to panic on errors

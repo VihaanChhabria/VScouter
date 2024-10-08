@@ -49,7 +49,7 @@ const ProceedBackButton = ({
           const fullData = {
             data: JSON.parse(localStorage.getItem("scoutingData"))?.data || [],
           };
-          fullData.data.push({ ...Object.values(inputs) });
+          fullData.data.push({ ...inputs });
 
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
           navigate(nextPage);

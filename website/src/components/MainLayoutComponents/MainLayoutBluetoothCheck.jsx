@@ -10,44 +10,60 @@ const MainLayoutBluetoothCheck = () => {
   const textDecoder = new TextDecoder();
 
   const sendScoutingData = async (scoutingdata) => {
+    console.log(scoutingdata);
+
+    const service = await bluetoothDevice.gatt.getPrimaryService(0x180d);
+    const dataCharecteristic = await service.getCharacteristic(0x2a39);
+
     const generatedUUID = uuidv4();
 
-    let encodedData = textEncoder.encode(JSON.stringify(scoutingdata));
-    console.log(encodedData.byteLength);
+    let encodedData = textEncoder.encode(scoutingdata);
+    // let encodedData = new Uint8Array([
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    //   65, 65, 65, 56
+    // ]);
 
-    let generateParts = true;
+    console.log(encodedData);
+
     let generatePartsNumber = 0;
-    while (generateParts) {
-      const data = {
+    while (true) {
+      if (encodedData.byteLength == 0) {
+        return;
+      }
+
+      const sendingData = {
         scouterNumber: generatedUUID,
         dataPart: generatePartsNumber,
         data: {},
       };
 
-      const dataSize = textEncoder.encode(JSON.stringify(data)).length;
-      const scoutingDataPartSize = 512 - dataSize;
+      const scoutingDataSize = 256 - encodedData.length;
 
-      data.data = JSON.parse(textDecoder.decode(encodedData.slice(0, scoutingDataPartSize - 1)));
+      sendingData.data = textDecoder.decode(encodedData.slice(0, scoutingDataSize));
 
-      console.log(data);
+      console.log(sendingData);
+      console.log(textEncoder.encode(JSON.stringify(sendingData)).buffer);
+      dataCharecteristic.writeValue(textEncoder.encode(JSON.stringify(sendingData)).buffer);
 
-      encodedData = encodedData.slice(scoutingDataPartSize);
+      encodedData = encodedData.slice(scoutingDataSize);
       generatePartsNumber += 1;
 
-      if (encodedData.byteLength == 0) {
-        generateParts = false;
-      }
+      await new Promise((resolve) => setTimeout(resolve, 500));
     }
-    // dataCharecteristic = await service.getCharacteristic(0x2a39);
-    // dataCharecteristic.writeValue(data);
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      sendScoutingData(
-        "etesteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooeeeeeeeeeeeeeeeeeeeeeeeeeuuuuuuuuuuuuuuuuuuuuuuuuuuzzzzz"
-      );
-      // console.log(textEncoder.encode("The poor boy missed the boat again. The way to save money is not to spend much. The point of the steel pen was bent and twisted. A rag will soak up spilled water. Tight curls get limp on rainy days. The tiny girl took off her hat. Eight miles of woodland burned to waste. The leaf drifts along with a slow spin. Help the weak to preserve their strength. He takes the oath of office each March. The poor boy missed the boat again. The way to save money is not to spend much. The point of the steel pen was bent and twisted. A rag will soak up spilled water. Tight curls get limp on rainy days. The tiny girl took off her hat. Eight miles of woodland burned to waste. The leaf drifts along with a slow spin. Help the weak to preserve their strength. He takes the oath of office each March. The poor boy missed the boat again. The way to save money is not to spend much. The point of the steel pen was bent and twisted. A rag will soak up spilled water. Tight curls get limp on rainy days. The tiny girl took eeeeeeeeeeeeeeeeea").byteLength);
       if (bluetoothDevice !== null) {
         const getStatus = async () => {
           const service = await bluetoothDevice.gatt.getPrimaryService(0x180d);
@@ -55,11 +71,20 @@ const MainLayoutBluetoothCheck = () => {
           const value = await statusCharacteristic.readValue();
 
           const statusValue = value.getUint8(0);
-          console.log(statusValue);
+
+          return statusValue;
         };
-        getStatus();
+
+        getStatus().then(
+          (statusValue) =>
+            statusValue == 1 &&
+            sendScoutingData(
+              JSON.stringify(JSON.parse(localStorage.getItem("scoutingData")).data) ||
+                JSON.stringify({ data: [] })
+            )
+        );
       }
-    }, 10000);
+    }, 15000);
     return () => clearInterval(interval);
   }, [bluetoothDevice]);
 

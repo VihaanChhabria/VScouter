@@ -27,7 +27,7 @@ const SettingsPage = () => {
       setMatchDataClearClicked(false);
       toast.success("Cleared Match Data");
     } else if (scoutDataClearClicked) {
-      localStorage.setItem("scoutingData", "");
+      localStorage.setItem("scoutingData", JSON.stringify({ data: [] }));
       setScoutDataClearClicked(false);
       toast.success("Cleared Scouting Data");
     }

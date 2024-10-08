@@ -47,7 +47,7 @@ const ProceedBackButton = ({
       } else {
         if (nextPage == "/game-start" && location.pathname == "/endgame-scoring") {
           const fullData = {
-            data: (JSON.parse(localStorage.getItem("scoutingData"))?.data || []),
+            data: JSON.parse(localStorage.getItem("scoutingData"))?.data || [],
           };
           fullData.data.push({ ...Object.values(inputs) });
 

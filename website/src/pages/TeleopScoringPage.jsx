@@ -36,7 +36,7 @@ const TeleopScoringPage = () => {
     states?.inputs?.teleopRingCounts?.fedMadeCount || 0
   );
   const [fedMissedCount, setFedMissedCount] = useState(
-    states?.inputs?.fteleopRingCounts?.edMissedCount || 0
+    states?.inputs?.teleopRingCounts?.fedMissedCount || 0
   );
   return (
     <>

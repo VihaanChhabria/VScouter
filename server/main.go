@@ -45,13 +45,13 @@ func main() {
 	statusCharacteristic := characteristics[0]
 
 	fmt.Println("looping")
-	retrieveData := "n"
+	retrieveData := ""
 	for {
 		// Prompt user to retrieve data
-		fmt.Println("retrieve or download data? (y/d)")
+		fmt.Println("retrieve or download data? (r/d)")
 		fmt.Scan(&retrieveData)
 
-		if retrieveData == "y" {
+		if retrieveData == "r" {
 			statusCharacteristic.Write([]byte{1})
 
 			for i := 0; i < 15; i++ {
@@ -141,7 +141,7 @@ func idInList(id int, list []Data) bool {
 func organizeData() {
 	for i := range fullData {
 		sort.Slice(fullData[i].Data, func(a, b int) bool {
-			return fullData[i].Data[a].Data < fullData[i].Data[b].Data
+			return fullData[i].Data[a].PartNumber < fullData[i].Data[b].PartNumber
 		})
 	}
 }
@@ -153,6 +153,8 @@ func combineData() []map[string]interface{} {
 		for partNum := range fullData[scouterDataPartsNum].Data {
 			combinedStringsScouterData += fullData[scouterDataPartsNum].Data[partNum].Data
 		}
+
+		fmt.Println("jsonData1:", combinedStringsScouterData)
 
 		var combinedScouterData map[string]interface{}
 		json.Unmarshal([]byte(combinedStringsScouterData), &combinedScouterData)
@@ -171,6 +173,7 @@ func downloadData(jsonData []map[string]interface{}) {
 
 	fmt.Println("JSON data has been written to output.json")
 }
+
 
 // Helper function to panic on errors
 func must(action string, err error) {

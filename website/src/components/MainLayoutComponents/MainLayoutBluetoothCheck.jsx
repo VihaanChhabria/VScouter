@@ -9,29 +9,15 @@ const MainLayoutBluetoothCheck = () => {
   const textEncoder = new TextEncoder();
   const textDecoder = new TextDecoder();
 
-  const sendScoutingData = async (scoutingdata) => {
-    console.log(scoutingdata);
+  const sendScoutingData = async (scoutingData) => {
+    console.log(scoutingData);
 
     const service = await bluetoothDevice.gatt.getPrimaryService(0x180d);
     const dataCharecteristic = await service.getCharacteristic(0x2a39);
 
     const generatedUUID = uuidv4();
 
-    let encodedData = textEncoder.encode(scoutingdata);
-    // let encodedData = new Uint8Array([
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
-    //   65, 65, 65, 56
-    // ]);
+    let encodedData = textEncoder.encode(scoutingData);
 
     console.log(encodedData);
 

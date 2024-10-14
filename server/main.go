@@ -21,14 +21,14 @@ type DataPart struct {
 	Data       string
 }
 type Data struct {
-	ID   int
+	ID   string
 	Data []DataPart
 }
 
 var fullData []Data
 
 type NewData struct {
-	ScouterNumber int    `json:"scouterNumber"`
+	ScouterNumber string `json:"scouterNumber"`
 	DataPart      int    `json:"dataPart"`
 	Data          string `json:"data"`
 }
@@ -54,12 +54,9 @@ func main() {
 		if retrieveData == "r" {
 			statusCharacteristic.Write([]byte{1})
 
-			for i := 0; i < 15; i++ {
-				fmt.Println("Status Turning Off In :", 15-i)
-				time.Sleep(1 * time.Second)
-			}
-
+			timer(15, "Status Turning Off In:")
 			statusCharacteristic.Write([]byte{0})
+			timer(3, "Post Waiting Ending In:")
 
 			for i := 0; i < 100; i++ {
 				fmt.Println("")
@@ -112,10 +109,12 @@ func initBluetoothSever() []bluetooth.Characteristic {
 			fmt.Println(string(incomingData))
 			json.Unmarshal(incomingData, &newData)
 
-			if idInList(newData.ScouterNumber, fullData) {
-				fullData[0].Data = append(fullData[newData.ScouterNumber].Data, DataPart{newData.DataPart, newData.Data})
+			idPos := idInList(newData.ScouterNumber, fullData)
+
+			if idPos != -1 {
+				fullData[idPos].Data = append(fullData[idPos].Data, DataPart{PartNumber: newData.DataPart, Data: newData.Data})
 			} else {
-				fullData = append(fullData, Data{newData.ScouterNumber, []DataPart{{newData.DataPart, newData.Data}}})
+				fullData = append(fullData, Data{ID: newData.ScouterNumber, Data: []DataPart{{newData.DataPart, newData.Data}}})
 			}
 		},
 	}
@@ -129,13 +128,15 @@ func initBluetoothSever() []bluetooth.Characteristic {
 	return []bluetooth.Characteristic{statusCharacteristic, dataCharacteristic}
 }
 
-func idInList(id int, list []Data) bool {
-	for _, data := range list {
+func idInList(id string, list []Data) int {
+	for dataNum, data := range list {
 		if data.ID == id {
-			return true
+			fmt.Println(id)
+			fmt.Println(data.ID)
+			return dataNum
 		}
 	}
-	return false
+	return -1
 }
 
 func organizeData() {
@@ -146,34 +147,43 @@ func organizeData() {
 	}
 }
 
-func combineData() []map[string]interface{} {
-	var fullyParsedData []map[string]interface{}
+func combineData() string {
+	fullyParsedData := "["
 	for scouterDataPartsNum := range fullData {
-		combinedStringsScouterData := ""
+		combinedScouterData := ""
 		for partNum := range fullData[scouterDataPartsNum].Data {
-			combinedStringsScouterData += fullData[scouterDataPartsNum].Data[partNum].Data
+			combinedScouterData += fullData[scouterDataPartsNum].Data[partNum].Data
 		}
 
-		fmt.Println("jsonData1:", combinedStringsScouterData)
+		combinedScouterData = combinedScouterData[1 : len(combinedScouterData)-1]
 
-		var combinedScouterData map[string]interface{}
-		json.Unmarshal([]byte(combinedStringsScouterData), &combinedScouterData)
-		fullyParsedData = append(fullyParsedData, combinedScouterData)
+		if scouterDataPartsNum != 0 {
+			fullyParsedData += ", " + combinedScouterData
+		} else {
+			fullyParsedData += combinedScouterData
+		}
 	}
+
+	fullyParsedData += "]"
+
+	fmt.Println(fullyParsedData)
 
 	return fullyParsedData
 }
 
-func downloadData(jsonData []map[string]interface{}) {
+func downloadData(jsonData string) {
 	file, _ := os.Create("output.json")
+	file.Write([]byte(jsonData))
+
 	defer file.Close()
-
-	jsonBytes, _ := json.Marshal(jsonData)
-	_, _ = file.Write(jsonBytes)
-
-	fmt.Println("JSON data has been written to output.json")
 }
 
+func timer(duration int, message string) {
+	for i := 0; i < duration; i++ {
+		fmt.Println(message, duration-i)
+		time.Sleep(time.Second)
+	}
+}
 
 // Helper function to panic on errors
 func must(action string, err error) {

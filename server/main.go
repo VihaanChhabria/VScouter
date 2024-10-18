@@ -215,7 +215,7 @@ func combineData() string {
 
 // downloadData takes a string of scouting data in JSON format and writes it to a file called "output.json" in the "data" directory.
 func downloadData(jsonData string) {
-    file, _ := os.Create("../data/output.json")
+    file, _ := os.Create("../data/ServerOutput_" + time.Now().Format("01-02-2006_15:04:05") + ".json")
     file.Write([]byte(jsonData))
 
     defer file.Close()

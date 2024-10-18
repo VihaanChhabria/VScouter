@@ -24,6 +24,7 @@ const MainLayoutBluetoothCheck = () => {
     let generatePartsNumber = 0;
     while (true) {
       if (encodedData.byteLength == 0) {
+        localStorage.setItem("scoutingData", JSON.stringify({ data: [] }));
         return;
       }
 

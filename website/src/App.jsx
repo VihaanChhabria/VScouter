@@ -16,6 +16,7 @@ import EndgameScoringPage from "./pages/EndgameScoringPage";
 import SettingsPage from "./pages/SettingsPage";
 
 import { BluetoothDeviceProvider } from "./contexts/BluetoothDeviceContext";
+import { useEffect } from "react";
 
 function App() {
   const router = createBrowserRouter(
@@ -38,6 +39,13 @@ function App() {
       </Route>
     )
   );
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  }, []);
+
 
   return <RouterProvider router={router} />;
 }

@@ -23,9 +23,9 @@ const InitialSelectTeam = ({
   let baseTeams = [];
   try {
     baseTeams =
-      selectedMatch > JSON.parse(localStorage.getItem("matchData")).length
+      (selectedMatch > JSON.parse(localStorage.getItem("matchData")).length || selectedMatch < 1)
         ? JSON.parse(localStorage.getItem("matchData"))[0]
-        : JSON.parse(localStorage.getItem("matchData"))[selectedMatch || 0];
+        : JSON.parse(localStorage.getItem("matchData"))[selectedMatch-1 || 0];
     baseTeams = baseTeams[selectedAlliance ? selectedAlliance : "redAlliance"];
   } catch {
     baseTeams = ["0001", "0002", "0003"];

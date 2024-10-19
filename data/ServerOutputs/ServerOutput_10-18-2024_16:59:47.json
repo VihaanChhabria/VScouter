@@ -1,0 +1,66 @@
+[
+    {
+      "alliance": "red",
+      "matchNumber": "1",
+      "scouterInitials": "VC",
+      "selectTeam": "9999",
+      "noShow": false,
+      "autoStartPos": 2,
+      "autoRingStatuses": {
+        "closeRing1": "Picked And Shot",
+        "closeRing2": "Picked And Shot",
+        "closeRing3": "Picked And Shot",
+        "farRing1": "Failed Pick/Shot",
+        "farRing2": "Failed Pick/Shot",
+        "farRing3": "Failed Pick/Shot",
+        "farRing4": "Failed Pick/Shot",
+        "farRing5": "Failed Pick/Shot"
+      },
+      "teleopRingCounts": {
+        "ampMadeCount": 2,
+        "ampMissedCount": 2,
+        "speakerMadeCount": 2,
+        "speakerMissedCount": 2,
+        "fedMadeCount": 2,
+        "fedMissedCount": 2
+      },
+      "parked": true,
+      "parkFailed": false,
+      "climbed": false,
+      "climbFailed": false,
+      "trapMadeCount": 1,
+      "trapMissedCount": 1
+    },
+    {
+      "alliance": "blue",
+      "matchNumber": "2",
+      "scouterInitials": "VC",
+      "selectTeam": "8888",
+      "noShow": false,
+      "autoStartPos": 3,
+      "autoRingStatuses": {
+        "closeRing1": "Failed Pick/Shot",
+        "closeRing2": "Failed Pick/Shot",
+        "closeRing3": "Failed Pick/Shot",
+        "farRing1": "Picked And Shot",
+        "farRing2": "Picked And Shot",
+        "farRing3": "Picked And Shot",
+        "farRing4": "Picked And Shot",
+        "farRing5": "Picked And Shot"
+      },
+      "teleopRingCounts": {
+        "ampMadeCount": 3,
+        "ampMissedCount": 3,
+        "speakerMadeCount": 3,
+        "speakerMissedCount": 3,
+        "fedMadeCount": 3,
+        "fedMissedCount": 3
+      },
+      "parked": false,
+      "parkFailed": false,
+      "climbed": true,
+      "climbFailed": false,
+      "trapMadeCount": 2,
+      "trapMissedCount": 2
+    }
+  ]

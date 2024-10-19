@@ -1,0 +1,3 @@
+alliance,matchNumber,scouterInitials,selectTeam,noShow,closeRing1,closeRing2,closeRing3,farRing1,farRing2,farRing3,farRing4,farRing5,ampMadeCount,ampMissedCount,speakerMadeCount,speakerMissedCount,fedMadeCount,fedMissedCount,parked,parkFailed,climbed,climbFailed,trapMadeCount,trapMissedCount
+red,1,VC,9999,False,Picked And Shot,Picked And Shot,Picked And Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,2,2,2,2,2,2,True,False,False,False,1,1
+blue,2,VC,8888,False,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Picked And Shot,Picked And Shot,Picked And Shot,Picked And Shot,Picked And Shot,3,3,3,3,3,3,False,False,True,False,2,2

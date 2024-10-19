@@ -65,7 +65,7 @@ const SettingsPage = () => {
         />
 
         <SettingsButton
-          question="View Matches Data"
+          question="View Scouting Data"
           state={viewScoutingData}
           setState={setViewScoutingData}
         />

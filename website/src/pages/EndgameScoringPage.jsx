@@ -19,7 +19,7 @@ const EndgameScoringPage = () => {
   const [trapMadeCount, setTrapMadeCount] = useState(states?.inputs?.trapMadeCount || 0);
   const [trapMissedCount, setTrapMissedCount] = useState(states?.inputs?.trapMissedCount || 0);
 
-  const [comment, setComment] = useState(states?.inputs?.comment || 0);
+  const [comment, setComment] = useState(states?.inputs?.comment || "");
 
   const trapMadeMissedTextStyle = {
     color: "#FFFFFF",

@@ -75,7 +75,6 @@ const EndgameScoringPage = () => {
             left: "2.04vw",
             top: "64.88vh",
           }}
-          onChange={(e) => setComment(e.target.value)}
         >
           Comments:
         </h1>
@@ -93,6 +92,7 @@ const EndgameScoringPage = () => {
             fontSize: "3.0vh",
             padding: "1.56vh",
           }}
+          onChange={(e) => setComment(e.target.value)}
         ></textarea>
       </div>
 

@@ -1,4 +1,1 @@
-## FRC-ScoutingApp
-
-todo:
-- Data Analytics
+# VScouter

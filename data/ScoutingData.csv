@@ -1,0 +1,29 @@
+alliance,matchNumber,scouterInitials,selectTeam,noShow,closeRing1,closeRing2,closeRing3,farRing1,farRing2,farRing3,farRing4,farRing5,ampMadeCount,ampMissedCount,speakerMadeCount,speakerMissedCount,fedMadeCount,fedMissedCount,parked,parkFailed,climbed,climbFailed,trapMadeCount,trapMissedCount,comment
+blue,2,RK,1391,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,3,2,0,0,True,False,False,False,0,0,
+blue,3,RK,365,False,Not Picked,Failed Pick/Shot,Picked And Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,0,0,True,False,False,False,0,0,no speaker or amp scored; made defensive/passing plays
+blue,4,RK,9015,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,1,1,4,2,0,0,True,False,False,False,0,0,pretty good at scoring in speaker
+blue,6,RK,2590,False,Not Picked,Not Picked,Failed Pick/Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,2,0,0,0,0,0,False,False,True,False,0,0,"Started off strong, but then got two nodes stuck in the robot, preventing it from scoring or passing moving forward"
+blue,7,RK,708,False,Not Picked,Not Picked,Failed Pick/Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,4,0,0,1,0,0,True,False,False,False,0,0,
+blue,9,RK,1218,False,Not Picked,Not Picked,Failed Pick/Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,0,0,False,False,True,False,0,0,
+red,6,7,1,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,0,0,False,False,False,False,0,0,
+blue,1,RIYA K,2722,False,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,2,0,2,1,0,0,True,False,False,True,0,0,
+blue,2,RIYA K,2016,False,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,Failed Pick/Shot,0,1,0,2,0,0,False,False,True,False,0,0,
+blue,3,RIYA K,2539,False,Picked And Shot,Picked And Shot,Picked And Shot,Picked And Shot,Picked And Shot,Not Picked,Not Picked,Not Picked,3,0,2,1,1,0,False,False,True,False,1,0,very good at picking up notes. 
+blue,4,RIYA K,5684,False,Not Picked,Picked And Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,3,4,0,0,False,True,False,True,0,0,
+blue,5,RIYA K,6808,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,1,3,0,False,True,False,True,0,0,"Had lots of trouble trying to shoot into the speaker, mostly relies on human players to pick up notes"
+blue,7,RIYA K,2722,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,4,0,3,0,0,0,False,False,True,False,0,0,Good at scoring in amp and speaker was kind of stuck on the red sie for a while. 
+blue,8,RIYA K,5407,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,0,0,False,False,False,False,0,0,
+blue,10,RIYA K,708,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,4,0,0,0,False,True,False,True,0,0,takes a while to load up a note but is able to do far and powerful shots in the speaker. 
+blue,11,RIYA K,5684,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,1,0,0,0,False,False,False,False,0,0,not enough nor accurate data 
+blue,12,RIYA K,5401,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,0,0,True,False,False,True,0,0,played defense 
+blue,13,RIYA K,5407,False,Not Picked,Picked And Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,1,0,0,0,False,True,False,True,0,0,
+blue,14,RIYA K,9094,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,1,0,1,0,0,False,False,False,False,0,0,
+blue,15,RIYA K,9015,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Failed Pick/Shot,3,2,1,0,0,0,True,False,False,True,0,0,
+blue,17,JP,2590,False,Not Picked,Picked And Shot,Picked And Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,3,0,1,1,0,0,False,False,True,False,0,0,"New drivers, robot definitely has potential, uhh drivers do not..."
+blue,18,JP,1391,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,0,0,False,False,True,False,0,0,"No auto, note got stuck inside and the robot couldn't do anything. Attempted defense, but was it against the opposition or their own team!?!?"
+blue,19,JP,708,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Failed Pick/Shot,Failed Pick/Shot,5,0,0,0,0,0,True,False,False,False,0,0,"Did lots of amp, super powerful shooter, not much to say"
+blue,20,MT,193,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,1,0,0,0,False,False,False,False,0,0,"robot was really jittery, something was probably wrong"
+red,24,JP,8714,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,1,0,0,False,False,True,False,0,0,"Note got stuck in intake. Definitely some new drivers operating the robot. Attempted defense, I'd give it a 4/10. The climb was very weird, but it worked I guess."
+red,25,JP,293,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,2,0,0,0,True,False,False,False,0,0,
+red,26,JP,6808,False,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,0,0,1,3,True,False,False,False,0,0,One word. Sad.
+red,27,JP,365,False,Failed Pick/Shot,Picked And Shot,Failed Pick/Shot,Not Picked,Not Picked,Not Picked,Not Picked,Not Picked,0,0,2,0,4,1,False,False,True,False,0,0,"Weird launching, not a lot of game sense. Drivers are kinda mid."

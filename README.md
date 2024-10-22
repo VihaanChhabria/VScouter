@@ -6,7 +6,7 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 
 ## Features
 
-* Data collection though a [website](vscouter.netlify.app/)
+* Data collection though a [website](https://vscouter.netlify.app/)
 * Website can be ran offline in environments with no internet
 * Auto completion for teams to scout on scouting website
 * Visual and intuitive buttons and pictures to help scout real-time
@@ -73,3 +73,11 @@ This code is used to generate the auto completion data for the scouting app. Onc
 
 After the server downloads all the data into the [ServerOutputs](/data/ServerOutputs/) folder, it needs to be converted to a CSV file. This is as it combines all the separate JSON files and as Tableau (a data analysis software) only accepts CSV files.
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Support
+
+If you want to use this or need support, email me at `chhabria.vihaan@gmail.com`.

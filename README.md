@@ -22,7 +22,7 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 
 To install VScouter, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/VihaanChhabr/VScouter.git`
+1. Clone the repository: `git clone https://github.com/VihaanChhabria/VScouter.git`
 
 ## Usage
 

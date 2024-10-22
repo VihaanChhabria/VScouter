@@ -37,7 +37,7 @@ To get started with VScouter, follow these steps:
 
 ### Using The Website
 
-1. Visit [vscouter.netlify.app](vscouter.netlify.app)
+1. Visit [https://vscouter.netlify.app/](https://vscouter.netlify.app/)
 2. **Main Page:** When the scouter load into the app there are 4 main buttons. The `Full Screen` buttons makes the website go into full screen mode. The `Connect To Bluetooth` opens up the bluetooth connection popup to connect to the server **(ONLY WORKS ON GOOGLE BROWSERS NOT ON iOS DEVICES)**. The `Game Start` button continues to the game start scouting page.
 ![MainPage](readmeimages/MainPage.png)
 3. **Settings Page:** Has various buttons for debugging and for loading auto match suggestions. `Get Match Data` redirects to the page for getting the auto match suggestions. `Clear Match Data` clears the auto match suggestions. `Clear Scouting Data` clears the scouting data that is saved on the device. `View Scouting Data` opens a page where the scouter is able to see the JSON version of the scouting data. 

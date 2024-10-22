@@ -1,9 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"io"
 	"os"
+	"sort"
 	"time"
 
 	"tinygo.org/x/bluetooth"
@@ -13,185 +14,222 @@ import (
 var adapter = bluetooth.DefaultAdapter
 
 // Variables to hold scouting and match status and data
-var scoutingStatus uint8 = 0
-var fullData string = ""
-var singleData []string
+var status uint8
 
-var matchesStatus uint8 = 0
-var matchesStatusCount int = 0
+type DataPart struct {
+	PartNumber int
+	Data       string
+}
+type Data struct {
+	ID   string
+	Data []DataPart
+}
 
+var fullData []Data
+
+type NewData struct {
+	ScouterNumber string `json:"scouterNumber"`
+	DataPart      int    `json:"dataPart"`
+	Data          string `json:"data"`
+}
+
+var bluetoothService bluetooth.UUID = bluetooth.ServiceUUIDHeartRate
+var bluetoothCharacteristicStatus bluetooth.UUID = bluetooth.CharacteristicUUIDHeartRateMeasurement
+var bluetoothCharacteristicData bluetooth.UUID = bluetooth.CharacteristicUUIDHeartRateControlPoint
+
+// main starts the Bluetooth server and then enters an infinite loop,
+// prompting the user to choose between retrieving data from the scouting
+// server and downloading the data to a file.
 func main() {
-	// Prompt user to download new match schedule
-	getMatches := ""
-	fmt.Println("Do you want to download a new match schedule? (y/n)")
-	fmt.Scan(&getMatches)
 
-	if getMatches == "y" {
-		DownloadMatches()
-	}
+	status = 0
 
-	// Open and read match schedule data from file
-	openedMatchesFile, _ := os.Open("matches.json")
-	matchesData, _ := io.ReadAll(openedMatchesFile) // Made out of bytes as when sending data over Bluetooth, bytes are required
-	fmt.Println(string(matchesData))
+	// Set up the Bluetooth server
+	characteristics := initBluetoothSever()
 
-	// Split match data into chunks of 400 bytes as 412 bytes is the limit for sending data over bluetooth
-	cutMatchesNum := (len(matchesData) / 400) + 1 // How many blocks of data there should be
-	var cutMatches [][]byte // All of the blocks of data in a list
-	for i := 0; i < cutMatchesNum; i++ {
-		if i == (cutMatchesNum - 1) { // If last element
-			cutMatches = append(cutMatches, matchesData[(i*400):]) // Appends the rest of the data without leaving data out or adding wrong data
-			fmt.Println(string(matchesData[(i * 400):]))
-			fmt.Println("last")
-		} else { // Any other element
-			cutMatches = append(cutMatches, matchesData[(i*400):((i+1)*400)]) // Appends 400 bytes to the list
-			fmt.Println(string(matchesData[(i * 400):((i + 1) * 400)]))
-			fmt.Println(i)
+	statusCharacteristic := characteristics[0]
+
+	fmt.Println("looping")
+	var retrieveData string
+	for {
+		// Prompt user to retrieve data or download data
+		fmt.Println("retrieve or download data? (r/d)")
+		fmt.Scan(&retrieveData)
+
+		switch retrieveData {
+			case "r":
+				// Send a signal to the scouting app to start sending data
+				statusCharacteristic.Write([]byte{1})
+
+				// wait 15 seconds for the scouting app to send all of the data
+				timer(15, "Status Turning Off In:")
+
+				// Send a signal to the scouting app to stop sending data
+				statusCharacteristic.Write([]byte{0})
+
+				// wait 3 seconds to allow the scouting app to finish sending data
+				timer(3, "Post Waiting Ending In:")
+
+				// Clear the terminal
+				for i := 0; i < 100; i++ {
+					fmt.Println("")
+				}
+
+				// If there is data, print it
+				if len(fullData) != 0 {
+					organizeData()
+
+					fmt.Println("Received Data: ", fullData)
+
+				} else {
+					fmt.Println("No Data Received")
+				}
+			case "d":
+				downloadData(combineData())
+				fmt.Println("Downloaded Data to output.json")
+			default:
+				fmt.Println("Invalid Input")
 		}
+		retrieveData = ""
 	}
+}
 
-	fmt.Println("starting")
+// initBluetoothSever sets up the Bluetooth server, enabling the Bluetooth stack,
+// setting up a GATT service with two characteristics, and starting an advertisement.
+// The characteristics are used to send scouting data from the phone to the server
+// and to alert connected devices to send scouting data.
+func initBluetoothSever() []bluetooth.Characteristic {
+
+	fmt.Println("Starting...")
 	must("enable BLE stack", adapter.Enable())
 
 	// Starts displaying the network to other devices
 	adv := adapter.DefaultAdvertisement()
 	must("config adv", adv.Configure(bluetooth.AdvertisementOptions{
 		LocalName:    "FRC 7414 Scouting Server",
-		ServiceUUIDs: []bluetooth.UUID{bluetooth.ServiceUUIDHeartRate},
+		ServiceUUIDs: []bluetooth.UUID{bluetoothService},
 	}))
 	must("start adv", adv.Start())
 
 	// Define Bluetooth characteristics
-	var scoutingStatusCharacteristic bluetooth.Characteristic // Used for alerting connected devices to send scouting data
-	var scoutingDataCharacteristic bluetooth.Characteristic // Where the devices send the scouting data
+	// statusCharacteristic is used for alerting connected devices to send scouting data
+	var statusCharacteristic bluetooth.Characteristic
 
-    var matchesStatusCharacteristics bluetooth.Characteristic // Used as a back and forth channel to send confirm sending of the match data
-	var matchesDataCharacteristics bluetooth.Characteristic // Where the server puts the match data blocks
+	// dataCharacteristic is where the devices send the scouting data
+	var dataCharacteristic bluetooth.Characteristic
+
+	// Configuration for statusCharacteristic
+	statusCharacteristicConfig := bluetooth.CharacteristicConfig{
+		Handle: &statusCharacteristic,
+		UUID:   bluetoothCharacteristicStatus,
+		Value:  []byte{status},
+		Flags:  bluetooth.CharacteristicReadPermission,
+	}
+
+	// Configuration for dataCharacteristic
+	dataCharacteristicConfig := bluetooth.CharacteristicConfig{
+		Handle: &dataCharacteristic,
+		UUID:   bluetoothCharacteristicData,
+		Flags:  bluetooth.CharacteristicWritePermission,
+
+		// Function that gets called when a device sends data to this characteristic
+		WriteEvent: func(client bluetooth.Connection, offset int, incomingData []byte) {
+			var newData NewData
+			json.Unmarshal(incomingData, &newData) // Converting the string of the incoming data into an object
+
+			idPos := idInList(newData.ScouterNumber, fullData)
+
+			if idPos != -1 { // Check if the ID is already in the list
+
+				// Add the part to the preexisting Data object
+				fullData[idPos].Data = append(fullData[idPos].Data, DataPart{PartNumber: newData.DataPart, Data: newData.Data})
+			} else {
+				// Create a new Data object and add it to that new Data object
+				fullData = append(fullData, Data{ID: newData.ScouterNumber, Data: []DataPart{{newData.DataPart, newData.Data}}})
+			}
+		},
+	}
 
 	// Add service with characteristics to the adapter
 	must("add service", adapter.AddService(&bluetooth.Service{
-		UUID: bluetooth.ServiceUUIDHeartRate,
-		Characteristics: []bluetooth.CharacteristicConfig{
-			{
-				Handle: &scoutingStatusCharacteristic,
-				UUID:   bluetooth.CharacteristicUUIDHeartRateMeasurement,
-				Value:  []byte{scoutingStatus},
-				Flags:  bluetooth.CharacteristicReadPermission,
-			},
-			{
-				Handle: &scoutingDataCharacteristic,
-				UUID:   bluetooth.CharacteristicUUIDHeartRateControlPoint,
-				Flags:  bluetooth.CharacteristicWritePermission,
-				WriteEvent: func(client bluetooth.Connection, offset int, value []byte) { // Called when scouting data is sent to the characteristic
-					if len(value) > 0 {
-						recievedData := string(value)
-						fmt.Println("Received data: ", recievedData+"\n\n\n")
-						singleData = append(singleData, recievedData)
-					}
-				},
-			},
-			{
-				Handle: &matchesDataCharacteristics,
-				UUID:   bluetooth.CharacteristicUUIDRestingHeartRate,
-				Value:  cutMatches[0],
-				Flags:  bluetooth.CharacteristicReadPermission,
-			},
-			{
-				Handle: &matchesStatusCharacteristics,
-				UUID:   bluetooth.CharacteristicUUIDMaximumRecommendedHeartRate,
-				Value:  []byte{matchesStatus},
-				Flags:  bluetooth.CharacteristicWritePermission | bluetooth.CharacteristicReadPermission,
-				WriteEvent: func(client bluetooth.Connection, offset int, value []byte) { // Called when scouting data is sent to the characteristic
-					if len(value) > 0 {
-						recievedData := string(value)
-						fmt.Println("Received matchesStatus value: ", recievedData)
-						if recievedData == "1" { // Sent by the scouting app to ask for more/rest of the data
-							if len(cutMatches) > (matchesStatusCount) { // If all matches have not been sent
-								matchesDataCharacteristics.Write(cutMatches[matchesStatusCount]) // Writing next block of data
-								fmt.Println(string(cutMatches[matchesStatusCount]))
-								matchesStatusCharacteristics.Write([]byte{uint8(0)}) // Telling devices that the server is done sending a block of data
-								fmt.Println("Wrote match data chunk and updated status to 0")
-								matchesStatusCount += 1
-							} else { // If all matches have sent
-								matchesStatusCharacteristics.Write([]byte{uint8(2)}) // Telling devices that all data is done sending
-								fmt.Println("All matches sent, updated status to 2")
-								matchesStatusCount = 0
-							}
-						}
-					}
-				},
-			},
-		},
+		UUID:            bluetooth.ServiceUUIDHeartRate,
+		Characteristics: []bluetooth.CharacteristicConfig{statusCharacteristicConfig, dataCharacteristicConfig},
 	}))
 
-	fmt.Println("looping")
-	retrieveData := "n"
-	for {
-		// Prompt user to retrieve data
-		fmt.Println("retrieve data? (y/n)")
-		fmt.Scan(&retrieveData)
+	return []bluetooth.Characteristic{statusCharacteristic, dataCharacteristic}
+}
 
-		if retrieveData == "y" {
-			for appNum := 1; appNum <= 1; appNum++ { // Looping through devices connected
-// TODO: find a way to get amount of devices connected to Bluetooth
-				fullData = "["
-				scoutingStatusCharacteristic.Write([]byte{uint8(appNum)}) // Alerting devices to send data
-
-				time.Sleep(15 * time.Second) // Waiting for the device to send scouting data
-				scoutingStatusCharacteristic.Write([]byte{uint8(0)}) // Tells devices to stop sending data
-
-				// Remove duplicate data entries
-				singleData = removeDuplicateStr(singleData)
-
-				// Concatenate data
-				for _, item := range singleData {
-					fullData = fullData + item
-				}
-
-				// Clear the single data slice
-				singleData = []string{}
-				fmt.Println("\n\n\n\n\n\n\nFull Data:\n" + fullData)
-				fullData = fullData + "]"
-
-				// Write data to a JSON file
-				jsonFile, _ := os.Create("output/" + time.Now().String() + ".json")
-				jsonFile.WriteString(fullData)
-				jsonFile.Close()
-
-				// Reset fullData for the next iteration
-				fullData = ""
-			}
+// idInList checks if a given string ID is in the list of Data objects and returns the index of the Data object with the matching ID.
+// If the ID is not found, it returns -1.
+func idInList(id string, list []Data) int {
+	for dataNum, data := range list {
+		if data.ID == id {
+			return dataNum
 		}
-		retrieveData = "n"
+	}
+	return -1
+}
+
+// organizeData sorts the scouting data in each Data object by part number in ascending order.
+func organizeData() {
+	for i := range fullData {
+		sort.Slice(fullData[i].Data, func(a, b int) bool {
+			return fullData[i].Data[a].PartNumber < fullData[i].Data[b].PartNumber
+		})
 	}
 }
 
+// combineData takes the fullData list of Data objects and combines all the scouting data from each scouter into a single string.
+// The string is a JSON array of strings, with each string being the combined scouting data from a single scouter.
+// The function then returns the combined scouting data string.
+func combineData() string {
+	// Initialize the fully parsed data string
+	fullyParsedData := "["
+	// Loop through each scouter's data
+	for scouterDataPartsNum := range fullData {
+		// Initialize the combined scouter data string
+		combinedScouterData := ""
+		// Loop through each part of the scouter's data
+		for partNum := range fullData[scouterDataPartsNum].Data {
+			// Append the current part to the combined scouter data string
+			combinedScouterData += fullData[scouterDataPartsNum].Data[partNum].Data
+		}
+
+		// Remove the first and last characters of the combined scouter data string
+		combinedScouterData = combinedScouterData[1 : len(combinedScouterData)-1]
+
+		// If this is not the first scouter, append a comma before appending the scouter's data
+		if scouterDataPartsNum != 0 {
+			fullyParsedData += ", " + combinedScouterData
+		} else {
+			fullyParsedData += combinedScouterData
+		}
+	}
+
+	// Close the JSON array
+	fullyParsedData += "]"
+
+	return fullyParsedData
+}
+
+
+// downloadData takes a string of scouting data in JSON format and writes it to a file called "output.json" in the "data" directory.
+func downloadData(jsonData string) {
+    file, _ := os.Create("../data/output.json")
+    file.Write([]byte(jsonData))
+
+    defer file.Close()
+}
+// timer prints a message with a countdown from the given duration and then sleeps for 1 second.
+func timer(duration int, message string) {
+	for i := 0; i < duration; i++ {
+		fmt.Println(message, duration-i)
+		time.Sleep(time.Second)
+	}
+}
 // Helper function to panic on errors
 func must(action string, err error) {
 	if err != nil {
 		panic("failed to " + action + ": " + err.Error())
 	}
-}
-
-// Function to remove duplicate strings from a slice
-func removeDuplicateStr(strSlice []string) []string {
-	var nonRepeat []string
-
-	for _, item := range strSlice {
-		if !contains(nonRepeat, item) {
-			nonRepeat = append(nonRepeat, item)
-		}
-	}
-
-	return nonRepeat
-}
-
-// Helper function to check if a slice contains a string
-func contains(slice []string, str string) bool {
-	for _, v := range slice {
-		if v == str {
-			return true
-		}
-	}
-	return false
 }

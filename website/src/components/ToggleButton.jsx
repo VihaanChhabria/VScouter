@@ -25,27 +25,21 @@ const ToggleButton = ({
     <>
       <div
         style={{
-          width: `${width}dvw`,
-          height: `${height}dvh`,
+          width: `${width}vw`,
+          height: `${height}vh`,
           backgroundColor: "#4A4A4A",
-          border: `${state ? "4.65" : "1.63"}dvh solid #1D1E1E`, // Increases border size if state is true
-          borderRadius: "3.49dvh",
+          border: `${state ? "4.65" : "1.63"}vh solid #1D1E1E`, // Increases border size if state is true
+          borderRadius: "3.49vh",
           position: "absolute",
-          left: `${coordX}dvw`,
-          top: `${coordY}dvh`,
+          left: `${coordX}vw`,
+          top: `${coordY}vh`,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
         }}
         onClick={() => setState(!state)}
       >
-        <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold", textAlign: "center" }}
-        >
-          {question}
-        </h1>
+        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>{question}</h1>
       </div>
     </>
   );

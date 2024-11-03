@@ -38,19 +38,14 @@ const ProceedBackButton = ({
 
   const proceedClick = () => {
     if (back) {
-      inputs = Object.fromEntries(
-        Object.entries(inputs).filter(([key, value]) => value !== null)
-      );
+      inputs = Object.fromEntries(Object.entries(inputs).filter(([key, value]) => value !== null));
       navigate(nextPage, { state: { inputs } });
     } else {
       const hasNull = Object.values(inputs).some((val) => val === null);
       if (hasNull) {
         toast.error("Fill In All Fields To Proceed");
       } else {
-        if (
-          nextPage == "/game-start" &&
-          location.pathname == "/endgame-scoring"
-        ) {
+        if (nextPage == "/game-start" && location.pathname == "/endgame-scoring") {
           const fullData = {
             data: JSON.parse(localStorage.getItem("scoutingData"))?.data || [],
           };
@@ -65,51 +60,42 @@ const ProceedBackButton = ({
     }
   };
   const containerStyle = {
-    border: "1.63dvh solid #1D1E1E",
-    width: `${back ? "12.98" : "33.84"}dvw`,
-    height: `${back ? "17.84" : "35.52"}dvh`,
+    border: "1.63vh solid #1D1E1E",
+    width: `${back ? "12.98" : "33.84"}vw`,
+    height: `${back ? "17.84" : "35.52"}vh`,
     backgroundColor: "#242424",
-    borderRadius: "3.49dvh",
+    borderRadius: "3.49vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    bottom: "2.33dvh",
-    whiteSpace: "pre-wrap",
-    wordWrap: "break-word",
+    bottom: "2.33vh",
   };
 
   if (back) {
-    containerStyle.left = "1.07dvw";
+    containerStyle.left = "1.07vw";
   } else {
-    containerStyle.right = "1.07dvw";
+    containerStyle.right = "1.07vw";
   }
 
   if (coordX) {
-    containerStyle.left = `${coordX}dvw`;
+    containerStyle.left = `${coordX}vw`;
   }
   if (coordY) {
-    containerStyle.top = `${coordY}dvh`;
+    containerStyle.top = `${coordY}vh`;
   }
 
   if (width) {
-    containerStyle.width = `${width}dvw`;
+    containerStyle.width = `${width}vw`;
   }
   if (height) {
-    containerStyle.height = `${height}dvh`;
+    containerStyle.height = `${height}vh`;
   }
 
   return (
     <>
       <div style={containerStyle} onClick={proceedClick}>
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
+        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>
           {back ? "Back" : message ? message : "Proceed"}
         </h1>
       </div>

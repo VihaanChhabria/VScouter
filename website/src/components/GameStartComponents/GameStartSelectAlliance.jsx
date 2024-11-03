@@ -9,12 +9,7 @@ import React, { useEffect, useState } from "react";
  * @param {function} props.setAlliance - The function to set the alliance.
  * @return {JSX.Element} The rendered component.
  */
-const InitialSelectAlliance = ({
-  coordX = 1.07,
-  coordY = 2.33,
-  currentAlliance,
-  setAlliance,
-}) => {
+const InitialSelectAlliance = ({ coordX = 1.07, coordY = 2.33, currentAlliance, setAlliance }) => {
   const [redSelected, setRedSelected] = useState(currentAlliance === "red");
   const [blueSelected, setBlueSelected] = useState(currentAlliance === "blue");
 
@@ -50,26 +45,24 @@ const InitialSelectAlliance = ({
       {/* Container */}
       <div
         style={{
-          border: "1.3dvh solid #1D1E1E",
-          width: "28.13dvw",
-          height: "37.2dvh",
+          border: "4px solid #1D1E1E",
+          width: "28.13vw",
+          height: "37.2vh",
           backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
+          borderRadius: "3.49vh",
           position: "absolute",
-          top: `${coordY}dvh`,
-          left: `${coordX}dvw`,
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
+          top: `${coordY}vh`,
+          left: `${coordX}vw`,
         }}
       >
         {/* Text */}
         <h1
           style={{
             color: "#FFFFFF",
-            fontSize: "5.58dvh",
+            fontSize: "5.58vh",
             fontWeight: "bold",
-            paddingLeft: "2.15dvw",
-            paddingTop: "0.47dvh",
+            paddingLeft: "2.15vw",
+            paddingTop: "0.47vh",
           }}
         >
           Select Alliance
@@ -81,12 +74,12 @@ const InitialSelectAlliance = ({
           <div
             style={{
               backgroundColor: "#C80000",
-              border: `${redSelected ? "4.65dvh" : "0.93dvh"} solid #1D1E1E`,
-              borderRadius: "2.33dvh",
-              width: "11.59dvw",
-              height: "25.12dvh",
-              marginLeft: "1.73dvw",
-              marginRight: "1.07dvw",
+              border: `${redSelected ? "4.65vh" : "0.93vh"} solid #1D1E1E`,
+              borderRadius: "2.33vh",
+              width: "11.59vw",
+              height: "25.12vh",
+              marginLeft: "1.73vw",
+              marginRight: "1.07vw",
             }}
             onClick={() => clickAlliance("red")}
           ></div>
@@ -94,10 +87,10 @@ const InitialSelectAlliance = ({
           <div
             style={{
               backgroundColor: "#00008B",
-              width: "11.59dvw",
-              height: "25.12dvh",
-              border: `${blueSelected ? "4.65dvh" : "0.93dvh"} solid #1D1E1E`,
-              borderRadius: "2.33dvh",
+              width: "11.59vw",
+              height: "25.12vh",
+              border: `${blueSelected ? "4.65vh" : "0.93vh"} solid #1D1E1E`,
+              borderRadius: "2.33vh",
             }}
             onClick={() => clickAlliance("blue")}
           ></div>

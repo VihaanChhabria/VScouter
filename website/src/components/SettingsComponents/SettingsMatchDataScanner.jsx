@@ -38,8 +38,7 @@ const SettingsMatchDataScanner = () => {
       localStorage.setItem("matchData", JSON.stringify(matches)); // Storing the data in local storage so it can be accessed if the website is refreshed
 
       toast.success(
-        "Match Data Fetched: " +
-          JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
+        "Match Data Fetched: " + JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
       ); // Notifying the user that the data has been fetched
 
       navigate("/"); // Navigating back to the home page
@@ -55,14 +54,14 @@ const SettingsMatchDataScanner = () => {
       {/* Container */}
       <div
         style={{
-          width: "95.71dvw",
-          height: "70.47dvh",
+          width: "95.71vw",
+          height: "70.47vh",
           backgroundColor: "#242424",
-          border: "1.3dvh solid #1D1E1E",
-          borderRadius: "3.49dvh",
+          border: "7px solid #1D1E1E",
+          borderRadius: "3.49vh",
           position: "absolute",
-          top: "24.88dvh",
-          left: "2.15dvw",
+          top: "24.88vh",
+          left: "2.15vw",
         }}
       >
         <div
@@ -72,15 +71,13 @@ const SettingsMatchDataScanner = () => {
             alignItems: "center",
             justifyContent: "center",
             position: "absolute",
-            left: "3.97dvw",
-            whiteSpace: "pre-wrap",
-            wordWrap: "break-word",
+            left: "3.97vw",
           }}
         >
           <h1
             style={{
               color: "#FFFFFF",
-              fontSize: "5.58dvh",
+              fontSize: "5.58vh",
               fontWeight: "bold",
               textAlign: "center",
             }}
@@ -97,8 +94,8 @@ const SettingsMatchDataScanner = () => {
             onError={() => toast.error("Invalid QR Code/User Canceled Prompt")}
             styles={{
               container: {
-                width: "24.57dvw",
-                height: "53.26dvh",
+                width: "24.57vw",
+                height: "53.26vh",
               },
               finderBorder: 0,
             }}
@@ -109,12 +106,12 @@ const SettingsMatchDataScanner = () => {
           <h1
             style={{
               color: "#FFFFFF",
-              fontSize: "5.58dvh",
+              fontSize: "5.58vh",
               fontWeight: "bold",
               textAlign: "center",
               position: "absolute",
-              top: "30.93dvh",
-              left: "33dvw",
+              top: "30.93vh",
+              left: "33vw",
             }}
           >
             Or Enter URL:
@@ -125,16 +122,16 @@ const SettingsMatchDataScanner = () => {
             type="text"
             onChange={(e) => useManual && setMatchDataURL(e.target.value)}
             style={{
-              border: "0.93dvh solid #1D1E1E",
-              borderRadius: "2.33dvh",
+              border: "0.93vh solid #1D1E1E",
+              borderRadius: "2.33vh",
               backgroundColor: "#4A4A4A",
               color: "#FFFFFF",
-              width: "40dvw",
-              height: "8.88dvh",
-              fontSize: "4.0dvh",
+              width: "40vw",
+              height: "8.88vh",
+              fontSize: "4.0vh",
               position: "absolute",
-              top: "30.93dvh",
-              left: "52dvw",
+              top: "30.93vh",
+              left: "52vw",
             }}
           />
 
@@ -153,31 +150,23 @@ const SettingsMatchDataScanner = () => {
         {/* Done Button */}
         <div
           style={{
-            border: "1.63dvh solid #1D1E1E",
-            borderRadius: "2.33dvh",
+            border: "1.63vh solid #1D1E1E",
+            borderRadius: "2.33vh",
             backgroundColor: "#4A4A4A",
             color: "#FFFFFF",
-            width: "25.0dvw",
-            height: "17.84dvh",
-            fontSize: "4.0dvh",
+            width: "25.0vw",
+            height: "17.84vh",
+            fontSize: "4.0vh",
             position: "absolute",
-            bottom: "2.33dvh",
-            right: "1.7dvw",
+            bottom: "2.33vh",
+            right: "1.7vw",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
           onClick={() => doneClick()} // Fetches the data and navigates to the next page
         >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Done
-          </h1>
+          <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Done</h1>
         </div>
       </div>
 

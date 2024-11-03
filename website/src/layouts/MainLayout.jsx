@@ -9,7 +9,7 @@ const MainLayout = () => {
       style={{
         backgroundColor: "#3A3B3E",
         height: window.innerHeight,
-        width: "100dvw",
+        width: "100vw",
         overflow: "hidden",
       }}
     >

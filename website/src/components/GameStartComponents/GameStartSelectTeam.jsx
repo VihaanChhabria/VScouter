@@ -19,6 +19,17 @@ const InitialSelectTeam = ({
   selectedMatch,
   selectedAlliance,
 }) => {
+  const [textSelected, setTextSelected] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android|iphone|ipad|ipod/i.test(userAgent)) {
+      setIsMobile(true);
+    }
+  }, []);
+
   let baseTeams = [];
   try {
     baseTeams =
@@ -79,7 +90,7 @@ const InitialSelectTeam = ({
       setTeam2Status(false);
       setCustomTeamStatus(false);
     } else if (currentTeamType === "custom") {
-      setCustomTeamStatus(!customTeamStatus);
+      setCustomTeamStatus(true);
 
       setTeam1Status(false);
       setTeam2Status(false);
@@ -121,7 +132,6 @@ const InitialSelectTeam = ({
           position: "absolute",
           left: `${coordX}dvw`,
           top: `${coordY}dvh`,
-          
         }}
       >
         <div style={{}}>
@@ -159,7 +169,16 @@ const InitialSelectTeam = ({
         </div>
 
         {/* Custom Team Selector */}
-        <div style={{ paddingLeft: "1.72dvw", display: "flex" }}>
+        <div
+          style={{
+            paddingLeft: "1.72dvw",
+            display: "flex",
+            zIndex: 2,
+            position: textSelected && isMobile ? "fixed" : "relative",
+            left: textSelected && isMobile ? `15dvw` : `0dvw`,
+            top: textSelected && isMobile ? "4dvh" : `0dvh`,
+          }}
+        >
           <h1 style={{ color: "#FFFFFF", fontSize: "4.2dvh" }}>
             Custom (put team # only):
           </h1>
@@ -175,12 +194,30 @@ const InitialSelectTeam = ({
               marginLeft: "0.43dvw",
               fontSize: "4.0dvh",
             }}
-            onClick={() => clickTeam("custom", customTeamStatus)}
             value={customTeamValue}
             onChange={(e) => setCustomTeamValue(e.target.value)}
+            onFocus={() => {
+              setTextSelected(true)
+              clickTeam("custom", customTeamStatus)
+            }}
+            onBlur={() => setTextSelected(false)}
           />
         </div>
       </div>
+
+      {textSelected && isMobile && (
+        <div
+          style={{
+            width: "100dvw",
+            height: "100dvh",
+            position: "absolute",
+            left: "0dvw",
+            top: "0dvh",
+            zIndex: 1,
+            backgroundColor: "#595959",
+          }}
+        ></div>
+      )}
     </>
   );
 };

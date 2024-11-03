@@ -21,6 +21,17 @@ const TextInput = ({
     defaultText === null ? "" : defaultText.toUpperCase()
   );
 
+  const [textSelected, setTextSelected] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android|iphone|ipad|ipod/i.test(userAgent)) {
+      setIsMobile(true);
+    }
+  }, []);
+
   useEffect(() => {
     // If the upperText is not empty, set the textValue to the upperText, otherwise set it to null
     if (upperText != "") {
@@ -32,6 +43,19 @@ const TextInput = ({
 
   return (
     <>
+      {textSelected && isMobile && (
+        <div
+          style={{
+            width: "100dvw",
+            height: "100dvh",
+            position: "absolute",
+            left: "0dvw",
+            top: "0dvh",
+            zIndex: 1,
+            backgroundColor: "#595959",
+          }}
+        ></div>
+      )}
       <div
         style={{
           border: "1.3dvh solid #1D1E1E",
@@ -40,8 +64,10 @@ const TextInput = ({
           backgroundColor: "#242424",
           borderRadius: "3.49dvh",
           position: "absolute",
-          left: `${coordX}dvw`,
-          top: `${coordY}dvh`,
+          left:
+            textSelected && isMobile ? `${50 - 28.12 / 2}dvw` : `${coordX}dvw`,
+          top: textSelected && isMobile ? "4dvh" : `${coordY}dvh`,
+          zIndex: 2,
         }}
       >
         <h1
@@ -70,6 +96,8 @@ const TextInput = ({
             top: "7.8dvh",
             fontSize: "4.0dvh",
           }}
+          onFocus={() => setTextSelected(true)}
+          onBlur={() => setTextSelected(false)}
         />
       </div>
     </>

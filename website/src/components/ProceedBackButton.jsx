@@ -75,6 +75,8 @@ const ProceedBackButton = ({
     alignItems: "center",
     position: "absolute",
     bottom: "2.33dvh",
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
   };
 
   if (back) {
@@ -101,7 +103,12 @@ const ProceedBackButton = ({
     <>
       <div style={containerStyle} onClick={proceedClick}>
         <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
+          style={{
+            color: "#FFFFFF",
+            fontSize: "5.58dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
         >
           {back ? "Back" : message ? message : "Proceed"}
         </h1>

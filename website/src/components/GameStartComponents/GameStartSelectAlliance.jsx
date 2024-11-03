@@ -58,6 +58,8 @@ const InitialSelectAlliance = ({
           position: "absolute",
           top: `${coordY}dvh`,
           left: `${coordX}dvw`,
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
       >
         {/* Text */}

@@ -73,6 +73,8 @@ const SettingsMatchDataScanner = () => {
             justifyContent: "center",
             position: "absolute",
             left: "3.97dvw",
+            whiteSpace: "pre-wrap",
+            wordWrap: "break-word",
           }}
         >
           <h1

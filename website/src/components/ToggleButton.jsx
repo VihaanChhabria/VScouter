@@ -36,11 +36,13 @@ const ToggleButton = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
         onClick={() => setState(!state)}
       >
         <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
+          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold", textAlign: "center" }}
         >
           {question}
         </h1>

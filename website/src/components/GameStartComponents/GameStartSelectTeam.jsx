@@ -121,6 +121,7 @@ const InitialSelectTeam = ({
           position: "absolute",
           left: `${coordX}dvw`,
           top: `${coordY}dvh`,
+          
         }}
       >
         <div style={{}}>

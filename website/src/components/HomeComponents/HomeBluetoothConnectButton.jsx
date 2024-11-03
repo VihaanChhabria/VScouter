@@ -45,11 +45,13 @@ const HomeBluetoothConnectButton = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
         onClick={() => connectBluetooth()}
       >
         <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
+          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold", textAlign: "center" }}
         >
           Connect To Bluetooth
         </h1>

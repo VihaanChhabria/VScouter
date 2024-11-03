@@ -31,13 +31,15 @@ const AutoStartNoShowButton = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
         onClick={() => {
           setNoShow(!noShow);
         }}
       >
         <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
+          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold", textAlign: "center" }}
         >
           No Show
         </h1>

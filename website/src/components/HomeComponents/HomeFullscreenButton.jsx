@@ -18,6 +18,8 @@ const HomeFullscreenButton = () => {
           position: "absolute",
           top: "2.33dvh",
           right: "1.07dvw",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
         onClick={() => {
           if (isFullScreen) {
@@ -53,7 +55,12 @@ const HomeFullscreenButton = () => {
         }}
       >
         <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
+          style={{
+            color: "#FFFFFF",
+            fontSize: "5.58dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
         >
           Full Screen
         </h1>

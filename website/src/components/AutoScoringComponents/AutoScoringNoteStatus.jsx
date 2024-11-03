@@ -25,6 +25,8 @@ const AutoScoringNoteStatus = ({
         : "rgba(217, 217, 217, 0.5)",
     userSelect: "none",
     transform: rotated ? "rotate(180deg)" : "rotate(0deg)",
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
   };
 
   const changeStatus = () => {
@@ -40,7 +42,7 @@ const AutoScoringNoteStatus = ({
     <>
       <div style={baseStyle} onClick={changeStatus}>
         <h1
-          style={{ color: "#000000", fontSize: "5.0dvh", fontWeight: "bold" }}
+          style={{ color: "#000000", fontSize: "5.0dvh", fontWeight: "bold", textAlign: "center" }}
         >
           {status}
         </h1>

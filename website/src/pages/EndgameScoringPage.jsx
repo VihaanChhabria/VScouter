@@ -50,12 +50,13 @@ const EndgameScoringPage = () => {
       />
 
       <div>
-        <div>
+        <div style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
           <h1
             style={{
               ...trapMadeMissedTextStyle,
               left: "52.58dvw",
               top: "1.86dvh",
+              textAlign: "center",
             }}
           >
             Trap Made:
@@ -67,12 +68,13 @@ const EndgameScoringPage = () => {
             setCounter={setTrapMadeCount}
           />
         </div>
-        <div>
+        <div style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
           <h1
             style={{
               ...trapMadeMissedTextStyle,
               left: "75.32dvw",
               top: "1.86dvh",
+              textAlign: "center",
             }}
           >
             Trap Missed:

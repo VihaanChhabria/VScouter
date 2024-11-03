@@ -23,7 +23,9 @@ const AutoScoringMap = ({
       <div
         style={{
           backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
-          backgroundSize: "cover",
+          backgroundSize: "63.41dvw 100dvh",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
           width: "63.41dvw",
           height: "100.0dvh",
           animationName: rotate ? "rotateRight" : "rotateLeft",

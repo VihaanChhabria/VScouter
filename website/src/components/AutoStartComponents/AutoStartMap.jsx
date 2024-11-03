@@ -28,7 +28,9 @@ const AutoStartMap = ({
       <div
         style={{
           backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
-          backgroundSize: "cover",
+          backgroundSize: "45.06dvw 100dvh",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
           width: "45.06dvw",
           height: "100dvh",
           animationName: rotate ? "rotateRight" : "rotateLeft",

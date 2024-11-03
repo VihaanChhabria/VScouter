@@ -11,26 +11,34 @@ const EndgameScoringPage = () => {
   const states = location.state;
 
   const [parked, setParked] = useState(states?.inputs?.parked || false);
-  const [parkFailed, setParkFailed] = useState(states?.inputs?.parkFailed || false);
+  const [parkFailed, setParkFailed] = useState(
+    states?.inputs?.parkFailed || false
+  );
 
   const [climbed, setClimbed] = useState(states?.inputs?.climbed || false);
-  const [climbFailed, setClimbFailed] = useState(states?.inputs?.climbFailed || false);
+  const [climbFailed, setClimbFailed] = useState(
+    states?.inputs?.climbFailed || false
+  );
 
-  const [trapMadeCount, setTrapMadeCount] = useState(states?.inputs?.trapMadeCount || 0);
-  const [trapMissedCount, setTrapMissedCount] = useState(states?.inputs?.trapMissedCount || 0);
+  const [trapMadeCount, setTrapMadeCount] = useState(
+    states?.inputs?.trapMadeCount || 0
+  );
+  const [trapMissedCount, setTrapMissedCount] = useState(
+    states?.inputs?.trapMissedCount || 0
+  );
 
   const [comment, setComment] = useState(states?.inputs?.comment || "");
 
   const trapMadeMissedTextStyle = {
     color: "#FFFFFF",
-    fontSize: "7.44vh",
+    fontSize: "7.44dvh",
     fontWeight: "bold",
     userSelect: "none",
     position: "absolute",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "22vw",
+    width: "22dvw",
     overflow: "hidden",
   };
 
@@ -43,7 +51,15 @@ const EndgameScoringPage = () => {
 
       <div>
         <div>
-          <h1 style={{ ...trapMadeMissedTextStyle, left: "52.58vw", top: "1.86vh" }}>Trap Made:</h1>
+          <h1
+            style={{
+              ...trapMadeMissedTextStyle,
+              left: "52.58dvw",
+              top: "1.86dvh",
+            }}
+          >
+            Trap Made:
+          </h1>
           <EndgameScoringTrapCounter
             coordX={56.65}
             coordY={16.51}
@@ -52,7 +68,13 @@ const EndgameScoringPage = () => {
           />
         </div>
         <div>
-          <h1 style={{ ...trapMadeMissedTextStyle, left: "75.32vw", top: "1.86vh" }}>
+          <h1
+            style={{
+              ...trapMadeMissedTextStyle,
+              left: "75.32dvw",
+              top: "1.86dvh",
+            }}
+          >
             Trap Missed:
           </h1>
           <EndgameScoringTrapCounter
@@ -68,29 +90,29 @@ const EndgameScoringPage = () => {
         <h1
           style={{
             color: "#FFFFFF",
-            fontSize: "5.58vh",
+            fontSize: "5.58dvh",
             fontWeight: "bold",
             userSelect: "none",
             position: "absolute",
-            left: "2.04vw",
-            top: "64.88vh",
+            left: "2.04dvw",
+            top: "64.88dvh",
           }}
         >
           Comments:
         </h1>
         <textarea
           style={{
-            left: "17.5vw",
-            top: "64.88vh",
+            left: "17.5dvw",
+            top: "64.88dvh",
             position: "absolute",
-            width: "46.67vw",
-            height: "32.79vh",
-            border: "0.93vh solid #1D1E1E",
-            borderRadius: "2.33vh",
+            width: "46.67dvw",
+            height: "32.79dvh",
+            border: "0.93dvh solid #1D1E1E",
+            borderRadius: "2.33dvh",
             backgroundColor: "#4A4A4A",
             color: "#FFFFFF",
-            fontSize: "3.0vh",
-            padding: "1.56vh",
+            fontSize: "3.0dvh",
+            padding: "1.56dvh",
           }}
           onChange={(e) => setComment(e.target.value)}
         ></textarea>

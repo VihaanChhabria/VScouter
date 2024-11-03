@@ -24,19 +24,19 @@ const AutoStartNumberSection = ({
       <div
         style={{
           position: "absolute",
-          left: `${coordX}vw`,
-          top: `${coordY}vh`,
-          width: `${width}vw`,
-          height: `${height}vh`,
+          left: `${coordX}dvw`,
+          top: `${coordY}dvh`,
+          width: `${width}dvw`,
+          height: `${height}dvh`,
           backgroundColor: "rgba(217, 217, 217, 0.5)",
-          border: "1.16vh solid #5A5A5A",
+          border: "1.16dvh solid #5A5A5A",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           transform: rotated ? "rotate(180deg)" : "rotate(0deg)",
         }}
       >
-        <h1 style={{ color: "#000000", fontSize: "5.58vh" }}>{number}</h1>
+        <h1 style={{ color: "#000000", fontSize: "5.58dvh" }}>{number}</h1>
       </div>
     </>
   );

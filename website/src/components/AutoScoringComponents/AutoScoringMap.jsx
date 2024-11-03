@@ -24,14 +24,14 @@ const AutoScoringMap = ({
         style={{
           backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
           backgroundSize: "cover",
-          width: "63.41vw",
-          height: "100.0vh",
+          width: "63.41dvw",
+          height: "100.0dvh",
           animationName: rotate ? "rotateRight" : "rotateLeft",
           animationDuration: "400ms",
           transform: rotate ? "rotate(180deg)" : "rotate(0deg)",
           position: "absolute",
-          left: "0vw",
-          top: "0vh",
+          left: "0dvw",
+          top: "0dvh",
         }}
       >
         <AutoScoringNoteStatus

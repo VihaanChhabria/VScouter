@@ -6,7 +6,9 @@ import { BluetoothDeviceContext } from "../../contexts/BluetoothDeviceContext";
 const bluetoothService = 0x180d;
 
 const HomeBluetoothConnectButton = () => {
-  const { bluetoothDevice, setBluetoothDevice } = useContext(BluetoothDeviceContext);
+  const { bluetoothDevice, setBluetoothDevice } = useContext(
+    BluetoothDeviceContext
+  );
 
   const connectBluetooth = async () => {
     try {
@@ -32,21 +34,23 @@ const HomeBluetoothConnectButton = () => {
     <>
       <div
         style={{
-          width: "33.84vw",
-          height: "35.52vh",
-          border: "1.63vh solid #1D1E1E",
+          width: "33.84dvw",
+          height: "35.52dvh",
+          border: "1.63dvh solid #1D1E1E",
           position: "absolute",
-          bottom: "2.33vh",
-          left: "1.07vw",
+          bottom: "2.33dvh",
+          left: "1.07dvw",
           backgroundColor: "#242424",
-          borderRadius: "3.49vh",
+          borderRadius: "3.49dvh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
         onClick={() => connectBluetooth()}
       >
-        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>
+        <h1
+          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
+        >
           Connect To Bluetooth
         </h1>
       </div>

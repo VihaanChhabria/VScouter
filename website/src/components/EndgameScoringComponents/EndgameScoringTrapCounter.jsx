@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 /**
  * A React component that renders a counter to select the endgame scoring trap count.
@@ -9,8 +9,12 @@ import React from 'react'
  * @param {function} setCounter - A function to update the initial value of the counter.
  * @return {JSX.Element} The rendered component.
  */
-const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter }) => {
-
+const EndgameScoringTrapCounter = ({
+  coordX = 0,
+  coordY = 0,
+  counter,
+  setCounter,
+}) => {
   const checkCounterAndSet = (setTo) => {
     if (setTo > 3) {
       setCounter(3);
@@ -22,10 +26,10 @@ const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter
   };
 
   const plusMinusButtonStyle = {
-    width: "8.91vw",
-    height: "13.09vh",
+    width: "8.91dvw",
+    height: "13.09dvh",
     backgroundColor: "#BBBBBB",
-    borderRadius: "4.65vh",
+    borderRadius: "4.65dvh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -33,7 +37,7 @@ const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter
 
   const plusMinusTextStyle = {
     color: "#000000",
-    fontSize: "11.16vh",
+    fontSize: "11.16dvh",
     fontWeight: "bold",
     userSelect: "none",
   };
@@ -43,12 +47,12 @@ const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter
       <div
         style={{
           backgroundColor: "#242424",
-          borderRadius: "4.65vh",
-          width: "13.3vw",
-          height: "41.86vh",
+          borderRadius: "4.65dvh",
+          width: "13.3dvw",
+          height: "41.86dvh",
           position: "absolute",
-          left: `${coordX}vw`,
-          top: `${coordY}vh`,
+          left: `${coordX}dvw`,
+          top: `${coordY}dvh`,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-evenly",
@@ -56,25 +60,39 @@ const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter
         }}
       >
         {/* Plus Button */}
-        <div style={plusMinusButtonStyle} onClick={() => checkCounterAndSet(counter + 1)}>
+        <div
+          style={plusMinusButtonStyle}
+          onClick={() => checkCounterAndSet(counter + 1)}
+        >
           <h1 style={plusMinusTextStyle}>+</h1>
         </div>
 
         {/* Counter Number */}
         <div
           style={{
-            width: "8.87vw",
-            height: "5vh",
+            width: "8.87dvw",
+            height: "5dvh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <h1 style={{ color: "#FFFFFF", fontSize: "7.44vh", fontWeight: "bold" }}>{counter}</h1>
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "7.44dvh",
+              fontWeight: "bold",
+            }}
+          >
+            {counter}
+          </h1>
         </div>
 
         {/* Minus Button */}
-        <div style={plusMinusButtonStyle} onClick={() => checkCounterAndSet(counter - 1)}>
+        <div
+          style={plusMinusButtonStyle}
+          onClick={() => checkCounterAndSet(counter - 1)}
+        >
           <h1 style={plusMinusTextStyle}>−</h1>
         </div>
       </div>
@@ -82,4 +100,4 @@ const EndgameScoringTrapCounter = ({ coordX = 0, coordY = 0, counter, setCounter
   );
 };
 
-export default EndgameScoringTrapCounter
+export default EndgameScoringTrapCounter;

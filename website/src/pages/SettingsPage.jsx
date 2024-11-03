@@ -42,9 +42,9 @@ const SettingsPage = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "100vh",
-          gap: "2vh",
-          marginTop: "10vh",
+          height: "100dvh",
+          gap: "2dvh",
+          marginTop: "10dvh",
         }}
       >
         {/* Settings Buttons */}
@@ -73,7 +73,10 @@ const SettingsPage = () => {
 
       {/* If the user has clicked the get match data button, render the SettingsMatchDataScanner component */}
       {matchDataGetClicked && (
-        <SettingsMatchDataScanner state={matchDataGetClicked} setState={setMatchDataGetClicked} />
+        <SettingsMatchDataScanner
+          state={matchDataGetClicked}
+          setState={setMatchDataGetClicked}
+        />
       )}
 
       {/* If the user has clicked the view matches data button, render the SettingsViewMatchData component */}
@@ -83,24 +86,33 @@ const SettingsPage = () => {
       {matchDataGetClicked || viewScoutingData ? (
         <div
           style={{
-            border: "1.63vh solid #1D1E1E",
-            width: "14.91vw",
-            height: "17.84vh",
+            border: "1.63dvh solid #1D1E1E",
+            width: "14.91dvw",
+            height: "17.84dvh",
             backgroundColor: "#242424",
-            borderRadius: "3.49vh",
+            borderRadius: "3.49dvh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             position: "absolute",
-            top: "1.07vh",
-            left: "2.33vw",
+            top: "1.07dvh",
+            left: "2.33dvw",
           }}
           onClick={() => {
             setMatchDataGetClicked(false);
             setViewScoutingData(false);
           }}
         >
-          <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Back</h1>
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "5.58dvh",
+              fontWeight: "bold",
+              
+            }}
+          >
+            Back
+          </h1>
         </div>
       ) : (
         <ProceedBackButton

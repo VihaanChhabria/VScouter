@@ -9,8 +9,12 @@ import React, { useState } from "react";
  * @param {function} setStartCounter - A function to update the initial value of the counter.
  * @return {JSX.Element} The rendered component.
  */
-const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) => {
-
+const AutoStartCounter = ({
+  coordX = 47.1,
+  coordY = 9.3,
+  counter,
+  setCounter,
+}) => {
   const checkCounterAndSet = (setTo) => {
     if (setTo > 4) {
       setCounter(4);
@@ -22,10 +26,10 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
   };
 
   const plusMinusButtonStyle = {
-    width: "10.73vw",
-    height: "23.26vh",
+    width: "10.73dvw",
+    height: "23.26dvh",
     backgroundColor: "#BBBBBB",
-    borderRadius: "4.65vh",
+    borderRadius: "4.65dvh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -33,7 +37,7 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
 
   const plusMinusTextStyle = {
     color: "#000000",
-    fontSize: "16.74vh",
+    fontSize: "16.74dvh",
     fontWeight: "bold",
     userSelect: "none",
   };
@@ -43,12 +47,12 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
       <div
         style={{
           backgroundColor: "#242424",
-          borderRadius: "4.65vh",
-          width: "16.09vw",
-          height: "81.4vh",
+          borderRadius: "4.65dvh",
+          width: "16.09dvw",
+          height: "81.4dvh",
           position: "absolute",
-          left: `${coordX}vw`,
-          top: `${coordY}vh`,
+          left: `${coordX}dvw`,
+          top: `${coordY}dvh`,
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-evenly",
@@ -56,25 +60,39 @@ const AutoStartCounter = ({ coordX = 47.1, coordY = 9.3, counter, setCounter }) 
         }}
       >
         {/* Plus Button */}
-        <div style={plusMinusButtonStyle} onClick={() => checkCounterAndSet(counter + 1)}>
+        <div
+          style={plusMinusButtonStyle}
+          onClick={() => checkCounterAndSet(counter + 1)}
+        >
           <h1 style={plusMinusTextStyle}>+</h1>
         </div>
 
         {/* Counter Number */}
         <div
           style={{
-            width: "10.73vw",
-            height: "13.95vh",
+            width: "10.73dvw",
+            height: "13.95dvh",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <h1 style={{ color: "#FFFFFF", fontSize: "14.88vh", fontWeight: "bold" }}>{counter}</h1>
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "14.88dvh",
+              fontWeight: "bold",
+            }}
+          >
+            {counter}
+          </h1>
         </div>
 
         {/* Minus Button */}
-        <div style={plusMinusButtonStyle} onClick={() => checkCounterAndSet(counter - 1)}>
+        <div
+          style={plusMinusButtonStyle}
+          onClick={() => checkCounterAndSet(counter - 1)}
+        >
           <h1 style={plusMinusTextStyle}>−</h1>
         </div>
       </div>

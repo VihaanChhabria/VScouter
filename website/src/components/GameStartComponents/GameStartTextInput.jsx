@@ -11,8 +11,8 @@ import React, { useEffect, useState } from "react";
  */
 const TextInput = ({
   question = "Match Number",
-  coordX = 10,
-  coordY = 179.52,
+  coordX = 0.781,
+  coordY = 24.933,
   defaultText,
   setTextValue,
 }) => {
@@ -20,6 +20,17 @@ const TextInput = ({
     // If the defaultText is null, set the state to an empty string, otherwise set it to the defaultText in uppercase
     defaultText === null ? "" : defaultText.toUpperCase()
   );
+
+  const [textSelected, setTextSelected] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android|iphone|ipad|ipod/i.test(userAgent)) {
+      setIsMobile(true);
+    }
+  }, []);
 
   useEffect(() => {
     // If the upperText is not empty, set the textValue to the upperText, otherwise set it to null
@@ -32,24 +43,39 @@ const TextInput = ({
 
   return (
     <>
+      {textSelected && isMobile && (
+        <div
+          style={{
+            width: "100dvw",
+            height: "100dvh",
+            position: "absolute",
+            left: "0dvw",
+            top: "0dvh",
+            zIndex: 1,
+            backgroundColor: "#595959",
+          }}
+        ></div>
+      )}
       <div
         style={{
-          border: "7px solid #1D1E1E",
-          width: "28.12vw",
-          height: "19.89vh",
+          border: "1.3dvh solid #1D1E1E",
+          width: "28.12dvw",
+          height: "19.89dvh",
           backgroundColor: "#242424",
-          borderRadius: "3.49vh",
+          borderRadius: "3.49dvh",
           position: "absolute",
-          left: `${coordX}vw`,
-          top: `${coordY}vh`,
+          left:
+            textSelected && isMobile ? `${50 - 28.12 / 2}dvw` : `${coordX}dvw`,
+          top: textSelected && isMobile ? "4dvh" : `${coordY}dvh`,
+          zIndex: 2,
         }}
       >
         <h1
           style={{
             color: "#FFFFFF",
-            fontSize: "5.58vh",
+            fontSize: "5.58dvh",
             fontWeight: "bold",
-            paddingLeft: "1.07vw",
+            paddingLeft: "1.07dvw",
           }}
         >
           {question}
@@ -59,16 +85,19 @@ const TextInput = ({
           value={upperText}
           onChange={(e) => setUpperText(e.target.value.toUpperCase())}
           style={{
-            border: "0.93vh solid #1D1E1E",
-            borderRadius: "2.33vh",
+            border: "0.93dvh solid #1D1E1E",
+            borderRadius: "2.33dvh",
             backgroundColor: "#4A4A4A",
             color: "#FFFFFF",
-            width: "26.01vw",
-            height: "8.88vh",
-            marginLeft: "0.43vw",
-            marginTop: "-1.05vh",
-            fontSize: "4.0vh",
+            width: "26.01dvw",
+            height: "8.88dvh",
+            position: "absolute",
+            left: `.5dvw`,
+            top: "7.8dvh",
+            fontSize: "4.0dvh",
           }}
+          onFocus={() => setTextSelected(true)}
+          onBlur={() => setTextSelected(false)}
         />
       </div>
     </>

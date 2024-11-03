@@ -54,11 +54,11 @@ const TeleopScoringCounter = ({
       <div
         style={{
           position: "absolute",
-          left: `${coordX}vw`,
-          top: `${coordY}vh`,
-          width: `${width}vw`,
-          height: `${height}vh`,
-          border: "1.16vh solid #5A5A5A",
+          left: `${coordX}dvw`,
+          top: `${coordY}dvh`,
+          width: `${width}dvw`,
+          height: `${height}dvh`,
+          border: "1.16dvh solid #5A5A5A",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -71,10 +71,21 @@ const TeleopScoringCounter = ({
         onClick={clicked}
       >
         {/* The message of the counter */}
-        <h1 style={{ color: "#000000", fontSize: "6.8vh", fontWeight: "bold", lineHeight: "1" }}>{message}</h1>
+        <h1
+          style={{
+            color: "#000000",
+            fontSize: "6.8dvh",
+            fontWeight: "bold",
+            lineHeight: "1",
+          }}
+        >
+          {message}
+        </h1>
 
         {/* The count of the counter */}
-        <h1 style={{ color: "#000000", fontSize: "8vh", fontWeight: "800"}}>{count}</h1>
+        <h1 style={{ color: "#000000", fontSize: "8dvh", fontWeight: "800" }}>
+          {count}
+        </h1>
       </div>
     </>
   );

@@ -108,6 +108,7 @@ const SettingsPage = () => {
               color: "#FFFFFF",
               fontSize: "5.58dvh",
               fontWeight: "bold",
+              
             }}
           >
             Back

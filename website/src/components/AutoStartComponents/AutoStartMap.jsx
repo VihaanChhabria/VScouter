@@ -15,7 +15,11 @@ import ToggleButton from "../ToggleButton";
  * @param {string} alliance - alliance of the map (either "blue" or "red")
  * @return {JSX.Element} The rendered component.
  */
-const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "blue" }) => {
+const AutoStartMap = ({
+  buttonCoordX = 65.02,
+  buttonCoordY = 36.74,
+  alliance = "blue",
+}) => {
   const [rotate, setRotate] = useState(false);
 
   return (
@@ -24,15 +28,17 @@ const AutoStartMap = ({ buttonCoordX = 65.02, buttonCoordY = 36.74, alliance = "
       <div
         style={{
           backgroundImage: `url(${alliance == "blue" ? blueField : redField})`,
-          backgroundSize: "cover",
-          width: "45.06vw",
-          height: "100vh",
+          backgroundSize: "45.06dvw 100dvh",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          width: "45.06dvw",
+          height: "100dvh",
           animationName: rotate ? "rotateRight" : "rotateLeft",
           animationDuration: "400ms",
           transform: rotate ? "rotate(180deg)" : "rotate(0deg)",
           position: "absolute",
-          left: "0vw",
-          top: "0vh",
+          left: "0dvw",
+          top: "0dvh",
         }}
       >
         {/* Render the numbers for the robot to start */}

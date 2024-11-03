@@ -9,29 +9,40 @@ import React from "react";
  * @param {function} setNoShow - A function to update the 'no show' state.
  * @return {JSX.Element} The rendered component.
  */
-const AutoStartNoShowButton = ({ coordX = 65.02, coordY = 16.74, noShow, setNoShow }) => {
+const AutoStartNoShowButton = ({
+  coordX = 65.02,
+  coordY = 16.74,
+  noShow,
+  setNoShow,
+}) => {
   return (
     <>
       {/* Render the 'no show' button */}
       <div
         style={{
-          width: "33.8vw",
-          height: "18.14vh",
+          width: "33.8dvw",
+          height: "18.14dvh",
           backgroundColor: "#4A4A4A",
-          border: `${noShow ? "4.65" : "1.63"}vh solid #1D1E1E`,
-          borderRadius: "3.49vh",
+          border: `${noShow ? "4.65" : "1.63"}dvh solid #1D1E1E`,
+          borderRadius: "3.49dvh",
           position: "absolute",
-          left: `${coordX}vw`,
-          top: `${coordY}vh`,
+          left: `${coordX}dvw`,
+          top: `${coordY}dvh`,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
         onClick={() => {
           setNoShow(!noShow);
         }}
       >
-        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>No Show</h1>
+        <h1
+          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold", textAlign: "center" }}
+        >
+          No Show
+        </h1>
       </div>
     </>
   );

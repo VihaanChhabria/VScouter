@@ -2,22 +2,24 @@ import React, { useEffect, useState } from "react";
 
 const HomeFullscreenButton = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
-  
+
   return (
     <>
       <div
         style={{
-          border: "1.63vh solid #1D1E1E",
-          width: "25vw",
-          height: "17.84vh",
+          border: "1.63dvh solid #1D1E1E",
+          width: "25dvw",
+          height: "17.84dvh",
           backgroundColor: "#242424",
-          borderRadius: "3.49vh",
+          borderRadius: "3.49dvh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
-          top: "2.33vh",
-          right: "1.07vw",
+          top: "2.33dvh",
+          right: "1.07dvw",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
         }}
         onClick={() => {
           if (isFullScreen) {
@@ -52,7 +54,16 @@ const HomeFullscreenButton = () => {
           setIsFullScreen(!isFullScreen);
         }}
       >
-        <h1 style={{ color: "#FFFFFF", fontSize: "5.58vh", fontWeight: "bold" }}>Full Screen</h1>
+        <h1
+          style={{
+            color: "#FFFFFF",
+            fontSize: "5.58dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Full Screen
+        </h1>
       </div>
     </>
   );

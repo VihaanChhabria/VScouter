@@ -9,11 +9,11 @@ const AutoScoringNoteStatus = ({
 }) => {
   const baseStyle = {
     position: "absolute",
-    left: `${coordX}vw`,
-    top: `${coordY}vh`,
-    width: "21.67vw",
-    height: "17.44vh",
-    border: "1.16vh solid #5A5A5A",
+    left: `${coordX}dvw`,
+    top: `${coordY}dvh`,
+    width: "21.67dvw",
+    height: "17.44dvh",
+    border: "1.16dvh solid #5A5A5A",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -25,6 +25,8 @@ const AutoScoringNoteStatus = ({
         : "rgba(217, 217, 217, 0.5)",
     userSelect: "none",
     transform: rotated ? "rotate(180deg)" : "rotate(0deg)",
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
   };
 
   const changeStatus = () => {
@@ -39,7 +41,11 @@ const AutoScoringNoteStatus = ({
   return (
     <>
       <div style={baseStyle} onClick={changeStatus}>
-        <h1 style={{ color: "#000000", fontSize: "5.0vh", fontWeight: "bold" }}>{status}</h1>
+        <h1
+          style={{ color: "#000000", fontSize: "5.0dvh", fontWeight: "bold", textAlign: "center" }}
+        >
+          {status}
+        </h1>
       </div>
     </>
   );

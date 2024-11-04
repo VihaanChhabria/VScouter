@@ -15,20 +15,12 @@ import TeleopScoringPage from "./pages/TeleopScoringPage";
 import EndgameScoringPage from "./pages/EndgameScoringPage";
 import SettingsPage from "./pages/SettingsPage";
 
-import { BluetoothDeviceProvider } from "./contexts/BluetoothDeviceContext";
 import { useEffect } from "react";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route
-        path="/"
-        element={
-          <BluetoothDeviceProvider>
-            <MainLayout />
-          </BluetoothDeviceProvider>
-        }
-      >
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="/game-start" element={<GameStartPage />} />
         <Route path="/auto-start" element={<AutoStartPage />} />
@@ -41,11 +33,10 @@ function App() {
   );
 
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js");
     }
   }, []);
-
 
   return <RouterProvider router={router} />;
 }

@@ -1,16 +1,30 @@
 import React from "react";
 
+/**
+ * A component that compiles the selected JSON files into a CSV format required
+ * by the analysis software and downloads it to the user's computer.
+ *
+ * @param {array} selectedFiles - The list of files that have been selected.
+ * @param {function} setSelectedFiles - The function to set the list of selected files.
+ * @return {ReactElement} The rendered component.
+ */
 const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
+  /**
+   * Converts the selected JSON files into a CSV format required by the
+   * analysis software.
+   */
   const convertJSONToCSV = () => {
     let fullCSV = [[]];
     const data = selectedFiles.map((fullData) => fullData.text);
 
+    // Iterate over the first file and extract the keys for the first row that identifies the others
     for (const [key, value] of Object.entries(JSON.parse(data[0])["data"][0])) {
       if (
         typeof value !== "string" &&
         typeof value !== "boolean" &&
         typeof value !== "number"
       ) {
+        // Convert the subkeys to keys
         for (
           let subValueIndex = 0;
           subValueIndex < value.length;
@@ -25,6 +39,7 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
       }
     }
 
+    // Iterate over the rest of the files and extract the values
     for (let fileIndex = 0; fileIndex < data.length; fileIndex++) {
       const file = JSON.parse(data[fileIndex])["data"];
       for (let matchIndex = 0; matchIndex < file.length; matchIndex++) {
@@ -32,10 +47,12 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
         fullCSV.push([]);
         for (const [key, value] of Object.entries(match)) {
           if (
+            // Check if the value is an array
             typeof value !== "string" &&
             typeof value !== "boolean" &&
             typeof value !== "number"
           ) {
+            // Convert the subvalues to values
             for (
               let subValueIndex = 0;
               subValueIndex < value.length;
@@ -46,6 +63,7 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
             }
           } else {
             if (key == "comment") {
+              // Replaces double quotes in the comment
               fullCSV[matchIndex + 1].push(`"${value.replaceAll('"', "'")}"`);
             } else {
               fullCSV[matchIndex + 1].push(value);
@@ -58,11 +76,16 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
     downloadCSV(csvContent);
   };
 
-  const downloadCSV = (data) => {
+  /**
+   * Downloads the CSV content to the user's computer.
+   * @param {string} csvContent - The CSV content to download.
+   * @return {void}
+   */
+  const downloadCSV = (csvContent) => {
     var element = document.createElement("a");
     element.setAttribute(
       "href",
-      "data:text/csv;charset=utf-8," + encodeURIComponent(data)
+      "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent)
     );
     element.setAttribute(
       "download",
@@ -79,6 +102,7 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
 
   return (
     <>
+      {/* The button to compile and download the CSV */}
       <div
         style={{
           backgroundColor: "#242424",

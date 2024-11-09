@@ -25,12 +25,13 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
         typeof value !== "number"
       ) {
         // Convert the subkeys to keys
+        const subKeys = Object.keys(value);
         for (
           let subValueIndex = 0;
-          subValueIndex < value.length;
+          subValueIndex < subKeys.length;
           subValueIndex++
         ) {
-          const subKey = value[subValueIndex];
+          const subKey = subKeys[subValueIndex];
           console.log(subKey);
           fullCSV[0].push(subKey);
         }
@@ -53,25 +54,27 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
             typeof value !== "number"
           ) {
             // Convert the subvalues to values
+            const subValues = Object.values(value);
             for (
               let subValueIndex = 0;
-              subValueIndex < value.length;
+              subValueIndex < subValues.length;
               subValueIndex++
             ) {
-              const subValue = value[subValueIndex];
-              fullCSV[matchIndex + 1].push(subValue);
+              const subValue = subValues[subValueIndex];
+              fullCSV[fullCSV.length - 1].push(subValue);
             }
           } else {
             if (key == "comment") {
               // Replaces double quotes in the comment
-              fullCSV[matchIndex + 1].push(`"${value.replaceAll('"', "'")}"`);
+              fullCSV[fullCSV.length - 1].push(`"${value.replaceAll('"', "'")}"`);
             } else {
-              fullCSV[matchIndex + 1].push(value);
+              fullCSV[fullCSV.length - 1].push(value);
             }
           }
         }
       }
     }
+    console.log(fullCSV)
     const csvContent = fullCSV.map((row) => row.join(",")).join("\n");
     downloadCSV(csvContent);
   };

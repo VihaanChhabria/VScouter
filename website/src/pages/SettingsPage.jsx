@@ -124,6 +124,7 @@ const SettingsPage = () => {
           back={true}
         />
       )}
+      {/* Render a button to update service workers */}
       <SettingsUpdateButton />
     </>
   );

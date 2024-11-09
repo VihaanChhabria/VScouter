@@ -2,7 +2,6 @@ import React from "react";
 
 const SettingsUpdateButton = () => {
   const clearServiceWorkers = () => {
-    console.log(navigator.onLine);
     navigator.serviceWorker.getRegistrations().then((registrations) => {
       for (const registration of registrations) {
         registration.unregister();

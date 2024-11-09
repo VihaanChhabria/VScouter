@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const SettingsUpdateCheck = () => {
+const SettingsUpdateButton = () => {
   const clearServiceWorkers = () => {
     console.log(navigator.onLine);
     navigator.serviceWorker.getRegistrations().then((registrations) => {
@@ -8,8 +8,6 @@ const SettingsUpdateCheck = () => {
         registration.unregister();
       }
     });
-
-    window.location.reload();
   };
   return (
     <>
@@ -47,4 +45,4 @@ const SettingsUpdateCheck = () => {
   );
 };
 
-export default SettingsUpdateCheck;
+export default SettingsUpdateButton;

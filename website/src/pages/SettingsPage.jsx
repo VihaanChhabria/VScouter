@@ -5,6 +5,7 @@ import ProceedBackButton from "../components/ProceedBackButton";
 import SettingsMatchDataScanner from "../components/SettingsComponents/SettingsMatchDataScanner";
 import SettingsButton from "../components/SettingsComponents/SettingsButton";
 import SettingsViewMatchData from "../components/SettingsComponents/SettingsViewMatchData";
+import SettingsUpdateCheck from "../components/SettingsComponents/SettingsUpdateCheck";
 
 /**
  * A page for the user to access settings such as clearing match data, viewing match data, and getting match data.
@@ -124,6 +125,7 @@ const SettingsPage = () => {
           back={true}
         />
       )}
+      <SettingsUpdateCheck />
     </>
   );
 };

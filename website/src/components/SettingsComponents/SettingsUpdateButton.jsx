@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const SettingsUpdateButton = () => {
   const clearServiceWorkers = () => {
@@ -7,6 +8,7 @@ const SettingsUpdateButton = () => {
         registration.unregister();
       }
     });
+    toast.success("Website Updated");
   };
   return (
     <>

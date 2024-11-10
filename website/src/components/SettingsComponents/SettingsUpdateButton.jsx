@@ -11,7 +11,6 @@ const SettingsUpdateButton = () => {
   /**
    * Clears all service workers and their caches.
    */
-  console.log("heeeereee")
   const clearServiceWorkers = () => {
     // Get all the registrations of the service workers and loop through them
     navigator.serviceWorker.getRegistrations().then((registrations) => {

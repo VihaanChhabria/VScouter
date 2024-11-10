@@ -5,6 +5,7 @@ import ProceedBackButton from "../components/ProceedBackButton";
 import SettingsMatchDataScanner from "../components/SettingsComponents/SettingsMatchDataScanner";
 import SettingsButton from "../components/SettingsComponents/SettingsButton";
 import SettingsViewMatchData from "../components/SettingsComponents/SettingsViewMatchData";
+import SettingsUpdateButton from "../components/SettingsComponents/SettingsUpdateButton";
 
 /**
  * A page for the user to access settings such as clearing match data, viewing match data, and getting match data.
@@ -108,7 +109,6 @@ const SettingsPage = () => {
               color: "#FFFFFF",
               fontSize: "5.58dvh",
               fontWeight: "bold",
-              
             }}
           >
             Back
@@ -124,6 +124,8 @@ const SettingsPage = () => {
           back={true}
         />
       )}
+      {/* Render a button to update service workers */}
+      <SettingsUpdateButton />
     </>
   );
 };

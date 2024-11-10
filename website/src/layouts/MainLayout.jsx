@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import MainLayoutBluetoothCheck from "../components/MainLayoutComponents/MainLayoutBluetoothCheck";
 import MainLayoutPortraitWarning from "../components/MainLayoutComponents/MainLayoutPortraitWarning";
 
 const MainLayout = () => {
@@ -14,7 +13,6 @@ const MainLayout = () => {
         overflow: "hidden",
       }}
     >
-      <MainLayoutBluetoothCheck />
       <MainLayoutPortraitWarning />
       <Outlet />
     </div>

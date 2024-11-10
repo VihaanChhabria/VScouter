@@ -2,8 +2,8 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import HomeBluetoothConnectButton from "../components/HomeComponents/HomeBluetoothConnectButton";
 import HomeFullscreenButton from "../components/HomeComponents/HomeFullscreenButton";
+import HomeDumpDataButton from "../components/HomeComponents/HomeDumpDataButton";
 
 const HomePage = () => {
   return (
@@ -19,7 +19,7 @@ const HomePage = () => {
 
       <HomeFullscreenButton />
 
-      <HomeBluetoothConnectButton />
+      <HomeDumpDataButton />
 
       <ProceedBackButton nextPage={`/game-start`} message={"Game Start"} />
 

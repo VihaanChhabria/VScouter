@@ -69,25 +69,8 @@ const HomePage = () => {
           }}
         ><HomeFullscreenButton /></div>
       </div>
-      {/* <ProceedBackButton
-        nextPage={`/settings`}
-        width={14.91}
-        height={17.84}
-        coordX={1.07}
-        coordY={2.33}
-        message={"Settings"}
-      />
-
-      <HomeFullscreenButton />
-
-      <HomeDumpDataButton />
-
-                <ProceedBackButton
-            nextPage={`/game-start`}
-            message={"Start Scouting"}
-          />
-
-      <ToastContainer /> */}
+      
+      <ToastContainer />
     </div>
   );
 };

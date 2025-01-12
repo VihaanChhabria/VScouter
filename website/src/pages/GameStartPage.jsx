@@ -19,60 +19,131 @@ const GameStartPage = () => {
 
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
   const [alliance, setAlliance] = useState(states?.inputs?.alliance || null);
-  const [matchNumber, setMatchNumber] = useState(states?.inputs?.matchNumber || null);
-  const [scouterInitials, setScouterInitials] = useState(states?.inputs?.scouterInitials || null);
-  const [selectTeam, setSelectTeam] = useState(states?.inputs?.selectTeam || null);
+  const [matchNumber, setMatchNumber] = useState(
+    states?.inputs?.matchNumber || null
+  );
+  const [scouterInitials, setScouterInitials] = useState(
+    states?.inputs?.scouterInitials || null
+  );
+  const [selectTeam, setSelectTeam] = useState(
+    states?.inputs?.selectTeam || null
+  );
 
   return (
     <>
-      {/* Render the SelectAlliance component to select which alliance to scout */}
-      <GameStartSelectAlliance currentAlliance={alliance} setAlliance={setAlliance} />
-
-      {/* Render the TextInput component to take in the match number */}
-      <GameStartTextInput
-        question="Match Number"
-        coordX={1.07}
-        coordY={41.75}
-        defaultText={matchNumber}
-        setTextValue={setMatchNumber}
-      />
-
-      {/* Render the TextInput component to take in the scouter's initials */}
-      <GameStartTextInput
-        question="Scouter Initials"
-        coordX={1.07}
-        coordY={63.95}
-        defaultText={scouterInitials}
-        setTextValue={setScouterInitials}
-      />
-
-      {/* Render the SelectTeam component to select which team to scout */}
-      <GameStartSelectTeam
-        defaultSelectTeam={selectTeam}
-        setSelectTeam={setSelectTeam}
-        selectedMatch={matchNumber}
-        selectedAlliance={alliance ? alliance+"Alliance" : null}
-      />
-
-      {/* Render the ProceedBackButton to navigate to the next page and pass in the selected data as props */}
-      <ProceedBackButton
-        nextPage="/auto-start"
-        inputs={{
-          ...(states?.inputs || {}),
-          alliance: alliance,
-          matchNumber: matchNumber,
-          scouterInitials: scouterInitials,
-          selectTeam: selectTeam,
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100dvh",
         }}
-      />
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "98dvw",
+            height: "95dvh",
+            justifyContent: "space-evenly",
+            gap: "3dvw",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              flexBasis: 445,
+              gap: "4dvh",
+            }}
+          >
+            <div style={{ flexBasis: 160 }}>
+              <GameStartTextInput
+                question="Match Number"
+                setTextValue={setMatchNumber}
+                defaultText={matchNumber}
+              />
+            </div>
+            <div style={{ flexBasis: 260 }}>
+              <GameStartSelectAlliance
+                currentAlliance={alliance}
+                setAlliance={setAlliance}
+              />
+            </div>
+            <div style={{ flexBasis: 160 }}>
+              <GameStartTextInput
+                question="Scouter Initials"
+                setTextValue={setScouterInitials}
+                defaultText={scouterInitials}
+              />
+            </div>
+          </div>
 
-      <ProceedBackButton
-        nextPage="/"
-        width={14.91}
-        height={17.84}
-        coordX={49}
-        back={true}
-      />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              flexBasis: 850,
+              gap: "2dvh",
+            }}
+          >
+            <div style={{ flexBasis: "60%" }}>
+              <GameStartSelectTeam
+                defaultSelectTeam={selectTeam}
+                setSelectTeam={setSelectTeam}
+                selectedMatch={matchNumber}
+                selectedAlliance={alliance}
+              />
+            </div>
+
+            <div
+              style={{
+                flexBasis: "40%",
+                display: "flex",
+                flexDirection: "row",
+              }}
+            >
+              <div
+                style={{
+                  flexBasis: "50%",
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-end",
+                }}
+              >
+                <h1
+                  style={{
+                    color: "#FFFFFF",
+                    fontSize: "10dvh",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Game Start
+                </h1>
+              </div>
+              <div
+                style={{
+                  flexBasis: "50%",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2dvh",
+                }}
+              >
+                <div style={{ flexBasis: "30%" }}>
+                  <ProceedBackButton nextPage={`/`} back={true} />
+                </div>
+                <div style={{ flexBasis: "70%" }}>
+                  <ProceedBackButton nextPage={`/auto-start`} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

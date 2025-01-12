@@ -10,11 +10,9 @@ import React, { useEffect, useState } from "react";
  * @param {function} setTextValue - The function to set the text input value to.
  */
 const TextInput = ({
-  question = "Match Number",
-  coordX = 0.781,
-  coordY = 24.933,
-  defaultText,
-  setTextValue,
+  question = "-",
+  defaultText = null,
+  setTextValue = () => {},
 }) => {
   const [upperText, setUpperText] = useState(
     // If the defaultText is null, set the state to an empty string, otherwise set it to the defaultText in uppercase
@@ -42,7 +40,7 @@ const TextInput = ({
   }, [upperText]);
 
   return (
-    <>
+    <div style={{ height: "100%", width: "100%" }}>
       {textSelected && isMobile && (
         <div
           style={{
@@ -59,23 +57,28 @@ const TextInput = ({
       <div
         style={{
           border: "1.3dvh solid #1D1E1E",
-          width: "28.12dvw",
-          height: "19.89dvh",
+          width: "100%",
+          height: "100%",
           backgroundColor: "#242424",
           borderRadius: "3.49dvh",
-          position: "absolute",
+          position: textSelected && isMobile ? "absolute" : "relative",
           left:
-            textSelected && isMobile ? `${50 - 28.12 / 2}dvw` : `${coordX}dvw`,
-          top: textSelected && isMobile ? "4dvh" : `${coordY}dvh`,
+            textSelected && isMobile ? `${50 - 28.12 / 2}dvw` : "",
+          top: textSelected && isMobile ? "4dvh" : "",
           zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          paddingLeft: "1dvw",
         }}
       >
+
         <h1
           style={{
             color: "#FFFFFF",
             fontSize: "5.58dvh",
             fontWeight: "bold",
-            paddingLeft: "1.07dvw",
           }}
         >
           {question}
@@ -89,18 +92,15 @@ const TextInput = ({
             borderRadius: "2.33dvh",
             backgroundColor: "#4A4A4A",
             color: "#FFFFFF",
-            width: "26.01dvw",
+            width: "97%",
             height: "8.88dvh",
-            position: "absolute",
-            left: `.5dvw`,
-            top: "7.8dvh",
             fontSize: "4.0dvh",
           }}
           onFocus={() => setTextSelected(true)}
           onBlur={() => setTextSelected(false)}
         />
       </div>
-    </>
+    </div>
   );
 };
 

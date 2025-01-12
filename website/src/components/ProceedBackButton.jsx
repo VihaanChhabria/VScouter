@@ -26,82 +26,64 @@ import "react-toastify/dist/ReactToastify.css";
 const ProceedBackButton = ({
   back = false,
   nextPage = "/",
-  coordX = null,
-  coordY = null,
   inputs = {},
-  width = null,
-  height = null,
   message = null,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  /** Handler for the button being clicked */
   const proceedClick = () => {
     if (back) {
+      // If the back prop is set to true, pass the inputs as props to the previous page
       inputs = Object.fromEntries(
         Object.entries(inputs).filter(([key, value]) => value !== null)
       );
       navigate(nextPage, { state: { inputs } });
     } else {
+      // If the back prop is set to false, check if all inputs have been filled in
       const hasNull = Object.values(inputs).some((val) => val === null);
       if (hasNull) {
+        // If there are any null inputs, display an error message
         toast.error("Fill In All Fields To Proceed");
       } else {
         if (
           nextPage == "/game-start" &&
           location.pathname == "/endgame-scoring"
         ) {
+          // If the next page is the game start page and the current page is the endgame scoring page
           const fullData = {
             data: JSON.parse(localStorage.getItem("scoutingData"))?.data || [],
           };
           fullData.data.push({ ...inputs });
-
+          // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
           navigate(nextPage);
         } else {
+          // If the next page is not the game start page, pass the inputs as props to the next page
           navigate(nextPage, { state: { inputs } });
         }
       }
     }
   };
-  const containerStyle = {
-    border: "1.63dvh solid #1D1E1E",
-    width: `${back ? "12.98" : "33.84"}dvw`,
-    height: `${back ? "17.84" : "35.52"}dvh`,
-    backgroundColor: "#242424",
-    borderRadius: "3.49dvh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-    bottom: "2.33dvh",
-    whiteSpace: "pre-wrap",
-    wordWrap: "break-word",
-  };
-
-  if (back) {
-    containerStyle.left = "1.07dvw";
-  } else {
-    containerStyle.right = "1.07dvw";
-  }
-
-  if (coordX) {
-    containerStyle.left = `${coordX}dvw`;
-  }
-  if (coordY) {
-    containerStyle.top = `${coordY}dvh`;
-  }
-
-  if (width) {
-    containerStyle.width = `${width}dvw`;
-  }
-  if (height) {
-    containerStyle.height = `${height}dvh`;
-  }
 
   return (
-    <>
-      <div style={containerStyle} onClick={proceedClick}>
+    <div style={{ width: "100%", height: "100%" }}>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "1.63dvh solid #1D1E1E",
+          backgroundColor: "#242424",
+          borderRadius: "3.49dvh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
+        }}
+        onClick={proceedClick}
+      >
         <h1
           style={{
             color: "#FFFFFF",
@@ -114,7 +96,7 @@ const ProceedBackButton = ({
         </h1>
       </div>
       <ToastContainer />
-    </>
+    </div>
   );
 };
 

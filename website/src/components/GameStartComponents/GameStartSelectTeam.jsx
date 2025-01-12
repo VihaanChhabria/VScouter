@@ -12,8 +12,6 @@ import SelectTeamButton from "./GameStartSelectTeamButton";
  * @return {JSX.Element} The rendered component.
  */
 const InitialSelectTeam = ({
-  coordX = 32.83,
-  coordY = 2.33,
   defaultSelectTeam,
   setSelectTeam,
   selectedMatch,
@@ -125,83 +123,107 @@ const InitialSelectTeam = ({
       <div
         style={{
           border: "1.3dvh solid #1D1E1E",
-          width: "66.09dvw",
-          height: "54.42dvh",
+          width: "100%",
+          height: "100%",
           backgroundColor: "#242424",
           borderRadius: "3.49dvh",
-          position: "absolute",
-          left: `${coordX}dvw`,
-          top: `${coordY}dvh`,
         }}
       >
-        <div style={{}}>
+        <div style={{ width: "98.5%", height: "100%", paddingLeft: "1.5%" }}>
           {/* Question */}
           <h1
             style={{
               color: "#FFFFFF",
               fontSize: "5.58dvh",
               fontWeight: "bold",
-              paddingLeft: "1.07dvw",
             }}
           >
             Select Team
           </h1>
 
           {/* Selectors */}
-          <SelectTeamButton
-            currentTeamType={"1"}
-            currentTeamStatus={team1Status}
-            clickTeam={clickTeam}
-            teamName={baseTeams[0]}
-          />
-          <SelectTeamButton
-            currentTeamType={"2"}
-            currentTeamStatus={team2Status}
-            clickTeam={clickTeam}
-            teamName={baseTeams[1]}
-          />
-          <SelectTeamButton
-            currentTeamType={"3"}
-            currentTeamStatus={team3Status}
-            clickTeam={clickTeam}
-            teamName={baseTeams[2]}
-          />
-        </div>
-
-        {/* Custom Team Selector */}
-        <div
-          style={{
-            paddingLeft: "1.72dvw",
-            display: "flex",
-            zIndex: 2,
-            position: textSelected && isMobile ? "fixed" : "relative",
-            left: textSelected && isMobile ? `15dvw` : `0dvw`,
-            top: textSelected && isMobile ? "4dvh" : `0dvh`,
-          }}
-        >
-          <h1 style={{ color: "#FFFFFF", fontSize: "4.2dvh" }}>
-            Custom (put team # only):
-          </h1>
-          <input
-            type="text"
+          <div
             style={{
-              border: "0.93dvh solid #1D1E1E",
-              borderRadius: "2.33dvh",
-              backgroundColor: `#${customTeamStatus ? "393939" : "6C6C6C"}`,
-              color: "#FFFFFF",
-              width: "37.02dvw",
-              height: "8.88dvh",
-              marginLeft: "0.43dvw",
-              fontSize: "4.0dvh",
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              height: "59%",
+              gap: "1dvh",
             }}
-            value={customTeamValue}
-            onChange={(e) => setCustomTeamValue(e.target.value)}
-            onFocus={() => {
-              setTextSelected(true)
-              clickTeam("custom", customTeamStatus)
+          >
+            <div style={{ flexGrow: 1 }}>
+              <SelectTeamButton
+                currentTeamType={"1"}
+                currentTeamStatus={team1Status}
+                clickTeam={clickTeam}
+                teamName={baseTeams[0]}
+              />
+            </div>
+            <div style={{ flexGrow: 1 }}>
+              <SelectTeamButton
+                currentTeamType={"2"}
+                currentTeamStatus={team2Status}
+                clickTeam={clickTeam}
+                teamName={baseTeams[1]}
+              />
+            </div>
+            <div style={{ flexGrow: 1 }}>
+              <SelectTeamButton
+                currentTeamType={"3"}
+                currentTeamStatus={team3Status}
+                clickTeam={clickTeam}
+                teamName={baseTeams[2]}
+              />
+            </div>
+          </div>
+
+          {/* Custom Team Selector */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingTop: "2dvh",
+              zIndex: 2,
+              position: textSelected && isMobile ? "fixed" : "relative",
+              left: textSelected && isMobile ? `15dvw` : `0dvw`,
+              top: textSelected && isMobile ? "4dvh" : `0dvh`,
             }}
-            onBlur={() => setTextSelected(false)}
-          />
+          >
+            <h1
+              style={{
+                color: "#FFFFFF",
+                fontSize: "4.2dvh",
+                width: "100%",
+                flexBasis: 1,
+                flexGrow: 1,
+                marginRight: "1dvw",
+                height: "8.88dvh",
+              }}
+            >
+              Custom (put team # only):
+            </h1>
+            <input
+              type="text"
+              style={{
+                border: "0.93dvh solid #1D1E1E",
+                borderRadius: "2.33dvh",
+                backgroundColor: `#${customTeamStatus ? "393939" : "6C6C6C"}`,
+                color: "#FFFFFF",
+                height: "8.88dvh",
+                fontSize: "4.0dvh",
+                flexBasis: 1,
+                flexGrow: 1,
+              }}
+              value={customTeamValue}
+              onChange={(e) => setCustomTeamValue(e.target.value)}
+              onFocus={() => {
+                setTextSelected(true);
+                clickTeam("custom", customTeamStatus);
+              }}
+              onBlur={() => setTextSelected(false)}
+            />
+          </div>
         </div>
       </div>
 

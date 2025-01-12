@@ -21,22 +21,22 @@ const AutoStartPage = () => {
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
 
   const [startPos1, setStartPos1] = useState(
-    states?.inputs?.startPoses?.startPos1 || null
+    states?.inputs?.startPoses[0] || null
   );
   const [startPos2, setStartPos2] = useState(
-    states?.inputs?.startPoses?.startPos2 || null
+    states?.inputs?.startPoses[1] || null
   );
   const [startPos3, setStartPos3] = useState(
-    states?.inputs?.startPoses?.startPos3 || null
+    states?.inputs?.startPoses[2] || null
   );
   const [startPos4, setStartPos4] = useState(
-    states?.inputs?.startPoses?.startPos4 || null
+    states?.inputs?.startPoses[3] || null
   );
   const [startPos5, setStartPos5] = useState(
-    states?.inputs?.startPoses?.startPos5 || null
+    states?.inputs?.startPoses[4] || null
   );
   const [startPos6, setStartPos6] = useState(
-    states?.inputs?.startPoses?.startPos6 || null
+    states?.inputs?.startPoses[5] || null
   );
 
   const startPoses = [
@@ -56,6 +56,8 @@ const AutoStartPage = () => {
     setStartPos6,
   ];
 
+  
+
   return (
     <div
       style={{
@@ -69,7 +71,7 @@ const AutoStartPage = () => {
         gap: "5dvw",
       }}
     >
-      <div style={{ width: "70%", height: "100%", backgroundColor: "red" }}>
+      <div style={{ width: "70%", height: "100%" }}>
         <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} />
       </div>
 
@@ -82,8 +84,24 @@ const AutoStartPage = () => {
           gap: "2dvh",
         }}
       >
-        <h1 style={{ textAlign: "center", fontSize: "10dvh", fontWeight: "bold", color: "white"}}>Auto Start</h1>
-        <h1 style={{ textAlign: "center", fontSize: "4.5dvh", fontWeight: "semibold", color: "white"}}>
+        <h1
+          style={{
+            textAlign: "center",
+            fontSize: "10dvh",
+            fontWeight: "bold",
+            color: "white",
+          }}
+        >
+          Auto Start
+        </h1>
+        <h1
+          style={{
+            textAlign: "center",
+            fontSize: "4.5dvh",
+            fontWeight: "semibold",
+            color: "white",
+          }}
+        >
           Click where your robot starts on the field.
         </h1>
         <div style={{ width: "100%", height: "30%" }}>

@@ -32,6 +32,7 @@ const AutoStartMap = ({ startPoses, setStartPoses }) => {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
+          borderRadius: "4dvh",
         }}
       >
         <div

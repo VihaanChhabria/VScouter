@@ -19,57 +19,120 @@ const AutoStartPage = () => {
   const states = location.state;
 
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
-  const [noShow, setNoShow] = useState(states?.inputs?.noShow || false);
-  const [startCounter, setStartCounter] = useState(states?.inputs?.autoStartPos || 1);
 
-  useEffect(() => {
-    if (noShow) {
-      setStartCounter(0);
-    }
-  }, [noShow]);
+  const [startPos1, setStartPos1] = useState(
+    states?.inputs?.startPoses?.startPos1 || null
+  );
+  const [startPos2, setStartPos2] = useState(
+    states?.inputs?.startPoses?.startPos2 || null
+  );
+  const [startPos3, setStartPos3] = useState(
+    states?.inputs?.startPoses?.startPos3 || null
+  );
+  const [startPos4, setStartPos4] = useState(
+    states?.inputs?.startPoses?.startPos4 || null
+  );
+  const [startPos5, setStartPos5] = useState(
+    states?.inputs?.startPoses?.startPos5 || null
+  );
+  const [startPos6, setStartPos6] = useState(
+    states?.inputs?.startPoses?.startPos6 || null
+  );
+
+  const startPoses = [
+    startPos1,
+    startPos2,
+    startPos3,
+    startPos4,
+    startPos5,
+    startPos6,
+  ];
+  const setStartPoses = [
+    setStartPos1,
+    setStartPos2,
+    setStartPos3,
+    setStartPos4,
+    setStartPos5,
+    setStartPos6,
+  ];
 
   return (
-    <>
-      {/* Render the auto start map */}
-      <AutoStartMap alliance={states?.inputs?.alliance || "blue"} />
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        padding: "5dvh",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "5dvw",
+      }}
+    >
+      <div style={{ width: "70%", height: "100%", backgroundColor: "red" }}>
+        <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} />
+      </div>
 
-      {/* Button to select whether the robot showed up or not */}
-      <ToggleButton
-        coordX={65.02}
-        coordY={16.74}
-        width={33.8}
-        height={18.14}
-        question="No Show"
-        state={noShow}
-        setState={setNoShow}
-      />
-
-      {/* If the robot showed up, render the counter to select the start position */}
-      {!noShow && (
-        <AutoStartCounter counter={startCounter} setCounter={setStartCounter} />
-      )}
-
-      {/* Button to proceed to the next page (either endgame or auto scoring based on if the robot showed up) and pass in the selected data as props */}
-      <ProceedBackButton
-        nextPage={noShow ? `/endgame-scoring` : `/auto-scoring`}
-        inputs={{
-          ...(states?.inputs || {}),
-          noShow: noShow,
-          autoStartPos: startCounter,
+      <div
+        style={{
+          width: "30%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          gap: "2dvh",
         }}
-      />
+      >
+        <h1 style={{ textAlign: "center", fontSize: "10dvh", fontWeight: "bold", color: "white"}}>Auto Start</h1>
+        <h1 style={{ textAlign: "center", fontSize: "4.5dvh", fontWeight: "semibold", color: "white"}}>
+          Click where your robot starts on the field.
+        </h1>
+        <div style={{ width: "100%", height: "30%" }}>
+          <ProceedBackButton
+            back={true}
+            nextPage="/game-start"
+            inputs={{
+              ...(states?.inputs || {}),
+              startPoses: startPoses,
+            }}
+          />
+        </div>
+        <div style={{ width: "100%", height: "50%" }}>
+          <ProceedBackButton
+            nextPage={"/auto-scoring"}
+            inputs={{
+              ...(states?.inputs || {}),
+              startPoses: startPoses,
+            }}
+          />
+        </div>
+      </div>
+      {/* <AutoStartMap /> */}
+    </div>
+    // <>
+    //   {/* Render the auto start map */}
+    //   <AutoStartMap alliance={states?.inputs?.alliance || "blue"} />
 
-      {/* Button to go back to the previous page and pass in the selected data as props*/}
-      <ProceedBackButton
-        back={true}
-        nextPage="/game-start"
-        inputs={{
-          ...(states?.inputs || {}),
-          noShow: noShow,
-          autoStartPos: startCounter,
-        }}
-      />
-    </>
+    //   {/* Button to proceed to the next page (either endgame or auto scoring based on if the robot showed up) and pass in the selected data as props */}
+    //   <ProceedBackButton
+    //     nextPage={noShow ? `/endgame-scoring` : `/auto-scoring`}
+    //     inputs={{
+    //       ...(states?.inputs || {}),
+    //       noShow: noShow,
+    //       autoStartPos: startCounter,
+    //     }}
+    //   />
+
+    //   {/* Button to go back to the previous page and pass in the selected data as props*/}
+    //   <ProceedBackButton
+    //     back={true}
+    //     nextPage="/game-start"
+    //     inputs={{
+    //       ...(states?.inputs || {}),
+    //       noShow: noShow,
+    //       autoStartPos: startCounter,
+    //     }}
+    //   />
+    // </>
   );
 };
 

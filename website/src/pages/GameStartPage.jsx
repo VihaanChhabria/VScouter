@@ -38,15 +38,17 @@ const GameStartPage = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100dvh",
+          width: "100dvw",
+          padding: "5dvh",
         }}
       >
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "98dvw",
-            height: "95dvh",
-            justifyContent: "space-evenly",
+            width: "100%",
+            height: "100%",
+            justifyContent: "center",
             gap: "3dvw",
           }}
         >

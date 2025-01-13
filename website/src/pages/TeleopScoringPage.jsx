@@ -38,6 +38,7 @@ const TeleopScoringPage = () => {
   const [fedMissedCount, setFedMissedCount] = useState(
     states?.inputs?.teleopRingCounts?.fedMissedCount || 0
   );
+
   return (
     <>
       {/* Render the TeleopScoringMap component to show the map and the counters */}

@@ -19,24 +19,23 @@ const AutoStartPage = () => {
   const states = location.state;
 
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
-
   const [startPos1, setStartPos1] = useState(
-    states?.inputs?.startPoses[0] || null
+    states?.inputs?.startPoses?.[0] || null
   );
   const [startPos2, setStartPos2] = useState(
-    states?.inputs?.startPoses[1] || null
+    states?.inputs?.startPoses?.[1] || null
   );
   const [startPos3, setStartPos3] = useState(
-    states?.inputs?.startPoses[2] || null
+    states?.inputs?.startPoses?.[2] || null
   );
   const [startPos4, setStartPos4] = useState(
-    states?.inputs?.startPoses[3] || null
+    states?.inputs?.startPoses?.[3] || null
   );
   const [startPos5, setStartPos5] = useState(
-    states?.inputs?.startPoses[4] || null
+    states?.inputs?.startPoses?.[4] || null
   );
   const [startPos6, setStartPos6] = useState(
-    states?.inputs?.startPoses[5] || null
+    states?.inputs?.startPoses?.[5] || null
   );
 
   const startPoses = [

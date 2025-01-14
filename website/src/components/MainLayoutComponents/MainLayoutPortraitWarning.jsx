@@ -36,11 +36,17 @@ const MainLayoutPortraitWarning = () => {
   }, [isIncreasing]);
 
   useEffect(() => {
+    //saying that when the orientation changes, if the screen is in landscape mode
+    //and previously was in portrait mode and is only on the home page, reload the page
+    //this stops the user from deleting all of their scouting data by accident in the middle of a match
+    if (window.matchMedia("(orientation: landscape)").matches && isPortrait && location.pathname == "/") {
+      window.location.reload();
+    }
+
     if (window.matchMedia("(orientation: portrait)").matches) {
       setIsPortrait(true);
     } else {
       setIsPortrait(false);
-      navigate(location.pathname, { state: location.state });
     }
   }, [window.matchMedia("(orientation: portrait)").matches]);
 

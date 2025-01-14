@@ -28,9 +28,7 @@ const GameStartPage = () => {
   const [selectTeam, setSelectTeam] = useState(
     states?.inputs?.selectTeam || null
   );
-
-  useEffect(() => {console.log(states.inputs)}, []);
-
+  
   return (
     <>
       <div

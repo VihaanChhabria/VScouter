@@ -118,7 +118,7 @@ const AutoStartPage = () => {
             nextPage={"/auto-scoring"}
             inputs={{
               ...(states?.inputs || {}),
-              startPoses: startPoses,
+              startPoses: startPoses.every(pos => pos === false) ? [null, null, null, null, null, null] : startPoses,
             }}
           />
         </div>

@@ -42,7 +42,14 @@ const ProceedBackButton = ({
       navigate(nextPage, { state: { inputs } });
     } else {
       // If the back prop is set to false, check if all inputs have been filled in
-      const hasNull = Object.values(inputs).some((val) => val === null);
+      const hasNull = Object.values(inputs).some((val) => {
+        if (val === null){
+          return true
+        } else if (Array.isArray(val)){
+          return val.includes(null)
+        }        
+      });
+      console.log(inputs)
       if (hasNull) {
         // If there are any null inputs, display an error message
         toast.error("Fill In All Fields To Proceed");

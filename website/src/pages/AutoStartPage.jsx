@@ -123,33 +123,7 @@ const AutoStartPage = () => {
           />
         </div>
       </div>
-      {/* <AutoStartMap /> */}
     </div>
-    // <>
-    //   {/* Render the auto start map */}
-    //   <AutoStartMap alliance={states?.inputs?.alliance || "blue"} />
-
-    //   {/* Button to proceed to the next page (either endgame or auto scoring based on if the robot showed up) and pass in the selected data as props */}
-    //   <ProceedBackButton
-    //     nextPage={noShow ? `/endgame-scoring` : `/auto-scoring`}
-    //     inputs={{
-    //       ...(states?.inputs || {}),
-    //       noShow: noShow,
-    //       autoStartPos: startCounter,
-    //     }}
-    //   />
-
-    //   {/* Button to go back to the previous page and pass in the selected data as props*/}
-    //   <ProceedBackButton
-    //     back={true}
-    //     nextPage="/game-start"
-    //     inputs={{
-    //       ...(states?.inputs || {}),
-    //       noShow: noShow,
-    //       autoStartPos: startCounter,
-    //     }}
-    //   />
-    // </>
   );
 };
 

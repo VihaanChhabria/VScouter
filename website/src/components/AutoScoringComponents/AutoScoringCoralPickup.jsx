@@ -1,7 +1,6 @@
-import React from "react";
 import AutoScoringCoralPickupButton from "./AutoScoringCoralPickupButton";
 
-const AutoScoringCoralPickup = () => {
+const AutoScoringCoralPickup = ({pickPositions, pickPositionSelected, setPickPositionSelected}) => {
   return (
     <div
       style={{
@@ -13,17 +12,15 @@ const AutoScoringCoralPickup = () => {
         gap: "1dvw",
       }}
     >
-      {["Station", "Mark 1", "Mark 2", "Mark 3"].map((location) => (
-        <div style={{ width: "100%", height: "100%", flex: 1 }}>
-          <AutoScoringCoralPickupButton location={location} />
+      {pickPositions.map((position, index) => (
+        <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
+          <AutoScoringCoralPickupButton
+            position={position}
+            pickPositionSelected={pickPositionSelected}
+            setPickPositionSelected={setPickPositionSelected}
+          />
         </div>
       ))}
-      {/* <div style={{ flex: 1 }}>
-        <AutoScoringCoralPickupButton location="Left" />
-      </div>
-      
-      <div style={{ flex: 1 }}></div>
-      <div style={{ flex: 1 }}></div> */}
     </div>
   );
 };

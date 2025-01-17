@@ -3,7 +3,12 @@ import React from "react";
 import ReefSideView from "../../assets/AutoScoringMapImages/ReefSideView.png";
 import AutoScoringCoralCounter from "./AutoScoringCoralPlaceCounter";
 
-const AutoScoringCoralMap = () => {
+const AutoScoringCoralMap = ({
+  pickPositionSelected,
+  setPickPositionSelected,
+  placeCounts,
+  pickCounts
+}) => {
   return (
     <div
       style={{
@@ -36,18 +41,18 @@ const AutoScoringCoralMap = () => {
             alignItems: "center",
           }}
         >
-          <div style={{ width: "100%", height: "25%" }}>
-            <AutoScoringCoralCounter name="L4" count={0} setCount={0} />
-          </div>
-          <div style={{ width: "100%", height: "25%" }}>
-            <AutoScoringCoralCounter name="L3" count={0} setCount={0} />
-          </div>
-          <div style={{ width: "100%", height: "25%" }}>
-            <AutoScoringCoralCounter name="L2" count={0} setCount={0} />
-          </div>
-          <div style={{ width: "100%", height: "25%" }}>
-            <AutoScoringCoralCounter name="L1" count={0} setCount={0} />
-          </div>
+          {[1, 2, 3, 4].map((item, index) => (
+            <div key={index} style={{ width: "100%", height: "25%" }}>
+              <AutoScoringCoralCounter
+                position={`L${item}`}
+                placeCount={placeCounts[index].count}
+                setPlaceCount={placeCounts[index].setCount}
+                pickPositionSelected={pickPositionSelected}
+                setPickPositionSelected={setPickPositionSelected}
+                pickCounts={pickCounts}
+              />
+            </div>
+          ))}
         </div>
 
         <div
@@ -69,7 +74,14 @@ const AutoScoringCoralMap = () => {
               height: "200%",
             }}
           >
-            <AutoScoringCoralCounter name="Drop/Miss" count={0} setCount={0} />
+            <AutoScoringCoralCounter
+                position={"Drop/Miss"}
+                placeCount={placeCounts[placeCounts.length-1].count}
+                setPlaceCount={placeCounts[placeCounts.length-1].setCount}
+                pickPositionSelected={pickPositionSelected}
+                setPickPositionSelected={setPickPositionSelected}
+                pickCounts={pickCounts}
+              />
           </div>
         </div>
       </div>

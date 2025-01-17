@@ -1,13 +1,31 @@
 import React from "react";
+import { toast } from "react-toastify";
 
-const AutoScoringCoralCounter = ({ name, count, setCount=() => {} }) => {
+const AutoScoringCoralPlaceCounter = ({
+  position,
+  placeCount,
+  setPlaceCount,
+  pickPositionSelected,
+  setPickPositionSelected,
+  pickCounts,
+}) => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
       }}
-      onClick={() => setCount(count + 1)}
+      onClick={() => {
+        if (pickPositionSelected != "") {
+          setPlaceCount(placeCount + 1);
+          pickCounts.find((pickCount) => {
+            if (pickCount.position == pickPositionSelected) {
+              pickCount.setCount(pickCount.count - 1);
+            }
+          });
+          setPickPositionSelected("");
+        }
+      }}
     >
       <div
         style={{
@@ -29,7 +47,7 @@ const AutoScoringCoralCounter = ({ name, count, setCount=() => {} }) => {
             paddingLeft: "1dvw",
           }}
         >
-          {name}
+          {position}
         </h1>
         <h1
           style={{
@@ -39,11 +57,11 @@ const AutoScoringCoralCounter = ({ name, count, setCount=() => {} }) => {
             paddingRight: "1dvw",
           }}
         >
-          {count}
+          {placeCount}
         </h1>
       </div>
     </div>
   );
 };
 
-export default AutoScoringCoralCounter;
+export default AutoScoringCoralPlaceCounter;

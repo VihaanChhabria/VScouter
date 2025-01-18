@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import AutoScoringCoral from "../components/AutoScoringComponents/AutoScoringCoralSection";
+import AutoScoringCoral from "../components/AutoScoringComponents/AutoScoringCoral/AutoScoringCoralSection";
+import AutoScoringAlgaeSection from "../components/AutoScoringComponents/AutoScoringAlgae/AutoScoringAlgaeSection";
 
 const AutoScoringPage = () => {
   const location = useLocation();
@@ -26,7 +27,8 @@ const AutoScoringPage = () => {
       <div style={{ width: "50%", height: "100%" }}>
         <AutoScoringCoral />
       </div>
-      <div style={{ width: "50%", height: "100%", backgroundColor: "blue" }}>
+      <div style={{ width: "50%", height: "100%" }}>
+        <AutoScoringAlgaeSection />
       </div>
     </div>
   );

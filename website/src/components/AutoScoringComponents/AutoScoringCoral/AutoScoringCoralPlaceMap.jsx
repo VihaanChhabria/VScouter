@@ -1,7 +1,7 @@
 import React from "react";
 
-import ReefSideView from "../../assets/AutoScoringMapImages/ReefSideView.png";
-import AutoScoringCoralCounter from "./AutoScoringCoralPlaceCounter";
+import ReefSideView from "../../../assets/AutoScoringImages/ReefSideView.png";
+import AutoScoringCoralPlaceCounter from "./AutoScoringCoralPlaceCounter";
 
 const AutoScoringCoralMap = ({
   pickPositionSelected,
@@ -43,7 +43,7 @@ const AutoScoringCoralMap = ({
         >
           {[1, 2, 3, 4].map((item, index) => (
             <div key={index} style={{ width: "100%", height: "25%" }}>
-              <AutoScoringCoralCounter
+              <AutoScoringCoralPlaceCounter
                 position={`L${item}`}
                 placeCount={placeCounts[index].count}
                 setPlaceCount={placeCounts[index].setCount}
@@ -74,7 +74,7 @@ const AutoScoringCoralMap = ({
               height: "200%",
             }}
           >
-            <AutoScoringCoralCounter
+            <AutoScoringCoralPlaceCounter
                 position={"Drop/Miss"}
                 placeCount={placeCounts[placeCounts.length-1].count}
                 setPlaceCount={placeCounts[placeCounts.length-1].setCount}

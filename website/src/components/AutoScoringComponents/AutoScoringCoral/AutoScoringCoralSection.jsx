@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import AutoScoringCoralMap from "./AutoScoringCoralPlaceMap";
-import AutoScoringCoralPickup from "./AutoScoringCoralPickup";
+import AutoScoringCoralPickup from "../AutoScoringCoralPickup";
 
 const AutoScoringCoralSection = () => {
   const location = useLocation();

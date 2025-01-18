@@ -1,6 +1,6 @@
-import AutoScoringPickupButton from "./AutoScoringPickupButton";
+import ScoringPickupButton from "./ScoringPickupButton";
 
-const AutoScoringPickup = ({pickPositions, pickPositionSelected, setPickPositionSelected}) => {
+const ScoringPickup = ({pickPositions, pickPositionSelected, setPickPositionSelected}) => {
   return (
     <div
       style={{
@@ -14,7 +14,7 @@ const AutoScoringPickup = ({pickPositions, pickPositionSelected, setPickPosition
     >
       {pickPositions.map((position, index) => (
         <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
-          <AutoScoringPickupButton
+          <ScoringPickupButton
             position={position}
             pickPositionSelected={pickPositionSelected}
             setPickPositionSelected={setPickPositionSelected}
@@ -25,4 +25,4 @@ const AutoScoringPickup = ({pickPositions, pickPositionSelected, setPickPosition
   );
 };
 
-export default AutoScoringPickup;
+export default ScoringPickup;

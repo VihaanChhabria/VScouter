@@ -1,8 +1,8 @@
 import React from "react";
-import { toast } from "react-toastify";
 
-const AutoScoringCoralPlaceCounter = ({
+const ScoringAlgaePlaceButton = ({
   position,
+  icon,
   placeCount,
   setPlaceCount,
   pickPositionSelected,
@@ -14,6 +14,13 @@ const AutoScoringCoralPlaceCounter = ({
       style={{
         width: "100%",
         height: "100%",
+        backgroundColor: "#242424",
+        border: "1.63dvh solid #1D1E1E",
+        borderRadius: "2dvh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
       onClick={() => {
         if (pickPositionSelected != "") {
@@ -27,36 +34,29 @@ const AutoScoringCoralPlaceCounter = ({
         }
       }}
     >
+      <h1 style={{ color: "white", fontSize: "3.75dvh", fontWeight: "700" }}>
+        {position}
+      </h1>
+
       <div
         style={{
-          backgroundColor: "rgb(133, 133, 133, .50)",
-          border: "0.5dvw solid #1D1E1E",
-          height: "100%",
-          width: "100%",
+          width: "95%",
+          height: "75%",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "center",
-          borderRadius: "2dvh",
+          gap: "1.5dvw",
         }}
       >
-        <h1
+        <img
+          src={icon}
           style={{
-            color: "white",
-            fontSize: "5dvh",
-            fontWeight: "bold",
-            paddingLeft: "1dvw",
+            width: "auto",
+            height: "70%",
+            filter: "invert(1)",
           }}
-        >
-          {position}
-        </h1>
-        <h1
-          style={{
-            color: "white",
-            fontSize: "7dvh",
-            fontWeight: "bold",
-            paddingRight: "1dvw",
-          }}
-        >
+        />
+        <h1 style={{ color: "white", fontSize: "6.75dvh", fontWeight: "bold" }}>
           {placeCount}
         </h1>
       </div>
@@ -64,4 +64,4 @@ const AutoScoringCoralPlaceCounter = ({
   );
 };
 
-export default AutoScoringCoralPlaceCounter;
+export default ScoringAlgaePlaceButton;

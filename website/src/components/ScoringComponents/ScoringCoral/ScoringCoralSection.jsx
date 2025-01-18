@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import AutoScoringCoralMap from "./AutoScoringCoralPlaceMap";
-import AutoScoringPickup from "../AutoScoringPickup";
+import ScoringCoralPlaceMap from "./ScoringCoralPlaceMap";
+import ScoringPickup from "../ScoringPickup";
 
-const AutoScoringCoralSection = ({pickPositions, pickCounts, placeCounts}) => {
+const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
   const location = useLocation();
   const states = location.state;
 
@@ -84,7 +84,7 @@ const AutoScoringCoralSection = ({pickPositions, pickCounts, placeCounts}) => {
         Coral
       </h1>
       <div style={{ width: "80%", height: "65%" }}>
-        <AutoScoringCoralMap
+        <ScoringCoralPlaceMap
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
           placeCounts={placeCounts}
@@ -92,7 +92,7 @@ const AutoScoringCoralSection = ({pickPositions, pickCounts, placeCounts}) => {
         />
       </div>
       <div style={{ width: "90%", height: "15%" }}>
-        <AutoScoringPickup
+        <ScoringPickup
           pickPositions={pickPositions}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
@@ -102,4 +102,4 @@ const AutoScoringCoralSection = ({pickPositions, pickCounts, placeCounts}) => {
   );
 };
 
-export default AutoScoringCoralSection;
+export default ScoringCoralSection;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const AutoScoringPickupButton = ({
+const ScoringPickupButton = ({
   position,
   pickPositionSelected,
   setPickPositionSelected,
@@ -33,4 +33,4 @@ const AutoScoringPickupButton = ({
   );
 };
 
-export default AutoScoringPickupButton;
+export default ScoringPickupButton;

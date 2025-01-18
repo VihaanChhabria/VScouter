@@ -1,11 +1,11 @@
 import React from "react";
-import AutoScoringAlgaePlaceButton from "./AutoScoringAlgaePlaceButton";
+import ScoringAlgaePlaceButton from "./ScoringAlgaePlaceButton";
 
 import NetShotIcon from "../../../assets/AutoScoringImages/NetShotIcon.svg";
 import ProcessorIcon from "../../../assets/AutoScoringImages/ProcessorIcon.svg";
 import DropMissIcon from "../../../assets/AutoScoringImages/DropMissIcon.svg";
 
-const AutoScoringAlgaePlace = ({
+const ScoringAlgaePlace = ({
   pickPositionSelected,
   setPickPositionSelected,
   placeCounts,
@@ -25,7 +25,7 @@ const AutoScoringAlgaePlace = ({
     >
       {["Net Shot", "Processor", "Drop/Miss"].map((position, index) => (
         <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
-          <AutoScoringAlgaePlaceButton
+          <ScoringAlgaePlaceButton
             position={position}
             icon={positionIcons[index]}
             placeCount={placeCounts[index].count}
@@ -40,4 +40,4 @@ const AutoScoringAlgaePlace = ({
   );
 };
 
-export default AutoScoringAlgaePlace;
+export default ScoringAlgaePlace;

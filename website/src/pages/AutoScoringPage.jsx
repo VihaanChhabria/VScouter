@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import AutoScoringCoralSection from "../components/AutoScoringComponents/AutoScoringCoral/AutoScoringCoralSection";
-import AutoScoringAlgaeSection from "../components/AutoScoringComponents/AutoScoringAlgae/AutoScoringAlgaeSection";
+import ScoringCoralSection from "../components/ScoringComponents/ScoringCoral/ScoringCoralSection";
+import ScoringAlgaeSection from "../components/ScoringComponents/ScoringAlgae/ScoringAlgaeSection";
 import ProceedBackButton from "../components/ProceedBackButton";
 
 const AutoScoringPage = () => {
@@ -243,7 +243,7 @@ const AutoScoringPage = () => {
       }}
     >
       <div style={{ width: "45%", height: "100%" }}>
-        <AutoScoringCoralSection
+        <ScoringCoralSection
           pickPositions={pickCoralPositions}
           pickCounts={pickCoralCounts}
           placeCounts={placeCoralCounts}
@@ -398,7 +398,7 @@ const AutoScoringPage = () => {
           </div>
         </div>
         <div style={{ width: "100%", height: "55%" }}>
-          <AutoScoringAlgaeSection
+          <ScoringAlgaeSection
             pickPositions={pickAlgaePositions}
             pickCounts={pickAlgaeCounts}
             placeCounts={placeAlgaeCounts}

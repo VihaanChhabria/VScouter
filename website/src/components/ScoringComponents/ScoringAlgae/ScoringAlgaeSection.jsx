@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import AutoScoringAlgaePlace from "./AutoScoringAlgaePlace";
+import ScoringAlgaePlace from "./ScoringAlgaePlace";
 import { useLocation } from "react-router-dom";
-import AutoScoringPickup from "../AutoScoringPickup";
+import ScoringPickup from "../ScoringPickup";
 
-const AutoScoringAlgaeSection = ({pickPositions, pickCounts, placeCounts}) => {
+const ScoringAlgaeSection = ({ pickPositions, pickCounts, placeCounts }) => {
   const location = useLocation();
   const states = location.state;
 
@@ -70,7 +70,7 @@ const AutoScoringAlgaeSection = ({pickPositions, pickCounts, placeCounts}) => {
         Algae
       </h1>
       <div style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}>
-        <AutoScoringAlgaePlace
+        <ScoringAlgaePlace
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
           placeCounts={placeCounts}
@@ -78,7 +78,7 @@ const AutoScoringAlgaeSection = ({pickPositions, pickCounts, placeCounts}) => {
         />
       </div>
       <div style={{ width: "90%", height: "25%", marginBottom: "2dvh" }}>
-        <AutoScoringPickup
+        <ScoringPickup
           pickPositions={pickPositions}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
@@ -88,4 +88,4 @@ const AutoScoringAlgaeSection = ({pickPositions, pickCounts, placeCounts}) => {
   );
 };
 
-export default AutoScoringAlgaeSection;
+export default ScoringAlgaeSection;

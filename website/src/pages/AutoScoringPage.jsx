@@ -8,6 +8,8 @@ const AutoScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
+  const [stateStack, setStateStack] = useState([]);
+
   // Coral States
 
   const pickCoralPositions = ["Station", "Mark 1", "Mark 2", "Mark 3"];
@@ -160,6 +162,56 @@ const AutoScoringPage = () => {
     },
   ];
 
+  // Function to handle state changes and push current state to stack
+  const handleStateChange = (newState) => {
+    setStateStack([
+      ...stateStack,
+      {
+        pickCoralStationCount,
+        pickCoralMark1Count,
+        pickCoralMark2Count,
+        pickCoralMark3Count,
+        placeCoralL1Count,
+        placeCoralL2Count,
+        placeCoralL3Count,
+        placeCoralL4Count,
+        placeCoralDropMissCount,
+        pickAlgaeReefCount,
+        pickAlgaeMark1Count,
+        pickAlgaeMark2Count,
+        pickAlgaeMark3Count,
+        placeAlgaeNetShot,
+        placeAlgaeProcessor,
+        placeAlgaeDropMiss,
+      },
+    ]);
+    newState();
+  };
+
+  // Function to handle undo operation
+  const handleUndo = () => {
+    if (stateStack.length > 0) {
+      const previousState = stateStack.pop();
+      setPickCoralStationCount(previousState.pickCoralStationCount);
+      setPickCoralMark1Count(previousState.pickCoralMark1Count);
+      setPickCoralMark2Count(previousState.pickCoralMark2Count);
+      setPickCoralMark3Count(previousState.pickCoralMark3Count);
+      setPlaceCoralL1Count(previousState.placeCoralL1Count);
+      setPlaceCoralL2Count(previousState.placeCoralL2Count);
+      setPlaceCoralL3Count(previousState.placeCoralL3Count);
+      setPlaceCoralL4Count(previousState.placeCoralL4Count);
+      setPlaceCoralDropMissCount(previousState.placeCoralDropMissCount);
+      setPickAlgaeReefCount(previousState.pickAlgaeReefCount);
+      setPickAlgaeMark1Count(previousState.pickAlgaeMark1Count);
+      setPickAlgaeMark2Count(previousState.pickAlgaeMark2Count);
+      setPickAlgaeMark3Count(previousState.pickAlgaeMark3Count);
+      setPlaceAlgaeNetShot(previousState.placeAlgaeNetShot);
+      setPlaceAlgaeProcessor(previousState.placeAlgaeProcessor);
+      setPlaceAlgaeDropMiss(previousState.placeAlgaeDropMiss);
+      setStateStack([...stateStack]);
+    }
+  };
+
   return (
     <div
       style={{
@@ -274,10 +326,25 @@ const AutoScoringPage = () => {
                 style={{
                   width: "100%",
                   height: "50%",
-                  backgroundColor: "gray",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: "#242424",
+                  borderRadius: "3.49dvh",
+                  border: "1.63dvh solid #1D1E1E",
                 }}
+                onClick={() => handleUndo()}
               >
-                undo (not done)
+                <h1
+                  style={{
+                    color: "#FFFFFF",
+                    fontSize: "5.58dvh",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                  }}
+                >
+                  Undo
+                </h1>
               </div>
             </div>
             <div style={{ width: "50%", height: "100%" }}>

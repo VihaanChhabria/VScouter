@@ -64,13 +64,12 @@ const AutoScoringAlgaeSection = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5dvh",
       }}
     >
-      <h1 style={{ color: "#FFFFFF", fontSize: "7dvh", fontWeight: "bold" }}>
+      <h1 style={{ color: "#FFFFFF", fontSize: "7dvh", fontWeight: "bold",  }}>
         Coral
       </h1>
-      <div style={{ width: "90%", height: "30%" }}>
+      <div style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}>
         <AutoScoringAlgaePlace
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
@@ -78,7 +77,7 @@ const AutoScoringAlgaeSection = () => {
           pickCounts={pickCounts}
         />
       </div>
-      <div style={{ width: "90%", height: "15%" }}>
+      <div style={{ width: "90%", height: "25%", marginBottom: "2dvh"}}>
         <AutoScoringPickup
           pickPositions={pickPositions}
           pickPositionSelected={pickPositionSelected}

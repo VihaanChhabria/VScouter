@@ -55,7 +55,9 @@ const AutoStartPage = () => {
     setStartPos6,
   ];
 
-  
+  useEffect(() => {
+    const newStartPoses = startPoses.map((pos, index) => (pos === null ? setStartPoses[index](false) : pos));
+  }, [startPoses]);
 
   return (
     <div
@@ -109,7 +111,9 @@ const AutoStartPage = () => {
             nextPage="/game-start"
             inputs={{
               ...(states?.inputs || {}),
-              startPoses: startPoses,
+              startPoses: startPoses.every((pos) => pos === null)
+                ? [false, false, false, false, false, false]
+                : startPoses,
             }}
           />
         </div>
@@ -118,7 +122,9 @@ const AutoStartPage = () => {
             nextPage={"/auto-scoring"}
             inputs={{
               ...(states?.inputs || {}),
-              startPoses: startPoses.every(pos => pos === false) ? [null, null, null, null, null, null] : startPoses,
+              startPoses: startPoses.every((pos) => pos === false)
+                ? [null, null, null, null, null, null]
+                : startPoses,
             }}
           />
         </div>

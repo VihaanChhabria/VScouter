@@ -49,7 +49,6 @@ const ProceedBackButton = ({
           return val.includes(null)
         }        
       });
-      console.log(inputs)
       if (hasNull) {
         // If there are any null inputs, display an error message
         toast.error("Fill In All Fields To Proceed");

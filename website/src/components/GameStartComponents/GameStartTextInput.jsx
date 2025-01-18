@@ -19,17 +19,6 @@ const TextInput = ({
     defaultText === null ? "" : defaultText.toUpperCase()
   );
 
-  const [textSelected, setTextSelected] = useState(false);
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android|iphone|ipad|ipod/i.test(userAgent)) {
-      setIsMobile(true);
-    }
-  }, []);
-
   useEffect(() => {
     // If the upperText is not empty, set the textValue to the upperText, otherwise set it to null
     if (upperText != "") {
@@ -80,8 +69,6 @@ const TextInput = ({
             height: "8.88dvh",
             fontSize: "4.0dvh",
           }}
-          onFocus={() => setTextSelected(true)}
-          onBlur={() => setTextSelected(false)}
         />
       </div>
     </div>

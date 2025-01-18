@@ -17,16 +17,6 @@ const InitialSelectTeam = ({
   selectedMatch,
   selectedAlliance,
 }) => {
-  const [textSelected, setTextSelected] = useState(false);
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android|iphone|ipad|ipod/i.test(userAgent)) {
-      setIsMobile(true);
-    }
-  }, []);
 
   let baseTeams = [];
   try {
@@ -185,9 +175,6 @@ const InitialSelectTeam = ({
               justifyContent: "space-between",
               paddingTop: "2dvh",
               zIndex: 2,
-              position: textSelected && isMobile ? "fixed" : "relative",
-              left: textSelected && isMobile ? `15dvw` : `0dvw`,
-              top: textSelected && isMobile ? "4dvh" : `0dvh`,
             }}
           >
             <h1
@@ -218,28 +205,12 @@ const InitialSelectTeam = ({
               value={customTeamValue}
               onChange={(e) => setCustomTeamValue(e.target.value)}
               onFocus={() => {
-                setTextSelected(true);
                 clickTeam("custom", customTeamStatus);
               }}
-              onBlur={() => setTextSelected(false)}
             />
           </div>
         </div>
       </div>
-
-      {textSelected && isMobile && (
-        <div
-          style={{
-            width: "100dvw",
-            height: "100dvh",
-            position: "absolute",
-            left: "0dvw",
-            top: "0dvh",
-            zIndex: 1,
-            backgroundColor: "#595959",
-          }}
-        ></div>
-      )}
     </>
   );
 };

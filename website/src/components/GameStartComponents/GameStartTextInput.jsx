@@ -41,19 +41,6 @@ const TextInput = ({
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      {textSelected && isMobile && (
-        <div
-          style={{
-            width: "100dvw",
-            height: "100dvh",
-            position: "absolute",
-            left: "0dvw",
-            top: "0dvh",
-            zIndex: 1,
-            backgroundColor: "#595959",
-          }}
-        ></div>
-      )}
       <div
         style={{
           border: "1.3dvh solid #1D1E1E",
@@ -61,10 +48,7 @@ const TextInput = ({
           height: "100%",
           backgroundColor: "#242424",
           borderRadius: "3.49dvh",
-          position: textSelected && isMobile ? "absolute" : "relative",
-          left:
-            textSelected && isMobile ? `${50 - 28.12 / 2}dvw` : "",
-          top: textSelected && isMobile ? "4dvh" : "",
+          position: "relative",
           zIndex: 2,
           display: "flex",
           flexDirection: "column",

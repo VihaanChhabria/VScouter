@@ -28,7 +28,7 @@ const GameStartPage = () => {
   const [selectTeam, setSelectTeam] = useState(
     states?.inputs?.selectTeam || null
   );
-  
+
   return (
     <>
       <div
@@ -139,13 +139,16 @@ const GameStartPage = () => {
                   <ProceedBackButton nextPage={`/`} back={true} />
                 </div>
                 <div style={{ flexBasis: "70%" }}>
-                  <ProceedBackButton nextPage={`/auto-start`} inputs={{
-                    ...(states?.inputs || {}),
-                    matchNumber: matchNumber,
-                    alliance: alliance,
-                    scouterInitials: scouterInitials,
-                    selectTeam: selectTeam
-                  }} />
+                  <ProceedBackButton
+                    nextPage={`/auto-start`}
+                    inputs={{
+                      ...(states?.inputs || {}),
+                      matchNumber: matchNumber,
+                      alliance: alliance,
+                      scouterInitials: scouterInitials,
+                      selectTeam: selectTeam,
+                    }}
+                  />
                 </div>
               </div>
             </div>

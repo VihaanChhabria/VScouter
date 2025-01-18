@@ -343,7 +343,6 @@ const AutoScoringPage = () => {
                 style={{
                   width: "100%",
                   height: "50%",
-                  backgroundColor: "gray",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

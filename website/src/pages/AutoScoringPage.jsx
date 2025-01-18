@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import AutoScoringCoralSection from "../components/AutoScoringComponents/AutoScoringCoral/AutoScoringCoralSection";
 import AutoScoringAlgaeSection from "../components/AutoScoringComponents/AutoScoringAlgae/AutoScoringAlgaeSection";
@@ -8,10 +8,10 @@ const AutoScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
+  // State stack for undo functionality
   const [stateStack, setStateStack] = useState([]);
 
   // Coral States
-
   const pickCoralPositions = ["Station", "Mark 1", "Mark 2", "Mark 3"];
 
   const [pickCoralStationCount, setPickCoralStationCount] = useState(
@@ -95,7 +95,6 @@ const AutoScoringPage = () => {
   ];
 
   // Algae States
-
   const pickAlgaePositions = ["Reef", "Mark 1", "Mark 2", "Mark 3"];
 
   const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
@@ -163,7 +162,7 @@ const AutoScoringPage = () => {
   ];
 
   // Function to handle state changes and push current state to stack
-  const handleStateChange = (newState) => {
+  useEffect(() => {
     setStateStack([
       ...stateStack,
       {
@@ -185,12 +184,30 @@ const AutoScoringPage = () => {
         placeAlgaeDropMiss,
       },
     ]);
-    newState();
-  };
+  }, [
+    pickCoralStationCount,
+    pickCoralMark1Count,
+    pickCoralMark2Count,
+    pickCoralMark3Count,
+    placeCoralL1Count,
+    placeCoralL2Count,
+    placeCoralL3Count,
+    placeCoralL4Count,
+    placeCoralDropMissCount,
+    pickAlgaeReefCount,
+    pickAlgaeMark1Count,
+    pickAlgaeMark2Count,
+    pickAlgaeMark3Count,
+    placeAlgaeNetShot,
+    placeAlgaeProcessor,
+    placeAlgaeDropMiss,
+  ]);
 
   // Function to handle undo operation
   const handleUndo = () => {
-    if (stateStack.length > 0) {
+    if (stateStack.length > 1) {
+      console.log("Undo1");
+      stateStack.pop();
       const previousState = stateStack.pop();
       setPickCoralStationCount(previousState.pickCoralStationCount);
       setPickCoralMark1Count(previousState.pickCoralMark1Count);
@@ -326,14 +343,16 @@ const AutoScoringPage = () => {
                 style={{
                   width: "100%",
                   height: "50%",
+                  backgroundColor: "gray",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  cursor: "pointer",
+                  border: "1.63dvh solid #1D1E1E",
                   backgroundColor: "#242424",
                   borderRadius: "3.49dvh",
-                  border: "1.63dvh solid #1D1E1E",
                 }}
-                onClick={() => handleUndo()}
+                onClick={handleUndo}
               >
                 <h1
                   style={{

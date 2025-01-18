@@ -67,7 +67,7 @@ const AutoScoringAlgaeSection = ({pickPositions, pickCounts, placeCounts}) => {
       }}
     >
       <h1 style={{ color: "#FFFFFF", fontSize: "7dvh", fontWeight: "bold" }}>
-        Coral
+        Algae
       </h1>
       <div style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}>
         <AutoScoringAlgaePlace

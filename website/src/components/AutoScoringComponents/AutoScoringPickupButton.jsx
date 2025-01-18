@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const AutoScoringCoralPickupButton = ({
+const AutoScoringPickupButton = ({
   position,
   pickPositionSelected,
   setPickPositionSelected,
@@ -33,4 +33,4 @@ const AutoScoringCoralPickupButton = ({
   );
 };
 
-export default AutoScoringCoralPickupButton;
+export default AutoScoringPickupButton;

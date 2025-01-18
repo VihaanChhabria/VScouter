@@ -1,6 +1,6 @@
-import AutoScoringCoralPickupButton from "./AutoScoringCoralPickupButton";
+import AutoScoringPickupButton from "./AutoScoringPickupButton";
 
-const AutoScoringCoralPickup = ({pickPositions, pickPositionSelected, setPickPositionSelected}) => {
+const AutoScoringPickup = ({pickPositions, pickPositionSelected, setPickPositionSelected}) => {
   return (
     <div
       style={{
@@ -14,7 +14,7 @@ const AutoScoringCoralPickup = ({pickPositions, pickPositionSelected, setPickPos
     >
       {pickPositions.map((position, index) => (
         <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
-          <AutoScoringCoralPickupButton
+          <AutoScoringPickupButton
             position={position}
             pickPositionSelected={pickPositionSelected}
             setPickPositionSelected={setPickPositionSelected}
@@ -25,4 +25,4 @@ const AutoScoringCoralPickup = ({pickPositions, pickPositionSelected, setPickPos
   );
 };
 
-export default AutoScoringCoralPickup;
+export default AutoScoringPickup;

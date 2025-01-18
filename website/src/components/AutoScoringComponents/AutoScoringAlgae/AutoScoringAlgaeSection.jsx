@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AutoScoringAlgaePlace from "./AutoScoringAlgaePlace";
 import { useLocation } from "react-router-dom";
-import AutoScoringCoralPickup from "../AutoScoringCoralPickup";
+import AutoScoringPickup from "../AutoScoringPickup";
 
 const AutoScoringAlgaeSection = () => {
   const location = useLocation();
@@ -79,7 +79,7 @@ const AutoScoringAlgaeSection = () => {
         />
       </div>
       <div style={{ width: "90%", height: "15%" }}>
-        <AutoScoringCoralPickup
+        <AutoScoringPickup
           pickPositions={pickPositions}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}

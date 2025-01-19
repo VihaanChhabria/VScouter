@@ -10,7 +10,7 @@ import FRCReefscapeLogo from "../assets/FRCReefscapeLogo.svg";
 
 const HomePage = () => {
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100dvh", width: "100dvw" }}>
       <div
         style={{
           width: "100%",

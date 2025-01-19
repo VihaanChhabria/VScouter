@@ -9,6 +9,7 @@ import VScouterLogo from "../assets/VScouterLogo.png";
 
 const HomePage = () => {
   return (
+    <div style={{ height: "100vh" }}>
     <div
       style={{
         width: "100%",
@@ -17,22 +18,28 @@ const HomePage = () => {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        gap: "5dvw",
+        padding: "2.5dvh 5dvw 2.5dvh 5dvw",
+        gap: "3dvw",
       }}
     >
       <img
         src={VScouterLogo}
         alt="VScouterLogo"
-        style={{ height: "80%", width: "auto", borderRadius: "6dvh" }}
+        style={{
+          width: "auto",
+          height: "80%",
+          borderRadius: "6dvh",
+        }}
       />
 
       <div
         style={{
           height: "75%",
-          width: "30%",
+          width: "20%",
           display: "flex",
           flexDirection: "column",
           gap: "2dvh",
+          flex: "1",
         }}
       >
         <div
@@ -40,37 +47,43 @@ const HomePage = () => {
             width: "100%",
             height: "250%",
           }}
-        ><ProceedBackButton
-        nextPage={`/game-start`}
-        message={"Start Scouting"}
-      /></div>
+        >
+          <ProceedBackButton
+            nextPage={`/game-start`}
+            message={"Start Scouting"}
+          />
+        </div>
 
         <div
           style={{
             width: "100%",
             height: "100%",
           }}
-        ><HomeDumpDataButton /></div>
+        >
+          <HomeDumpDataButton />
+        </div>
 
         <div
           style={{
             width: "100%",
             height: "100%",
           }}
-        ><ProceedBackButton
-        nextPage={`/settings`}
-        message={"Settings"}
-      /></div>
+        >
+          <ProceedBackButton nextPage={`/settings`} message={"Settings"} />
+        </div>
 
         <div
           style={{
             width: "100%",
             height: "100%",
           }}
-        ><HomeFullscreenButton /></div>
+        >
+          <HomeFullscreenButton />
+        </div>
       </div>
-      
-      <ToastContainer />
+
+    </div>
+    <ToastContainer />
     </div>
   );
 };

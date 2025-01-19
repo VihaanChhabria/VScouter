@@ -19,8 +19,8 @@ const HomeFullscreenButton = () => {
       }}
       onClick={() => {
         if (isFullScreen) {
-          let elem = document.documentElement; // Or any specific element you want to make fullscreen
-
+          let elem = document.documentElement; 
+          
           if (elem.requestFullscreen) {
             elem.requestFullscreen();
           } else if (elem.mozRequestFullScreen) {

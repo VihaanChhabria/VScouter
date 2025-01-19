@@ -24,6 +24,7 @@ const ScoringAlgaePlaceButton = ({
       }}
       onClick={() => {
         if (pickPositionSelected != "") {
+          (pickPositionSelected);
           setPlaceCount(placeCount + 1);
           pickCounts.find((pickCount) => {
             if (pickCount.position == pickPositionSelected) {

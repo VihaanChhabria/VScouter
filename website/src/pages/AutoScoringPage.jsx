@@ -43,6 +43,42 @@ const AutoScoringPage = () => {
     },
   ];
 
+  const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
+    states?.inputs?.auto?.algae?.pickReefCount || 0
+  );
+  const [pickAlgaeMark1Count, setPickAlgaeMark1Count] = useState(
+    states?.inputs?.auto?.algae?.pickMark1Count || 0
+  );
+  const [pickAlgaeMark2Count, setPickAlgaeMark2Count] = useState(
+    states?.inputs?.auto?.algae?.pickMark2Count || 0
+  );
+  const [pickAlgaeMark3Count, setPickAlgaeMark3Count] = useState(
+    states?.inputs?.auto?.algae?.pickMark3Count || 0
+  );
+
+  const pickAlgaeData = [
+    {
+      position: "Reef",
+      count: pickAlgaeReefCount,
+      setCount: setPickAlgaeReefCount,
+    },
+    {
+      position: "Mark 1",
+      count: pickAlgaeMark1Count,
+      setCount: setPickAlgaeMark1Count,
+    },
+    {
+      position: "Mark 2",
+      count: pickAlgaeMark2Count,
+      setCount: setPickAlgaeMark2Count,
+    },
+    {
+      position: "Mark 3",
+      count: pickAlgaeMark3Count,
+      setCount: setPickAlgaeMark3Count,
+    },
+  ];
+
   return (
     <ScoringPage
       pickCoralPositions={["Station", "Mark 1", "Mark 2", "Mark 3"]}
@@ -58,6 +94,13 @@ const AutoScoringPage = () => {
         pickCoralMark3Count,
       ]}
       pickCoralData={pickCoralData}
+      pickAlgaeCounts={[
+        pickAlgaeReefCount,
+        pickAlgaeMark1Count,
+        pickAlgaeMark2Count,
+        pickAlgaeMark3Count,
+      ]}
+      pickAlgaeData={pickAlgaeData}
     />
   );
 };

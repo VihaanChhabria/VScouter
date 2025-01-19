@@ -13,6 +13,8 @@ const ScoringPage = ({
   pastPage,
   pickCoralCounts,
   pickCoralData,
+  pickAlgaeCounts,
+  pickAlgaeData,
 }) => {
   const location = useLocation();
   const states = location.state;
@@ -101,42 +103,6 @@ const ScoringPage = ({
 
   // Algae States
 
-  const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
-    statePath?.algae?.pickReefCount || 0
-  );
-  const [pickAlgaeMark1Count, setPickAlgaeMark1Count] = useState(
-    statePath?.algae?.pickMark1Count || 0
-  );
-  const [pickAlgaeMark2Count, setPickAlgaeMark2Count] = useState(
-    statePath?.algae?.pickMark2Count || 0
-  );
-  const [pickAlgaeMark3Count, setPickAlgaeMark3Count] = useState(
-    statePath?.algae?.pickMark3Count || 0
-  );
-
-  const pickAlgaeCounts = [
-    {
-      position: "Reef",
-      count: pickAlgaeReefCount,
-      setCount: setPickAlgaeReefCount,
-    },
-    {
-      position: "Mark 1",
-      count: pickAlgaeMark1Count,
-      setCount: setPickAlgaeMark1Count,
-    },
-    {
-      position: "Mark 2",
-      count: pickAlgaeMark2Count,
-      setCount: setPickAlgaeMark2Count,
-    },
-    {
-      position: "Mark 3",
-      count: pickAlgaeMark3Count,
-      setCount: setPickAlgaeMark3Count,
-    },
-  ];
-
   const [placeAlgaeNetShot, setPlaceAlgaeNetShot] = useState(
     statePath?.algae?.placeNetShot || 0
   );
@@ -179,10 +145,7 @@ const ScoringPage = ({
         placeCoralL3Count,
         placeCoralL4Count,
         placeCoralDropMissCount,
-        pickAlgaeReefCount,
-        pickAlgaeMark1Count,
-        pickAlgaeMark2Count,
-        pickAlgaeMark3Count,
+        ...pickAlgaeCounts,
         placeAlgaeNetShot,
         placeAlgaeProcessor,
         placeAlgaeDropMiss,
@@ -195,10 +158,7 @@ const ScoringPage = ({
     placeCoralL3Count,
     placeCoralL4Count,
     placeCoralDropMissCount,
-    pickAlgaeReefCount,
-    pickAlgaeMark1Count,
-    pickAlgaeMark2Count,
-    pickAlgaeMark3Count,
+    ...pickAlgaeCounts,
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
@@ -220,10 +180,13 @@ const ScoringPage = ({
       setPlaceCoralL3Count(previousState.placeCoralL3Count);
       setPlaceCoralL4Count(previousState.placeCoralL4Count);
       setPlaceCoralDropMissCount(previousState.placeCoralDropMissCount);
-      setPickAlgaeReefCount(previousState.pickAlgaeReefCount);
-      setPickAlgaeMark1Count(previousState.pickAlgaeMark1Count);
-      setPickAlgaeMark2Count(previousState.pickAlgaeMark2Count);
-      setPickAlgaeMark3Count(previousState.pickAlgaeMark3Count);
+
+      for (let i = 0; i < pickAlgaeData.length; i++) {
+        pickAlgaeData[i].setCount(
+          previousState["pickCoral" + pickAlgaeData[i].position + "Count"]
+        );
+      }
+
       setPlaceAlgaeNetShot(previousState.placeAlgaeNetShot);
       setPlaceAlgaeProcessor(previousState.placeAlgaeProcessor);
       setPlaceAlgaeDropMiss(previousState.placeAlgaeDropMiss);
@@ -326,20 +289,23 @@ const ScoringPage = ({
                           placeDropMissCount: placeCoralDropMissCount,
                         },
                         ...pickCoralCounts.map((count, index) => ({
-                          ["pickCoral" +
+                          ["pick" +
                           pickCoralData[index].position.replace(" ", "") +
                           "Count"]: count,
                         }))
                       ),
-                      algae: {
-                        pickReefCount: pickAlgaeReefCount,
-                        pickMark1Count: pickAlgaeMark1Count,
-                        pickMark2Count: pickAlgaeMark2Count,
-                        pickMark3Count: pickAlgaeMark3Count,
-                        placeNetShot: placeAlgaeNetShot,
-                        placeProcessor: placeAlgaeProcessor,
-                        placeDropMiss: placeAlgaeDropMiss,
-                      },
+                      algae: Object.assign(
+                        {
+                          placeNetShot: placeAlgaeNetShot,
+                          placeProcessor: placeAlgaeProcessor,
+                          placeDropMiss: placeAlgaeDropMiss,
+                        },
+                        ...pickAlgaeCounts.map((count, index) => ({
+                          ["pick" +
+                          pickAlgaeData[index].position.replace(" ", "") +
+                          "Count"]: count,
+                        }))
+                      ),
                     },
                   }}
                 />
@@ -385,20 +351,23 @@ const ScoringPage = ({
                         placeDropMissCount: placeCoralDropMissCount,
                       },
                       ...pickCoralCounts.map((count, index) => ({
-                        ["pickCoral" +
+                        ["pick" +
                         pickCoralData[index].position.replace(" ", "") +
                         "Count"]: count,
                       }))
                     ),
-                    algae: {
-                      pickReefCount: pickAlgaeReefCount,
-                      pickMark1Count: pickAlgaeMark1Count,
-                      pickMark2Count: pickAlgaeMark2Count,
-                      pickMark3Count: pickAlgaeMark3Count,
-                      placeNetShot: placeAlgaeNetShot,
-                      placeProcessor: placeAlgaeProcessor,
-                      placeDropMiss: placeAlgaeDropMiss,
-                    },
+                    algae: Object.assign(
+                      {
+                        placeNetShot: placeAlgaeNetShot,
+                        placeProcessor: placeAlgaeProcessor,
+                        placeDropMiss: placeAlgaeDropMiss,
+                      },
+                      ...pickAlgaeCounts.map((count, index) => ({
+                        ["pick" +
+                        pickAlgaeData[index].position.replace(" ", "") +
+                        "Count"]: count,
+                      }))
+                    ),
                   },
                 }}
               />
@@ -408,7 +377,7 @@ const ScoringPage = ({
         <div style={{ width: "100%", height: "55%" }}>
           <ScoringAlgaeSection
             pickPositions={pickAlgaePositions}
-            pickCounts={pickAlgaeCounts}
+            pickCounts={pickAlgaeData}
             placeCounts={placeAlgaeCounts}
           />
         </div>

@@ -39,6 +39,7 @@ const ProceedBackButton = ({
       inputs = Object.fromEntries(
         Object.entries(inputs).filter(([key, value]) => value !== null)
       );
+      console.log(inputs);
       navigate(nextPage, { state: { inputs } });
     } else {
       // If the back prop is set to false, check if all inputs have been filled in

@@ -5,7 +5,7 @@ import NetShotIcon from "../../../assets/AutoScoringImages/NetShotIcon.svg";
 import ProcessorIcon from "../../../assets/AutoScoringImages/ProcessorIcon.svg";
 import DropMissIcon from "../../../assets/AutoScoringImages/DropMissIcon.svg";
 
-const ScoringAlgaePlace = ({
+const AutoScoringAlgaePlace = ({
   pickPositionSelected,
   setPickPositionSelected,
   placeCounts,
@@ -40,4 +40,4 @@ const ScoringAlgaePlace = ({
   );
 };
 
-export default ScoringAlgaePlace;
+export default AutoScoringAlgaePlace;

@@ -27,6 +27,26 @@ const TeleopScoringPage = () => {
     },
   ];
 
+  const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
+    states?.inputs?.teleop?.algae?.pickReefCount || 0
+  );
+  const [pickAlgaeCarpetCount, setPickAlgaeCarpetCount] = useState(
+    states?.inputs?.teleop?.algae?.pickGroundCount || 0
+  );
+
+  const pickAlgaeData = [
+    {
+      position: "Reef",
+      count: pickAlgaeReefCount,
+      setCount: setPickAlgaeReefCount,
+    },
+    {
+      position: "Carpet",
+      count: pickAlgaeCarpetCount,
+      setCount: setPickAlgaeCarpetCount,
+    },
+  ];
+
   return (
     <ScoringPage
       pickCoralPositions={["Station", "Carpet"]}
@@ -35,11 +55,10 @@ const TeleopScoringPage = () => {
       mode="teleop"
       nextPage="/endgame-scoring"
       pastPage="/auto-scoring"
-      pickCoralCounts={[
-        pickCoralStationCount,
-        pickCoralCarpetCount,
-      ]}
+      pickCoralCounts={[pickCoralStationCount, pickCoralCarpetCount]}
       pickCoralData={pickCoralData}
+      pickAlgaeCounts={[pickAlgaeReefCount, pickAlgaeCarpetCount]}
+      pickAlgaeData={pickAlgaeData}
     />
   );
 };

@@ -15,10 +15,30 @@ import TeleopScoringPage from "./pages/TeleopScoringPage";
 import EndgameScoringPage from "./pages/EndgameScoringPage";
 import SettingsPage from "./pages/SettingsPage";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ParseDataPage from "./pages/ParseDataPage";
 
 function App() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+      document.body.style.display = "none"; // Trigger reflow
+      document.body.offsetHeight; // Force reflow
+      document.body.style.display = ""; // Restore display
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>

@@ -6,84 +6,102 @@ import HomeFullscreenButton from "../components/HomeComponents/HomeFullscreenBut
 import HomeDumpDataButton from "../components/HomeComponents/HomeDumpDataButton";
 
 import VScouterLogo from "../assets/VScouterLogo.png";
+import FRCReefscapeLogo from "../assets/FRCReefscapeLogo.svg";
 
 const HomePage = () => {
   return (
     <div style={{ height: "100vh" }}>
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "2.5dvh 5dvw 2.5dvh 5dvw",
-        gap: "3dvw",
-      }}
-    >
-      <img
-        src={VScouterLogo}
-        alt="VScouterLogo"
-        style={{
-          width: "auto",
-          height: "80%",
-          borderRadius: "6dvh",
-        }}
-      />
-
       <div
         style={{
-          height: "75%",
-          width: "20%",
+          width: "100%",
+          height: "100%",
           display: "flex",
-          flexDirection: "column",
-          gap: "2dvh",
-          flex: "1",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "8dvh 5dvw 8dvh 5dvw",
+          gap: "3dvw",
         }}
       >
         <div
           style={{
-            width: "100%",
-            height: "250%",
+            width: "auto",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "3dvh",
           }}
         >
-          <ProceedBackButton
-            nextPage={`/game-start`}
-            message={"Start Scouting"}
+          <img
+            src={VScouterLogo}
+            style={{
+              width: "auto",
+              height: "85%",
+              borderRadius: "6dvh",
+            }}
+          />
+          <img
+            src={FRCReefscapeLogo}
+            style={{
+              width: "auto",
+              height: "15%",
+              filter: "invert(100%)",
+            }}
           />
         </div>
 
         <div
           style={{
-            width: "100%",
             height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            gap: "2dvh",
+            flex: "1",
           }}
         >
-          <HomeDumpDataButton />
-        </div>
+          <div
+            style={{
+              width: "100%",
+              height: "250%",
+            }}
+          >
+            <ProceedBackButton
+              nextPage={`/game-start`}
+              message={"Start Scouting"}
+            />
+          </div>
 
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <ProceedBackButton nextPage={`/settings`} message={"Settings"} />
-        </div>
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <HomeDumpDataButton />
+          </div>
 
-        <div
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        >
-          <HomeFullscreenButton />
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <ProceedBackButton nextPage={`/settings`} message={"Settings"} />
+          </div>
+
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <HomeFullscreenButton />
+          </div>
         </div>
       </div>
-
-    </div>
-    <ToastContainer />
+      <ToastContainer />
     </div>
   );
 };

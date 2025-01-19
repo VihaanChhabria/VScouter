@@ -116,22 +116,29 @@ const SettingsPage = () => {
         </div>
       ) : (
         <>
-          <ProceedBackButton
-            nextPage={"/"}
-            width={14.91}
-            height={17.84}
-            coordX={1.07}
-            coordY={2.33}
-            back={true}
-          />
+          <div
+            style={{
+              position: "absolute",
+              top: "2.33dvh",
+              left: "1.07dvw",
+              width: "14.91dvw",
+              height: "17.84dvh",
+            }}
+          >
+            <ProceedBackButton nextPage={"/"} back={true} />
+          </div>
 
-          <ProceedBackButton
-            nextPage={"/parse-data"}
-            width={20}
-            height={17.84}
-            coordY={2.33}
-            message={"Parse Data"}
-          />
+          <div
+            style={{
+              position: "absolute",
+              top: "2.33dvh",
+              right: "1.07dvw",
+              width: "18dvw",
+              height: "17.84dvh",
+            }}
+          >
+            <ProceedBackButton nextPage={"/parse-data"} message={"Parse Data"} />
+          </div>
         </>
       )}
       {/* Render a button to update service workers */}

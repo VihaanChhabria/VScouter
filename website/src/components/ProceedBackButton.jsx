@@ -67,6 +67,8 @@ const ProceedBackButton = ({
           navigate(nextPage);
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
+          console.log(inputs);
+          
           navigate(nextPage, { state: { inputs } });
         }
       }

@@ -41,7 +41,7 @@ const AutoScoringCoralMap = ({
             alignItems: "center",
           }}
         >
-          {[1, 2, 3, 4].map((item, index) => (
+          {[4, 3, 2, 1].map((item, index) => (
             <div key={index} style={{ width: "100%", height: "25%" }}>
               <ScoringCoralPlaceCounter
                 position={`L${item}`}

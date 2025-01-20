@@ -1,5 +1,4 @@
 import React from "react";
-import { ToastContainer } from "react-toastify";
 
 import ProceedBackButton from "../components/ProceedBackButton";
 import HomeFullscreenButton from "../components/HomeComponents/HomeFullscreenButton";
@@ -101,7 +100,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

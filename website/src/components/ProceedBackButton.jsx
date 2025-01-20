@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
+import { toast } from "react-toastify";
 
 /**
  * A button component that navigates to the next page in the app.
@@ -69,7 +69,7 @@ const ProceedBackButton = ({
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
           console.log(inputs);
-          
+
           navigate(nextPage, { state: { inputs } });
         }
       }
@@ -104,7 +104,6 @@ const ProceedBackButton = ({
           {back ? "Back" : message ? message : "Proceed"}
         </h1>
       </div>
-      <ToastContainer />
     </div>
   );
 };

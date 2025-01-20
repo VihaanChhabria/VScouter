@@ -76,51 +76,7 @@ const AutoStartMap = ({ startPoses, setStartPoses }) => {
             <AutoStartNumberSection number={5} startPoses={startPoses} setStartPoses={setStartPoses}/>
           </div>
         </div>
-        {/* Render the numbers for the robot to start */}
-        {/* <AutoStartNumberSection
-          number="1"
-          coordX={0}
-          coordY={10.7}
-          width={12.66}
-          height={16.51}
-          rotated={rotate}
-        />
-        <AutoStartNumberSection
-          number="2"
-          coordX={0}
-          coordY={27.21}
-          width={12.66}
-          height={13.26}
-          rotated={rotate}
-        />
-        <AutoStartNumberSection
-          number="3"
-          coordX={0}
-          coordY={40.47}
-          width={12.66}
-          height={18.37}
-          rotated={rotate}
-        />
-        <AutoStartNumberSection
-          number="4"
-          coordX={0}
-          coordY={58.84}
-          width={12.66}
-          height={18.37}
-          rotated={rotate}
-        /> */}
       </div>
-
-      {/* Flip Button */}
-      {/* <ToggleButton
-        coordX={buttonCoordX}
-        coordY={buttonCoordY}
-        width={33.8}
-        height={23.72}
-        question="Flip Field"
-        state={rotate}
-        setState={setRotate}
-      /> */}
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ScoringAlgaePlace from "./ScoringAlgaePlace";
 import { useLocation } from "react-router-dom";
 import ScoringPickup from "../ScoringPickup";
+import { toast } from "react-toastify";
 
 const ScoringAlgaeSection = ({ pickPositions, pickCounts, placeCounts }) => {
   const [pickPositionSelected, setPickPositionSelected] = useState("");
@@ -24,7 +25,14 @@ const ScoringAlgaeSection = ({ pickPositions, pickCounts, placeCounts }) => {
       <h1 style={{ color: "#FFFFFF", fontSize: "7dvh", fontWeight: "bold" }}>
         Algae
       </h1>
-      <div style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}>
+      <div
+        style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}
+        onClick={() => {
+          if (pickPositionSelected == "") {
+            toast.warn("Please select a pick position first.");
+          }
+        }}
+      >
         <ScoringAlgaePlace
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}

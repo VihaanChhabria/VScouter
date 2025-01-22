@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import ScoringCoralPlaceMap from "./ScoringCoralPlaceMap";
 import ScoringPickup from "../ScoringPickup";
+import { toast } from "react-toastify";
 
 const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
   const [pickPositionSelected, setPickPositionSelected] = useState("");
@@ -22,10 +23,24 @@ const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
         alignItems: "center",
       }}
     >
-      <h1 style={{ color: "#FFFFFF", fontSize: "5dvh", fontWeight: "bold", marginBottom: 0}}>
+      <h1
+        style={{
+          color: "#FFFFFF",
+          fontSize: "5dvh",
+          fontWeight: "bold",
+          marginBottom: 0,
+        }}
+      >
         Coral
       </h1>
-      <div style={{ width: "80%", height: "70%", marginBottom: "1.5dvh" }}>
+      <div
+        style={{ width: "80%", height: "70%", marginBottom: "1.5dvh" }}
+        onClick={() => {
+          if (pickPositionSelected == ""){
+            toast.warn("Please select a pick position first .");
+          }
+        }}
+      >
         <ScoringCoralPlaceMap
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}

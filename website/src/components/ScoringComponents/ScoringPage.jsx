@@ -235,15 +235,46 @@ const ScoringPage = ({
             alignItems: "center",
           }}
         >
-          <h1
+          <div
             style={{
-              color: "#FFFFFF",
-              fontSize: "8dvh",
-              fontWeight: "bold",
+              width: "100%",
+              height: "25%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "1.5dvw",
             }}
           >
-            {mode.charAt(0).toUpperCase() + mode.slice(1)}
-          </h1>
+            <h1
+              style={{
+                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
+                fontSize: "8dvh",
+                fontWeight: "900",
+              }}
+            >
+              ————
+            </h1>
+            <h1
+              style={{
+                color: "#FFFFFF",
+                fontSize: "8dvh",
+                fontWeight: "bold",
+              }}
+            >
+              {mode.charAt(0).toUpperCase() + mode.slice(1)}
+            </h1>
+            <h1
+              style={{
+                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
+                fontSize: "8dvh",
+                fontWeight: "900",
+              }}
+            >
+              ————
+            </h1>
+          </div>
+
           <div
             style={{
               width: "100%",

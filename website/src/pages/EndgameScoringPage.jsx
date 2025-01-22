@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import ToggleButton from "../components/ToggleButton";
 import EndgameScoringTrapCounter from "../components/EndgameScoringComponents/EndgameScoringTrapCounter";
 import EndgameScoringClimbParkToggles from "../components/EndgameScoringComponents/EndgameScoringClimbParkToggles";
 

@@ -66,12 +66,12 @@ const AutoScoringCoralMap = ({
             alignItems: "center",
           }}
         >
-          <img src={ReefSideView} style={{ width: "75%", height: "800%" }} />
+          <img src={ReefSideView} style={{ width: "75%", height: "80%" }} />
 
           <div
             style={{
               width: "100%",
-              height: "200%",
+              height: "20%",
             }}
           >
             <ScoringCoralPlaceCounter

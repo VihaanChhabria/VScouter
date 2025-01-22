@@ -19,44 +19,6 @@ const ScoringPage = ({
   const location = useLocation();
   const states = location.state;
 
-  // Coral States
-
-  // const [pickCoralStationCount, setPickCoralStationCount] = useState(
-  //   statePath?.coral?.pickStationCount || 0
-  // );
-  // const [pickCoralMark1Count, setPickCoralMark1Count] = useState(
-  //   statePath?.coral?.pickMark1Count || 0
-  // );
-  // const [pickCoralMark2Count, setPickCoralMark2Count] = useState(
-  //   statePath?.coral?.pickMark2Count || 0
-  // );
-  // const [pickCoralMark3Count, setPickCoralMark3Count] = useState(
-  //   statePath?.coral?.pickMark3Count || 0
-  // );
-
-  // const pickCoralData = [
-  //   {
-  //     position: "Station",
-  //     count: pickCoralStationCount,
-  //     setCount: setPickCoralStationCount,
-  //   },
-  //   {
-  //     position: "Mark 1",
-  //     count: pickCoralMark1Count,
-  //     setCount: setPickCoralMark1Count,
-  //   },
-  //   {
-  //     position: "Mark 2",
-  //     count: pickCoralMark2Count,
-  //     setCount: setPickCoralMark2Count,
-  //   },
-  //   {
-  //     position: "Mark 3",
-  //     count: pickCoralMark3Count,
-  //     setCount: setPickCoralMark3Count,
-  //   },
-  // ];
-
   const [placeCoralL1Count, setPlaceCoralL1Count] = useState(
     statePath?.coral?.placeL1Count || 0
   );
@@ -131,6 +93,11 @@ const ScoringPage = ({
     },
   ];
 
+  // only for auto scoring
+  const [passedStartLine, setPassedStartLine] = useState(
+    statePath?.passedStartLine || false
+  );
+
   // State stack for undo functionality
   const [stateStack, setStateStack] = useState([]);
 
@@ -149,6 +116,7 @@ const ScoringPage = ({
         placeAlgaeNetShot,
         placeAlgaeProcessor,
         placeAlgaeDropMiss,
+        passedStartLine,
       },
     ]);
   }, [
@@ -162,6 +130,7 @@ const ScoringPage = ({
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
+    passedStartLine,
   ]);
 
   // Function to handle undo operation
@@ -190,6 +159,7 @@ const ScoringPage = ({
       setPlaceAlgaeNetShot(previousState.placeAlgaeNetShot);
       setPlaceAlgaeProcessor(previousState.placeAlgaeProcessor);
       setPlaceAlgaeDropMiss(previousState.placeAlgaeDropMiss);
+      setPassedStartLine(previousState.passedStartLine);
       setStateStack([...stateStack]);
     }
   };
@@ -207,12 +177,46 @@ const ScoringPage = ({
         gap: "5dvh",
       }}
     >
-      <div style={{ width: "45%", height: "100%" }}>
-        <ScoringCoralSection
-          pickPositions={pickCoralPositions}
-          pickCounts={pickCoralData}
-          placeCounts={placeCoralCounts}
-        />
+      <div
+        style={{
+          width: "50%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1.5dvh",
+        }}
+      >
+        {mode == "auto" && (
+          <div
+            style={{
+              width: "100%",
+              height: "15%",
+              backgroundColor: passedStartLine ? "#507144" : "#242424",
+              border: "1.63dvh solid #1D1E1E",
+              borderRadius: "2dvh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onClick={() => setPassedStartLine(!passedStartLine)}
+          >
+            <h1
+              style={{ color: "white", fontSize: "3.5dvh", fontWeight: "700" }}
+            >
+              Passed Starting Line
+            </h1>
+          </div>
+        )}
+
+        <div style={{ width: "100%", height: mode == "auto" ? "85%" : "100%" }}>
+          <ScoringCoralSection
+            pickPositions={pickCoralPositions}
+            pickCounts={pickCoralData}
+            placeCounts={placeCoralCounts}
+          />
+        </div>
       </div>
       <div
         style={{
@@ -228,7 +232,7 @@ const ScoringPage = ({
         <div
           style={{
             width: "100%",
-            height: "50%",
+            height: "35%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -337,6 +341,7 @@ const ScoringPage = ({
                           "Count"]: count,
                         }))
                       ),
+                      ...(mode === "auto" && { passedStartLine }),
                     },
                   }}
                 />
@@ -399,13 +404,14 @@ const ScoringPage = ({
                         "Count"]: count,
                       }))
                     ),
+                    ...(mode === "auto" && { passedStartLine }),
                   },
                 }}
               />
             </div>
           </div>
         </div>
-        <div style={{ width: "100%", height: "55%" }}>
+        <div style={{ width: "100%", height: "65%" }}>
           <ScoringAlgaeSection
             pickPositions={pickAlgaePositions}
             pickCounts={pickAlgaeData}

@@ -20,13 +20,12 @@ const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "1.5dvh",
       }}
     >
-      <h1 style={{ color: "#FFFFFF", fontSize: "7dvh", fontWeight: "bold" }}>
+      <h1 style={{ color: "#FFFFFF", fontSize: "5dvh", fontWeight: "bold", marginBottom: 0}}>
         Coral
       </h1>
-      <div style={{ width: "80%", height: "65%" }}>
+      <div style={{ width: "80%", height: "70%", marginBottom: "1.5dvh" }}>
         <ScoringCoralPlaceMap
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}

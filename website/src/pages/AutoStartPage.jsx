@@ -3,9 +3,6 @@ import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
 import AutoStartMap from "../components/AutoStartComponents/AutoStartMap";
-import AutoStartNoShowButton from "../components/AutoStartComponents/AutoStartNoShowButton";
-import AutoStartCounter from "../components/AutoStartComponents/AutoStartCounter";
-import ToggleButton from "../components/ToggleButton";
 
 /**
  * Renders a component representing the Auto Start page.

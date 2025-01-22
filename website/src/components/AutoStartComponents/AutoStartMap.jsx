@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import fieldMap from "../../assets/FieldMap.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
-import ToggleButton from "../ToggleButton";
 
 /**
  * Renders a map for where the robot starts.

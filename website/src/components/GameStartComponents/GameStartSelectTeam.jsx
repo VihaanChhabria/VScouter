@@ -17,7 +17,6 @@ const InitialSelectTeam = ({
   selectedMatch,
   selectedAlliance,
 }) => {
-
   let baseTeams = [];
   try {
     baseTeams =
@@ -107,6 +106,8 @@ const InitialSelectTeam = ({
     customTeamValue,
   ]);
 
+  const [textSelected, setTextSelected] = useState(false);
+
   return (
     <>
       {/* Container */}
@@ -119,6 +120,23 @@ const InitialSelectTeam = ({
           borderRadius: "3.49dvh",
         }}
       >
+        {/* when the text is selected on mobile, when clicking off of typing user doesn't accidentally click on something else */}
+        {textSelected &&
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          ) && (
+            <div
+              style={{
+                height: "100%",
+                width: "100%",
+                left: 0,
+                top: 0,
+                position: "absolute",
+                zIndex: 1,
+              }}
+            ></div>
+          )}
+
         <div style={{ width: "98.5%", height: "100%", paddingLeft: "1.5%" }}>
           {/* Question */}
           <h1
@@ -206,7 +224,9 @@ const InitialSelectTeam = ({
               onChange={(e) => setCustomTeamValue(e.target.value)}
               onFocus={() => {
                 clickTeam("custom", customTeamStatus);
+                setTextSelected(true);
               }}
+              onBlur={() => setTextSelected(false)}
             />
           </div>
         </div>

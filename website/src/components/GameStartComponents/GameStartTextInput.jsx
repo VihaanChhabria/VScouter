@@ -19,6 +19,8 @@ const TextInput = ({
     defaultText === null ? "" : defaultText.toUpperCase()
   );
 
+  const [textSelected, setTextSelected] = useState(false);
+
   useEffect(() => {
     // If the upperText is not empty, set the textValue to the upperText, otherwise set it to null
     if (upperText != "") {
@@ -30,46 +32,66 @@ const TextInput = ({
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <div
-        style={{
-          border: "1.3dvh solid #1D1E1E",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-          position: "relative",
-          zIndex: 2,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          paddingLeft: "1dvw",
-        }}
-      >
-
-        <h1
+      {/* when the text is selected on mobile, when clicking off of typing user doesn't accidentally click on something else */}
+      {textSelected &&
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ) && (
+          <div
+            style={{
+              height: "100%",
+              width: "100%",
+              left: 0,
+              top: 0,
+              position: "absolute",
+              zIndex: 1,
+            }}
+          ></div>
+        )}
+      <div style={{ height: "100%", width: "100%" }}>
+        <div
           style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
+            border: "1.3dvh solid #1D1E1E",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#242424",
+            borderRadius: "3.49dvh",
+            position: "relative",
+            zIndex: 2,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-start",
+            paddingLeft: "1dvw",
           }}
         >
-          {question}
-        </h1>
-        <input
-          type="text"
-          value={upperText}
-          onChange={(e) => setUpperText(e.target.value.toUpperCase())}
-          style={{
-            border: "0.93dvh solid #1D1E1E",
-            borderRadius: "2.33dvh",
-            backgroundColor: "#4A4A4A",
-            color: "#FFFFFF",
-            width: "97%",
-            height: "8.88dvh",
-            fontSize: "4.0dvh",
-          }}
-        />
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "5.58dvh",
+              fontWeight: "bold",
+            }}
+          >
+            {question}
+          </h1>
+          <input
+            type="text"
+            value={upperText}
+            onChange={(e) => setUpperText(e.target.value.toUpperCase())}
+            inputMode="search"
+            onFocus={() => setTextSelected(true)}
+            onBlur={() => setTextSelected(false)}
+            style={{
+              border: "0.93dvh solid #1D1E1E",
+              borderRadius: "2.33dvh",
+              backgroundColor: "#4A4A4A",
+              color: "#FFFFFF",
+              width: "97%",
+              height: "8.88dvh",
+              fontSize: "4.0dvh",
+            }}
+          />
+        </div>
       </div>
     </div>
   );

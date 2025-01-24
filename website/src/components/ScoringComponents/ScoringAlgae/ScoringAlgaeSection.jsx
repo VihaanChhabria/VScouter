@@ -44,6 +44,7 @@ const ScoringAlgaeSection = ({ pickData, placeData }) => {
           pickPositions={pickData.map((singlePickData) => {return singlePickData.position})}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
+          place={"Algae"}
         />
       </div>
     </div>

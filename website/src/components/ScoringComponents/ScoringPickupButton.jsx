@@ -4,6 +4,7 @@ const ScoringPickupButton = ({
   position,
   pickPositionSelected,
   setPickPositionSelected,
+  place
 }) => {
   return (
     <div
@@ -25,6 +26,7 @@ const ScoringPickupButton = ({
         }
         setPickPositionSelected(position);
       }}
+      id={position+place+"Pick"}
     >
       <h1 style={{ color: "white", fontSize: "3.25dvh", fontWeight: "700" }}>
         {position}

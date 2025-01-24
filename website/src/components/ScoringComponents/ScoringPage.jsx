@@ -168,6 +168,60 @@ const ScoringPage = ({
     }
   };
 
+  const pickCoralKeybinds = ["q", "w", "e", "r"];
+  const pickAlgaeKeybinds = ["u", "i", "o", "p"];
+  useEffect(() => {
+    const onEvent = (event) => {
+      const buttonClicked = event?.key || null;
+      let idToClick = null;
+      switch (buttonClicked) {
+        case "1":
+          idToClick = "L1CoralPlace";
+          break;
+        case "2":
+          idToClick = "L2CoralPlace";
+          break;
+        case "3":
+          idToClick = "L3CoralPlace";
+          break;
+        case "4":
+          idToClick = "L4CoralPlace";
+          break;
+        case "`":
+          idToClick = "Drop/MissCoralPlace";
+          break;
+        case "9":
+          idToClick = "Net ShotAlgaePlace";
+          break;
+        case "0":
+          idToClick = "ProcessorAlgaePlace";
+          break;
+        case "-":
+          idToClick = "Drop/MissAlgaePlace";
+          break;
+        default:
+          pickCoralData.map((singleCoralPickData, index) => {
+            buttonClicked == pickCoralKeybinds[index] &&
+              (idToClick = singleCoralPickData.position + "CoralPick");
+          });
+          pickAlgaeData.map((singleAlgaePickData, index) => {
+            buttonClicked == pickAlgaeKeybinds[index] &&
+              (idToClick = singleAlgaePickData.position + "AlgaePick");
+          });
+          break;
+      }
+      if (idToClick) {
+        document.getElementById(idToClick).click();
+      }
+    };
+
+    document.addEventListener("keyup", onEvent);
+
+    return () => {
+      document.removeEventListener("keyup", onEvent);
+    };
+  }, []);
+
   return (
     <div
       style={{

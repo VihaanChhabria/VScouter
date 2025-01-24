@@ -55,6 +55,7 @@ const ScoringCoralSection = ({ pickData, placeData }) => {
           })}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
+          place={"Coral"}
         />
       </div>
     </div>

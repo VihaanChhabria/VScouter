@@ -1,6 +1,6 @@
 import ScoringPickupButton from "./ScoringPickupButton";
 
-const ScoringPickup = ({pickPositions, pickPositionSelected, setPickPositionSelected}) => {
+const ScoringPickup = ({ pickPositions, pickPositionSelected, setPickPositionSelected, place}) => {
   return (
     <div
       style={{
@@ -18,6 +18,7 @@ const ScoringPickup = ({pickPositions, pickPositionSelected, setPickPositionSele
             position={position}
             pickPositionSelected={pickPositionSelected}
             setPickPositionSelected={setPickPositionSelected}
+            place={place}
           />
         </div>
       ))}

@@ -81,25 +81,11 @@ const AutoScoringPage = () => {
 
   return (
     <ScoringPage
-      pickCoralPositions={["Station", "Mark 1", "Mark 2", "Mark 3"]}
-      pickAlgaePositions={["Reef", "Mark 1", "Mark 2", "Mark 3"]}
       statePath={states?.inputs?.auto || null}
       mode="auto"
       nextPage="/teleop-scoring"
       pastPage="/auto-start"
-      pickCoralCounts={[
-        pickCoralStationCount,
-        pickCoralMark1Count,
-        pickCoralMark2Count,
-        pickCoralMark3Count,
-      ]}
       pickCoralData={pickCoralData}
-      pickAlgaeCounts={[
-        pickAlgaeReefCount,
-        pickAlgaeMark1Count,
-        pickAlgaeMark2Count,
-        pickAlgaeMark3Count,
-      ]}
       pickAlgaeData={pickAlgaeData}
     />
   );

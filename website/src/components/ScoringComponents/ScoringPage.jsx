@@ -5,15 +5,11 @@ import ScoringAlgaeSection from "./ScoringAlgae/ScoringAlgaeSection";
 import ProceedBackButton from "../ProceedBackButton";
 
 const ScoringPage = ({
-  pickCoralPositions,
-  pickAlgaePositions,
   statePath,
   mode,
   nextPage,
   pastPage,
-  pickCoralCounts,
   pickCoralData,
-  pickAlgaeCounts,
   pickAlgaeData,
 }) => {
   const location = useLocation();
@@ -35,7 +31,7 @@ const ScoringPage = ({
     statePath?.coral?.placeDropMissCount || 0
   );
 
-  const placeCoralCounts = [
+  const placeCoralData = [
     {
       position: "L4",
       count: placeCoralL4Count,
@@ -75,7 +71,7 @@ const ScoringPage = ({
     statePath?.algae?.placeDropMiss || 0
   );
 
-  const placeAlgaeCounts = [
+  const placeAlgaeData = [
     {
       position: "Net Shot",
       count: placeAlgaeNetShot,
@@ -106,13 +102,17 @@ const ScoringPage = ({
     setStateStack([
       ...stateStack,
       {
-        ...pickCoralCounts,
+        ...pickCoralData.map((singleCoralData) => {
+          return singleCoralData.count;
+        }),
         placeCoralL1Count,
         placeCoralL2Count,
         placeCoralL3Count,
         placeCoralL4Count,
         placeCoralDropMissCount,
-        ...pickAlgaeCounts,
+        ...pickAlgaeData.map((singleAlgaeData) => {
+          return singleAlgaeData.count;
+        }),
         placeAlgaeNetShot,
         placeAlgaeProcessor,
         placeAlgaeDropMiss,
@@ -120,13 +120,17 @@ const ScoringPage = ({
       },
     ]);
   }, [
-    ...pickCoralCounts,
+    ...pickCoralData.map((singleCoralData) => {
+      return singleCoralData.count;
+    }),
     placeCoralL1Count,
     placeCoralL2Count,
     placeCoralL3Count,
     placeCoralL4Count,
     placeCoralDropMissCount,
-    ...pickAlgaeCounts,
+    ...pickAlgaeData.map((singleAlgaeData) => {
+      return singleAlgaeData.count;
+    }),
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
@@ -212,9 +216,8 @@ const ScoringPage = ({
 
         <div style={{ width: "100%", height: mode == "auto" ? "85%" : "100%" }}>
           <ScoringCoralSection
-            pickPositions={pickCoralPositions}
-            pickCounts={pickCoralData}
-            placeCounts={placeCoralCounts}
+            pickData={pickCoralData}
+            placeData={placeCoralData}
           />
         </div>
       </div>
@@ -323,10 +326,10 @@ const ScoringPage = ({
                           placeL4Count: placeCoralL4Count,
                           placeDropMissCount: placeCoralDropMissCount,
                         },
-                        ...pickCoralCounts.map((count, index) => ({
+                        ...pickCoralData.map((singleCoralData) => ({
                           ["pick" +
-                          pickCoralData[index].position.replace(" ", "") +
-                          "Count"]: count,
+                          singleCoralData.position.replace(" ", "") +
+                          "Count"]: singleCoralData.count,
                         }))
                       ),
                       algae: Object.assign(
@@ -335,10 +338,10 @@ const ScoringPage = ({
                           placeProcessor: placeAlgaeProcessor,
                           placeDropMiss: placeAlgaeDropMiss,
                         },
-                        ...pickAlgaeCounts.map((count, index) => ({
+                        ...pickAlgaeData.map((singleAlgaeData) => ({
                           ["pick" +
-                          pickAlgaeData[index].position.replace(" ", "") +
-                          "Count"]: count,
+                          singleAlgaeData.position.replace(" ", "") +
+                          "Count"]: singleAlgaeData.count,
                         }))
                       ),
                       ...(mode === "auto" && { passedStartLine }),
@@ -386,10 +389,10 @@ const ScoringPage = ({
                         placeL4Count: placeCoralL4Count,
                         placeDropMissCount: placeCoralDropMissCount,
                       },
-                      ...pickCoralCounts.map((count, index) => ({
+                      ...pickCoralData.map((singleCoralData) => ({
                         ["pick" +
-                        pickCoralData[index].position.replace(" ", "") +
-                        "Count"]: count,
+                        singleCoralData.position.replace(" ", "") +
+                        "Count"]: singleCoralData.count,
                       }))
                     ),
                     algae: Object.assign(
@@ -398,10 +401,10 @@ const ScoringPage = ({
                         placeProcessor: placeAlgaeProcessor,
                         placeDropMiss: placeAlgaeDropMiss,
                       },
-                      ...pickAlgaeCounts.map((count, index) => ({
+                      ...pickAlgaeData.map((singleAlgaeData) => ({
                         ["pick" +
-                        pickAlgaeData[index].position.replace(" ", "") +
-                        "Count"]: count,
+                        singleAlgaeData.position.replace(" ", "") +
+                        "Count"]: singleAlgaeData.count,
                       }))
                     ),
                     ...(mode === "auto" && { passedStartLine }),
@@ -413,9 +416,8 @@ const ScoringPage = ({
         </div>
         <div style={{ width: "100%", height: "65%" }}>
           <ScoringAlgaeSection
-            pickPositions={pickAlgaePositions}
-            pickCounts={pickAlgaeData}
-            placeCounts={placeAlgaeCounts}
+            pickData={pickAlgaeData}
+            placeData={placeAlgaeData}
           />
         </div>
       </div>

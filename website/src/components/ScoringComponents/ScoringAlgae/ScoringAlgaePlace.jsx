@@ -8,8 +8,8 @@ import DropMissIcon from "../../../assets/AutoScoringImages/DropMissIcon.svg";
 const AutoScoringAlgaePlace = ({
   pickPositionSelected,
   setPickPositionSelected,
-  placeCounts,
-  pickCounts,
+  placeData,
+  pickData,
 }) => {
   const positionIcons = [NetShotIcon, ProcessorIcon, DropMissIcon];
   return (
@@ -28,11 +28,11 @@ const AutoScoringAlgaePlace = ({
           <ScoringAlgaePlaceButton
             position={position}
             icon={positionIcons[index]}
-            placeCount={placeCounts[index].count}
-            setPlaceCount={placeCounts[index].setCount}
+            placeCount={placeData[index].count}
+            setPlaceCount={placeData[index].setCount}
             pickPositionSelected={pickPositionSelected}
             setPickPositionSelected={setPickPositionSelected}
-            pickCounts={pickCounts}
+            pickData={pickData}
           />
         </div>
       ))}

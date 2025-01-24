@@ -5,7 +5,7 @@ import ScoringCoralPlaceMap from "./ScoringCoralPlaceMap";
 import ScoringPickup from "../ScoringPickup";
 import { toast } from "react-toastify";
 
-const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
+const ScoringCoralSection = ({ pickData, placeData }) => {
   const [pickPositionSelected, setPickPositionSelected] = useState("");
 
   return (
@@ -36,7 +36,7 @@ const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
       <div
         style={{ width: "80%", height: "70%", marginBottom: "1.5dvh" }}
         onClick={() => {
-          if (pickPositionSelected == ""){
+          if (pickPositionSelected == "") {
             toast.warn("Please select a pick position first .");
           }
         }}
@@ -44,13 +44,15 @@ const ScoringCoralSection = ({ pickPositions, pickCounts, placeCounts }) => {
         <ScoringCoralPlaceMap
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
-          placeCounts={placeCounts}
-          pickCounts={pickCounts}
+          placeData={placeData}
+          pickData={pickData}
         />
       </div>
       <div style={{ width: "90%", height: "15%" }}>
         <ScoringPickup
-          pickPositions={pickPositions}
+          pickPositions={pickData.map((singlePickData) => {
+            return singlePickData.position;
+          })}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
         />

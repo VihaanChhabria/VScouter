@@ -22,11 +22,12 @@ const AutoStartNumberSection = ({ number, startPoses, setStartPoses }) => {
   };
 
   useEffect(() => {
-  document.addEventListener("keyup", function onEvent(event) {
-    if (event.key === String(number + 1)) {
-      updateStartPoses();
-    }
-  })}, []);
+    document.addEventListener("keyup", function onEvent(event) {
+      if (event.key === String(number + 1)) {
+        updateStartPoses();
+      }
+    });
+  }, []);
 
   return (
     <>

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import ScoringAlgaePlace from "./ScoringAlgaePlace";
-import { useLocation } from "react-router-dom";
 import ScoringPickup from "../ScoringPickup";
 import { toast } from "react-toastify";
 
-const ScoringAlgaeSection = ({ pickPositions, pickCounts, placeCounts }) => {
+const ScoringAlgaeSection = ({ pickData, placeData }) => {
   const [pickPositionSelected, setPickPositionSelected] = useState("");
 
   return (
@@ -36,13 +35,13 @@ const ScoringAlgaeSection = ({ pickPositions, pickCounts, placeCounts }) => {
         <ScoringAlgaePlace
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
-          placeCounts={placeCounts}
-          pickCounts={pickCounts}
+          placeData={placeData}
+          pickData={pickData}
         />
       </div>
       <div style={{ width: "90%", height: "25%", marginBottom: "2dvh" }}>
         <ScoringPickup
-          pickPositions={pickPositions}
+          pickPositions={pickData.map((singlePickData) => {return singlePickData.position})}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
         />

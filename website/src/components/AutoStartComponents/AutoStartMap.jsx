@@ -14,8 +14,6 @@ import AutoStartNumberSection from "./AutoStartNumberSection";
  * @return {JSX.Element} The rendered component.
  */
 const AutoStartMap = ({ startPoses, setStartPoses }) => {
-  const [rotate, setRotate] = useState(false);
-
   return (
     <>
       {/* Render the map for the robot to start */}

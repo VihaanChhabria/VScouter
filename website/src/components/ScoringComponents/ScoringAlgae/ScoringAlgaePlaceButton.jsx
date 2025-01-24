@@ -7,7 +7,7 @@ const ScoringAlgaePlaceButton = ({
   setPlaceCount,
   pickPositionSelected,
   setPickPositionSelected,
-  pickCounts,
+  pickData,
 }) => {
   return (
     <div
@@ -26,9 +26,9 @@ const ScoringAlgaePlaceButton = ({
         if (pickPositionSelected != "") {
           (pickPositionSelected);
           setPlaceCount(placeCount + 1);
-          pickCounts.find((pickCount) => {
-            if (pickCount.position == pickPositionSelected) {
-              pickCount.setCount(pickCount.count + 1);
+          pickData.find((singlePickData) => {
+            if (singlePickData.position == pickPositionSelected) {
+              singlePickData.setCount(singlePickData.count + 1);
             }
           });
           setPickPositionSelected("");

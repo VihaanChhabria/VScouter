@@ -1,5 +1,4 @@
 import React from "react";
-import { toast } from "react-toastify";
 
 const ScoringCoralPlaceCounter = ({
   position,
@@ -7,7 +6,7 @@ const ScoringCoralPlaceCounter = ({
   setPlaceCount,
   pickPositionSelected,
   setPickPositionSelected,
-  pickCounts,
+  pickData,
 }) => {
   return (
     <div
@@ -18,9 +17,9 @@ const ScoringCoralPlaceCounter = ({
       onClick={() => {
         if (pickPositionSelected != "") {
           setPlaceCount(placeCount + 1);
-          pickCounts.find((pickCount) => {
-            if (pickCount.position == pickPositionSelected) {
-              pickCount.setCount(pickCount.count + 1);
+          pickData.find((singlePickData) => {
+            if (singlePickData.position == pickPositionSelected) {
+              singlePickData.setCount(singlePickData.count + 1);
             }
           });
           setPickPositionSelected("");
@@ -38,6 +37,7 @@ const ScoringCoralPlaceCounter = ({
           alignItems: "center",
           borderRadius: "2dvh",
         }}
+        id={position + "CoralPlace"}
       >
         <h1
           style={{

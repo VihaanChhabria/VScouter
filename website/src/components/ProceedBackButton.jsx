@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -29,6 +29,23 @@ const ProceedBackButton = ({
   inputs = {},
   message = null,
 }) => {
+  useEffect(() => {
+    const onEvent = (event) => {
+      const buttonClicked = event?.key || null;
+      if (buttonClicked == "Enter") {
+        document.getElementById("proceedButton").click();
+      } else if (buttonClicked == "Backspace") {
+        document.getElementById("backButton").click();
+      }
+    };
+
+    document.addEventListener("keyup", onEvent);
+
+    return () => {
+      document.removeEventListener("keyup", onEvent);
+    };
+  }, []);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -92,6 +109,7 @@ const ProceedBackButton = ({
           wordWrap: "break-word",
         }}
         onClick={proceedClick}
+        id={back ? "backButton" : "proceedButton"}
       >
         <h1
           style={{

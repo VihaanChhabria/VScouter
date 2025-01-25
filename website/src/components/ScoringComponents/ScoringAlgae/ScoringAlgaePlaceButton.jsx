@@ -34,6 +34,7 @@ const ScoringAlgaePlaceButton = ({
           setPickPositionSelected("");
         }
       }}
+      id={position+"AlgaePlace"}
     >
       <h1 style={{ color: "white", fontSize: "3.75dvh", fontWeight: "700" }}>
         {position}

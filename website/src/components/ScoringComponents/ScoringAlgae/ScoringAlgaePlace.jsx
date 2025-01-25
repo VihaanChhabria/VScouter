@@ -24,7 +24,7 @@ const AutoScoringAlgaePlace = ({
       }}
     >
       {["Net Shot", "Processor", "Drop/Miss"].map((position, index) => (
-        <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
+        <div style={{ width: "100%", height: "100%", flex: 1 }} key={index} >
           <ScoringAlgaePlaceButton
             position={position}
             icon={positionIcons[index]}

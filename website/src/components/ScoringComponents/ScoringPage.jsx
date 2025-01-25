@@ -191,7 +191,7 @@ const ScoringPage = ({
           idToClick = "Drop/MissCoralPlace";
           break;
         case "9":
-          idToClick = "Net ShotAlgaePlace";
+          idToClick = "Net ShotAlgaePlace";          
           break;
         case "0":
           idToClick = "ProcessorAlgaePlace";

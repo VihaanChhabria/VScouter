@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MainLayoutPortraitWarning = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [opacity, setOpacity] = useState(0.3);
   const [isIncreasing, setIsIncreasing] = useState(true);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 /**
  * Renders a number section for the Auto Start Map.
@@ -11,33 +11,42 @@ import React from "react";
  * @param {boolean} rotated - Whether the section should be rotated.
  * @return {JSX.Element} The rendered component.
  */
-const AutoStartNumberSection = ({
-  number = "1",
-  coordX = 0,
-  coordY = 0,
-  width = 10.84,
-  height = 16.51,
-  rotated = false,
-}) => {
+const AutoStartNumberSection = ({ number, startPoses, setStartPoses }) => {
+  const updateStartPoses = () => {
+    if (!startPoses[number]) {
+      setStartPoses.map((setStartPos) => setStartPos(false));
+      setStartPoses[number](true);
+      return;
+    }
+    setStartPoses[number](!startPoses[number]);
+  };
+
+  useEffect(() => {
+    document.addEventListener("keyup", function onEvent(event) {
+      if (event.key === String(number + 1)) {
+        updateStartPoses();
+      }
+    });
+  }, []);
+
   return (
     <>
       <div
         style={{
-          position: "absolute",
-          left: `${coordX}dvw`,
-          top: `${coordY}dvh`,
-          width: `${width}dvw`,
-          height: `${height}dvh`,
-          backgroundColor: "rgba(217, 217, 217, 0.5)",
+          width: "100%",
+          height: "100%",
+          backgroundColor: startPoses[number]
+            ? `rgba(247, 185, 0, 0.5)`
+            : `rgba(217, 217, 217, 0.5)`,
           border: "1.16dvh solid #5A5A5A",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          transform: rotated ? "rotate(180deg)" : "rotate(0deg)",
         }}
-      >
-        <h1 style={{ color: "#000000", fontSize: "5.58dvh" }}>{number}</h1>
-      </div>
+        onClick={() => {
+          updateStartPoses();
+        }}
+      ></div>
     </>
   );
 };

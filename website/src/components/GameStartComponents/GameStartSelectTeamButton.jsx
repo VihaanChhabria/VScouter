@@ -23,17 +23,15 @@ const InitialSelectTeamButton = ({
           borderRadius: "2.33dvh",
           backgroundColor: `#${currentTeamStatus ? "393939" : "6C6C6C"}`,
           color: "#FFFFFF",
-          width: "63.41dvw",
-          height: "9.53dvh",
-          marginBottom: "1.63dvh",
-          marginLeft: "0.64dvw",
+          width: "100%",
+          height: "100%",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
         }}
         onClick={() => clickTeam(currentTeamType, currentTeamStatus)}
       >
-        <h1 style={{ fontSize: "4.65dvh", marginLeft: "0.97dvw" }}>
+        <h1 style={{ fontSize: "4.65dvh", paddingLeft: "2dvh" }}>
           {teamName}
         </h1>
       </div>

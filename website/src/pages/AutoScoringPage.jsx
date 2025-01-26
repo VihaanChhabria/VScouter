@@ -1,100 +1,93 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import ProceedBackButton from "../components/ProceedBackButton";
-import AutoScoringMap from "../components/AutoScoringComponents/AutoScoringMap";
+import ScoringPage from "../components/ScoringComponents/ScoringPage";
 
 const AutoScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
-  const [closeRing1, setCloseRing1] = useState(
-    states?.inputs?.autoRingStatuses?.closeRing1 || "Not Picked"
+  const [pickCoralStationCount, setPickCoralStationCount] = useState(
+    states?.inputs?.auto?.coral?.pickStationCount || 0
   );
-  const [closeRing2, setCloseRing2] = useState(
-    states?.inputs?.autoRingStatuses?.closeRing2 || "Not Picked"
+  const [pickCoralMark1Count, setPickCoralMark1Count] = useState(
+    states?.inputs?.auto?.coral?.pickMark1Count || 0
   );
-  const [closeRing3, setCloseRing3] = useState(
-    states?.inputs?.autoRingStatuses?.closeRing3 || "Not Picked"
+  const [pickCoralMark2Count, setPickCoralMark2Count] = useState(
+    states?.inputs?.auto?.coral?.pickMark2Count || 0
+  );
+  const [pickCoralMark3Count, setPickCoralMark3Count] = useState(
+    states?.inputs?.auto?.coral?.pickMark3Count || 0
   );
 
-  const [farRing1, setFarRing1] = useState(
-    states?.inputs?.autoRingStatuses?.farRing1 || "Not Picked"
+  const pickCoralData = [
+    {
+      position: "Station",
+      count: pickCoralStationCount,
+      setCount: setPickCoralStationCount,
+    },
+    {
+      position: "Mark 1",
+      count: pickCoralMark1Count,
+      setCount: setPickCoralMark1Count,
+    },
+    {
+      position: "Mark 2",
+      count: pickCoralMark2Count,
+      setCount: setPickCoralMark2Count,
+    },
+    {
+      position: "Mark 3",
+      count: pickCoralMark3Count,
+      setCount: setPickCoralMark3Count,
+    },
+  ];
+
+  const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
+    states?.inputs?.auto?.algae?.pickReefCount || 0
   );
-  const [farRing2, setFarRing2] = useState(
-    states?.inputs?.autoRingStatuses?.farRing2 || "Not Picked"
+  const [pickAlgaeMark1Count, setPickAlgaeMark1Count] = useState(
+    states?.inputs?.auto?.algae?.pickMark1Count || 0
   );
-  const [farRing3, setFarRing3] = useState(
-    states?.inputs?.autoRingStatuses?.farRing3 || "Not Picked"
+  const [pickAlgaeMark2Count, setPickAlgaeMark2Count] = useState(
+    states?.inputs?.auto?.algae?.pickMark2Count || 0
   );
-  const [farRing4, setFarRing4] = useState(
-    states?.inputs?.autoRingStatuses?.farRing4 || "Not Picked"
+  const [pickAlgaeMark3Count, setPickAlgaeMark3Count] = useState(
+    states?.inputs?.auto?.algae?.pickMark3Count || 0
   );
-  const [farRing5, setFarRing5] = useState(
-    states?.inputs?.autoRingStatuses?.farRing5 || "Not Picked"
-  );
+
+  const pickAlgaeData = [
+    {
+      position: "Reef",
+      count: pickAlgaeReefCount,
+      setCount: setPickAlgaeReefCount,
+    },
+    {
+      position: "Mark 1",
+      count: pickAlgaeMark1Count,
+      setCount: setPickAlgaeMark1Count,
+    },
+    {
+      position: "Mark 2",
+      count: pickAlgaeMark2Count,
+      setCount: setPickAlgaeMark2Count,
+    },
+    {
+      position: "Mark 3",
+      count: pickAlgaeMark3Count,
+      setCount: setPickAlgaeMark3Count,
+    },
+  ];
 
   return (
-    <>
-      <AutoScoringMap
-        alliance={states?.inputs?.alliance || "blue"}
-        ringStatuses={{
-          closeRing1,
-          closeRing2,
-          closeRing3,
-          farRing1,
-          farRing2,
-          farRing3,
-          farRing4,
-          farRing5,
-        }}
-        setRingStatuses={{
-          setCloseRing1,
-          setCloseRing2,
-          setCloseRing3,
-          setFarRing1,
-          setFarRing2,
-          setFarRing3,
-          setFarRing4,
-          setFarRing5,
-        }}
-      />
-
-      <ProceedBackButton
-        nextPage={`/teleop-scoring`}
-        inputs={{
-          ...(states?.inputs || {}),
-          autoRingStatuses: {
-            closeRing1,
-            closeRing2,
-            closeRing3,
-            farRing1,
-            farRing2,
-            farRing3,
-            farRing4,
-            farRing5,
-          },
-        }}
-      />
-      <ProceedBackButton
-        back={true}
-        coordX={24.5}
-        nextPage="/auto-start"
-        inputs={{
-          ...(states?.inputs || {}),
-          autoRingStatuses: {
-            closeRing1,
-            closeRing2,
-            closeRing3,
-            farRing1,
-            farRing2,
-            farRing3,
-            farRing4,
-            farRing5,
-          },
-        }}
-      />
-    </>
+    <ScoringPage
+      statePath={states?.inputs?.auto || null}
+      mode="auto"
+      nextPage="/teleop-scoring"
+      pastPage="/auto-start"
+      pickCoralData={pickCoralData}
+      pickAlgaeData={pickAlgaeData}
+    />
   );
 };
 

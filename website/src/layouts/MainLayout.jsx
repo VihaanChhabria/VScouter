@@ -3,6 +3,10 @@ import { Outlet } from "react-router-dom";
 
 import MainLayoutPortraitWarning from "../components/MainLayoutComponents/MainLayoutPortraitWarning";
 
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const MainLayout = () => {
   return (
     <div
@@ -13,6 +17,7 @@ const MainLayout = () => {
         overflow: "hidden",
       }}
     >
+      <ToastContainer />
       <MainLayoutPortraitWarning />
       <Outlet />
     </div>

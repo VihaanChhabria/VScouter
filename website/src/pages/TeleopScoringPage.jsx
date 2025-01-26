@@ -1,95 +1,65 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import ProceedBackButton from "../components/ProceedBackButton";
-import TeleopScoringMap from "../components/TeleopScoringComponents/TeleopScoringMap";
+import ScoringPage from "../components/ScoringComponents/ScoringPage";
 
-/**
- * Renders a component representing the Teleop Scoring Page.
- *
- * To be used when the teleop period starts, collecting information about the number of rings each robot made and missed in the amp, speaker and when feeding.
- *
- * @return {JSX.Element} The component representing the Teleop Scoring Page.
- */
 const TeleopScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
-  /**
-   * Initialize state with the passed in state from the previous page, or null if no state was passed in
-   */
-  const [ampMadeCount, setAmpMadeCount] = useState(
-    states?.inputs?.teleopRingCounts?.ampMadeCount || 0
+  const [pickCoralStationCount, setPickCoralStationCount] = useState(
+    states?.inputs?.teleop?.coral?.pickStationCount || 0
   );
-  const [ampMissedCount, setAmpMissedCount] = useState(
-    states?.inputs?.teleopRingCounts?.ampMissedCount || 0
+  const [pickCoralCarpetCount, setPickCoralCarpetCount] = useState(
+    states?.inputs?.teleop?.coral?.pickCarpetCount || 0
   );
 
-  const [speakerMadeCount, setSpeakerMadeCount] = useState(
-    states?.inputs?.teleopRingCounts?.speakerMadeCount || 0
+  const pickCoralData = [
+    {
+      position: "Station",
+      count: pickCoralStationCount,
+      setCount: setPickCoralStationCount,
+    },
+    {
+      position: "Carpet",
+      count: pickCoralCarpetCount,
+      setCount: setPickCoralCarpetCount,
+    },
+  ];
+
+  const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
+    states?.inputs?.teleop?.algae?.pickReefCount || 0
   );
-  const [speakerMissedCount, setSpeakerMissedCount] = useState(
-    states?.inputs?.teleopRingCounts?.speakerMissedCount || 0
+  const [pickAlgaeCarpetCount, setPickAlgaeCarpetCount] = useState(
+    states?.inputs?.teleop?.algae?.pickGroundCount || 0
   );
 
-  const [fedMadeCount, setFedMadeCount] = useState(
-    states?.inputs?.teleopRingCounts?.fedMadeCount || 0
-  );
-  const [fedMissedCount, setFedMissedCount] = useState(
-    states?.inputs?.teleopRingCounts?.fedMissedCount || 0
-  );
+  const pickAlgaeData = [
+    {
+      position: "Reef",
+      count: pickAlgaeReefCount,
+      setCount: setPickAlgaeReefCount,
+    },
+    {
+      position: "Carpet",
+      count: pickAlgaeCarpetCount,
+      setCount: setPickAlgaeCarpetCount,
+    },
+  ];
+
   return (
-    <>
-      {/* Render the TeleopScoringMap component to show the map and the counters */}
-      <TeleopScoringMap
-        alliance={states?.inputs?.alliance || "blue"}
-        counts={[
-          [ampMadeCount, ampMissedCount],
-          [speakerMadeCount, speakerMissedCount],
-          [fedMadeCount, fedMissedCount],
-        ]}
-        setCounts={[
-          [setAmpMadeCount, setAmpMissedCount],
-          [setSpeakerMadeCount, setSpeakerMissedCount],
-          [setFedMadeCount, setFedMissedCount],
-        ]}
-      />
-
-      {/* Render the ProceedBackButton to navigate to the next page and pass in the selected data as props */}
-      <ProceedBackButton
-        nextPage={`/endgame-scoring`}
-        inputs={{
-          ...(states?.inputs || {}),
-          teleopRingCounts: {
-            ampMadeCount,
-            ampMissedCount,
-            speakerMadeCount,
-            speakerMissedCount,
-            fedMadeCount,
-            fedMissedCount,
-          },
-        }}
-      />
-
-      {/* Button to go back to the previous page and pass in the selected data as props*/}
-      <ProceedBackButton
-        back={true}
-        coordX={51.04}
-        coordY={79.83}
-        nextPage="/auto-scoring"
-        inputs={{
-          ...(states?.inputs || {}),
-          teleopRingCounts: {
-            ampMadeCount,
-            ampMissedCount,
-            speakerMadeCount,
-            speakerMissedCount,
-            fedMadeCount,
-            fedMissedCount,
-          },
-        }}
-      />
-    </>
+    <ScoringPage
+      pickCoralPositions={["Station", "Carpet"]}
+      pickAlgaePositions={["Reef", "Carpet"]}
+      statePath={states?.inputs?.teleop || null}
+      mode="teleop"
+      nextPage="/endgame-scoring"
+      pastPage="/auto-scoring"
+      pickCoralCounts={[pickCoralStationCount, pickCoralCarpetCount]}
+      pickCoralData={pickCoralData}
+      pickAlgaeCounts={[pickAlgaeReefCount, pickAlgaeCarpetCount]}
+      pickAlgaeData={pickAlgaeData}
+    />
   );
 };
 

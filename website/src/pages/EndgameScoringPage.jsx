@@ -2,152 +2,185 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
-import ToggleButton from "../components/ToggleButton";
-import EndgameScoringTrapCounter from "../components/EndgameScoringComponents/EndgameScoringTrapCounter";
-import EndgameScoringClimbParkToggles from "../components/EndgameScoringComponents/EndgameScoringClimbParkToggles";
+import EndgameScoringBargeSection from "../components/EndgameScoringComponents/EndgameScoringBargeSection";
+import EndgameScoringToggle from "../components/EndgameScoringComponents/EndgameScoringToggle";
+import EndgameScoringComments from "../components/EndgameScoringComponents/EndgameScoringComments";
 
 const EndgameScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
-  const [parked, setParked] = useState(states?.inputs?.parked || false);
-  const [parkFailed, setParkFailed] = useState(
-    states?.inputs?.parkFailed || false
+  const [shallowClimbAttempted, setShallowClimbAttempted] = useState(
+    states?.inputs?.shallowClimbAttempted || false
+  );
+  const [deepClimbAttempted, setDeepClimbAttempted] = useState(
+    states?.inputs?.deepClimbAttempted || false
+  );
+  const [parkAttempted, setParkAttempted] = useState(
+    states?.inputs?.parkAttempted || false
   );
 
-  const [climbed, setClimbed] = useState(states?.inputs?.climbed || false);
+  const climbData = [
+    {
+      position: "Shallow Climb",
+      selected: shallowClimbAttempted,
+      setSelected: setShallowClimbAttempted,
+    },
+    {
+      position: "Deep Climb",
+      selected: deepClimbAttempted,
+      setSelected: setDeepClimbAttempted,
+    },
+    {
+      position: "Park",
+      selected: parkAttempted,
+      setSelected: setParkAttempted,
+    },
+  ];
+
   const [climbFailed, setClimbFailed] = useState(
     states?.inputs?.climbFailed || false
   );
-
-  const [trapMadeCount, setTrapMadeCount] = useState(
-    states?.inputs?.trapMadeCount || 0
+  const [playedDefense, setPlayedDefense] = useState(
+    states?.inputs?.playedDefense || false
   );
-  const [trapMissedCount, setTrapMissedCount] = useState(
-    states?.inputs?.trapMissedCount || 0
+  const [brokeDown, setBrokeDown] = useState(
+    states?.inputs?.brokeDown || false
   );
 
   const [comment, setComment] = useState(states?.inputs?.comment || "");
 
-  const trapMadeMissedTextStyle = {
-    color: "#FFFFFF",
-    fontSize: "7.44dvh",
-    fontWeight: "bold",
-    userSelect: "none",
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "22dvw",
-    overflow: "hidden",
-  };
-
   return (
-    <>
-      <EndgameScoringClimbParkToggles
-        states={{ parked, parkFailed, climbed, climbFailed }}
-        setStates={{ setParked, setParkFailed, setClimbed, setClimbFailed }}
-      />
-
-      <div>
-        <div style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-          <h1
-            style={{
-              ...trapMadeMissedTextStyle,
-              left: "52.58dvw",
-              top: "1.86dvh",
-              textAlign: "center",
-            }}
-          >
-            Trap Made:
-          </h1>
-          <EndgameScoringTrapCounter
-            coordX={56.65}
-            coordY={16.51}
-            counter={trapMadeCount}
-            setCounter={setTrapMadeCount}
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "2dvh", //edit this
+        padding: "4dvh 2dvw", //edit this
+      }}
+    >
+      <div style={{ flex: "0.67", width: "100%" }}>
+        <EndgameScoringBargeSection climbData={climbData} />
+      </div>
+      <div
+        style={{
+          flex: "0.45",
+          width: "85%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1dvw",
+        }}
+      >
+        <div style={{ flex: "1", height: "100%" }}>
+          <EndgameScoringToggle
+            question={"Climbed Failed"}
+            selected={climbFailed}
+            setSelected={setClimbFailed}
           />
         </div>
-        <div style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-          <h1
-            style={{
-              ...trapMadeMissedTextStyle,
-              left: "75.32dvw",
-              top: "1.86dvh",
-              textAlign: "center",
-            }}
-          >
-            Trap Missed:
-          </h1>
-          <EndgameScoringTrapCounter
-            coordX={79.4}
-            coordY={16.51}
-            counter={trapMissedCount}
-            setCounter={setTrapMissedCount}
+        <div style={{ flex: "1", height: "100%" }}>
+          <EndgameScoringToggle
+            question={"Played Defense"}
+            selected={playedDefense}
+            setSelected={setPlayedDefense}
+          />
+        </div>
+        <div style={{ flex: "1", height: "100%" }}>
+          <EndgameScoringToggle
+            question={"Broke Down"}
+            selected={brokeDown}
+            setSelected={setBrokeDown}
           />
         </div>
       </div>
-
-      <div>
-        <h1
+      <div
+        style={{
+          flex: "1",
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "1.5dvw",
+        }}
+      >
+        <div
           style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-            userSelect: "none",
-            position: "absolute",
-            left: "2.04dvw",
-            top: "64.88dvh",
+            height: "100%",
+            width: "75%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          Comments:
-        </h1>
-        <textarea
+          <div style={{ width: "100%", flex: "1" }}>
+            <EndgameScoringComments comment={comment} setComment={setComment} />
+          </div>
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "9dvh",
+              fontWeight: "bold",
+              width: "100%",
+              flex: "0.5",
+            }}
+          >
+            Endgame Scoring
+          </h1>
+        </div>
+        <div
           style={{
-            left: "17.5dvw",
-            top: "64.88dvh",
-            position: "absolute",
-            width: "46.67dvw",
-            height: "32.79dvh",
-            border: "0.93dvh solid #1D1E1E",
-            borderRadius: "2.33dvh",
-            backgroundColor: "#4A4A4A",
-            color: "#FFFFFF",
-            fontSize: "3.0dvh",
-            padding: "1.56dvh",
+            height: "100%",
+            width: "25%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "2dvh",
           }}
-          onChange={(e) => setComment(e.target.value)}
-        ></textarea>
+        >
+          <div style={{ flex: "0.25", width: "100%" }}>
+            <ProceedBackButton
+              back={true}
+              nextPage="/teleop-scoring"
+              inputs={{
+                ...(states?.inputs || {}),
+                shallowClimbAttempted,
+                deepClimbAttempted,
+                parkAttempted,
+                climbFailed,
+                playedDefense,
+                brokeDown,
+                comment,
+              }}
+            />
+          </div>
+          <div style={{ flex: "1", width: "100%" }}>
+            <ProceedBackButton
+              nextPage={`/game-start`}
+              inputs={{
+                ...(states?.inputs || {}),
+                shallowClimbAttempted,
+                deepClimbAttempted,
+                parkAttempted,
+                climbFailed,
+                playedDefense,
+                brokeDown,
+                comment,
+              }}
+              message={"Submit"}
+            />
+          </div>
+        </div>
       </div>
-
-      <ProceedBackButton
-        nextPage={`/game-start`}
-        inputs={{
-          ...(states?.inputs || {}),
-          parked,
-          parkFailed,
-          climbed,
-          climbFailed,
-          trapMadeCount,
-          trapMissedCount,
-          comment,
-        }}
-      />
-      <ProceedBackButton
-        back={true}
-        nextPage="/teleop-scoring"
-        inputs={{
-          ...(states?.inputs || {}),
-          parked,
-          parkFailed,
-          climbed,
-          climbFailed,
-          trapMadeCount,
-          trapMissedCount,
-          comment,
-        }}
-      />
-    </>
+    </div>
   );
 };
 

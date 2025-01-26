@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Scanner } from "@yudiel/react-qr-scanner";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToggleButton from "../ToggleButton";
 import { useNavigate } from "react-router-dom";
@@ -180,8 +180,6 @@ const SettingsMatchDataScanner = () => {
           </h1>
         </div>
       </div>
-
-      <ToastContainer />
     </>
   );
 };

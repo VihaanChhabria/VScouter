@@ -42,23 +42,13 @@ const EndgameScoringPage = () => {
     states?.inputs?.climbFailed || false
   );
   const [playedDefense, setPlayedDefense] = useState(
-    states?.inputs?.climbFailed || false
+    states?.inputs?.playedDefense || false
+  );
+  const [brokeDown, setBrokeDown] = useState(
+    states?.inputs?.brokeDown || false
   );
 
   const [comment, setComment] = useState(states?.inputs?.comment || "");
-
-  const trapMadeMissedTextStyle = {
-    color: "#FFFFFF",
-    fontSize: "7.44dvh",
-    fontWeight: "bold",
-    userSelect: "none",
-    position: "absolute",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "22dvw",
-    overflow: "hidden",
-  };
 
   return (
     <div
@@ -79,7 +69,7 @@ const EndgameScoringPage = () => {
       <div
         style={{
           flex: "0.45",
-          width: "65%",
+          width: "85%",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
@@ -101,6 +91,13 @@ const EndgameScoringPage = () => {
             setSelected={setPlayedDefense}
           />
         </div>
+        <div style={{ flex: "1", height: "100%" }}>
+          <EndgameScoringToggle
+            question={"Broke Down"}
+            selected={brokeDown}
+            setSelected={setBrokeDown}
+          />
+        </div>
       </div>
       <div
         style={{
@@ -110,7 +107,7 @@ const EndgameScoringPage = () => {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          gap: "1.5dvw"
+          gap: "1.5dvw",
         }}
       >
         <div
@@ -160,6 +157,7 @@ const EndgameScoringPage = () => {
                 parkAttempted,
                 climbFailed,
                 playedDefense,
+                brokeDown,
                 comment,
               }}
             />
@@ -174,6 +172,7 @@ const EndgameScoringPage = () => {
                 parkAttempted,
                 climbFailed,
                 playedDefense,
+                brokeDown,
                 comment,
               }}
               message={"Submit"}

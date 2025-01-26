@@ -29,23 +29,6 @@ const ProceedBackButton = ({
   inputs = {},
   message = null,
 }) => {
-  useEffect(() => {
-    const onEvent = (event) => {
-      const buttonClicked = event?.key || null;
-      if (buttonClicked == "Enter") {
-        document.getElementById("proceedButton").click();
-      } else if (buttonClicked == "Backspace") {
-        document.getElementById("backButton").click();
-      }
-    };
-
-    document.addEventListener("keyup", onEvent);
-
-    return () => {
-      document.removeEventListener("keyup", onEvent);
-    };
-  }, []);
-
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -82,7 +65,15 @@ const ProceedBackButton = ({
           fullData.data.push({ ...inputs });
           // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
-          navigate(nextPage);
+          navigate(nextPage, {
+            state: {
+              inputs: {
+                matchNumber: (parseInt(inputs.matchNumber) + 1).toString(),
+                alliance: inputs.alliance,
+                scouterInitials: inputs.scouterInitials,
+              },
+            },
+          });
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
           console.log(inputs);

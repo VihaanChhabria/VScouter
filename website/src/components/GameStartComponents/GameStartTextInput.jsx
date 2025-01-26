@@ -13,6 +13,7 @@ const TextInput = ({
   question = "-",
   defaultText = null,
   setTextValue = () => {},
+  numberOnly = false
 }) => {
   const [upperText, setUpperText] = useState(
     // If the defaultText is null, set the state to an empty string, otherwise set it to the defaultText in uppercase
@@ -75,7 +76,7 @@ const TextInput = ({
             {question}
           </h1>
           <input
-            type="text"
+            type={numberOnly ? "number" : "text"}
             value={upperText}
             onChange={(e) => setUpperText(e.target.value.toUpperCase())}
             inputMode="search"

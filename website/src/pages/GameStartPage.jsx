@@ -16,6 +16,8 @@ import GameStartSelectTeam from "../components/GameStartComponents/GameStartSele
 const GameStartPage = () => {
   const location = useLocation();
   const states = location.state;
+  console.log(states.inputs);
+  
 
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
   const [alliance, setAlliance] = useState(states?.inputs?.alliance || null);
@@ -66,6 +68,7 @@ const GameStartPage = () => {
                 question="Match Number"
                 setTextValue={setMatchNumber}
                 defaultText={matchNumber}
+                numberOnly={true}
               />
             </div>
             <div style={{ flexBasis: 260 }}>

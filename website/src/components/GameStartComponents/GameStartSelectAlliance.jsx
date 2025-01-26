@@ -18,8 +18,6 @@ const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
    * @param {string} alliance - The alliance to select.
    */
   const clickAlliance = (alliance) => {
-    console.log("HHHHHHHHHHHHHHHHHHHHHHHHHH");
-    
     if (alliance === "red") {
       setRedSelected(!redSelected);
       setBlueSelected(false);

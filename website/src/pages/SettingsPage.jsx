@@ -137,7 +137,10 @@ const SettingsPage = () => {
               height: "17.84dvh",
             }}
           >
-            <ProceedBackButton nextPage={"/parse-data"} message={"Parse Data"} />
+            <ProceedBackButton
+              nextPage={"/parse-data"}
+              message={"Parse Data"}
+            />
           </div>
         </>
       )}

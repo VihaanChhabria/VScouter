@@ -32,9 +32,9 @@ const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
    */
   useEffect(() => {
     if (redSelected && !blueSelected) {
-      setAlliance("red");
+      setAlliance("redAlliance");
     } else if (!redSelected && blueSelected) {
-      setAlliance("blue");
+      setAlliance("blueAlliance");
     } else {
       setAlliance(null);
     }

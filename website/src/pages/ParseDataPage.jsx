@@ -42,7 +42,9 @@ const ParseDataPage = () => {
 
       <ParseDataSelector />
 
-      <ProceedBackButton nextPage={`/settings`} back={true} coordY={2.33}/>
+      <div style={{ width: "15%", height: "15%" }}>
+        <ProceedBackButton nextPage={`/settings`} back={true} />
+      </div>
     </>
   );
 };

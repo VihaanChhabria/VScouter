@@ -1,5 +1,19 @@
 {
   "name": "vscouter",
+  "description": "A powerful FRC scouting app taking your team to the next level.",
+  "author": "Vihaan Chhabria",
+  "license": "MIT",
+  "keywords": [
+    "frc",
+    "scouting",
+    "robotics",
+    "data-visualization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VihaanChhabria/VScouter.git"
+  },
+  "homepage": "https://vscouter.netlify.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",

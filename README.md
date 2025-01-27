@@ -1,4 +1,4 @@
-# VScouter: FRC Scouting App
+# VScouter: FRC Scouting Revolutionized
 
 ## Introduction
 

@@ -66,7 +66,9 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
           } else {
             if (key == "comment") {
               // Replaces double quotes in the comment
-              fullCSV[fullCSV.length - 1].push(`"${value.replaceAll('"', "'")}"`);
+              fullCSV[fullCSV.length - 1].push(
+                `"${value.replaceAll('"', "'")}"`
+              );
             } else {
               fullCSV[fullCSV.length - 1].push(value);
             }
@@ -74,7 +76,7 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
         }
       }
     }
-    console.log(fullCSV)
+    console.log(fullCSV);
     const csvContent = fullCSV.map((row) => row.join(",")).join("\n");
     downloadCSV(csvContent);
   };

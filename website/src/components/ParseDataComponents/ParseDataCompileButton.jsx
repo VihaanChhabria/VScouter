@@ -14,71 +14,37 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
    * analysis software.
    */
   const convertJSONToCSV = () => {
-    let fullCSV = [[]];
-    const data = selectedFiles.map((fullData) => fullData.text);
+    console.log(selectedFiles);
+    
+    const totalFilesData = selectedFiles.map((singleFile) =>
+      JSON.parse(singleFile.text)
+    );
 
-    // Iterate over the first file and extract the keys for the first row that identifies the others
-    for (const [key, value] of Object.entries(JSON.parse(data[0])["data"][0])) {
-      if (
-        typeof value !== "string" &&
-        typeof value !== "boolean" &&
-        typeof value !== "number"
+    const fullCSV = [];
+    fullCSV.push(totalFilesData[0][0]);
+    for (let fileIndex = 0; fileIndex < totalFilesData.length; fileIndex++) {
+      const fileData = totalFilesData[fileIndex];
+      for (
+        let dataRowIndex = 1;
+        dataRowIndex < fileData.length;
+        dataRowIndex++
       ) {
-        // Convert the subkeys to keys
-        const subKeys = Object.keys(value);
-        for (
-          let subValueIndex = 0;
-          subValueIndex < subKeys.length;
-          subValueIndex++
-        ) {
-          const subKey = subKeys[subValueIndex];
-          console.log(subKey);
-          fullCSV[0].push(subKey);
-        }
-      } else {
-        fullCSV[0].push(key);
+        const dataRow = fileData[dataRowIndex];
+        fullCSV.push(dataRow);
       }
     }
 
-    // Iterate over the rest of the files and extract the values
-    for (let fileIndex = 0; fileIndex < data.length; fileIndex++) {
-      const file = JSON.parse(data[fileIndex])["data"];
-      for (let matchIndex = 0; matchIndex < file.length; matchIndex++) {
-        const match = file[matchIndex];
-        fullCSV.push([]);
-        for (const [key, value] of Object.entries(match)) {
-          if (
-            // Check if the value is an array
-            typeof value !== "string" &&
-            typeof value !== "boolean" &&
-            typeof value !== "number"
-          ) {
-            // Convert the subvalues to values
-            const subValues = Object.values(value);
-            for (
-              let subValueIndex = 0;
-              subValueIndex < subValues.length;
-              subValueIndex++
-            ) {
-              const subValue = subValues[subValueIndex];
-              fullCSV[fullCSV.length - 1].push(subValue);
-            }
-          } else {
-            if (key == "comment") {
-              // Replaces double quotes in the comment
-              fullCSV[fullCSV.length - 1].push(
-                `"${value.replaceAll('"', "'")}"`
-              );
-            } else {
-              fullCSV[fullCSV.length - 1].push(value);
-            }
-          }
-        }
-      }
-    }
-    console.log(fullCSV);
-    const csvContent = fullCSV.map((row) => row.join(",")).join("\n");
-    downloadCSV(csvContent);
+    downloadCSV(
+      fullCSV
+        .map((row) =>
+          row
+            .map((item) =>
+              typeof item === "string" ? `"${item.replace(/"/g, '""')}"` : item
+            )
+            .join(",")
+        )
+        .join("\n")
+    );
   };
 
   /**

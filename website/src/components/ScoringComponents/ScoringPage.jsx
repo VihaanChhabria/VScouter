@@ -101,23 +101,32 @@ const ScoringPage = ({
   useEffect(() => {
     setStateStack([
       ...stateStack,
-      {
+      Object.assign(
+        {
+          placeCoralL1Count,
+          placeCoralL2Count,
+          placeCoralL3Count,
+          placeCoralL4Count,
+          placeCoralDropMissCount,
+
+          placeAlgaeNetShot,
+          placeAlgaeProcessor,
+          placeAlgaeDropMiss,
+          passedStartLine,
+        },
         ...pickCoralData.map((singleCoralData) => {
-          return singleCoralData.count;
+          return {
+            ["pickCoral" + singleCoralData.position + "Count"]:
+              singleCoralData.count,
+          };
         }),
-        placeCoralL1Count,
-        placeCoralL2Count,
-        placeCoralL3Count,
-        placeCoralL4Count,
-        placeCoralDropMissCount,
         ...pickAlgaeData.map((singleAlgaeData) => {
-          return singleAlgaeData.count;
-        }),
-        placeAlgaeNetShot,
-        placeAlgaeProcessor,
-        placeAlgaeDropMiss,
-        passedStartLine,
-      },
+          return {
+            ["pickAlgae" + singleAlgaeData.position + "Count"]:
+            singleAlgaeData.count,
+          };
+        })
+      ),
     ]);
   }, [
     ...pickCoralData.map((singleCoralData) => {
@@ -191,7 +200,7 @@ const ScoringPage = ({
           idToClick = "Drop/MissCoralPlace";
           break;
         case "9":
-          idToClick = "Net ShotAlgaePlace";          
+          idToClick = "Net ShotAlgaePlace";
           break;
         case "0":
           idToClick = "ProcessorAlgaePlace";

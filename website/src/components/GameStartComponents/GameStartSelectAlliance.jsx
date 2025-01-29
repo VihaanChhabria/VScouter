@@ -10,8 +10,8 @@ import React, { useEffect, useState } from "react";
  * @return {JSX.Element} The rendered component.
  */
 const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
-  const [redSelected, setRedSelected] = useState(currentAlliance === "red");
-  const [blueSelected, setBlueSelected] = useState(currentAlliance === "blue");
+  const [redSelected, setRedSelected] = useState(currentAlliance === "redAlliance");
+  const [blueSelected, setBlueSelected] = useState(currentAlliance === "blueAlliance");
 
   /**
    * Click handler for the alliance selection.

@@ -31,7 +31,7 @@ const TeleopScoringPage = () => {
     states?.inputs?.teleop?.algae?.pickReefCount || 0
   );
   const [pickAlgaeCarpetCount, setPickAlgaeCarpetCount] = useState(
-    states?.inputs?.teleop?.algae?.pickGroundCount || 0
+    states?.inputs?.teleop?.algae?.pickCarpetCount || 0
   );
 
   const pickAlgaeData = [

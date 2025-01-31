@@ -107,7 +107,7 @@ const HomeDumpDataButton = () => {
         }
 
         const jsonData = JSON.parse(data).data;
-        // console.log(jsonData);
+        console.log(jsonData);
         const csvConvertedData = [];
         csvConvertedData.push(addHeaders(jsonData[0]))
         for (const value of Object.values(jsonData)) {

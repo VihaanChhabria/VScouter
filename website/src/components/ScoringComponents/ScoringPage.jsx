@@ -123,7 +123,7 @@ const ScoringPage = ({
         ...pickAlgaeData.map((singleAlgaeData) => {
           return {
             ["pickAlgae" + singleAlgaeData.position + "Count"]:
-            singleAlgaeData.count,
+              singleAlgaeData.count,
           };
         })
       ),
@@ -165,7 +165,7 @@ const ScoringPage = ({
 
       for (let i = 0; i < pickAlgaeData.length; i++) {
         pickAlgaeData[i].setCount(
-          previousState["pickCoral" + pickAlgaeData[i].position + "Count"]
+          previousState["pickAlgae" + pickAlgaeData[i].position + "Count"]
         );
       }
 

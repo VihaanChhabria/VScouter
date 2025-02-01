@@ -1,10 +1,27 @@
 # VScouter: FRC Scouting Revolutionized
 
-![Logo](website/public/VScouterLogo.png)
+<img src="website/public/VScouterLogo.png" alt="drawing" width="40%"/>
 
 ## Introduction
 
 VScouter is a versatile scouting application designed for FRC (FIRST Robotics Competition) teams. It simplifies the data collection process for scouting teams during competitions, providing a robust and efficient platform to gather, analyze, and store performance metrics of competing robots.
+
+## Table of Contents
+
+1. [Introduction](#introduction)  
+2. [Features](#features)  
+3. [Usage](#usage)  
+   - [Using The Website](#using-the-website)  
+   - [Collecting Data](#collecting-data)  
+   - [Parsing Data](#parsing-data)  
+   - [Analysis](#analysis)  
+     - [Pages of Analysis](#pages-of-analysis)  
+4. [Auto Completion Match Data](#auto-completion-match-data)  
+   - [Generating](#generating)  
+   - [Using](#using)  
+5. [Running Locally](#running-locally)  
+6. [License](#license)  
+7. [Support](#support) 
 
 ## Features
 

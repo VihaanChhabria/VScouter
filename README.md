@@ -88,6 +88,8 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 
 Analysis is done through Power BI. You can download it for free [here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads).
 
+**Not Updated for 2025 Reefscape Yet**
+
 1. To analyze the CSV data you downloaded at [Parsing Data](#parsing-data) you must download the [Power BI file in this repository](/analysis/VScouterAnalysis.pbix). Once downloaded, put the `pbix` file into a folder with nothing in it.
 2. Next put you CSV file into the same folder as the `pbix` file. Rename it to `VScouterFullData.csv`
 3. Open the `pbix` file with Power BI. To use this new data click `Transform Data` and then `dataFolderPath`. On this page change the directory to where the `pbix` file and CSV file are located (ex. `C:\Users\username\Documents\Analysis`). **There should not be a `\` at the end.**

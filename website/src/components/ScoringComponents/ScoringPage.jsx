@@ -99,6 +99,10 @@ const ScoringPage = ({
 
   // Function to handle state changes and push current state to stack
   useEffect(() => {
+    // default passing the starting line because you cant do anything without moving
+    if (mode == "auto" && stateStack.length !== 0 && !passedStartLine) {
+      setPassedStartLine(true);
+    }
     setStateStack([
       ...stateStack,
       Object.assign(
@@ -112,7 +116,6 @@ const ScoringPage = ({
           placeAlgaeNetShot,
           placeAlgaeProcessor,
           placeAlgaeDropMiss,
-          passedStartLine,
         },
         ...pickCoralData.map((singleCoralData) => {
           return {
@@ -143,7 +146,6 @@ const ScoringPage = ({
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
-    passedStartLine,
   ]);
 
   // Function to handle undo operation

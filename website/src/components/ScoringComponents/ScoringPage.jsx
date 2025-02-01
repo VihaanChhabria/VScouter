@@ -97,8 +97,20 @@ const ScoringPage = ({
   // State stack for undo functionality
   const [stateStack, setStateStack] = useState([]);
 
+  const [autoEnded, setAutoEnded] = useState(false);
+
   // Function to handle state changes and push current state to stack
   useEffect(() => {
+    // default passing the starting line because you cant do anything without moving
+    if (
+      mode == "auto" &&
+      stateStack.length == 1
+    ) {
+      setPassedStartLine(true);
+      setTimeout(() => {      
+        setAutoEnded(true);
+      }, 15000);
+    }
     setStateStack([
       ...stateStack,
       Object.assign(
@@ -112,7 +124,6 @@ const ScoringPage = ({
           placeAlgaeNetShot,
           placeAlgaeProcessor,
           placeAlgaeDropMiss,
-          passedStartLine,
         },
         ...pickCoralData.map((singleCoralData) => {
           return {
@@ -143,7 +154,6 @@ const ScoringPage = ({
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
-    passedStartLine,
   ]);
 
   // Function to handle undo operation
@@ -441,6 +451,7 @@ const ScoringPage = ({
             <div style={{ width: "50%", height: "100%" }}>
               <ProceedBackButton
                 nextPage={nextPage}
+                blink={autoEnded}
                 inputs={{
                   ...(states?.inputs || {}),
                   [mode]: {

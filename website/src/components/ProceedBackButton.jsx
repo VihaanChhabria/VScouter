@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
@@ -28,9 +28,19 @@ const ProceedBackButton = ({
   nextPage = "/",
   inputs = {},
   message = null,
+  blink = false,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [turnBoxRed, setTurnBoxRed] = useState(false);
+  useEffect(() => {
+    if (blink) {
+      setTimeout(() => {
+        setTurnBoxRed(!turnBoxRed);
+      }, 600);
+    }
+  }, [blink, turnBoxRed]);
 
   /** Handler for the button being clicked */
   const proceedClick = () => {
@@ -91,7 +101,7 @@ const ProceedBackButton = ({
           width: "100%",
           height: "100%",
           border: "1.63dvh solid #1D1E1E",
-          backgroundColor: "#242424",
+          backgroundColor: turnBoxRed ? "#8B0000" : "#242424",
           borderRadius: "3.49dvh",
           display: "flex",
           justifyContent: "center",

@@ -12,4 +12,5 @@ html, body {
   height: 100%;
   margin: 0;
   background-color: #3A3B3E;
+  touch-action: pan-x pan-y;
 }

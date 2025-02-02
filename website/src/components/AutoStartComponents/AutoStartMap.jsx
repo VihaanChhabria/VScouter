@@ -32,47 +32,17 @@ const AutoStartMap = ({ startPoses, setStartPoses }) => {
           borderRadius: "4dvh",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "50%",
-            width: "50%",
-          }}
-        >
-          <div style={{ height: "100%", width: "50%" }}>
-            <AutoStartNumberSection number={0} startPoses={startPoses} setStartPoses={setStartPoses} />
-          </div>
-          <div style={{ height: "100%", width: "50%" }}>
-            <AutoStartNumberSection number={1} startPoses={startPoses} setStartPoses={setStartPoses}/>
-          </div>
-          <div style={{ height: "100%", width: "50%" }}>
-            <AutoStartNumberSection number={2} startPoses={startPoses} setStartPoses={setStartPoses}/>
-          </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "50%",
-            width: "50%",
-          }}
-        >
-          {" "}
-          <div style={{ height: "100%", width: "50%" }}>
-            <AutoStartNumberSection number={3} startPoses={startPoses} setStartPoses={setStartPoses}/>
-          </div>
-          <div style={{ height: "100%", width: "50%" }}>
-            <AutoStartNumberSection number={4} startPoses={startPoses} setStartPoses={setStartPoses}/>
-          </div>
-          <div style={{ height: "100%", width: "50%" }}>
-            <AutoStartNumberSection number={5} startPoses={startPoses} setStartPoses={setStartPoses}/>
-          </div>
-        </div>
+        {[0, 1, 2, 3, 4,].map((value, index) => {
+          return (
+            <div style={{ height: "50%", width: "50%" }} key={index}>
+              <AutoStartNumberSection
+                number={index}
+                startPoses={startPoses}
+                setStartPoses={setStartPoses}
+              />
+            </div>
+          );
+        })}
       </div>
     </>
   );

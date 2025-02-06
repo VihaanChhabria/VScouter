@@ -6,6 +6,7 @@ import SettingsMatchDataScanner from "../components/SettingsComponents/SettingsM
 import SettingsButton from "../components/SettingsComponents/SettingsButton";
 import SettingsViewMatchData from "../components/SettingsComponents/SettingsViewMatchData";
 import SettingsUpdateButton from "../components/SettingsComponents/SettingsUpdateButton";
+import { useNavigate } from "react-router-dom";
 
 /**
  * A page for the user to access settings such as clearing match data, viewing match data, and getting match data.
@@ -13,6 +14,7 @@ import SettingsUpdateButton from "../components/SettingsComponents/SettingsUpdat
  * @return {JSX.Element} The rendered component.
  */
 const SettingsPage = () => {
+  const navigate = useNavigate();
   const [matchDataGetClicked, setMatchDataGetClicked] = useState(false);
   const [matchDataClearClicked, setMatchDataClearClicked] = useState(false);
   const [scoutDataClearClicked, setScoutDataClearClicked] = useState(false);
@@ -49,11 +51,29 @@ const SettingsPage = () => {
         }}
       >
         {/* Settings Buttons */}
-        <SettingsButton
-          question="Get Match Data"
-          state={matchDataGetClicked}
-          setState={setMatchDataGetClicked}
-        />
+        <div
+          style={{
+            width: `90dvw`,
+            height: `15dvh`,
+            backgroundColor: "#4A4A4A",
+            border: "1.63dvh solid #1D1E1E",
+            borderRadius: "3.49dvh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onClick={() => navigate("/match-data")} // Toggles the state when the button is clicked
+        >
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "5.58dvh",
+              fontWeight: "bold",
+            }}
+          >
+            Get Match Data
+          </h1>
+        </div>
         <SettingsButton
           question="Clear Match Data"
           state={matchDataClearClicked}

@@ -102,12 +102,9 @@ const ScoringPage = ({
   // Function to handle state changes and push current state to stack
   useEffect(() => {
     // default passing the starting line because you cant do anything without moving
-    if (
-      mode == "auto" &&
-      stateStack.length == 1
-    ) {
+    if (mode == "auto" && stateStack.length == 1) {
       setPassedStartLine(true);
-      setTimeout(() => {      
+      setTimeout(() => {
         setAutoEnded(true);
       }, 15000);
     }
@@ -309,56 +306,28 @@ const ScoringPage = ({
           style={{
             width: "100%",
             height: "35%",
+            backgroundColor: "red",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <div
+          {/* <h1
             style={{
-              width: "100%",
-              height: "25%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "1.5dvw",
+              color: "#FFFFFF",
+              fontSize: "8dvh",
+              fontWeight: "bold",
+              backgroundColor: "blue",
             }}
           >
-            <h1
-              style={{
-                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
-                fontSize: "8dvh",
-                fontWeight: "900",
-              }}
-            >
-              ————
-            </h1>
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "8dvh",
-                fontWeight: "bold",
-              }}
-            >
-              {mode.charAt(0).toUpperCase() + mode.slice(1)}
-            </h1>
-            <h1
-              style={{
-                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
-                fontSize: "8dvh",
-                fontWeight: "900",
-              }}
-            >
-              ————
-            </h1>
-          </div>
+            {mode.charAt(0).toUpperCase() + mode.slice(1)}
+          </h1> */}
 
           <div
             style={{
               width: "100%",
-              height: "75%",
+              height: "55%",
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
@@ -374,15 +343,15 @@ const ScoringPage = ({
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 alignItems: "center",
-                gap: "2.5dvh",
+                gap: "20%"
               }}
             >
               <div
                 style={{
                   width: "100%",
-                  height: "50%",
+                  height: "50%", // Adjust this line
                 }}
               >
                 <ProceedBackButton
@@ -425,7 +394,7 @@ const ScoringPage = ({
               <div
                 style={{
                   width: "100%",
-                  height: "50%",
+                  height: "50%", // Adjust this line
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

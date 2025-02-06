@@ -2,113 +2,289 @@
   "matches": [
     {
       "matchNum": "1",
-      "redAlliance": ["2265", "7045", "2607"],
-      "blueAlliance": ["1640", "7414", "316"]
+      "redAlliance": [
+        "2265",
+        "7045",
+        "2607"
+      ],
+      "blueAlliance": [
+        "1640",
+        "7414",
+        "316"
+      ]
     },
     {
       "matchNum": "2",
-      "redAlliance": ["5457", "365", "1155"],
-      "blueAlliance": ["9999", "4342", "8714"]
+      "redAlliance": [
+        "5457",
+        "365",
+        "1155"
+      ],
+      "blueAlliance": [
+        "9999",
+        "4342",
+        "8714"
+      ]
     },
     {
       "matchNum": "3",
-      "redAlliance": ["555", "2539", "1218"],
-      "blueAlliance": ["484", "694", "4575"]
+      "redAlliance": [
+        "555",
+        "2539",
+        "1218"
+      ],
+      "blueAlliance": [
+        "484",
+        "694",
+        "4575"
+      ]
     },
     {
       "matchNum": "4",
-      "redAlliance": ["9998", "41", "5401"],
-      "blueAlliance": ["9015", "369", "1923"]
+      "redAlliance": [
+        "9998",
+        "41",
+        "5401"
+      ],
+      "blueAlliance": [
+        "9015",
+        "369",
+        "1923"
+      ]
     },
     {
       "matchNum": "5",
-      "redAlliance": ["433", "1640", "2607"],
-      "blueAlliance": ["341", "5457", "4342"]
+      "redAlliance": [
+        "433",
+        "1640",
+        "2607"
+      ],
+      "blueAlliance": [
+        "341",
+        "5457",
+        "4342"
+      ]
     },
     {
       "matchNum": "6",
-      "redAlliance": ["7045", "8714", "7414"],
-      "blueAlliance": ["2539", "4575", "9999"]
+      "redAlliance": [
+        "7045",
+        "8714",
+        "7414"
+      ],
+      "blueAlliance": [
+        "2539",
+        "4575",
+        "9999"
+      ]
     },
     {
       "matchNum": "7",
-      "redAlliance": ["555", "9998", "694"],
-      "blueAlliance": ["365", "2265", "41"]
+      "redAlliance": [
+        "555",
+        "9998",
+        "694"
+      ],
+      "blueAlliance": [
+        "365",
+        "2265",
+        "41"
+      ]
     },
     {
       "matchNum": "8",
-      "redAlliance": ["1923", "316", "484"],
-      "blueAlliance": ["1155", "9015", "433"]
+      "redAlliance": [
+        "1923",
+        "316",
+        "484"
+      ],
+      "blueAlliance": [
+        "1155",
+        "9015",
+        "433"
+      ]
     },
     {
       "matchNum": "9",
-      "redAlliance": ["1640", "341", "5401"],
-      "blueAlliance": ["8714", "1218", "369"]
+      "redAlliance": [
+        "1640",
+        "341",
+        "5401"
+      ],
+      "blueAlliance": [
+        "8714",
+        "1218",
+        "369"
+      ]
     },
     {
       "matchNum": "10",
-      "redAlliance": ["41", "4342", "7414"],
-      "blueAlliance": ["5457", "555", "7045"]
+      "redAlliance": [
+        "41",
+        "4342",
+        "7414"
+      ],
+      "blueAlliance": [
+        "5457",
+        "555",
+        "7045"
+      ]
     },
     {
       "matchNum": "11",
-      "redAlliance": ["9998", "433", "4575"],
-      "blueAlliance": ["694", "316", "1155"]
+      "redAlliance": [
+        "9998",
+        "433",
+        "4575"
+      ],
+      "blueAlliance": [
+        "694",
+        "316",
+        "1155"
+      ]
     },
     {
       "matchNum": "12",
-      "redAlliance": ["9999", "2265", "9015"],
-      "blueAlliance": ["1923", "1218", "341"]
+      "redAlliance": [
+        "9999",
+        "2265",
+        "9015"
+      ],
+      "blueAlliance": [
+        "1923",
+        "1218",
+        "341"
+      ]
     },
     {
       "matchNum": "13",
-      "redAlliance": ["369", "5401", "365"],
-      "blueAlliance": ["2607", "2539", "484"]
+      "redAlliance": [
+        "369",
+        "5401",
+        "365"
+      ],
+      "blueAlliance": [
+        "2607",
+        "2539",
+        "484"
+      ]
     },
     {
       "matchNum": "14",
-      "redAlliance": ["694", "5457", "1640"],
-      "blueAlliance": ["7414", "1155", "9998"]
+      "redAlliance": [
+        "694",
+        "5457",
+        "1640"
+      ],
+      "blueAlliance": [
+        "7414",
+        "1155",
+        "9998"
+      ]
     },
     {
       "matchNum": "15",
-      "redAlliance": ["8714", "341", "316"],
-      "blueAlliance": ["41", "1923", "555"]
+      "redAlliance": [
+        "8714",
+        "341",
+        "316"
+      ],
+      "blueAlliance": [
+        "41",
+        "1923",
+        "555"
+      ]
     },
     {
       "matchNum": "16",
-      "redAlliance": ["5401", "9015", "1218"],
-      "blueAlliance": ["365", "433", "7045"]
+      "redAlliance": [
+        "5401",
+        "9015",
+        "1218"
+      ],
+      "blueAlliance": [
+        "365",
+        "433",
+        "7045"
+      ]
     },
     {
       "matchNum": "17",
-      "redAlliance": ["484", "9999", "369"],
-      "blueAlliance": ["4342", "4575", "2265"]
+      "redAlliance": [
+        "484",
+        "9999",
+        "369"
+      ],
+      "blueAlliance": [
+        "4342",
+        "4575",
+        "2265"
+      ]
     },
     {
       "matchNum": "18",
-      "redAlliance": ["1155", "8714", "2539"],
-      "blueAlliance": ["341", "2607", "9998"]
+      "redAlliance": [
+        "1155",
+        "8714",
+        "2539"
+      ],
+      "blueAlliance": [
+        "341",
+        "2607",
+        "9998"
+      ]
     },
     {
       "matchNum": "19",
-      "redAlliance": ["316", "41", "5457"],
-      "blueAlliance": ["1218", "7414", "365"]
+      "redAlliance": [
+        "316",
+        "41",
+        "5457"
+      ],
+      "blueAlliance": [
+        "1218",
+        "7414",
+        "365"
+      ]
     },
     {
       "matchNum": "20",
-      "redAlliance": ["2265", "694", "1923"],
-      "blueAlliance": ["7045", "5401", "4342"]
+      "redAlliance": [
+        "2265",
+        "694",
+        "1923"
+      ],
+      "blueAlliance": [
+        "7045",
+        "5401",
+        "4342"
+      ]
     },
     {
       "matchNum": "21",
-      "redAlliance": ["433", "9999", "555"],
-      "blueAlliance": ["2539", "369", "1640"]
+      "redAlliance": [
+        "433",
+        "9999",
+        "555"
+      ],
+      "blueAlliance": [
+        "2539",
+        "369",
+        "1640"
+      ]
     },
     {
       "matchNum": "22",
-      "redAlliance": ["4575", "2607", "5457"],
-      "blueAlliance": ["9015", "484", "41"]
+      "redAlliance": [
+        "4575",
+        "2607",
+        "5457"
+      ],
+      "blueAlliance": [
+        "9015",
+        "484",
+        "41"
+      ]
     }
   ]
 }

@@ -3,36 +3,62 @@ import requests
 
 from typing import Any
 
-BASE_URL = "https://www.thebluealliance.com/api/v3"
 
-
-def downloadMatches(event_key: str, api_key: str):
+def downloadMatches(eventKey: str, useStatbotics: bool, apiKey: str = ""):
     """
-    Downloads matches for the given event key and TBA API key, and saves to a json and csv file.
+    Downloads matches from The Blue Alliance or Statbotics API and saves them to a JSON file.
 
-    :param event_key: The event key to download matches for
-    :param api_key: The TBA API key to use
-    :return: None
+    Args:
+        eventKey: The key of the event to download matches from.
+        useStatbotics: Boolean indicating whether to use the Statbotics API or The Blue Alliance API.
+        apiKey: The API key to use for The Blue Alliance API. Not needed for Statbotics API.
     """
-    # Get the matches from TBA
-    allMatches: dict[Any, Any] = getEventMatches(event_key, api_key)
+    if useStatbotics:
+        # Get the matches from Statbotics
+        response = requests.get(
+            f"https://api.statbotics.io/v3/matches?event={eventKey}"
+        )
+        allMatches = json.loads(response.text)
+    else:
+        # Get the matches from TBA
+        headers = {"X-TBA-Auth-Key": apiKey, "Content-Type": "application/json"}
+        response = requests.get(
+            f"https://www.thebluealliance.com/api/v3/event/{eventKey}/matches",
+            headers=headers,
+        )
+        allMatches = json.loads(response.text)
 
     # Rearrange the matches to be in a more useful format
     qualMatchesCleaned: list[dict[str, Any]] = []
 
     for match in allMatches:
         if match["comp_level"] == "qm":
-            qualMatchesCleaned.append(
-                {
-                    "matchNum": match["match_number"],
-                    "redAlliance": removeFRCFromList(
-                        match["alliances"]["red"]["team_keys"]
-                    ),
-                    "redAlliance": removeFRCFromList(
-                        match["alliances"]["blue"]["team_keys"]
-                    ),
-                }
-            )
+            if useStatbotics:
+                # Statbotics returns team keys as a list of strings
+                qualMatchesCleaned.append(
+                    {
+                        "matchNum": match["match_number"],
+                        "redAlliance": convertNumToStrFromList(
+                            match["alliances"]["red"]["team_keys"]
+                        ),
+                        "blueAlliance": convertNumToStrFromList(
+                            match["alliances"]["blue"]["team_keys"]
+                        ),
+                    }
+                )
+            else:
+                # The Blue Alliance returns team keys as a list of strings with "frc" prefixed
+                qualMatchesCleaned.append(
+                    {
+                        "matchNum": match["match_number"],
+                        "redAlliance": removeFRCFromList(
+                            match["alliances"]["red"]["team_keys"]
+                        ),
+                        "blueAlliance": removeFRCFromList(
+                            match["alliances"]["blue"]["team_keys"]
+                        ),
+                    }
+                )
 
     # Save the rearranged matches to a json file
     with open("../data/EventMatches.json", "w") as file:
@@ -46,30 +72,23 @@ def removeFRCFromList(inputList: list[str]) -> list[str]:
     return outputList
 
 
-def getEventMatches(event_key: str, api_key: str) -> dict[Any, Any]:
-    """
-    Fetches and converts the matches for the given event key using the given TBA API key.
-
-    :param event_key: The event key to download matches for
-    :param api_key: The TBA API key to use
-    :return: The matches for the given event
-    """
-    # Construct the URL to query the TBA API
-    url = f"{BASE_URL}/event/{event_key}/matches"
-
-    # Fetch the matches from the TBA API
-    headers = {"X-TBA-Auth-Key": api_key, "Content-Type": "application/json"}
-
-    # Make the request to the TBA API
-    response = requests.get(url, headers=headers)
-
-    # Parse the matches from the JSON response
-    matches = json.loads(response.text)
-
-    return matches
+def convertNumToStrFromList(inputList: list[int]) -> list[str]:
+    outputList: list[str] = []
+    for inputElement in inputList:
+        outputList.append(str(inputElement))
+    return outputList
 
 
 if __name__ == "__main__":
-    downloadMatches(
-        input("Enter event key (ex: 2024mrcmp): "), input("Enter TBA API key: ")
-    )
+    print("Please Select Which API You Would Like To Use:")
+    print("a) The Blue Alliance API -> faster updates but needs API key")
+    print("b) Statbotics API -> slower updates but no API key needed")
+    print("anything else) exit")
+    typeOfAPI: str = input("a/b/anything else: ")
+
+    eventKey: str = input("Enter event key (ex: 2024mrcmp): ")
+
+    if typeOfAPI == "a":
+        downloadMatches(eventKey, False, input("Enter TBA API Key: "))
+    elif typeOfAPI == "b":
+        downloadMatches(eventKey, True)

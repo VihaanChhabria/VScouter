@@ -135,10 +135,11 @@ Analysis is done through Power BI. You can download it for free [here](https://w
 
 1. `cd parsing`
 2. `python3 GetMatchData.py`
+3. Select to use the Statbotics or The Blue Alliance API
 3. Enter your event key (like 2024njdd)
-4. Enter your [TBA API](https://www.thebluealliance.com/apidocs) key
+4. Enter your [TBA API](https://www.thebluealliance.com/apidocs) key if using The Blue Alliance
 
-This code is used to generate the auto completion data for the scouting app. Once this data is generated it is downloaded into the [data folder](/data/EventMatches.json). To use this on the scouting apps, you must host this online on a GitHub repository. Now that it is hosted online, to make the QR code you can visit a [common QR code generator](https://getsiimple.com/tools/qr-code-generator/). **You need to make the QR code based on the raw data (shown below).**
+This code is used to generate the auto completion data for the scouting app. Once this data is generated it is downloaded into the [data folder](/data/EventMatches.json). To use this on the scouting app, you must host this online on a GitHub repository. Now that it is hosted online, to make the QR code you can visit a [common QR code generator](https://getsiimple.com/tools/qr-code-generator/). **You need to make the QR code based on the raw data (shown below).**
 ![RawGitHubData](readmeimages/RawGitHubData.png)
 
 #### **Using**

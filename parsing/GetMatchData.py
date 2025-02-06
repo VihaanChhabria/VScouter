@@ -25,14 +25,25 @@ def downloadMatches(event_key: str, api_key: str):
             qualMatchesCleaned.append(
                 {
                     "matchNum": match["match_number"],
-                    "redAlliance": match["alliances"]["red"]["team_keys"],
-                    "redAlliance": match["alliances"]["blue"]["team_keys"],
+                    "redAlliance": removeFRCFromList(
+                        match["alliances"]["red"]["team_keys"]
+                    ),
+                    "redAlliance": removeFRCFromList(
+                        match["alliances"]["blue"]["team_keys"]
+                    ),
                 }
             )
 
     # Save the rearranged matches to a json file
     with open("../data/EventMatches.json", "w") as file:
         json.dump({"matches": qualMatchesCleaned}, file)
+
+
+def removeFRCFromList(inputList: list[str]) -> list[str]:
+    outputList: list[str] = []
+    for inputElement in inputList:
+        outputList.append(inputElement.replace("frc", ""))
+    return outputList
 
 
 def getEventMatches(event_key: str, api_key: str) -> dict[Any, Any]:
@@ -44,7 +55,7 @@ def getEventMatches(event_key: str, api_key: str) -> dict[Any, Any]:
     :return: The matches for the given event
     """
     # Construct the URL to query the TBA API
-    url = f"{BASE_URL}/event/{event_key}/matches/"
+    url = f"{BASE_URL}/event/{event_key}/matches"
 
     # Fetch the matches from the TBA API
     headers = {"X-TBA-Auth-Key": api_key, "Content-Type": "application/json"}
@@ -56,22 +67,6 @@ def getEventMatches(event_key: str, api_key: str) -> dict[Any, Any]:
     matches = json.loads(response.text)
 
     return matches
-
-
-def fetchTBA(url: str, api_key: str) -> str:
-    """
-    Fetches a response from the TBA API using the given URL and API key.
-
-    :param url: The URL to query the TBA API
-    :param api_key: The TBA API key to use
-    :return: The response from the TBA API
-    """
-
-    # Make the request to the TBA API
-    headers = {"X-TBA-Auth-Key": api_key, "Content-Type": "application/json"}
-    response = requests.get(url, headers=headers)
-
-    return response.text
 
 
 if __name__ == "__main__":

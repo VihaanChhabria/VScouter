@@ -4,10 +4,10 @@ import { Scanner } from "@yudiel/react-qr-scanner";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ToggleButton from "../../components/ToggleButton.jsx";
+import ToggleButton from "../components/ToggleButton.jsx";
 import { useNavigate } from "react-router-dom";
 
-const MatchDataOfflinePage = () => {
+const MatchDataPage = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
   const [useManual, setUseManual] = useState(false); // Indicating if the text box should be used to get the URL
 
@@ -61,7 +61,7 @@ const MatchDataOfflinePage = () => {
           left: "2.33dvw",
         }}
         onClick={() => {
-          navigate("/match-data");
+          navigate("/settings");
         }}
       >
         <h1
@@ -206,4 +206,4 @@ const MatchDataOfflinePage = () => {
   );
 };
 
-export default MatchDataOfflinePage;
+export default MatchDataPage;

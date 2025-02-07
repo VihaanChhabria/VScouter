@@ -17,9 +17,7 @@ import SettingsPage from "./pages/SettingsPage";
 
 import { useEffect, useState } from "react";
 import ParseDataPage from "./pages/ParseDataPage";
-import MatchDataPage from "./pages/MatchDataPages/MatchDataPage";
-import MatchDataOnlinePage from "./pages/MatchDataPages/MatchDataOnlinePage";
-import MatchDataOfflinePage from "./pages/MatchDataPages/MatchDataOfflinePage";
+import MatchDataPage from "./pages/MatchDataPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -54,8 +52,6 @@ function App() {
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/parse-data" element={<ParseDataPage />} />
         <Route path="/match-data" element={<MatchDataPage />} />
-        <Route path="/match-data/online" element={<MatchDataOnlinePage />} />
-        <Route path="/match-data/offline" element={<MatchDataOfflinePage />} />
       </Route>
     )
   );

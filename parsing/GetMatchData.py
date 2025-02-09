@@ -9,8 +9,7 @@ def downloadMatches(eventKey: str, apiKey: str = ""):
         eventKey: The key of the event to download matches from.
         apiKey: The API key to use for The Blue Alliance API.
     """
-    data: str = str({"eventKey": eventKey, "apiKey": apiKey})
-    print(data)
+    data: str = f"{{eventKey:'{eventKey}',apiKey:'{apiKey}'}}"
     qrLink: str = (
         f"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={data}"
     )

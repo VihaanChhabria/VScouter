@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-import { Scanner } from "@yudiel/react-qr-scanner";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ToggleButton from "../components/ToggleButton.jsx";
 import { useNavigate } from "react-router-dom";
+
+import ProceedBackButton from "../components/ProceedBackButton";
 
 const MatchDataPage = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
@@ -45,7 +44,7 @@ const MatchDataPage = () => {
   };
 
   return (
-    <>
+    <div style={{width: "100%", height: "100%"}}>
       <div
         style={{
           border: "1.63dvh solid #1D1E1E",
@@ -77,28 +76,25 @@ const MatchDataPage = () => {
       {/* Container */}
       <div
         style={{
-          width: "95.71dvw",
-          height: "70.47dvh",
-          backgroundColor: "#242424",
-          border: "1.3dvh solid #1D1E1E",
-          borderRadius: "3.49dvh",
-          position: "absolute",
-          top: "24.88dvh",
-          left: "2.15dvw",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "10%",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "absolute",
-            left: "3.97dvw",
-            whiteSpace: "pre-wrap",
-            wordWrap: "break-word",
-          }}
-        >
+        <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "8dvh",
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            Load Match Data
+          </h1>
           <h1
             style={{
               color: "#FFFFFF",
@@ -107,102 +103,15 @@ const MatchDataPage = () => {
               textAlign: "center",
             }}
           >
-            Scan QR Code:
+            Are You Online (Using QR Code) or Offline (Using Match Schedule File)?
           </h1>
-
-          {/* QR Code Scanner */}
-          <Scanner
-            onScan={(result) => {
-              setMatchDataURL(result[0].rawValue); // If the QR code is found, set the URL
-              toast.success("QR Code is Scanned Successfully");
-            }}
-            onError={() => toast.error("Invalid QR Code/User Canceled Prompt")}
-            styles={{
-              container: {
-                width: "24.57dvw",
-                height: "53.26dvh",
-              },
-              finderBorder: 0,
-            }}
-          />
-        </div>
-
-        <div>
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-              textAlign: "center",
-              position: "absolute",
-              top: "30.93dvh",
-              left: "33dvw",
-            }}
-          >
-            Or Enter URL:
-          </h1>
-
-          {/* Text box for manual input */}
-          <input
-            type="text"
-            onChange={(e) => useManual && setMatchDataURL(e.target.value)}
-            style={{
-              border: "0.93dvh solid #1D1E1E",
-              borderRadius: "2.33dvh",
-              backgroundColor: "#4A4A4A",
-              color: "#FFFFFF",
-              width: "40dvw",
-              height: "8.88dvh",
-              fontSize: "4.0dvh",
-              position: "absolute",
-              top: "30.93dvh",
-              left: "52dvw",
-            }}
-          />
-
-          {/* Toggle button for manual input */}
-          <ToggleButton
-            coordX={33}
-            coordY={40.93}
-            width={14.91}
-            height={17.84}
-            question="Manual?"
-            state={useManual}
-            setState={setUseManual}
-          />
-        </div>
-
-        {/* Done Button */}
-        <div
-          style={{
-            border: "1.63dvh solid #1D1E1E",
-            borderRadius: "2.33dvh",
-            backgroundColor: "#4A4A4A",
-            color: "#FFFFFF",
-            width: "25.0dvw",
-            height: "17.84dvh",
-            fontSize: "4.0dvh",
-            position: "absolute",
-            bottom: "2.33dvh",
-            right: "1.7dvw",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onClick={() => doneClick()} // Fetches the data and navigates to the next page
-        >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Done
-          </h1>
+        <div style={{width: "100%", height: "40%",  display: "flex", gap: "4%", paddingLeft: "10%", paddingRight: "10%"}}>
+          <ProceedBackButton nextPage={"/match-data/online"} message={"Online"} />
+          
+          <ProceedBackButton nextPage={"/match-data/offline"} message={"Offline"} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -8,20 +8,19 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 
 ## Table of Contents
 
-1. [Introduction](#introduction)  
-2. [Features](#features)  
-3. [Usage](#usage)  
-   - [Using The Website](#using-the-website)  
-   - [Collecting Data](#collecting-data)  
-   - [Parsing Data](#parsing-data)  
-   - [Analysis](#analysis)  
-     - [Pages of Analysis](#pages-of-analysis)  
-4. [Auto Completion Match Data](#auto-completion-match-data)  
-   - [Generating](#generating)  
-   - [Using](#using)  
-5. [Running Locally](#running-locally)  
-6. [License](#license)  
-7. [Support](#support) 
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Usage](#usage)
+   - [Using The Website](#using-the-website)
+   - [Collecting Data](#collecting-data)
+   - [Parsing Data](#parsing-data)
+   - [Analysis](#analysis)
+     - [Pages of Analysis](#pages-of-analysis)
+4. [Generating Auto Completion Match Data](#generating-auto-completion-match-data)
+5. [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data)
+6. [Running Locally](#running-locally)
+7. [License](#license)
+8. [Support](#support)
 
 ## Features
 
@@ -46,44 +45,44 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
    ![GameStart](readmeimages/GameStart.png)
 6. **Auto Start:** The scouter can enter where the robot generally starts. They may do this by clicking each zone on the map. The scouter may choose to click the `Back` Button to return to the past page. To advance to the next page, the scouter can click the `Proceed` button.
    ![AutoStart](readmeimages/AutoStart.png)
-7. **Auto Scoring:** The page is separated into two main sections: coral and algae. In the coral section there is a side view of the reef separated into the levels of it: L1, L2, L3, L4, and Drop/Missed. Then there is a set of all the places you can pick a coral up in auto: the station, mark 1, mark 2, and mark 3. The roadmap of the user's input is selected where they got a coral and then where they placed it. In the algae section, the user may select where they picked up an algae (the reef, mark 1, mark 2, and mark 3) and where they placed it (net shot, processor, and drop/miss). The `Passed Starting Line` button automatically selects if the scouter selects any other action. The `Proceed` button starts blinking after 15 seconds to remind the scouter to switch pages. 
-   | Keybind | Button                |
+7. **Auto Scoring:** The page is separated into two main sections: coral and algae. In the coral section there is a side view of the reef separated into the levels of it: L1, L2, L3, L4, and Drop/Missed. Then there is a set of all the places you can pick a coral up in auto: the station, mark 1, mark 2, and mark 3. The roadmap of the user's input is selected where they got a coral and then where they placed it. In the algae section, the user may select where they picked up an algae (the reef, mark 1, mark 2, and mark 3) and where they placed it (net shot, processor, and drop/miss). The `Passed Starting Line` button automatically selects if the scouter selects any other action. The `Proceed` button starts blinking after 15 seconds to remind the scouter to switch pages.
+   | Keybind | Button |
    |---------|-----------------------|
-   | `       | Drop Miss Coral       |
-   | 1       | Place Coral L1        |
-   | 2       | Place Coral L2        |
-   | 3       | Place Coral L3        |
-   | 4       | Place Coral L4        |
-   | q       | Pick Coral Station    |
-   | w       | Pick Coral Mark 1     |
-   | e       | Pick Coral Mark 2     |
-   | r       | Pick Coral Mark 3     |
-   | 9       | Place Algae Net Shot  |
-   | 0       | Place Algae Processor |
-   | -       | Drop Miss Algae       |
-   | u       | Pick Algae Reef       |
-   | i       | Pick Algae Mark 1     |
-   | o       | Pick Algae Mark 2     |
-   | p       | Pick Algae Mark 3     |
+   | ` | Drop Miss Coral |
+   | 1 | Place Coral L1 |
+   | 2 | Place Coral L2 |
+   | 3 | Place Coral L3 |
+   | 4 | Place Coral L4 |
+   | q | Pick Coral Station |
+   | w | Pick Coral Mark 1 |
+   | e | Pick Coral Mark 2 |
+   | r | Pick Coral Mark 3 |
+   | 9 | Place Algae Net Shot |
+   | 0 | Place Algae Processor |
+   | - | Drop Miss Algae |
+   | u | Pick Algae Reef |
+   | i | Pick Algae Mark 1 |
+   | o | Pick Algae Mark 2 |
+   | p | Pick Algae Mark 3 |
    ![AutoScoring](readmeimages/AutoScoring.png)
 8. **Teleop Scoring:** This page is similar to the auto scoring page. The page is separated into two main sections: coral and algae. In the coral section there is a side view of the reef separated into the levels of it: L1, L2, L3, L4, and Drop/Missed. Then there is a set of all the places you can pick a coral up in auto: the station and the carpet. The roadmap of the user's input is selected where they got a coral and then where they placed it. In the algae section, the user may select where they picked up an algae (the reef and carpet) and where they placed it (net shot, processor, and drop/miss).
-   | Keybind | Button                |
+   | Keybind | Button |
    |---------|-----------------------|
-   | `       | Drop Miss Coral       |
-   | 1       | Place Coral L1        |
-   | 2       | Place Coral L2        |
-   | 3       | Place Coral L3        |
-   | 4       | Place Coral L4        |
-   | q       | Pick Coral Station    |
-   | w       | Pick Coral Carpet     |
-   | 9       | Place Algae Net Shot  |
-   | 0       | Place Algae Processor |
-   | -       | Drop Miss Algae       |
-   | u       | Pick Algae Reef       |
-   | i       | Pick Algae Carpet     |
-   ![TeleopScoring](readmeimages/TeleopScoring.png)
-9. **Endgame Scoring:** The `Shallow Climb`, `Deep Climb`, and `Park` buttons represent what the robot can do on the barge. Then there are toggles for if the robots climb failed, it played defense, and it if it broke down. The `Comments` textbox allows for the scouter to write any additional information such as if they broke down or got penalties.
-   ![EndgameScoring](readmeimages/EndgameScoring.png)
+   | ` | Drop Miss Coral |
+   | 1 | Place Coral L1 |
+   | 2 | Place Coral L2 |
+   | 3 | Place Coral L3 |
+   | 4 | Place Coral L4 |
+   | q | Pick Coral Station |
+   | w | Pick Coral Carpet |
+   | 9 | Place Algae Net Shot |
+   | 0 | Place Algae Processor |
+   | - | Drop Miss Algae |
+   | u | Pick Algae Reef |
+   | i | Pick Algae Carpet |
+
+![TeleopScoring](readmeimages/TeleopScoring.png) 9. **Endgame Scoring:** The `Shallow Climb`, `Deep Climb`, and `Park` buttons represent what the robot can do on the barge. Then there are toggles for if the robots climb failed, it played defense, and it if it broke down. The `Comments` textbox allows for the scouter to write any additional information such as if they broke down or got penalties.
+![EndgameScoring](readmeimages/EndgameScoring.png)
 
 ### Collecting Data
 
@@ -100,7 +99,6 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 4. Feed this CSV file into the data analysis software.
    ![ParseData](/readmeimages/ParseData.gif)
 
-
 ### Analysis
 
 Analysis is done through Power BI. You can download it for free [here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads).
@@ -110,48 +108,101 @@ Analysis is done through Power BI. You can download it for free [here](https://w
 1. To analyze the CSV data you downloaded at [Parsing Data](#parsing-data) you must download the [Power BI file in this repository](/analysis/VScouterAnalysis.pbix). Once downloaded, put the `pbix` file into a folder with nothing in it.
 2. Next put you CSV file into the same folder as the `pbix` file. Rename it to `VScouterFullData.csv`
 3. Open the `pbix` file with Power BI. To use this new data click `Transform Data` and then `dataFolderPath`. On this page change the directory to where the `pbix` file and CSV file are located (ex. `C:\Users\username\Documents\Analysis`). **There should not be a `\` at the end.**
-3. Click `Close & Apply`.
-![PowerBIFolderSelection](/readmeimages/PowerBIFolderSelection.gif)
+4. Click `Close & Apply`.
+   ![PowerBIFolderSelection](/readmeimages/PowerBIFolderSelection.gif)
 
 #### Pages of Analysis
+
 - **Picklist:** On this page you can order the teams that you have scouted based on how many notes they have scored in the speaker and amp as well as how many notes they have fed. To sort click below the headers on the arrows that pop up.
-![PowerBIPicklist](/readmeimages/PowerBIPicklist.png)
+  ![PowerBIPicklist](/readmeimages/PowerBIPicklist.png)
 
 - **Team Overview:** On this page you can look at the data collected for a specific team. This includes a table with the data as well as a graph showing their points scored over time. To change which team you are looking at, click on the `Filters` button. Then expand the `Select Team` dropdown. You are able to then select the team you want to view off of this drop down.
-![PowerBITeamOverview](/readmeimages/PowerBITeamOverview.png)
+  ![PowerBITeamOverview](/readmeimages/PowerBITeamOverview.png)
 
-- **Match Overview:** On this you can see the data collected for a specific match. There is a table for  each alliance showing the data of each team such as speaker notes, amp notes, fed notes, and trap notes. Additionally, there is a table showing if they had climbed or parked on the stage. To change which match you are looking at, click on the `Filters` button. Then expand the `Match Number` dropdown. You are able to then select the match you want to view off of this drop down.
-![PowerBIMatchOverview](/readmeimages/PowerBIMatchOverview.png)
+- **Match Overview:** On this you can see the data collected for a specific match. There is a table for each alliance showing the data of each team such as speaker notes, amp notes, fed notes, and trap notes. Additionally, there is a table showing if they had climbed or parked on the stage. To change which match you are looking at, click on the `Filters` button. Then expand the `Match Number` dropdown. You are able to then select the match you want to view off of this drop down.
+  ![PowerBIMatchOverview](/readmeimages/PowerBIMatchOverview.png)
 
 - **Auto Notes Overview:** On this page you can see how frequent a team picks or attempts to pick a note during the autonomous period. They are expressed by pie charts next to each of the notes on the field that can have the percentages representing the vales `Failed Pick/Shot`, `Picked and Shot`, and `Not Picked`. To change which team you are looking at, click on the `Filters` button. Then expand the `Select Team` dropdown. You are able to then select the team you want to view off of this drop down.
-![PowerBIAutoNotesOverview](/readmeimages/PowerBIAutoNotesOverview.png)
+  ![PowerBIAutoNotesOverview](/readmeimages/PowerBIAutoNotesOverview.png)
 
 - **Scouter Match Numbers:** On this page you can see how many matches a scouter has scouted. This is shown by a graph of each scouter initial and how many matches they have scouted.
-![PowerBIScouterMatchNumbers](/readmeimages/PowerBIScouterMatchNumbers.png)
+  ![PowerBIScouterMatchNumbers](/readmeimages/PowerBIScouterMatchNumbers.png)
 
-### Auto Completion Match Data
+## Generating Auto Completion Match Data
 
-#### **Generating**
+### Overview
 
-1. `cd parsing`
-2. `python3 GetMatchData.py`
-3. Enter your event key (like 2024njdd)
-4. Enter your [TBA API](https://www.thebluealliance.com/apidocs) key
+To generate completion data, there are two available methods:
 
-This code is used to generate the auto completion data for the scouting app. Once this data is generated it is downloaded into the [data folder](/data/EventMatches.json). To use this on the scouting apps, you must host this online on a GitHub repository. Now that it is hosted online, to make the QR code you can visit a [common QR code generator](https://getsiimple.com/tools/qr-code-generator/). **You need to make the QR code based on the raw data (shown below).**
-![RawGitHubData](readmeimages/RawGitHubData.png)
+1. **QR Code Generation** – Suitable when scouting devices have internet access.
+2. **Match Data File Generation** – Useful when scouting devices do not have reliable internet access. The data is transferred manually via USB drives or similar methods.
 
-#### **Using**
+### Method 1: Generating a QR Code
 
-To use generated match suggestions:
+This method allows scouting devices to receive match data through a QR code.
 
-1. Click the `Settings` button on the home screen.
-2. Click `Get Match Data`.
-3. Allow use of device camera.
-4. Show and scan the generated QR code.
-5. Click `Done`.
+#### Steps:
 
-![ScanMatchData](/readmeimages/ScanMatchData.gif)
+1. Navigate to the `parsing` directory:
+   ```sh
+   cd parsing
+   ```
+2. Run the match data script:
+   ```sh
+   python GetMatchData.py
+   ```
+3. Select **Method 1** (Use of QR Codes).
+4. Enter the **event key** when prompted.
+5. Enter the **TBA API key** when prompted.
+6. A link to the generated QR code will be provided. Open the link and save the QR code onto your device.
+7. Transfer the QR code to a mobile device for easy scanning.
+8. Scan the QR code using the app on scouting devices.
+   - Refer to [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data) for more details.
+
+![AutoMatchSuggestionsOnline](readmeimages/AutoMatchSuggestionsOnline.gif)
+
+### Method 2: Generating a File with Match Data
+
+This method generates a JSON file with match data that can be transferred manually.
+
+#### Steps:
+
+1. Navigate to the `parsing` directory:
+   ```sh
+   cd parsing
+   ```
+2. Run the match data script:
+   ```sh
+   python GetMatchData.py
+   ```
+3. Select **Method 2** (Generate File with Match Data).
+4. Enter the **event key** when prompted.
+5. Enter the **TBA API key** when prompted.
+6. The match data file will be generated and saved on your computer.
+7. Transfer the file to scouting devices using a USB drive or another method.
+8. Load the file into the website.
+   - Refer to [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data) for more details.
+
+![AutoMatchSuggestionsOffline](readmeimages/AutoMatchSuggestionsOffline.gif)
+
+## Inputting Auto Completion Match Data
+
+There are two ways to input match data into the app:
+a. Using QR Codes
+
+1.  Click the Settings button on the main page.
+2.  Select the Get Match Data button.
+3.  Choose the Online option.
+4.  Scan the QR code with your scouting device.
+5.  Once the QR code is scanned, click Submit to input the match data into the app.
+
+b. Manually Inputting a Match Data File
+
+1.  Click the Settings button on the main page.
+2.  Select the Get Match Data button.
+3.  Choose the Offline option.
+4.  Select the match data file you want to input from your device.
+5.  Once the file is selected, click Submit to input the match data into the app.
 
 ## Running Locally
 

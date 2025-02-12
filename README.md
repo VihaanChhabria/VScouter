@@ -16,12 +16,11 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
    - [Parsing Data](#parsing-data)
    - [Analysis](#analysis)
      - [Pages of Analysis](#pages-of-analysis)
-4. [Auto Completion Match Data](#auto-completion-match-data)
-   - [Generating](#generating)
-   - [Using](#using)
-5. [Running Locally](#running-locally)
-6. [License](#license)
-7. [Support](#support)
+4. [Generating Auto Completion Match Data](#generating-auto-completion-match-data)
+5. [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data)
+6. [Running Locally](#running-locally)
+7. [License](#license)
+8. [Support](#support)
 
 ## Features
 

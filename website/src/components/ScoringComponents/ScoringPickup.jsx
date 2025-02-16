@@ -1,6 +1,11 @@
 import ScoringPickupButton from "./ScoringPickupButton";
 
-const ScoringPickup = ({ pickPositions, pickPositionSelected, setPickPositionSelected, place}) => {
+const ScoringPickup = ({
+  pickData,
+  pickPositionSelected,
+  setPickPositionSelected,
+  place,
+}) => {
   return (
     <div
       style={{
@@ -12,16 +17,21 @@ const ScoringPickup = ({ pickPositions, pickPositionSelected, setPickPositionSel
         gap: "1dvw",
       }}
     >
-      {pickPositions.map((position, index) => (
-        <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
-          <ScoringPickupButton
-            position={position}
-            pickPositionSelected={pickPositionSelected}
-            setPickPositionSelected={setPickPositionSelected}
-            place={place}
-          />
-        </div>
-      ))}
+      {pickData.map((singlePickData, index) => {
+        if (!singlePickData.hide) {
+          return (
+            <div style={{ width: "100%", height: "100%", flex: 1 }} key={index}>
+              <ScoringPickupButton
+                position={singlePickData.position}
+                pickPositionSelected={pickPositionSelected}
+                setPickPositionSelected={setPickPositionSelected}
+                place={place}
+              />
+            </div>
+          );
+        }
+        return null;
+      })}
     </div>
   );
 };

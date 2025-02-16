@@ -8,22 +8,8 @@ import { toast } from "react-toastify";
 const ScoringCoralSection = ({
   pickData,
   placeData,
-  mode,
-  coralPreloaded,
-  setCoralPreloaded,
 }) => {
   const [pickPositionSelected, setPickPositionSelected] = useState("");
-  const [hideAutoCoralPreload, setHideAutoCoralPreload] = useState(false)
-
-  useEffect(() => {
-    if (coralPreloaded) {
-      if (placeData.find((singlePlaceData) => singlePlaceData.count > 0)) {
-        setHideAutoCoralPreload(true)
-      } else {
-        setHideAutoCoralPreload(false)
-      }
-    }
-  }, [placeData]);
 
   return (
     <div
@@ -43,7 +29,7 @@ const ScoringCoralSection = ({
       <div
         style={{
           width: "90%",
-          height: "20%",
+          height: "8%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -59,28 +45,6 @@ const ScoringCoralSection = ({
         >
           Coral
         </h1>
-        {mode == "auto" && hideAutoCoralPreload && (
-          <div
-            style={{
-              width: "25%",
-              height: "100%",
-              backgroundColor: coralPreloaded ? "#507144" : "#242424",
-              border: "1.63dvh solid #1D1E1E",
-              borderRadius: "2dvh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              alignSelf: "flex-end",
-            }}
-            onClick={() => setCoralPreloaded(!coralPreloaded)}
-          >
-            <h1
-              style={{ color: "white", fontSize: "3.25dvh", fontWeight: "700" }}
-            >
-              Preload
-            </h1>
-          </div>
-        )}
       </div>
 
       <div
@@ -98,11 +62,9 @@ const ScoringCoralSection = ({
           pickData={pickData}
         />
       </div>
-      <div style={{ width: "90%", height: "15%" }}>
+      <div style={{ width: "90%", height: "17%" }}>
         <ScoringPickup
-          pickPositions={pickData.map((singlePickData) => {
-            return singlePickData.position;
-          })}
+          pickData={pickData}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
           place={"Coral"}

@@ -296,8 +296,6 @@ const ScoringPage = ({
           <ScoringCoralSection
             pickData={pickCoralData}
             placeData={placeCoralData}
-            coralPreloaded={coralPreloaded}
-            setCoralPreloaded={setCoralPreloaded}
           />
         </div>
       </div>

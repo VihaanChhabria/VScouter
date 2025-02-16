@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import ScoringPage from "../components/ScoringComponents/ScoringPage";
@@ -7,6 +7,9 @@ const AutoScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
+  const [pickPreloadCount, setPickPreloadCount] = useState(
+    states?.inputs?.auto?.coral?.preload || 0
+  );
   const [pickCoralStationCount, setPickCoralStationCount] = useState(
     states?.inputs?.auto?.coral?.pickStationCount || 0
   );
@@ -21,6 +24,12 @@ const AutoScoringPage = () => {
   );
 
   const pickCoralData = [
+    {
+      position: "Preload",
+      count: pickPreloadCount,
+      setCount: setPickPreloadCount,
+      hide: false,
+    },
     {
       position: "Station",
       count: pickCoralStationCount,
@@ -42,6 +51,15 @@ const AutoScoringPage = () => {
       setCount: setPickCoralMark3Count,
     },
   ];
+
+  useEffect(() => {
+    const preloadData = pickCoralData.find(
+      (singlePickCoralData) => singlePickCoralData.position == "Preload"
+    );
+    if (preloadData && preloadData.count >= 1) {
+      preloadData.hide = true;
+    }
+  }, [pickCoralData]);
 
   const [pickAlgaeReefCount, setPickAlgaeReefCount] = useState(
     states?.inputs?.auto?.algae?.pickReefCount || 0

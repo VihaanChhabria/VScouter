@@ -156,7 +156,7 @@ const ScoringPage = ({
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
-    coralPreloaded
+    coralPreloaded,
   ]);
 
   // Function to handle undo operation
@@ -188,7 +188,7 @@ const ScoringPage = ({
       setPassedStartLine(previousState.passedStartLine);
       setStateStack([...stateStack]);
 
-      setCoralPreloaded(previousState.coralPreloaded)
+      setCoralPreloaded(previousState.coralPreloaded);
     }
   };
 
@@ -328,18 +328,8 @@ const ScoringPage = ({
               flexDirection: "row",
               justifyContent: "center",
               alignItems: "center",
-              gap: "1.5dvw",
             }}
           >
-            <h1
-              style={{
-                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
-                fontSize: "8dvh",
-                fontWeight: "900",
-              }}
-            >
-              ————
-            </h1>
             <h1
               style={{
                 color: "#FFFFFF",
@@ -348,15 +338,6 @@ const ScoringPage = ({
               }}
             >
               {mode.charAt(0).toUpperCase() + mode.slice(1)}
-            </h1>
-            <h1
-              style={{
-                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
-                fontSize: "8dvh",
-                fontWeight: "900",
-              }}
-            >
-              ————
             </h1>
           </div>
 
@@ -422,7 +403,10 @@ const ScoringPage = ({
                           "Count"]: singleAlgaeData.count,
                         }))
                       ),
-                      ...(mode === "auto" && { passedStartLine, coralPreloaded}),
+                      ...(mode === "auto" && {
+                        passedStartLine,
+                        coralPreloaded,
+                      }),
                     },
                   }}
                 />

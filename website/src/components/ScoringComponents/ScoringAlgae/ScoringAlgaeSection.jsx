@@ -41,7 +41,7 @@ const ScoringAlgaeSection = ({ pickData, placeData }) => {
       </div>
       <div style={{ width: "90%", height: "25%", marginBottom: "2dvh" }}>
         <ScoringPickup
-          pickPositions={pickData.map((singlePickData) => {return singlePickData.position})}
+          pickData={pickData}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
           place={"Algae"}

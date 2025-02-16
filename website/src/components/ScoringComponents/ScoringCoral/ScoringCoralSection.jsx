@@ -5,7 +5,10 @@ import ScoringCoralPlaceMap from "./ScoringCoralPlaceMap";
 import ScoringPickup from "../ScoringPickup";
 import { toast } from "react-toastify";
 
-const ScoringCoralSection = ({ pickData, placeData }) => {
+const ScoringCoralSection = ({
+  pickData,
+  placeData,
+}) => {
   const [pickPositionSelected, setPickPositionSelected] = useState("");
 
   return (
@@ -23,16 +26,27 @@ const ScoringCoralSection = ({ pickData, placeData }) => {
         alignItems: "center",
       }}
     >
-      <h1
+      <div
         style={{
-          color: "#FFFFFF",
-          fontSize: "5dvh",
-          fontWeight: "bold",
-          marginBottom: 0,
+          width: "90%",
+          height: "8%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        Coral
-      </h1>
+        <h1
+          style={{
+            color: "#FFFFFF",
+            fontSize: "5dvh",
+            fontWeight: "bold",
+            marginBottom: 0,
+          }}
+        >
+          Coral
+        </h1>
+      </div>
+
       <div
         style={{ width: "80%", height: "70%", marginBottom: "1.5dvh" }}
         onClick={() => {
@@ -48,11 +62,9 @@ const ScoringCoralSection = ({ pickData, placeData }) => {
           pickData={pickData}
         />
       </div>
-      <div style={{ width: "90%", height: "15%" }}>
+      <div style={{ width: "90%", height: "17%" }}>
         <ScoringPickup
-          pickPositions={pickData.map((singlePickData) => {
-            return singlePickData.position;
-          })}
+          pickData={pickData}
           pickPositionSelected={pickPositionSelected}
           setPickPositionSelected={setPickPositionSelected}
           place={"Coral"}

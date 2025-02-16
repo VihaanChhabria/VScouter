@@ -93,6 +93,9 @@ const ScoringPage = ({
   const [passedStartLine, setPassedStartLine] = useState(
     statePath?.passedStartLine || false
   );
+  const [coralPreloaded, setCoralPreloaded] = useState(
+    statePath?.coralPreloaded || true
+  );
 
   // State stack for undo functionality
   const [stateStack, setStateStack] = useState([]);
@@ -121,6 +124,8 @@ const ScoringPage = ({
           placeAlgaeNetShot,
           placeAlgaeProcessor,
           placeAlgaeDropMiss,
+
+          coralPreloaded,
         },
         ...pickCoralData.map((singleCoralData) => {
           return {
@@ -151,6 +156,7 @@ const ScoringPage = ({
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
+    coralPreloaded
   ]);
 
   // Function to handle undo operation
@@ -181,6 +187,8 @@ const ScoringPage = ({
       setPlaceAlgaeDropMiss(previousState.placeAlgaeDropMiss);
       setPassedStartLine(previousState.passedStartLine);
       setStateStack([...stateStack]);
+
+      setCoralPreloaded(previousState.coralPreloaded)
     }
   };
 
@@ -306,28 +314,56 @@ const ScoringPage = ({
           style={{
             width: "100%",
             height: "35%",
-            backgroundColor: "red",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          {/* <h1
+          <div
             style={{
-              color: "#FFFFFF",
-              fontSize: "8dvh",
-              fontWeight: "bold",
-              backgroundColor: "blue",
+              width: "100%",
+              height: "25%",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "1.5dvw",
             }}
           >
-            {mode.charAt(0).toUpperCase() + mode.slice(1)}
-          </h1> */}
+            <h1
+              style={{
+                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
+                fontSize: "8dvh",
+                fontWeight: "900",
+              }}
+            >
+              ————
+            </h1>
+            <h1
+              style={{
+                color: "#FFFFFF",
+                fontSize: "8dvh",
+                fontWeight: "bold",
+              }}
+            >
+              {mode.charAt(0).toUpperCase() + mode.slice(1)}
+            </h1>
+            <h1
+              style={{
+                color: mode == "auto" ? "#EEE1B3" : "#00A6A6",
+                fontSize: "8dvh",
+                fontWeight: "900",
+              }}
+            >
+              ————
+            </h1>
+          </div>
 
           <div
             style={{
               width: "100%",
-              height: "55%",
+              height: "75%",
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
@@ -343,15 +379,15 @@ const ScoringPage = ({
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
+                justifyContent: "center",
                 alignItems: "center",
-                gap: "20%"
+                gap: "2.5dvh",
               }}
             >
               <div
                 style={{
                   width: "100%",
-                  height: "50%", // Adjust this line
+                  height: "50%",
                 }}
               >
                 <ProceedBackButton
@@ -386,7 +422,7 @@ const ScoringPage = ({
                           "Count"]: singleAlgaeData.count,
                         }))
                       ),
-                      ...(mode === "auto" && { passedStartLine }),
+                      ...(mode === "auto" && { passedStartLine, coralPreloaded}),
                     },
                   }}
                 />
@@ -394,7 +430,7 @@ const ScoringPage = ({
               <div
                 style={{
                   width: "100%",
-                  height: "50%", // Adjust this line
+                  height: "50%",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

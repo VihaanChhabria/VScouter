@@ -103,8 +103,6 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 
 Analysis is done through Power BI. You can download it for free [here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads).
 
-**Not Updated for 2025 Reefscape Yet**
-
 1. To analyze the CSV data you downloaded at [Parsing Data](#parsing-data) you must download the [Power BI file in this repository](/analysis/VScouterAnalysis.pbix). Once downloaded, put the `pbix` file into a folder with nothing in it.
 2. Next put you CSV file into the same folder as the `pbix` file. Rename it to `VScouterFullData.csv`
 3. Open the `pbix` file with Power BI. To use this new data click `Transform Data` and then `dataFolderPath`. On this page change the directory to where the `pbix` file and CSV file are located (ex. `C:\Users\username\Documents\Analysis`). **There should not be a `\` at the end.**
@@ -113,20 +111,25 @@ Analysis is done through Power BI. You can download it for free [here](https://w
 
 #### Pages of Analysis
 
-- **Picklist:** On this page you can order the teams that you have scouted based on how many notes they have scored in the speaker and amp as well as how many notes they have fed. To sort click below the headers on the arrows that pop up.
-  ![PowerBIPicklist](/readmeimages/PowerBIPicklist.png)
+- **Home Page:** This is the home page where you can go to the other analysis pages easily. **To click on the buttons, you press `ctrl+click`.**
 
-- **Team Overview:** On this page you can look at the data collected for a specific team. This includes a table with the data as well as a graph showing their points scored over time. To change which team you are looking at, click on the `Filters` button. Then expand the `Select Team` dropdown. You are able to then select the team you want to view off of this drop down.
-  ![PowerBITeamOverview](/readmeimages/PowerBITeamOverview.png)
+![PowerBIHomePage](/readmeimages/PowerBIHomePage.png)
 
-- **Match Overview:** On this you can see the data collected for a specific match. There is a table for each alliance showing the data of each team such as speaker notes, amp notes, fed notes, and trap notes. Additionally, there is a table showing if they had climbed or parked on the stage. To change which match you are looking at, click on the `Filters` button. Then expand the `Match Number` dropdown. You are able to then select the match you want to view off of this drop down.
-  ![PowerBIMatchOverview](/readmeimages/PowerBIMatchOverview.png)
+- **Game Dashboard:** On this page you can look the max, min, and medians of each team in total points, auto, teleop, coral, and algae. The top 5 are shown on this page, but clicking the arrow next to each graph will bring you to a specific page to it so you can see all of the teams. **During alliance selection, if a team is picked and you do not want to see their statistics, you can click the `Filter` panel to open it and filter the team out of the `selectTeam` filter in the `Filters on all pages` section.** 
 
-- **Auto Notes Overview:** On this page you can see how frequent a team picks or attempts to pick a note during the autonomous period. They are expressed by pie charts next to each of the notes on the field that can have the percentages representing the vales `Failed Pick/Shot`, `Picked and Shot`, and `Not Picked`. To change which team you are looking at, click on the `Filters` button. Then expand the `Select Team` dropdown. You are able to then select the team you want to view off of this drop down.
-  ![PowerBIAutoNotesOverview](/readmeimages/PowerBIAutoNotesOverview.png)
+![PowerBIGameDashboard](/readmeimages/PowerBIGameDashboard.png)
 
-- **Scouter Match Numbers:** On this page you can see how many matches a scouter has scouted. This is shown by a graph of each scouter initial and how many matches they have scouted.
-  ![PowerBIScouterMatchNumbers](/readmeimages/PowerBIScouterMatchNumbers.png)
+- **Team Abilities:** Here you can see a teams overall data. To change the team selected, you can use the list selection.
+
+![PowerBITeamAbilities](/readmeimages/PowerBITeamAbilities.png)
+
+- **Team Performance Over Time:** On this page you can see a teams performance over their matches played. This is scene in 5 graphs: total points, auto points, teleop points, algae points, and coral points. To change the team selected, you can use the list selection.
+
+![PowerBIAutoNotesOverview](/readmeimages/PowerBITeamPerformanceOverTime.png)
+
+- **Scouter Match Numbers:** On this page you can see how many matches a scouter has scouted. This is shown by a graph of each scouter initial and how many matches they have scouted. 
+
+![PowerBIScouterMatchNumbers](/readmeimages/PowerBIScouterMatchNumbers.png)
 
 ## Generating Auto Completion Match Data
 

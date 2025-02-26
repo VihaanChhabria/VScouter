@@ -6,21 +6,31 @@
 
 VScouter is a versatile scouting application designed for FRC (FIRST Robotics Competition) teams. It simplifies the data collection process for scouting teams during competitions, providing a robust and efficient platform to gather, analyze, and store performance metrics of competing robots.
 
+Watch the tutorial videos for help using and setting the app up:
+- Video 1: https://youtu.be/y7khXfWZ6MU – Learn how to collect match data.
+- Video 2: https://youtu.be/rIjKhfx3dfQ – Get your scouting data ready for analysis.
+- Video 3: https://youtu.be/SpG-mJlIL4w – Turn raw data into insights using Power BI.
+
+## What is Scouting in FRC?
+
+Scouting in FRC (FIRST Robotics Competition) is the process of collecting and analyzing data on teams and their robots to make informed strategic decisions during competitions. Since matches are played with randomly assigned alliance partners, having detailed scouting data helps teams understand the strengths, weaknesses, and play styles of other robots on the field. Effective scouting gives teams a competitive edge, allowing them to make strategic decisions based on facts rather than guesswork.
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Usage](#usage)
+2. [What is Scouting in FRC?](#what-is-scouting-in-frc)
+3. [Features](#features)
+4. [Usage](#usage)
    - [Using The Website](#using-the-website)
    - [Collecting Data](#collecting-data)
    - [Parsing Data](#parsing-data)
    - [Analysis](#analysis)
      - [Analysis Pages](#analysis-pages)
-4. [Generating Auto Completion Match Data](#generating-auto-completion-match-data)
-5. [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data)
-6. [Running Locally](#running-locally)
-7. [License](#license)
-8. [Support](#support)
+5. [Generating Auto Completion Match Data](#generating-auto-completion-match-data)
+6. [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data)
+7. [Running Locally](#running-locally)
+8. [License](#license)
+9. [Support](#support)
 
 ## Features
 
@@ -33,6 +43,9 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 ## Usage
 
 ### Using The Website
+
+#### Use this video for a visual overview on how to scout:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/y7khXfWZ6MU/0.jpg)](https://www.youtube.com/watch?v=y7khXfWZ6MU)
 
 1. Visit [https://vscouter.netlify.app/](https://vscouter.netlify.app/)
 2. **Main Page:** When the scouter loads into the app there are 4 main buttons. The `Full Screen` button makes the website go into full screen mode. The `Dump Data` button will download a JSON file of the scouting data. See [Collecting Data](#collecting-data) for more info. The `Start Scouting` button continues to the game start scouting page.
@@ -93,6 +106,9 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
 
 ### Parsing Data
 
+#### Use this video for a visual overview on how to parse and collect your data:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SpG-mJlIL4w/0.jpg)](https://www.youtube.com/watch?v=SpG-mJlIL4w)
+
 1. To get to the parsing data page, click the `Settings` button, and then `Parse Data`.
 2. To select the data that was scouted, plug the USB flash drive in with the collected data, click the `Select Files` button, and select all of the JSON data. This will add the files in a list to the right. If a file needs to be removed, the `x` button can be clicked next to the file names.
 3. To combine this data into a CSV format, click the `Compile and Download` button. This will download a CSV file with the inputted data.
@@ -100,6 +116,10 @@ VScouter is a versatile scouting application designed for FRC (FIRST Robotics Co
    ![ParseData](/readmeimages/ParseData.gif)
 
 ### Analysis
+
+
+#### Use this video for a visual overview on how to import data into analysis and use it:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/rIjKhfx3dfQ/0.jpg)](https://www.youtube.com/watch?v=rIjKhfx3dfQ)
 
 Analysis is done through Power BI. You can download it for free [here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads).
 

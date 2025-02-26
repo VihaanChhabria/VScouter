@@ -39,6 +39,9 @@ Scouting in FRC (FIRST Robotics Competition) is the process of collecting and an
 
 ### Using The Website
 
+#### Use this video for a visual overview on how to scout:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/y7khXfWZ6MU/0.jpg)](https://www.youtube.com/watch?v=y7khXfWZ6MU)
+
 1. Visit [https://vscouter.netlify.app/](https://vscouter.netlify.app/)
 2. **Main Page:** When the scouter loads into the app there are 4 main buttons. The `Full Screen` button makes the website go into full screen mode. The `Dump Data` button will download a JSON file of the scouting data. See [Collecting Data](#collecting-data) for more info. The `Start Scouting` button continues to the game start scouting page.
    ![HomeScreen](/readmeimages/HomeScreen.png)
@@ -98,6 +101,9 @@ Scouting in FRC (FIRST Robotics Competition) is the process of collecting and an
 
 ### Parsing Data
 
+#### Use this video for a visual overview on how to parse and collect your data:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SpG-mJlIL4w/0.jpg)](https://www.youtube.com/watch?v=SpG-mJlIL4w)
+
 1. To get to the parsing data page, click the `Settings` button, and then `Parse Data`.
 2. To select the data that was scouted, plug the USB flash drive in with the collected data, click the `Select Files` button, and select all of the JSON data. This will add the files in a list to the right. If a file needs to be removed, the `x` button can be clicked next to the file names.
 3. To combine this data into a CSV format, click the `Compile and Download` button. This will download a CSV file with the inputted data.
@@ -105,6 +111,10 @@ Scouting in FRC (FIRST Robotics Competition) is the process of collecting and an
    ![ParseData](/readmeimages/ParseData.gif)
 
 ### Analysis
+
+
+#### Use this video for a visual overview on how to import data into analysis and use it:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/rIjKhfx3dfQ/0.jpg)](https://www.youtube.com/watch?v=rIjKhfx3dfQ)
 
 Analysis is done through Power BI. You can download it for free [here](https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads).
 

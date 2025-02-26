@@ -6,21 +6,26 @@
 
 VScouter is a versatile scouting application designed for FRC (FIRST Robotics Competition) teams. It simplifies the data collection process for scouting teams during competitions, providing a robust and efficient platform to gather, analyze, and store performance metrics of competing robots.
 
+## What is Scouting in FRC?
+
+Scouting in FRC (FIRST Robotics Competition) is the process of collecting and analyzing data on teams and their robots to make informed strategic decisions during competitions. Since matches are played with randomly assigned alliance partners, having detailed scouting data helps teams understand the strengths, weaknesses, and play styles of other robots on the field. Effective scouting gives teams a competitive edge, allowing them to make strategic decisions based on facts rather than guesswork.
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Usage](#usage)
+2. [What is Scouting in FRC?](#what-is-scouting-in-frc)
+3. [Features](#features)
+4. [Usage](#usage)
    - [Using The Website](#using-the-website)
    - [Collecting Data](#collecting-data)
    - [Parsing Data](#parsing-data)
    - [Analysis](#analysis)
      - [Analysis Pages](#analysis-pages)
-4. [Generating Auto Completion Match Data](#generating-auto-completion-match-data)
-5. [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data)
-6. [Running Locally](#running-locally)
-7. [License](#license)
-8. [Support](#support)
+5. [Generating Auto Completion Match Data](#generating-auto-completion-match-data)
+6. [Inputting Auto Completion Match Data](#inputting-auto-completion-match-data)
+7. [Running Locally](#running-locally)
+8. [License](#license)
+9. [Support](#support)
 
 ## Features
 

@@ -1,97 +1,243 @@
-matchNumber,alliance,scouterInitials,selectTeam,startPoses0,startPoses1,startPoses2,startPoses3,startPoses4,startPoses5,autoCoralPlaceL1Count,autoCoralPlaceL2Count,autoCoralPlaceL3Count,autoCoralPlaceL4Count,autoCoralPlaceDropMissCount,autoCoralPickPreloadCount,autoCoralPickStationCount,autoCoralPickMark1Count,autoCoralPickMark2Count,autoCoralPickMark3Count,autoAlgaePlaceNetShot,autoAlgaePlaceProcessor,autoAlgaePlaceDropMiss,autoAlgaePickReefCount,autoAlgaePickMark1Count,autoAlgaePickMark2Count,autoAlgaePickMark3Count,autoPassedStartLine,teleopCoralPlaceL1Count,teleopCoralPlaceL2Count,teleopCoralPlaceL3Count,teleopCoralPlaceL4Count,teleopCoralPlaceDropMissCount,teleopCoralPickStationCount,teleopCoralPickCarpetCount,teleopAlgaePlaceNetShot,teleopAlgaePlaceProcessor,teleopAlgaePlaceDropMiss,teleopAlgaePickReefCount,teleopAlgaePickCarpetCount,shallowClimbAttempted,deepClimbAttempted,parkAttempted,climbFailed,playedDefense,brokeDown,comment
-1,redAlliance,ZO,4905,True,False,False,False,False,False,0,0,1,0,0,1,3,0,3,1,1,0,1,2,0,2,0,true,0,0,2,0,2,3,0,3,1,1,0,0,False,False,False,False,False,False,There are 10 human body parts with 3 letters.
-1,redAlliance,CF,5813,False,False,False,False,True,False,1,1,0,2,0,1,1,3,1,1,0,0,1,0,1,1,0,true,3,3,2,2,1,3,2,1,0,1,0,0,True,False,False,True,False,False,There are 10 human body parts with 3 letters.
-1,redAlliance,MB,509,False,False,False,False,True,False,0,2,1,2,1,1,3,3,0,1,1,0,1,1,0,0,0,true,2,4,2,1,3,0,0,3,3,2,1,0,False,False,False,True,False,False,Wombat poop is cube-shaped.
-1,blueAlliance,NY,1058,False,True,False,False,False,False,1,1,2,0,0,1,1,0,1,2,1,1,0,1,0,0,0,true,0,1,0,2,3,0,2,2,2,2,2,0,False,False,False,False,False,False,A teaspoon of neutron star would weigh 6 billion tons.
-1,blueAlliance,JP,2084,False,False,False,False,True,False,1,1,1,2,0,1,0,1,2,0,0,1,1,2,0,2,0,false,3,4,4,0,0,0,2,1,2,0,2,0,True,False,False,True,False,False,The first computer virus was created in 1983.
-1,blueAlliance,ZT,166,True,False,False,False,False,False,2,0,1,0,0,1,0,2,0,3,0,1,1,2,0,2,0,false,0,1,0,2,2,1,0,1,1,1,0,0,False,False,True,False,False,False,The dot over 'i' is called a tittle.
-2,redAlliance,GI,1721,False,True,False,False,False,False,0,1,0,2,1,1,0,3,1,3,1,0,0,1,2,2,0,false,1,1,4,1,2,3,0,3,0,2,2,0,False,False,False,False,False,False,Penguins can't taste sweet.
-2,redAlliance,PN,1729,True,False,False,False,False,False,1,1,1,1,1,1,0,1,2,1,0,0,0,2,2,1,0,false,3,5,3,2,1,1,2,0,2,1,1,0,True,True,True,False,False,False,The average cloud weighs 1.1 million pounds.
-2,redAlliance,RO,8724,False,True,False,False,False,False,2,1,2,2,0,1,2,0,2,2,0,0,1,0,1,1,0,true,0,0,2,2,3,1,2,3,0,2,2,0,True,False,False,False,False,False,The average cloud weighs 1.1 million pounds.
-2,blueAlliance,RU,246,False,False,True,False,False,False,0,1,0,2,0,1,0,3,1,1,1,1,0,1,1,0,0,true,0,3,0,1,1,1,3,0,0,0,0,0,True,False,False,True,False,False,The first computer virus was created in 1983.
-2,blueAlliance,NL,5494,False,False,False,False,False,True,1,0,2,2,1,1,1,0,1,3,1,0,0,1,2,0,0,true,1,0,3,0,0,2,0,0,0,1,1,0,False,False,False,True,False,False,There's a species of jellyfish that can live forever.
-2,blueAlliance,BU,88,False,False,False,False,False,True,1,1,2,1,1,1,3,0,1,2,0,0,0,1,2,1,0,true,4,0,0,1,3,2,1,3,3,0,1,0,True,False,False,False,False,False,The average cloud weighs 1.1 million pounds.
-3,redAlliance,PV,5422,False,True,False,False,False,False,1,1,0,2,0,1,1,1,1,0,1,0,1,0,0,1,0,false,1,0,5,0,2,2,0,1,2,1,0,0,True,True,False,False,False,False,Sloths can hold their breath longer than dolphins.
-3,redAlliance,YE,5687,False,False,False,True,False,False,1,0,0,0,1,1,1,3,1,2,1,0,1,0,2,0,0,false,2,0,5,0,2,2,2,0,2,0,0,0,False,False,False,False,False,False,The average cloud weighs 1.1 million pounds.
-3,redAlliance,AJ,190,True,False,False,False,False,False,1,0,2,1,1,1,3,3,3,2,0,0,0,1,0,0,0,false,0,0,4,2,2,2,3,1,0,0,0,0,False,True,False,False,False,False,The dot over 'i' is called a tittle.
-3,blueAlliance,UM,1153,False,False,True,False,False,False,0,2,2,0,1,1,1,3,1,2,1,0,1,1,2,0,0,false,4,1,3,0,0,1,2,1,2,2,1,0,False,False,False,True,False,False,The inventor of the frisbee was turned into a frisbee.
-3,blueAlliance,JI,4909,False,False,True,False,False,False,0,2,2,1,0,1,3,1,2,0,0,1,1,1,2,2,0,true,0,4,3,0,2,2,1,3,3,1,1,0,True,True,False,False,False,False,Wombat poop is cube-shaped.
-3,blueAlliance,VK,1073,True,False,False,False,False,False,1,2,0,0,1,1,0,3,1,3,1,0,0,0,1,1,0,true,1,3,4,0,1,0,2,2,1,1,0,0,False,False,False,True,False,False,The dot over 'i' is called a tittle.
-4,redAlliance,IS,2877,False,False,False,True,False,False,1,2,0,1,1,1,3,3,1,2,1,0,0,0,1,0,0,true,2,1,3,2,3,0,0,3,1,0,0,0,True,True,False,False,True,False,A day on Venus is longer than a year on Venus.
-4,redAlliance,PV,238,False,False,False,False,True,False,2,2,0,1,0,1,2,3,1,1,1,0,0,0,1,1,0,true,0,0,2,0,1,3,1,1,0,0,1,0,True,False,False,False,False,False,Strawberries have more vitamin C than oranges.
-4,redAlliance,LV,8567,False,False,False,False,False,True,1,0,0,1,0,1,0,3,2,1,0,0,1,1,0,2,0,false,1,5,1,2,1,2,3,0,0,2,1,0,False,True,False,True,False,False,Strawberries have more vitamin C than oranges.
-4,blueAlliance,VN,9644,False,False,False,False,False,True,0,0,1,1,0,1,1,2,0,0,0,0,1,2,0,0,0,false,1,1,4,1,2,3,3,0,3,1,0,0,True,False,False,False,False,False,Blue whales' hearts can weigh as much as a car.
-4,blueAlliance,AG,1119,True,False,False,False,False,False,0,2,2,0,0,1,1,2,3,2,1,0,0,2,0,0,0,false,1,0,1,1,1,0,2,0,1,0,2,0,False,False,False,False,False,False,Penguins can't taste sweet.
-4,blueAlliance,GR,501,True,False,False,False,False,False,0,1,0,2,1,1,2,3,1,2,0,1,1,0,0,0,0,false,2,2,3,2,2,2,2,3,2,0,2,0,False,False,False,False,False,False,The Eiffel Tower grows in summer.
-5,redAlliance,HD,4761,False,False,False,False,False,True,1,0,2,1,0,1,0,3,0,3,1,1,0,0,2,1,0,true,2,3,4,0,2,0,1,3,3,0,0,0,False,True,False,False,True,False,A group of flamingos is called a flamboyance.
-5,redAlliance,ZI,811,False,False,False,False,False,True,1,1,0,2,1,1,3,2,1,1,0,0,1,0,2,1,0,true,0,0,3,0,3,1,1,3,2,0,0,0,False,False,False,False,False,False,The inventor of the frisbee was turned into a frisbee.
-5,redAlliance,CG,97,False,False,True,False,False,False,2,0,0,0,1,1,2,1,3,1,0,1,0,0,2,0,0,true,0,4,1,1,0,3,1,1,2,0,2,0,True,False,True,False,False,False,The average cloud weighs 1.1 million pounds.
-5,blueAlliance,SF,2342,False,False,False,True,False,False,2,2,1,2,0,1,0,3,3,2,1,1,0,1,2,2,0,true,3,4,3,1,3,3,3,2,0,0,1,0,False,True,False,True,False,False,The inventor of the frisbee was turned into a frisbee.
-5,blueAlliance,BE,1768,False,False,False,False,True,False,0,2,1,2,1,1,1,3,2,0,1,1,1,0,1,1,0,false,5,2,2,2,0,2,3,1,3,1,1,0,True,True,False,False,False,False,There's a species of jellyfish that can live forever.
-5,blueAlliance,PO,5459,False,False,False,False,False,True,2,2,2,0,0,1,1,3,3,0,1,0,1,1,0,2,0,false,3,1,4,2,2,2,0,2,0,1,1,0,False,True,False,False,False,False,The Eiffel Tower grows in summer.
-6,redAlliance,QM,2713,True,False,False,False,False,False,1,0,0,1,1,1,0,3,1,1,1,1,0,2,0,2,0,false,2,0,0,2,0,0,3,3,1,1,0,0,False,False,False,True,False,False,Octopuses have three hearts.
-6,redAlliance,SS,4905,True,False,False,False,False,False,1,1,1,2,0,1,3,3,1,3,0,1,1,0,1,1,0,false,1,2,1,2,3,1,0,0,3,0,1,0,False,True,False,False,True,False,The inventor of the frisbee was turned into a frisbee.
-6,redAlliance,KV,5813,False,False,False,False,False,True,2,2,0,2,0,1,0,1,1,3,0,0,0,1,2,2,0,true,3,3,1,2,2,3,0,3,2,1,1,0,True,False,False,True,False,False,"Bananas are berries, but strawberries aren't."
-6,blueAlliance,XI,509,False,False,False,True,False,False,0,2,1,2,1,1,2,0,0,3,1,1,1,2,0,0,0,true,4,5,2,2,0,1,0,2,1,2,0,0,False,False,False,True,False,False,A day on Venus is longer than a year on Venus.
-6,blueAlliance,LV,1058,False,False,False,True,False,False,2,2,0,1,1,1,3,2,2,2,1,1,1,1,2,1,0,true,2,4,2,2,2,0,0,2,0,1,2,0,False,False,False,True,False,False,Wombat poop is cube-shaped.
-6,blueAlliance,TY,2084,False,False,True,False,False,False,2,0,0,2,0,1,0,1,3,1,1,1,1,0,2,0,0,true,1,5,3,0,3,1,3,0,3,2,0,0,True,True,True,True,False,False,The Eiffel Tower grows in summer.
-7,redAlliance,MV,166,False,False,False,True,False,False,1,2,2,0,1,1,3,2,3,3,0,1,0,1,0,0,0,false,3,1,5,0,1,3,3,0,2,1,0,0,True,True,False,False,False,False,The dot over 'i' is called a tittle.
-7,redAlliance,RD,1721,False,True,False,False,False,False,2,0,0,2,1,1,3,3,1,3,0,0,0,0,2,1,0,false,3,0,4,2,1,3,3,1,0,1,1,0,False,True,False,False,False,False,The inventor of the frisbee was turned into a frisbee.
-7,redAlliance,LW,1729,False,False,False,False,True,False,0,0,2,2,1,1,1,1,2,2,0,0,0,2,2,0,0,false,1,2,1,2,1,0,2,3,2,0,1,0,False,True,False,False,False,False,Wombat poop is cube-shaped.
-7,blueAlliance,IZ,8724,False,False,True,False,False,False,1,1,0,0,1,1,0,0,3,2,1,1,1,2,2,0,0,false,4,3,5,0,0,2,1,1,2,2,0,0,False,False,False,False,False,False,A teaspoon of neutron star would weigh 6 billion tons.
-7,blueAlliance,SO,246,False,False,False,True,False,False,0,0,1,1,0,1,0,1,0,1,0,0,0,0,1,1,0,true,1,0,0,2,2,3,3,0,3,1,1,0,False,False,True,True,False,False,There's a species of jellyfish that can live forever.
-7,blueAlliance,CL,5494,False,False,False,True,False,False,0,0,2,0,0,1,3,0,1,0,1,0,0,0,2,2,0,true,2,0,0,1,2,1,2,1,0,2,1,0,False,False,False,True,False,False,"Bananas are berries, but strawberries aren't."
-8,redAlliance,YF,88,False,False,False,True,False,False,1,0,1,1,0,1,1,1,0,0,0,1,0,1,2,1,0,true,0,2,3,2,2,0,0,2,1,0,0,0,False,True,False,False,True,False,Wombat poop is cube-shaped.
-8,redAlliance,PD,5422,False,False,False,True,False,False,1,1,1,2,1,1,2,2,0,2,0,1,1,2,0,0,0,true,5,1,1,0,0,3,1,1,2,1,1,0,False,False,False,False,True,False,Sloths can hold their breath longer than dolphins.
-8,redAlliance,LU,5687,False,True,False,False,False,False,0,2,0,1,1,1,0,3,1,1,0,1,0,0,1,1,0,false,0,1,2,2,0,3,2,0,1,2,0,0,True,True,False,True,False,False,"Bananas are berries, but strawberries aren't."
-8,blueAlliance,IR,190,False,False,False,True,False,False,2,1,0,1,1,1,2,2,3,0,0,1,0,1,2,1,0,false,0,2,5,1,2,0,0,3,2,0,0,0,False,False,False,False,False,False,The shortest war in history lasted 38-45 minutes.
-8,blueAlliance,UB,1153,False,True,False,False,False,False,2,2,1,2,1,1,1,3,0,3,0,1,1,0,2,0,0,false,2,4,0,1,0,2,0,2,2,2,1,0,False,False,False,True,False,False,Wombat poop is cube-shaped.
-8,blueAlliance,GU,4909,False,False,True,False,False,False,0,1,2,0,0,1,1,2,0,1,1,1,0,0,0,1,0,false,2,5,1,2,3,1,2,0,1,0,0,0,False,False,False,False,False,False,Wombat poop is cube-shaped.
-9,redAlliance,TF,1073,False,False,False,False,True,False,1,0,0,1,0,1,3,1,1,0,1,0,1,1,2,2,0,true,0,4,4,0,1,2,2,0,2,1,2,0,False,False,False,False,False,False,Penguins can't taste sweet.
-9,redAlliance,OH,2877,False,False,False,True,False,False,2,0,0,1,1,1,3,2,1,0,0,0,0,1,1,0,0,true,0,1,0,1,2,2,2,3,0,0,0,0,True,True,False,False,False,False,"Bananas are berries, but strawberries aren't."
-9,redAlliance,OX,238,False,True,False,False,False,False,2,0,0,2,0,1,3,2,1,1,1,0,0,1,1,1,0,true,0,1,1,0,3,1,3,3,3,0,2,0,False,False,False,False,False,False,The dot over 'i' is called a tittle.
-9,blueAlliance,JV,8567,False,True,False,False,False,False,1,0,0,0,0,1,3,1,0,0,0,0,0,2,2,0,0,true,0,2,2,2,0,0,3,1,0,0,0,0,True,False,False,True,False,False,The shortest war in history lasted 38-45 minutes.
-9,blueAlliance,DE,9644,False,True,False,False,False,False,0,2,1,0,0,1,0,3,2,3,1,1,0,1,0,0,0,false,2,2,4,2,0,1,1,1,0,0,2,0,False,False,True,False,False,False,A group of flamingos is called a flamboyance.
-9,blueAlliance,TG,1119,False,False,False,True,False,False,1,2,0,2,0,1,1,1,2,2,0,0,0,0,2,0,0,false,2,4,2,0,2,1,2,3,1,1,1,0,False,False,False,False,False,False,A day on Venus is longer than a year on Venus.
-10,redAlliance,RX,501,False,False,True,False,False,False,2,2,2,2,0,1,1,3,3,2,1,0,0,0,0,0,0,false,0,2,3,1,1,0,3,1,3,1,0,0,True,False,False,False,False,False,Penguins can't taste sweet.
-10,redAlliance,FF,4761,False,False,False,False,False,True,0,2,0,2,1,1,3,2,1,3,0,0,1,2,0,1,0,false,3,5,1,2,2,2,1,0,0,1,0,0,False,True,True,False,False,False,A teaspoon of neutron star would weigh 6 billion tons.
-10,redAlliance,OD,811,False,False,False,True,False,False,2,2,0,2,1,1,0,1,0,3,0,0,0,0,2,0,0,true,0,1,0,2,1,2,3,0,0,1,2,0,False,True,True,False,False,False,There are 10 human body parts with 3 letters.
-10,blueAlliance,VS,97,True,False,False,False,False,False,1,1,1,1,1,1,1,1,2,3,0,1,1,2,1,0,0,true,3,3,3,2,2,2,2,3,0,0,1,0,False,False,False,True,False,False,A group of flamingos is called a flamboyance.
-10,blueAlliance,LF,2342,False,False,False,True,False,False,0,1,2,1,0,1,0,2,2,0,0,1,0,0,1,0,0,true,3,0,3,1,2,2,2,3,0,1,1,0,False,False,False,False,False,False,Octopuses have three hearts.
-10,blueAlliance,XF,1768,False,True,False,False,False,False,2,2,0,1,0,1,3,3,2,3,0,0,0,1,1,1,0,true,0,3,1,0,3,2,1,0,2,1,0,0,True,False,False,False,False,False,Wombat poop is cube-shaped.
-11,redAlliance,RB,5459,False,False,False,True,False,False,0,1,1,0,0,1,1,3,0,3,0,0,0,0,1,1,0,false,1,4,1,0,1,0,0,0,0,2,0,0,True,False,False,False,False,False,The average cloud weighs 1.1 million pounds.
-11,redAlliance,QT,2713,False,True,False,False,False,False,2,2,1,0,0,1,1,2,0,1,1,0,1,0,0,0,0,false,0,5,4,0,1,0,0,0,0,0,2,0,True,True,False,False,False,False,Octopuses have three hearts.
-11,redAlliance,TL,4905,False,False,False,True,False,False,2,1,0,2,0,1,3,3,1,1,1,1,1,1,0,2,0,false,3,2,5,2,3,1,2,0,2,1,1,0,False,False,False,True,False,False,Honey never spoils.
-11,blueAlliance,DA,5813,False,False,False,False,True,False,1,0,1,0,1,1,0,3,2,1,0,1,1,0,1,0,0,false,1,5,1,2,2,0,0,0,3,2,2,0,True,False,False,True,False,False,Blue whales' hearts can weigh as much as a car.
-11,blueAlliance,RU,509,False,False,False,False,True,False,2,0,1,1,1,1,1,3,1,3,0,1,1,0,2,1,0,true,0,3,1,0,2,2,1,3,1,1,1,0,False,False,False,True,False,False,The Eiffel Tower grows in summer.
-11,blueAlliance,RI,1058,False,False,False,False,False,True,0,0,0,1,0,1,1,1,2,0,1,0,1,0,2,2,0,true,1,0,3,2,1,2,2,2,0,1,2,0,False,True,True,True,False,False,Wombat poop is cube-shaped.
-12,redAlliance,KW,2084,False,True,False,False,False,False,0,0,1,1,0,1,2,0,2,3,1,1,1,1,0,1,0,true,1,0,2,1,1,3,0,3,0,2,0,0,True,True,False,False,False,False,A day on Venus is longer than a year on Venus.
-12,redAlliance,OW,166,True,False,False,False,False,False,0,0,2,0,1,1,2,3,2,1,1,1,1,1,2,1,0,true,2,2,2,1,1,2,1,3,2,0,2,0,True,True,False,True,True,False,Strawberries have more vitamin C than oranges.
-12,redAlliance,UR,1721,False,True,False,False,False,False,2,2,0,1,1,1,0,0,2,3,1,0,1,1,2,0,0,false,0,5,5,1,2,3,0,0,2,0,0,0,False,False,False,True,False,False,The Eiffel Tower grows in summer.
-12,blueAlliance,VQ,1729,False,False,False,False,True,False,2,1,1,2,1,1,0,3,3,2,1,1,1,0,0,1,0,false,4,4,4,0,0,2,1,1,1,1,2,0,True,False,False,False,False,False,Penguins can't taste sweet.
-12,blueAlliance,SK,8724,True,False,False,False,False,False,2,1,0,1,1,1,0,1,2,3,1,0,0,2,0,0,0,false,1,1,0,1,0,0,2,0,0,1,2,0,False,True,False,False,True,False,The inventor of the frisbee was turned into a frisbee.
-12,blueAlliance,PP,246,False,False,False,True,False,False,1,0,1,1,1,1,1,0,3,1,1,1,0,1,0,1,0,false,0,2,2,2,1,1,3,0,3,1,1,0,False,False,False,True,False,False,Wombat poop is cube-shaped.
-13,redAlliance,RU,5494,False,True,False,False,False,False,1,2,2,2,1,1,1,0,0,2,1,0,0,0,0,2,0,true,5,5,2,0,0,3,2,0,0,0,1,0,True,False,True,False,True,False,The average cloud weighs 1.1 million pounds.
-13,redAlliance,NY,88,False,False,False,False,False,True,2,0,2,1,0,1,1,2,0,1,1,0,1,0,1,0,0,true,5,3,5,2,3,0,0,3,3,2,1,0,False,True,False,False,False,False,A day on Venus is longer than a year on Venus.
-13,redAlliance,GI,5422,False,False,False,False,False,True,2,2,0,0,0,1,0,3,0,2,1,1,1,0,2,0,0,true,4,1,4,2,1,0,1,1,2,2,0,0,False,True,False,False,False,False,Honey never spoils.
-13,blueAlliance,RB,5687,False,False,True,False,False,False,1,1,0,1,1,1,2,2,1,3,1,1,0,2,0,0,0,true,0,0,3,1,2,3,1,3,2,0,1,0,True,True,False,True,True,False,The average cloud weighs 1.1 million pounds.
-13,blueAlliance,WX,190,False,False,False,False,True,False,2,0,0,2,0,1,0,2,3,1,1,1,0,1,0,0,0,false,0,3,3,1,1,2,1,2,1,2,0,0,True,False,False,False,False,False,A teaspoon of neutron star would weigh 6 billion tons.
-13,blueAlliance,DF,1153,False,False,False,False,False,True,1,1,1,0,0,1,2,1,2,1,0,1,0,0,2,1,0,false,3,5,2,0,0,3,3,0,0,0,2,0,False,True,True,False,True,False,A day on Venus is longer than a year on Venus.
-14,redAlliance,HK,4909,True,False,False,False,False,False,0,0,0,1,1,1,1,0,2,1,0,1,1,1,1,0,0,false,2,5,1,2,0,1,1,0,3,2,0,0,False,True,False,True,False,False,The shortest war in history lasted 38-45 minutes.
-14,redAlliance,AY,1073,True,False,False,False,False,False,1,1,1,2,1,1,2,3,0,1,0,1,0,2,1,1,0,false,2,1,3,2,1,2,2,1,0,0,2,0,True,True,False,True,False,False,"Bananas are berries, but strawberries aren't."
-14,redAlliance,UQ,2877,False,True,False,False,False,False,2,2,0,1,1,1,0,1,1,3,0,0,0,1,1,2,0,true,2,2,2,2,0,1,1,2,2,2,2,0,False,False,False,False,False,False,Octopuses have three hearts.
-14,blueAlliance,UY,238,False,False,False,False,True,False,2,0,0,0,0,1,1,2,1,3,1,0,1,1,1,1,0,true,0,2,4,2,2,0,2,1,2,2,0,0,True,False,True,False,False,False,"Bananas are berries, but strawberries aren't."
-14,blueAlliance,VM,8567,False,False,False,False,False,True,2,0,0,2,0,1,1,3,3,1,1,1,0,1,2,0,0,true,2,1,3,1,1,2,1,3,0,2,2,0,True,True,False,True,False,False,The inventor of the frisbee was turned into a frisbee.
-14,blueAlliance,ON,9644,False,False,True,False,False,False,1,1,1,0,1,1,1,0,3,3,1,1,0,2,0,2,0,true,0,5,0,1,3,2,0,0,2,0,2,0,False,False,False,False,False,False,The dot over 'i' is called a tittle.
-15,redAlliance,DI,1119,False,False,False,False,True,False,0,1,2,2,1,1,1,0,2,1,0,0,0,2,1,0,0,false,4,1,4,0,3,1,2,3,2,2,0,0,True,False,False,True,False,False,Octopuses have three hearts.
-15,redAlliance,LS,501,False,False,False,False,False,True,2,2,0,2,1,1,2,3,2,2,0,0,1,2,1,2,0,false,3,0,1,1,1,2,0,3,2,0,1,0,False,False,False,True,False,False,The Eiffel Tower grows in summer.
-15,redAlliance,BQ,4761,False,False,False,False,True,False,2,0,0,2,1,1,2,0,3,3,1,0,1,1,2,1,0,false,3,2,4,1,0,1,0,2,0,2,2,0,True,True,False,True,False,False,"Bananas are berries, but strawberries aren't."
-15,blueAlliance,AG,811,False,True,False,False,False,False,2,2,0,0,0,1,0,2,2,0,0,0,0,0,2,2,0,false,2,1,2,2,3,1,1,2,2,2,0,0,True,False,False,False,False,False,Strawberries have more vitamin C than oranges.
-15,blueAlliance,OL,97,True,False,False,False,False,False,0,2,0,2,0,1,1,2,2,1,0,0,0,2,0,2,0,true,1,4,2,2,1,1,0,0,0,0,2,0,False,True,False,False,False,False,The inventor of the frisbee was turned into a frisbee.
-15,blueAlliance,BK,2342,False,False,False,False,False,True,0,1,0,2,1,1,2,3,0,3,0,0,0,1,0,0,0,true,5,1,3,2,2,2,3,2,0,2,2,0,True,True,False,False,False,False,The first computer virus was created in 1983.
-16,redAlliance,DP,1768,False,False,False,False,False,True,0,1,2,2,0,1,2,1,1,1,0,0,0,2,1,2,0,true,4,1,0,2,1,2,1,0,1,0,1,0,False,False,False,False,False,False,Sloths can hold their breath longer than dolphins.
-16,redAlliance,US,5459,False,False,False,False,True,False,1,0,2,0,1,1,1,1,3,1,0,0,1,1,0,1,0,true,4,1,2,2,0,1,3,0,3,1,2,0,True,True,True,False,False,False,Penguins can't taste sweet.
-16,redAlliance,JB,2713,False,False,False,False,False,True,1,1,2,0,0,1,0,1,0,3,0,1,0,1,1,0,0,false,1,3,3,2,1,3,2,2,1,2,0,0,False,True,False,False,False,False,The Eiffel Tower grows in summer.
-16,blueAlliance,FJ,4905,False,False,False,True,False,False,2,1,2,0,1,1,3,3,3,2,0,1,1,1,0,2,0,false,0,5,5,0,0,3,0,3,0,2,1,0,True,False,False,False,False,False,A teaspoon of neutron star would weigh 6 billion tons.
-16,blueAlliance,HQ,5813,True,False,False,False,False,False,2,1,0,0,1,1,2,3,0,2,0,0,1,2,2,2,0,false,3,0,2,0,2,1,1,0,3,2,1,0,False,False,True,False,False,False,Wombat poop is cube-shaped.
-16,blueAlliance,YK,509,True,False,False,False,False,False,1,1,1,2,0,1,0,0,0,2,1,0,1,0,1,2,0,false,0,5,3,0,2,2,3,3,1,2,1,0,True,False,False,False,False,False,The average cloud weighs 1.1 million pounds.
+"matchNumber","alliance","scouterInitials","selectTeam","startPoses0","startPoses1","startPoses2","startPoses3","startPoses4","startPoses5","autoCoralPlaceL1Count","autoCoralPlaceL2Count","autoCoralPlaceL3Count","autoCoralPlaceL4Count","autoCoralPlaceDropMissCount","autoCoralPickPreloadCount","autoCoralPickStationCount","autoCoralPickMark1Count","autoCoralPickMark2Count","autoCoralPickMark3Count","autoAlgaePlaceNetShot","autoAlgaePlaceProcessor","autoAlgaePlaceDropMiss","autoAlgaePickReefCount","autoAlgaePickMark1Count","autoAlgaePickMark2Count","autoAlgaePickMark3Count","autoPassedStartLine","teleopCoralPlaceL1Count","teleopCoralPlaceL2Count","teleopCoralPlaceL3Count","teleopCoralPlaceL4Count","teleopCoralPlaceDropMissCount","teleopCoralPickStationCount","teleopCoralPickCarpetCount","teleopAlgaePlaceNetShot","teleopAlgaePlaceProcessor","teleopAlgaePlaceDropMiss","teleopAlgaePickReefCount","teleopAlgaePickCarpetCount","shallowClimbAttempted","deepClimbAttempted","parkAttempted","climbFailed","playedDefense","brokeDown","comment"
+"1","redAlliance","LJP","203",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,2,1,0,1,4,0,0,0,0,0,0,false,false,true,false,false,false,""
+"2","redAlliance","LJP","8130",false,true,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,5,0,0,0,4,9,0,0,0,0,0,0,false,false,true,false,false,false,""
+"3","redAlliance","LJP","484",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,5,0,0,0,1,6,0,0,0,0,0,0,false,true,false,false,false,false,""
+"4","redAlliance","LJP","9416",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,1,0,0,0,1,2,0,0,1,0,1,0,false,false,true,false,false,false,""
+"6","redAlliance","LJP","10400",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,2,0,0,2,false,false,true,false,false,false,""
+"7","redAlliance","SDT","10157",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,3,0,0,0,4,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"8","redAlliance","SDT","2720",false,false,false,true,false,false,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,2,4,0,0,0,0,0,0,false,false,true,false,false,false,"Made a big oopsie, but got over it, great L4 potentials"
+"9","redAlliance","SDT","2554",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,3,2,2,8,0,0,0,1,1,0,false,false,true,false,false,false,""
+"11","redAlliance","SDT","87",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Defended a lot"
+"12","redAlliance","SDT","1712",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,4,2,3,3,false,false,true,false,false,false,""
+"13","redAlliance","SDT","8714",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,1,1,0,0,2,0,2,0,false,false,true,false,false,false,"Too focused on algae"
+"14","redAlliance","SDT","4342",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,1,0,0,1,0,0,5,0,0,5,false,false,false,false,false,false,""
+"16","redAlliance","SDT","8741",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,1,0,0,0,2,3,0,0,0,0,0,0,false,false,true,false,false,false,""
+"17","redAlliance","SDT","428",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,2,0,0,0,1,3,0,0,0,0,0,0,false,false,true,false,false,false,""
+"19","redAlliance","SDT","5895",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,4,5,5,0,14,0,0,0,1,0,1,false,false,false,true,false,false,""
+"21","redAlliance","SDT","2016",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,""
+"22","redAlliance","SDT","2554",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,6,1,6,1,0,0,0,0,0,false,false,false,true,false,false,""
+"23","redAlliance","DG","2722",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,true,false,false,""
+"24","redAlliance","JRV","5895",false,false,false,true,false,false,0,0,0,3,0,1,2,0,0,0,0,0,0,0,0,0,0,true,0,3,7,8,0,18,0,0,0,0,0,0,false,false,false,false,false,false,""
+"25","redAlliance","JRV","1811",true,false,false,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,3,7,0,0,10,0,0,0,0,0,0,false,false,true,false,false,false,""
+"27","redAlliance","JRV","87",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,true,""
+"28","redAlliance","TF","10157",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Defended the enemy's station."
+"29","redAlliance","DG","1647",false,false,false,false,true,false,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,0,3,0,2,2,0,4,0,false,false,true,false,false,false,""
+"30","redAlliance","DG","2554",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,2,6,1,0,0,0,0,0,false,false,false,true,false,false,""
+"31","redAlliance","DG","428",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,4,0,0,0,4,7,1,0,0,0,0,0,false,false,true,false,false,false,""
+"32","redAlliance","DG","7110",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,1,1,0,0,0,2,0,0,0,0,0,0,false,false,true,false,false,false,""
+"34","redAlliance","DG","428",true,false,false,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,2,5,0,0,0,0,0,0,false,false,true,false,false,false,"did good"
+"35","redAlliance","DG","7414",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,0,0,3,4,0,0,0,1,1,0,false,false,true,false,false,false,"it picked up and place the coral well"
+"36","redAlliance","DG","2722",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,1,4,1,6,0,0,0,0,0,0,false,false,true,false,false,false,"it was fast and was able to reach up to the 4th leavel for the coral"
+"37","redAlliance","DG","2554",false,true,false,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,3,1,4,0,0,2,1,3,0,false,false,true,false,false,false,"did good"
+"38","redAlliance","DG","714",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,1,6,7,0,0,0,0,0,0,false,false,false,true,false,false,""
+"42","redAlliance","ACF","1712",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,5,0,0,5,false,false,true,true,false,false,"Mainly putting algae into the processor, and quickly."
+"43","redAlliance","ACF","2720",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,1,2,3,0,0,0,0,0,0,false,false,false,true,false,false,"They kept going for level 4 but they kept dropping it."
+"44","redAlliance","TF","9416",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,3,0,0,3,false,false,true,false,false,false,"delivering algae to the station but was being blocked."
+"45","redAlliance","ACF","7414",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,4,0,1,5,0,0,0,0,0,0,false,false,true,false,false,false,"Mainly only scored on the third levels of the coral reef."
+"46","redAlliance","ACF","1807",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,2,3,0,0,5,0,0,0,0,0,0,false,false,false,false,false,false,""
+"50","redAlliance","VC","816",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,2,0,0,0,0,2,0,0,0,0,0,0,false,false,true,false,false,false,"had drivetrain issues"
+"17","blueAlliance","EJL","10157",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,2,2,0,0,0,0,0,0,false,false,true,false,true,false,"coral could not get intointake"
+"18","blueAlliance","EJL","1811",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,2,3,0,0,5,0,0,0,1,1,0,false,false,false,false,false,false,""
+"19","blueAlliance","EJL","2720",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,1,6,0,0,0,0,0,0,false,false,true,true,false,false,""
+"20","blueAlliance","EJL","6921",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,0,5,0,0,0,0,0,0,false,false,true,false,false,false,""
+"21","blueAlliance","EJL","4342",false,false,false,true,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,6,1,7,0,0,0,0,0,0,false,false,false,false,false,false,""
+"22","blueAlliance","EJL","204",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,0,2,0,0,0,0,0,0,false,true,false,false,false,false,""
+"23","blueAlliance","MD","10157",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,4,0,0,0,1,5,0,0,0,0,0,0,false,false,true,false,false,false,"Ok"
+"24","blueAlliance","EJL","816",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,5,8,0,0,0,0,0,0,false,false,false,false,false,false,""
+"25","blueAlliance","DSP","7110",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"practicly a flatbot"
+"28","blueAlliance","DSP","714",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,4,2,6,0,0,0,0,0,0,false,false,false,false,false,false,""
+"29","blueAlliance","DSP","1257",false,false,false,false,true,false,1,0,0,0,2,0,2,0,0,0,0,0,0,0,0,0,0,true,5,3,0,0,4,12,0,0,0,0,0,0,false,false,true,false,false,false,""
+"30","blueAlliance","DSP","75",true,false,false,false,false,false,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,6,1,7,0,0,0,0,0,0,false,true,false,false,false,false,""
+"31","blueAlliance","DSP","484",true,false,false,false,false,false,0,0,0,0,2,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,1,6,0,0,0,0,0,0,false,false,true,false,false,false,""
+"32","blueAlliance","DSP","714",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,3,3,0,6,0,0,0,0,0,0,false,true,false,false,false,false,"got a piece stuck"
+"33","blueAlliance","DSP","816",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,1,0,0,0,0,1,0,0,0,0,0,0,false,false,true,false,true,false,"got a peice stuck in the bellypan"
+"34","blueAlliance","DSP","1640",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,1,2,3,0,1,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"35","blueAlliance","DSP","203",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,2,2,0,0,0,4,0,0,2,0,1,1,false,false,true,false,false,false,""
+"36","blueAlliance","DSP","10400",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,5,0,0,0,0,5,0,0,0,0,0,0,false,false,true,false,false,false,""
+"37","blueAlliance","DSP","1811",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,0,3,0,0,0,0,0,0,false,false,false,false,false,false,""
+"38","blueAlliance","DSP","7414",false,true,false,false,false,false,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Got a piece stuck in bellypan couldent get it out"
+"39","blueAlliance","LPB","1640",false,false,false,false,true,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,6,0,0,1,7,0,0,0,0,0,0,false,true,false,false,false,false,""
+"40","blueAlliance","LPB","204",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,true,false,false,true,false,""
+"41","blueAlliance","EJL","428",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,5,2,0,0,1,8,0,0,0,0,0,0,false,false,true,false,false,false,""
+"42","blueAlliance","EJL","7587",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,1,2,3,0,0,0,0,0,0,false,false,true,false,false,false,"Increadabke difficulty intakeing"
+"43","blueAlliance","JP (JOSEPH PETSKO)","87",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Tap dancing ahh robot.  Not sure what it was doing, looks like people struggled to figure out how it moved.  Did not go for coral OR algae, so I am pretty lost as to what their ultimate goal was.  Played mediocre defense."
+"45","blueAlliance","JP (JOSEPH PETSKO)","1712",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,10,0,1,9,false,false,true,false,false,false,"Algae only, went ham on the processor so that the human player couldn't keep up."
+"46","blueAlliance","JP (JOSEPH PETSKO)","7587",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Solid defense, but that was all"
+"47","blueAlliance","JP (JOSEPH PETSKO)","8704",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,true,false,"Played defense against the defense..?"
+"48","blueAlliance","JP (JOSEPH PETSKO)","204",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,1,3,0,0,0,0,0,0,false,false,true,false,false,false,"Slow but accurate coral placements"
+"49","blueAlliance","JP (JOSEPH PETSKO)","8714",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"No show"
+"50","blueAlliance","JP (JOSEPH PETSKO)","2016",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Went for Defense, honestly good stuff😗.  Bro blocked a robot for the entire match."
+"1","blueAlliance","DP","1712",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,false,false,"Failed to pick up algae then got stuck and then got a penalty before parking"
+"2","blueAlliance","DP","75",true,false,false,false,false,false,0,0,0,2,0,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,9,0,9,0,0,0,0,0,0,false,true,false,false,false,false,"Abosolute domination 1 v 3 clutch win singlehandedly filled level 4 10 out of 10 preformance"
+"3","blueAlliance","DP","10400",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,4,0,0,0,2,6,0,0,0,0,0,0,false,false,false,false,false,false,"Only scored level 1 has the capacity to score higher but misses"
+"4","blueAlliance","DP","7414",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,false,false,"Got a peice stuck in the bellypan and couldent do any thing"
+"5","blueAlliance","DP","8704",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"Played defence the entire time"
+"6","blueAlliance","DP","4242",false,false,false,true,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,1,6,7,0,0,0,0,0,0,false,false,true,false,false,false,"difficulty aiming"
+"7","blueAlliance","DP","7414",false,false,true,false,false,false,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,2,5,0,2,9,0,0,0,0,0,0,false,false,false,false,false,false,"Ignore the level 1 auto score but otherwise very good"
+"8","blueAlliance","DP","1647",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,5,0,0,5,false,false,true,false,false,false,"algae bot"
+"9","blueAlliance","LA","204",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,1,3,0,0,0,0,0,0,false,true,false,false,false,false,"very precarious L4 placing, their elevator seems a bit wobbly"
+"10","blueAlliance","LA","9416",false,false,false,false,true,false,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,1,0,0,1,false,false,false,false,true,true,"They tried and failed to score 2 algae, got one, and then ran to the other side to play defense??"
+"11","blueAlliance","LA","1807",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,0,5,5,1,12,0,0,0,0,0,0,false,false,true,false,false,false,"They slammed into the wall 5 times at the end????? very good L4 scoring and only dropped one coral, it landed in L1"
+"12","blueAlliance","LA","10157",false,false,false,false,true,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,2,0,0,0,2,4,0,0,0,0,0,0,false,false,true,false,true,false,"They dropped like half their coral and had a ver wobbly coral holder thing in their robot??"
+"13","blueAlliance","LA","75",false,false,false,false,true,false,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,1,2,4,7,0,0,2,0,1,1,false,false,true,false,false,false,"They have a kinda bad intake, they struggle with picking it up from station but if they get it, they are very consistent with scoring on L4 and L3, they also have a decent algae pick up"
+"14","blueAlliance","MD","1807",false,false,false,false,true,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,3,1,4,0,0,0,0,0,0,false,false,true,false,false,false,"Coral got stuck three times"
+"17","blueAlliance","VC","7110",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,1,0,0,0,3,4,0,0,0,0,0,0,false,false,true,false,false,false,""
+"18","blueAlliance","MD","7414",false,false,true,false,false,false,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,7,0,1,8,0,0,0,0,0,0,false,false,false,false,false,false,"Great game "
+"19","blueAlliance","DP","7587",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Could not get the coral to go into the intake so played defence"
+"20","blueAlliance","DP","8714",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,2,2,0,0,2,0,2,0,false,false,true,false,false,false,"algae bot but failed to place coral"
+"21","blueAlliance","DP","10400",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,0,3,0,0,0,0,0,0,false,false,false,false,false,false,"Something"
+"22","blueAlliance","DP","428",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,4,2,0,0,4,10,0,0,0,0,0,0,false,false,true,false,false,false,"Had trouble holding coral"
+"23","blueAlliance","DP","1647",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,2,0,0,0,0,2,0,0,0,0,0,0,false,false,true,false,true,false,""
+"24","blueAlliance","DP","484",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,6,1,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"25","blueAlliance","DP","4342",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,1,2,8,0,12,0,0,0,0,0,0,false,false,true,false,false,false,""
+"26","blueAlliance","EL","428",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,7,2,0,0,0,9,0,0,0,0,0,0,false,false,true,false,false,false,""
+"27","blueAlliance","EL","75",false,false,false,false,true,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,2,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"28","blueAlliance","MD","1811",false,false,false,true,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,2,0,1,4,0,0,0,1,1,0,false,false,false,false,false,false,""
+"29","blueAlliance","MD","5895",false,true,false,false,false,false,0,0,0,3,0,0,2,0,0,0,0,0,0,0,0,0,0,true,2,5,6,5,2,20,0,0,0,0,0,0,false,false,false,false,false,false,"insne"
+"30","blueAlliance","MD","4342",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,2,6,1,9,0,0,0,0,0,0,false,false,true,false,false,false,"Good at L4"
+"31","blueAlliance","MD","6921",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,2,2,2,6,0,0,0,0,0,0,false,false,false,false,false,false,"decent "
+"32","blueAlliance","MD","8130",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,6,0,0,0,2,8,0,0,0,0,0,0,false,false,true,false,false,false,"wood bot"
+"33","blueAlliance","JP (JOSEPH PETSKO)","8721",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,6,0,0,0,1,7,0,0,0,0,0,0,false,false,true,false,false,false,"Got stuck on ball, but 365 came in clutch and helped it.  Can only do station and L1 from looks of it.  Fairly accurate, but placing coral is rather... random due to bouncy coral."
+"34","blueAlliance","JP (JOSEPH PETSKO)","8714",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,1,1,2,0,false,false,true,false,false,false,"Removed most algae off reef but that was it pretty much"
+"35","blueAlliance","JP (JOSEPH PETSKO)"," 7587",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,2,4,6,0,0,0,0,0,0,false,false,false,false,false,false,""
+"36","blueAlliance","JP (JONSEPHI PETSKO)","7110",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,true,false,false,false,false,false,""
+"37","blueAlliance","JP (JONSEPHI PETSKO)","484",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,0,5,1,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"38","blueAlliance","JP (JONSEPHI PETSKO)","1712",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,7,0,0,7,false,false,true,false,false,false,""
+"39","blueAlliance","VC","8704",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"played mid defense"
+"40","blueAlliance","VC","75",true,false,false,false,false,false,0,0,0,2,0,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,2,1,5,8,0,0,0,1,1,0,false,false,false,false,false,false,"got played defence on"
+"41","blueAlliance"," VC","2722",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,0,0,3,4,8,0,0,0,0,0,0,false,false,true,false,false,false,"elevator was very slow and had some placing issues"
+"42","blueAlliance"," VC","8771",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"no show"
+"43","blueAlliance"," VC","2554",true,false,false,false,false,false,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,9,1,10,0,0,0,0,0,0,false,false,false,false,false,false,"very consistant"
+"44","blueAlliance"," VC","1647",false,false,false,false,true,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,8,0,0,0,1,9,0,0,0,0,0,0,false,false,true,false,false,false,""
+"45","blueAlliance"," VC","428",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,4,3,0,0,0,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"46","blueAlliance"," VC","365",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,1,4,4,0,9,0,0,2,1,3,0,false,true,false,false,false,false,""
+"47","blueAlliance"," VC","203",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,2,2,0,0,1,5,0,0,0,0,0,0,false,false,true,false,false,false,""
+"48","blueAlliance","LPB","1647",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,1,3,3,1,false,false,true,false,true,false,""
+"49","blueAlliance","DSP","8130",false,false,true,false,false,false,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,true,""
+"50","blueAlliance","LPB","10157",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,3,0,0,0,9,12,0,0,0,0,0,0,false,false,true,false,false,false,""
+"1","blueAlliance","LPB","8721",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,4,0,0,0,0,4,0,0,0,0,0,0,false,false,true,false,false,false,"kit bot"
+"2","blueAlliance","LPB","10157",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"not present "
+"3","blueAlliance","LPB","8714",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,3,1,4,0,false,false,true,false,false,false,""
+"4","blueAlliance","LPB","428",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,6,0,0,0,4,10,0,0,0,0,0,0,false,false,false,false,false,false,""
+"5","blueAlliance","LPB","2554",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,3,1,4,0,0,0,0,0,0,false,false,true,false,false,false,""
+"6","blueAlliance","LPB","1712",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,5,0,0,5,false,false,true,false,false,false,""
+"7","blueAlliance","LPB","714",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,3,5,0,0,0,2,2,0,false,false,false,false,false,false,"got coral stuck about half way through. Did nothing but remove alae the rest of the match"
+"9","blueAlliance","MGT","365",false,true,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,1,0,1,0,0,0,0,0,0,false,false,false,false,false,true,"Didnt move after auton"
+"10","blueAlliance","MGT","5895",false,false,false,true,false,false,0,0,0,3,0,1,2,0,0,0,0,0,0,0,0,0,0,true,0,5,5,8,0,18,0,0,0,0,0,0,false,false,true,false,false,false,"OH MY LORDY"
+"11","blueAlliance","MGT","1257",false,false,false,false,true,false,2,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,true,6,2,2,0,0,10,0,0,0,0,0,0,false,false,true,false,false,false,""
+"13","blueAlliance","EL","6921",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,2,1,0,3,6,0,0,0,1,1,0,false,false,false,false,false,false,""
+"14","blueAlliance","VVC","87",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,""
+"17","blueAlliance","LPB","365",false,false,true,false,false,false,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,7,6,13,0,0,0,0,0,0,false,false,true,false,false,false,""
+"18","blueAlliance","LPB","1647",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"played defence (yikes)"
+"19","blueAlliance","LPB","87",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,false,false,"did just about nothing"
+"20","blueAlliance","LPB","8721",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,6,0,0,0,1,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"21","blueAlliance","LPB","9416",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"Played defence"
+"22","blueAlliance","LPB","7110",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,2,2,0,0,0,0,0,0,false,false,true,false,false,false,"Got a piece stuck then played defence"
+"23","blueAlliance","LPB","8130",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,5,0,0,0,5,10,0,0,0,0,0,0,false,false,true,false,false,false,""
+"24","blueAlliance","LPB","1640",false,false,false,false,true,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,3,1,4,8,0,0,0,2,2,0,false,false,false,true,false,false,"tried to reclimb but was too slow"
+"25","blueAlliance","LPB","2720",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,4,1,5,0,0,0,0,0,0,false,true,false,true,false,false,""
+"26","blueAlliance","LPB","2016",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,1,0,1,false,false,true,false,true,false,""
+"27","blueAlliance","LPB","2554",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,4,5,9,0,0,0,0,0,0,false,false,true,false,false,false,""
+"28","blueAlliance","LPB","2722",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,false,true,"i assume it broke because they did nothing"
+"29","blueAlliance","JP (JOSEPH PETSKO)","8771",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,false,"no show"
+"30","blueAlliance","JP (JOSEPH PETSKO)","7587",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,1,0,0,0,0,1,0,0,0,0,0,0,false,false,false,false,false,true,"Did not move for the first half, assumed to have broken down"
+"31","blueAlliance","JP (JOSEPH PETSKO)","10400",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,0,3,0,0,0,1,0,1,false,false,true,false,false,false,"kinda ass"
+"32","blueAlliance","JP (JOSEPH PETSKO)","1807",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,3,4,0,7,0,0,0,0,0,0,false,true,false,false,false,false,"they went sicko mode"
+"33","blueAlliance","MTAT","365",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,8,0,8,0,0,0,0,0,0,false,false,true,false,false,false,""
+"34","blueAlliance","MTAT","4342",false,true,false,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,1,1,5,7,0,0,0,0,0,0,false,false,true,false,false,false,"HELLO???😨😨😨"
+"35","blueAlliance","JP (JOSEPH PETSKO)","9416",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,1,2,0,3,false,false,false,false,false,false,"Struggled putting the algae into the processor"
+"36","blueAlliance","JP (JOSEPH PETSKO)","8721",true,false,false,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,5,0,0,0,1,6,0,0,0,0,0,0,false,false,true,false,false,false,"Coral got stuck in their robot"
+"37","blueAlliance","JP (JOSEPH PETSKO)","75",false,false,false,false,true,false,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,1,7,0,8,0,0,0,0,0,0,false,true,false,false,false,false,""
+"38","blueAlliance","MTAT","5895",false,false,true,false,false,false,0,0,0,0,2,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,4,4,0,0,0,0,0,0,false,false,true,false,true,false,"Their end effector stopped end effecting"
+"39","blueAlliance","MTAT","6921",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,4,2,6,0,0,0,0,0,0,false,false,false,false,false,false,"Went only for L4, 66% estimated accuracy, may be an unreliable L4 scorer"
+"40","blueAlliance","MTAT","1807",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,4,0,1,1,0,6,0,0,0,0,0,0,false,true,false,false,false,false,""
+"41","blueAlliance","MTAT","1257",true,false,false,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,7,0,1,0,1,9,0,0,1,0,0,1,false,false,true,false,false,false,""
+"42","blueAlliance","MTAT","1811",false,false,false,false,true,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,0,1,0,2,4,0,0,0,0,0,0,false,false,false,false,false,false,""
+"43","blueAlliance","MTAT","2016",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,"Got stuck on algae when defending @ abt 30sec"
+"44","blueAlliance","MTAT","484",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,0,5,0,0,0,0,0,0,false,false,true,false,false,false,""
+"45","blueAlliance","LPB","1257",false,false,false,false,true,false,0,0,0,0,2,1,1,0,0,0,0,0,0,0,0,0,0,true,5,3,1,0,0,9,0,0,0,1,1,0,false,false,true,false,false,false,""
+"46","blueAlliance","EJL","2722",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,0,1,3,1,6,0,0,0,0,0,0,false,false,false,false,false,false,""
+"47","blueAlliance","EJL","7110",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,true,false,""
+"48","blueAlliance","EJL","2720",false,false,false,true,false,false,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,1,5,0,6,0,0,0,0,0,0,false,false,false,false,false,false,""
+"49","blueAlliance","EJL","9416",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,2,1,0,3,false,true,false,false,false,false,""
+"50","blueAlliance","EJL","5895",false,false,false,true,false,false,0,0,0,3,0,1,2,0,0,0,0,0,0,0,0,0,0,true,3,3,4,5,0,15,0,0,0,0,0,0,false,false,false,false,false,false,""
+"1","redAlliance","DG","1811",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,1,0,3,5,0,0,0,0,0,0,false,false,true,false,false,false,"fast in speed and quick to recover as well."
+"3","redAlliance","DG","5895",false,false,true,false,false,false,0,0,0,2,0,1,1,0,0,0,0,0,0,0,0,0,0,true,1,3,6,8,0,18,0,0,0,0,0,0,false,false,false,true,false,false,"fast and it can monuver well and has good acurracy"
+"4","redAlliance","DG","1257",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,3,0,2,0,5,10,0,0,0,0,0,0,false,false,true,false,false,false,""
+"6","redAlliance","DG","365",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,5,5,0,0,0,0,0,0,false,false,true,false,false,false,"it was a good move to take poff the algea so that their teammates could just focus on putting up the coral"
+"7","redAlliance","DG","6921",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,6,0,6,0,0,0,0,0,0,false,false,true,false,false,false,""
+"8","redAlliance","DG","1811",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,3,0,0,1,4,0,0,0,0,0,0,false,false,false,true,false,false,"did good and helped out 2720 when it was stuck on the coral structure."
+"9","redAlliance","DG","8714",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,3,3,0,2,0,0,2,0,false,false,false,true,false,false,""
+"11","redAlliance","LJP","8721",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,4,0,0,0,2,6,0,0,0,0,0,0,false,false,true,false,false,false,""
+"12","redAlliance","LJP","2720",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,2,2,4,0,0,0,0,0,0,false,true,false,false,false,false,""
+"13","redAlliance","LJP","7587",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,1,0,1,0,0,0,0,0,0,false,true,false,false,false,false,""
+"14","redAlliance","JRV","2722",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,5,0,0,0,2,7,0,0,0,0,0,0,false,false,false,false,false,false,"Fast, intake auto straightens gamepieces"
+"16","redAlliance","LJP","2554",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,4,1,5,0,0,0,0,0,0,false,false,false,true,false,false,""
+"17","redAlliance","LJP","714",false,false,false,false,true,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,2,1,2,5,0,0,0,0,0,0,false,false,false,false,false,false,""
+"19","redAlliance","LJP","1640",true,false,false,false,false,false,0,0,0,2,0,1,1,0,0,0,0,0,0,0,0,0,0,true,0,1,0,0,1,2,0,0,3,0,0,3,false,false,true,false,true,false,""
+"20","redAlliance","LJP","1807",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,0,0,4,1,5,1,0,0,0,0,0,false,false,true,false,false,false,""
+"22","redAlliance","LJP","365",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,6,3,9,0,0,0,0,0,0,false,false,false,false,false,false,""
+"22","redAlliance","LJP","203",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,1,0,0,1,2,0,0,1,0,0,1,false,false,true,false,false,false,""
+"23","redAlliance","LJP","1712",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,3,0,1,2,false,false,true,false,false,false,""
+"24","redAlliance","LJP","8714",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,3,1,4,0,true,false,false,false,false,false,""
+"25","redAlliance","LJP","365",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,1,1,4,2,8,0,0,0,0,0,0,false,true,false,false,false,false,""
+"27","redAlliance","LJP","87",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,5,0,0,5,0,0,0,0,0,0,false,false,false,false,false,false,""
+"28","redAlliance","LJP","10400",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,0,3,0,0,0,0,0,0,false,false,true,false,false,false,""
+"29","redAlliance","LJP","2016",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,1,1,0,0,0,0,0,0,false,false,false,false,true,false,""
+"30","redAlliance","LJP","7414",false,false,true,false,false,false,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,1,6,0,0,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"31","redAlliance","LJP","1640",false,false,false,true,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,3,0,2,6,0,0,0,0,0,0,false,true,false,false,false,false,""
+"34","redAlliance","SDT","6921",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,2,7,0,0,1,0,0,1,false,false,false,false,false,false,""
+"35","redAlliance","SDT","8130",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,5,0,0,0,1,6,0,0,0,0,0,0,false,false,true,false,false,false,""
+"36","redAlliance","LJP","2720",false,false,false,true,false,false,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,2,4,0,0,0,0,0,0,false,true,false,false,false,false,""
+"38","redAlliance","LJP","365",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,5,1,6,0,0,0,0,0,0,false,true,false,false,false,false,""
+"39","redAlliance","LJP","10400",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,1,2,0,3,false,false,false,false,false,false,""
+"40","redAlliance","LJP","365",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,1,1,1,1,0,4,0,0,0,0,0,0,false,true,false,false,false,false,""
+"42","redAlliance","JRV","8130",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,7,0,0,0,5,12,0,0,0,0,0,0,false,false,true,false,false,false,"Only shoots scores at the lowest level"
+"43","redAlliance","JRV","714",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,3,3,0,0,0,0,0,0,false,false,true,false,false,true,""
+"44","redAlliance","JRV","8721",false,false,false,false,true,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,false,true,""
+"45","redAlliance","DG","75",false,true,false,false,false,false,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,4,9,0,0,0,0,0,0,false,false,true,false,false,false,"did good with the movement and getting the coral on the 4th leavel as well as the reaction time when the coral fell and quickly went to the station to get another one"
+"46","redAlliance","DG","2554",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,3,0,3,1,7,0,0,1,0,1,0,false,false,true,false,false,false,""
+"47","redAlliance","DG","484",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,1,1,4,3,9,0,0,0,0,0,0,false,false,false,true,false,false,""
+"48","redAlliance","DG","8771",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,false,false,""
+"49","redAlliance","DG","714",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,1,1,3,1,6,0,0,0,1,1,0,false,false,false,true,false,false,""
+"50","redAlliance","DSP","6921",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,2,2,1,5,0,0,0,0,0,0,false,false,true,false,false,false,""
+"1","redAlliance","SDT","4342",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,1,0,2,5,2,10,0,0,0,0,0,0,false,false,false,false,false,false,"Good at making L4 coral"
+"2","redAlliance","SDT","6921",false,false,false,true,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,6,2,8,0,0,0,0,0,0,false,false,false,false,false,false,"Missed too much and is uncoordinated with the other bots"
+"3","redAlliance","SDT","7110",false,false,false,true,false,false,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,true,false,false,false,false,"Was pinning and cooperating with other teams."
+"4","redAlliance","ET","714",false,false,false,true,false,false,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,4,1,5,0,0,0,0,0,0,false,false,false,false,false,false,"algae got stuck under robot"
+"6","redAlliance","ET","1807",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,4,3,2,9,0,0,0,0,0,0,false,false,true,false,false,false,"Made some mistakes but put a lot of coral up."
+"8","redAlliance","ACF","75",true,false,false,false,false,false,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,true,0,0,0,3,2,0,5,0,1,0,0,1,false,false,false,true,false,false,"Very fast; missed the coral sometimes"
+"9","redAlliance","ET","484",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,1,3,5,0,9,0,0,0,0,0,0,false,false,false,false,false,false,"algae got stuck(again)"
+"10","redAlliance","ET","428",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,4,2,0,0,2,8,0,0,0,0,0,0,false,false,true,false,false,false,""
+"12","redAlliance","ET","484",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,3,6,9,0,1,0,0,1,0,false,false,false,false,false,false,"did good was fast and recovered fast"
+"13","redAlliance","ET","1811",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,4,0,1,4,1,0,0,3,3,0,false,false,false,true,false,false,""
+"14","redAlliance","ET","5895",false,true,false,false,false,false,0,0,0,2,1,1,2,0,0,0,0,0,0,0,0,0,0,true,0,0,2,7,0,9,0,0,0,0,0,0,false,false,false,false,false,false,"got stuck on the algae AGAIN"
+"16","redAlliance","ET","75",true,false,false,false,false,false,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,true,0,0,0,1,1,2,0,0,0,0,0,0,false,false,true,false,false,false,""
+"19","redAlliance","ET","8130",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,3,0,0,0,1,4,0,0,0,0,0,0,false,false,false,false,false,false,"got stuck on a algae"
+"20","redAlliance","TF","1712",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,6,7,0,9,4,false,false,true,false,false,false,"gets the algea and throws it often. gets a lot of points."
+"22","redAlliance","TF","1257",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,4,1,0,0,1,6,0,0,0,0,0,0,false,false,true,false,false,false,"did a good job in placing the coral on floor 1 but was blocked by the other team from the station."
+"23","redAlliance","SDT","6921",false,false,false,false,true,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,1,6,1,8,0,0,0,0,0,0,false,false,true,false,false,false,""
+"24","redAlliance","SDT","1807",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,3,4,4,0,11,0,0,0,0,0,0,false,true,false,false,false,false,"Really good would recomend"
+"25","redAlliance","SDT","1257",false,false,false,false,true,false,1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,true,5,5,0,0,2,12,0,0,0,0,0,0,false,false,true,false,false,false,""
+"27","redAlliance","SDT","9416",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,1,1,0,0,0,0,0,0,true,false,false,false,true,false,""
+"28","redAlliance","SDT","203",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,2,1,2,0,2,7,0,0,0,0,0,0,false,false,true,false,false,false,""
+"29","redAlliance","SDT","8714",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,2,0,0,0,2,4,0,0,0,0,0,0,false,false,true,false,false,false,""
+"30","redAlliance","SDT","204",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,1,1,0,0,0,0,0,0,false,true,false,false,true,false,""
+"31","redAlliance","SDT","203",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,1,0,0,3,4,0,0,1,0,0,1,false,false,true,false,false,false,""
+"31","redAlliance","SDT","203",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,1,0,0,3,4,0,0,1,0,0,1,false,false,false,false,false,false,""
+"32","redAlliance","SDT","2720",false,false,false,false,true,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,5,1,6,0,0,0,1,1,0,false,true,false,false,false,false,""
+"34","redAlliance","SDT","1647",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,1,0,0,0,0,1,0,0,0,1,0,1,false,false,true,false,true,false,""
+"35","redAlliance","ACF","1257",false,false,false,false,true,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,3,0,0,1,3,1,0,0,2,0,2,false,false,true,false,false,false,""
+"36","redAlliance","JRV","10157",false,false,false,true,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,3,0,0,0,2,5,0,0,0,0,0,0,false,false,true,false,false,false,""
+"38","redAlliance","SDT","87",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,true,false,false,false,""
+"39","redAlliance","SDT","2016",true,false,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,""
+"41","redAlliance","SDT","5895",false,false,true,false,false,false,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,1,2,7,1,12,0,0,0,0,0,0,false,false,false,false,false,false,"can get a heck of a lot of L4"
+"42","redAlliance","SDT","7110",false,true,false,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,2,0,0,2,false,false,false,false,true,false,""
+"43","redAlliance","SDT","8714",false,false,true,false,false,false,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,2,4,6,0,false,false,false,false,false,false,""
+"44","redAlliance","LJP","8704",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,""
+"45","redAlliance","LJP","10400",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,0,0,0,0,0,2,1,0,3,false,false,true,false,false,false,""
+"46","redAlliance","LJP","6921",false,false,false,false,true,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,2,0,2,4,0,0,0,0,0,0,false,false,true,false,false,false,""
+"47","redAlliance","SDT","1811",false,false,false,false,true,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,true,1,0,2,0,0,1,2,0,0,2,2,0,false,false,false,false,false,false,""
+"48","redAlliance","SDT","87",false,false,true,false,false,false,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,false,0,0,0,0,0,0,0,0,0,0,0,0,false,false,false,false,true,false,""
+"49","redAlliance","SDT","714",false,false,true,false,false,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,0,0,0,2,1,3,0,0,0,0,0,0,false,false,false,false,false,false,""
+"50","redAlliance","VRC","1257",false,false,false,false,true,false,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,true,1,1,0,0,2,4,0,0,0,0,0,0,false,false,true,false,false,false,""

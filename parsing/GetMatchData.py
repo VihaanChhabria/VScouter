@@ -59,9 +59,11 @@ def downloadMatches(eventKey: str, apiKey: str = ""):
                 }
             )
 
+    qualMatchesCleanedSorted = sorted(qualMatchesCleaned, key=lambda x: x["matchNum"])
+
     # Save the rearranged matches to a json file
     with open("../data/EventMatches.json", "w") as file:
-        json.dump({"matches": qualMatchesCleaned}, file)
+        json.dump({"matches": qualMatchesCleanedSorted}, file)
 
 
 def removeFRCFromList(inputList: list[str]) -> list[str]:

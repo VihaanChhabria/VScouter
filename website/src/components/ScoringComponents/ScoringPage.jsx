@@ -98,22 +98,11 @@ const ScoringPage = ({
   );
 
   // State stack for undo functionality
-  const [stateStack, setStateStack] = useState(() => {
-    const savedStateStack = localStorage.getItem(mode + "History"); // place where we store our data locally
-    return savedStateStack ? JSON.parse(savedStateStack) : [];
-  });
+  const [stateStack, setStateStack] = useState(
+    JSON.parse(localStorage.getItem(mode + "History"))?.slice(0, -1) || []
+  );
 
   const [autoEnded, setAutoEnded] = useState(false);
-
-  const [isStateStackInitialized, setIsStateStackInitialized] = useState(false)
-
-  useEffect(() => {
-    if (!isStateStackInitialized) {
-      localStorage.setItem(mode + "History", JSON.stringify(stateStack)); //any time we do an action to the stack we update the place where we store the data
-    } else {
-      setIsStateStackInitialized(true)
-    }
-  }, [stateStack])
 
   // Function to handle state changes and push current state to stack
   useEffect(() => {
@@ -174,6 +163,7 @@ const ScoringPage = ({
 
   // Function to handle undo operation
   const handleUndo = () => {
+    console.log(stateStack)
     if (stateStack.length > 1) {
       console.log("Undo1");
       stateStack.pop();
@@ -385,6 +375,8 @@ const ScoringPage = ({
                 }}
               >
                 <ProceedBackButton
+                  mode={mode}
+                  stateStack={stateStack}
                   nextPage={pastPage}
                   back={true}
                   inputs={{
@@ -452,6 +444,8 @@ const ScoringPage = ({
             </div>
             <div style={{ width: "50%", height: "100%" }}>
               <ProceedBackButton
+                mode={mode}
+                stateStack={stateStack}
                 nextPage={nextPage}
                 blink={autoEnded}
                 inputs={{

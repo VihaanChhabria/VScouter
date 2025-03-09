@@ -29,6 +29,8 @@ const ProceedBackButton = ({
   inputs = {},
   message = null,
   blink = false,
+  stateStack = {},
+  mode = ""
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,6 +46,9 @@ const ProceedBackButton = ({
 
   /** Handler for the button being clicked */
   const proceedClick = () => {
+    if (stateStack != {}) {
+      localStorage.setItem(mode+"History", JSON.stringify(stateStack));
+    }
     if (back) {
       // If the back prop is set to true, pass the inputs as props to the previous page
       inputs = Object.fromEntries(

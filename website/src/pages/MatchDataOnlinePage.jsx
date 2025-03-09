@@ -36,6 +36,8 @@ const MatchDataOnlinePage = () => {
         }
       }
 
+      qualMatchesCleaned.sort((a, b) => a.matchNum - b.matchNum);
+
       localStorage.setItem("matchData", JSON.stringify(qualMatchesCleaned)); // Storing the data in local storage so it can be accessed if the website is refreshed
 
       toast.success(

@@ -75,6 +75,10 @@ const ProceedBackButton = ({
           fullData.data.push({ ...inputs });
           // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
+          // for undo button for scoring pages
+          // reset history when done with scouting one match
+          localStorage.setItem("autoHistory", "[]");
+          localStorage.setItem("teleopHistory", "[]");
           navigate(nextPage, {
             state: {
               inputs: {
@@ -84,6 +88,13 @@ const ProceedBackButton = ({
               },
             },
           });
+        } else if (nextPage == "/game-start" &&
+          location.pathname == "/") {
+          // for undo button for scoring pages
+          // if the user leaves in the middle of the match, this will reset their history
+          localStorage.setItem("autoHistory", "[]");
+          localStorage.setItem("teleopHistory", "[]");
+          navigate(nextPage, { state: { inputs } });
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
           console.log(inputs);

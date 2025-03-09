@@ -98,9 +98,22 @@ const ScoringPage = ({
   );
 
   // State stack for undo functionality
-  const [stateStack, setStateStack] = useState([]);
+  const [stateStack, setStateStack] = useState(() => {
+    const savedStateStack = localStorage.getItem(mode + "History"); // place where we store our data locally
+    return savedStateStack ? JSON.parse(savedStateStack) : [];
+  });
 
   const [autoEnded, setAutoEnded] = useState(false);
+
+  const [isStateStackInitialized, setIsStateStackInitialized] = useState(false)
+
+  useEffect(() => {
+    if (!isStateStackInitialized) {
+      localStorage.setItem(mode + "History", JSON.stringify(stateStack)); //any time we do an action to the stack we update the place where we store the data
+    } else {
+      setIsStateStackInitialized(true)
+    }
+  }, [stateStack])
 
   // Function to handle state changes and push current state to stack
   useEffect(() => {
@@ -387,8 +400,8 @@ const ScoringPage = ({
                         },
                         ...pickCoralData.map((singleCoralData) => ({
                           ["pick" +
-                          singleCoralData.position.replace(" ", "") +
-                          "Count"]: singleCoralData.count,
+                            singleCoralData.position.replace(" ", "") +
+                            "Count"]: singleCoralData.count,
                         }))
                       ),
                       algae: Object.assign(
@@ -399,8 +412,8 @@ const ScoringPage = ({
                         },
                         ...pickAlgaeData.map((singleAlgaeData) => ({
                           ["pick" +
-                          singleAlgaeData.position.replace(" ", "") +
-                          "Count"]: singleAlgaeData.count,
+                            singleAlgaeData.position.replace(" ", "") +
+                            "Count"]: singleAlgaeData.count,
                         }))
                       ),
                       ...(mode === "auto" && {
@@ -454,8 +467,8 @@ const ScoringPage = ({
                       },
                       ...pickCoralData.map((singleCoralData) => ({
                         ["pick" +
-                        singleCoralData.position.replace(" ", "") +
-                        "Count"]: singleCoralData.count,
+                          singleCoralData.position.replace(" ", "") +
+                          "Count"]: singleCoralData.count,
                       }))
                     ),
                     algae: Object.assign(
@@ -466,8 +479,8 @@ const ScoringPage = ({
                       },
                       ...pickAlgaeData.map((singleAlgaeData) => ({
                         ["pick" +
-                        singleAlgaeData.position.replace(" ", "") +
-                        "Count"]: singleAlgaeData.count,
+                          singleAlgaeData.position.replace(" ", "") +
+                          "Count"]: singleAlgaeData.count,
                       }))
                     ),
                     ...(mode === "auto" && { passedStartLine }),

@@ -33,17 +33,26 @@ const AutoStartMap = ({ startPoses, setStartPoses, alliance}) => {
           borderRadius: "4dvh",
         }}
       >
-        {[0, 1, 2, 3, 4,].map((value, index) => {
-          return (
-            <div style={{ height: "50%", width: "77.67%" }} key={index}>
-              <AutoStartNumberSection
-                number={index}
-                startPoses={startPoses}
-                setStartPoses={setStartPoses}
-              />
-            </div>
-          );
-        })}
+        <div style={{
+            width: "77.67%",
+            height: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}>
+          {[0, 1, 2, 3, 4,].map((value, index) => {
+            return (
+              <div style={{ height: "50%", width: "50%" }} key={index}>
+                <AutoStartNumberSection
+                  number={index}
+                  startPoses={startPoses}
+                  setStartPoses={setStartPoses}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

@@ -35,7 +35,7 @@ const AutoStartMap = ({ startPoses, setStartPoses, alliance}) => {
       >
         {[0, 1, 2, 3, 4,].map((value, index) => {
           return (
-            <div style={{ height: "50%", width: "50%" }} key={index}>
+            <div style={{ height: "50%", width: "77.67%" }} key={index}>
               <AutoStartNumberSection
                 number={index}
                 startPoses={startPoses}

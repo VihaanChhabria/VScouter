@@ -69,8 +69,9 @@ const AutoStartPage = () => {
         gap: "5dvw",
       }}
     >
+      
       <div style={{ width: "70%", height: "100%" }}>
-        <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} />
+        <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} alliance={states?.inputs?.alliance || "redAlliance"}/>
       </div>
 
       <div

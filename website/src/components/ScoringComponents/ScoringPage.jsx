@@ -107,11 +107,13 @@ const ScoringPage = ({
   // Function to handle state changes and push current state to stack
   useEffect(() => {
     // default passing the starting line because you cant do anything without moving
-    if (mode == "auto" && stateStack.length == 1) {
+    if (mode == "auto" && (placeAlgaeData.some(item => item.count > 0) || placeCoralData.some(item => item.count > 0))) {
       setPassedStartLine(true);
       setTimeout(() => {
         setAutoEnded(true);
       }, 15000);
+    } else {
+      setPassedStartLine(false)
     }
     setStateStack([
       ...stateStack,

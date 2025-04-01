@@ -15,34 +15,30 @@ export default defineConfig({
         runtimeCaching: [
           {
             urlPattern: ({ request }) => request.destination === "document",
-            handler: "NetworkFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "html-cache",
             },
           },
           {
             urlPattern: ({ request }) => request.destination === "script",
-            handler: "NetworkFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "js-cache",
             },
           },
           {
             urlPattern: ({ request }) => request.destination === "style",
-            handler: "NetworkFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "css-cache",
             },
           },
           {
             urlPattern: ({ request }) => request.destination === "image",
-            handler: "NetworkFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "image-cache",
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 30 * 24 * 60 * 60, // Cache images for 30 days
-              },
             },
           },
         ],

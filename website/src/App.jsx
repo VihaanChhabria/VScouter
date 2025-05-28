@@ -20,6 +20,7 @@ import ParseDataPage from "./pages/ParseDataPage";
 import MatchDataPage from "./pages/MatchDataPage";
 import MatchDataOnlinePage from "./pages/MatchDataOnlinePage";
 import MatchDataOfflinePage from "./pages/MatchDataOfflinePage";
+import AlliancePredicterPage from "./pages/AlliancePredicterPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -56,6 +57,8 @@ function App() {
         <Route path="/match-data" element={<MatchDataPage />} />
         <Route path="/match-data/online" element={<MatchDataOnlinePage />} />
         <Route path="/match-data/offline" element={<MatchDataOfflinePage />} />
+        <Route path="/alliance-predicter" element={<AlliancePredicterPage />} />
+        
       </Route>
     )
   );

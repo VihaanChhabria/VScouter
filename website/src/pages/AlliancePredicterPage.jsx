@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Papa from "papaparse";
+import { toast } from "react-toastify";
 
 const AlliancePredicterPage = () => {
   const EVENT_KEY = "2025njtab";
-  const API_KEY = "KwqzvVJmggZH9hIncNA49xoqdPhrhTYvMXpn5LnS6rbNXsCr11kDvvYJHg0z6WoW"
+  const API_KEY =
+    "KwqzvVJmggZH9hIncNA49xoqdPhrhTYvMXpn5LnS6rbNXsCr11kDvvYJHg0z6WoW";
+  const [predictedAlliances, setPredictedAlliances] = useState(null);
+  const [realAlliances, setRealAlliances] = useState(null)
+
+  const cellStyle = {
+    border: "1px solid #ccc",
+    padding: "8px",
+    textAlign: "center",
+    color: "white",
+  };
+  
 
   const click = () => {
     const getTeams = async () => {
-          const response = await fetch(
-            `https://www.thebluealliance.com/api/v3/event/${EVENT_KEY}/alliances`,
-            {
-              headers: {
-                "X-TBA-Auth-Key": API_KEY,
-              },
-            }
-          );
+      const response = await fetch(
+        `https://www.thebluealliance.com/api/v3/event/${EVENT_KEY}/alliances`,
+        {
+          headers: {
+            "X-TBA-Auth-Key": API_KEY,
+          },
+        }
+      );
 
       const rawAllianceData = await response.json();
-      const allianceCaptains = rawAllianceData.map((allianceData) =>{
+      setRealAlliances(rawAllianceData);
+      const allianceCaptains = rawAllianceData.map((allianceData) => {
         return allianceData["picks"][0];
-      })
+      });
 
       const rawCSV = await (
         await fetch("VScouterData - Seneca Full.csv")
@@ -67,38 +80,40 @@ const AlliancePredicterPage = () => {
       });
 
       // Step 1: Create average scores and classify roles
-      const averageScores = Object.entries(teamDataParsed).map(([team, data]) => {
-        const avgAutoCoral = data.totalAutoCoralPlace / data.totalMatches;
-        const avgTeleopCoral = data.totalTeleopCoralPlace / data.totalMatches;
-        const avgAutoAlgae = data.totalAutoAlgaePlace / data.totalMatches;
-        const avgTeleopAlgae = data.totalTeleopAlgaePlace / data.totalMatches;
+      const averageScores = Object.entries(teamDataParsed).map(
+        ([team, data]) => {
+          const avgAutoCoral = data.totalAutoCoralPlace / data.totalMatches;
+          const avgTeleopCoral = data.totalTeleopCoralPlace / data.totalMatches;
+          const avgAutoAlgae = data.totalAutoAlgaePlace / data.totalMatches;
+          const avgTeleopAlgae = data.totalTeleopAlgaePlace / data.totalMatches;
 
-        const totalCoral = avgAutoCoral + avgTeleopCoral;
-        const totalAlgae = avgAutoAlgae + avgTeleopAlgae;
+          const totalCoral = avgAutoCoral + avgTeleopCoral;
+          const totalAlgae = avgAutoAlgae + avgTeleopAlgae;
 
-        let role;
-        if (totalCoral > totalAlgae + 3) {
-          role = "coral";
-        } else if (totalAlgae > totalCoral + 3) {
-          role = "algae";
-        } else {
-          role = "hybrid";
+          let role;
+          if (totalCoral > totalAlgae + 3) {
+            role = "coral";
+          } else if (totalAlgae > totalCoral + 3) {
+            role = "algae";
+          } else {
+            role = "hybrid";
+          }
+
+          const synergyScore = totalCoral + totalAlgae;
+
+          return {
+            team: `frc${team}`,
+            avgAutoCoral,
+            avgTeleopCoral,
+            avgAutoAlgae,
+            avgTeleopAlgae,
+            totalCoral,
+            totalAlgae,
+            synergyScore,
+            role,
+          };
         }
-
-        const synergyScore = totalCoral + totalAlgae;
-
-        return {
-          team: `frc${team}`,
-          avgAutoCoral,
-          avgTeleopCoral,
-          avgAutoAlgae,
-          avgTeleopAlgae,
-          totalCoral,
-          totalAlgae,
-          synergyScore,
-          role,
-        };
-      });
+      );
 
       averageScores.sort((a, b) => b.synergyScore - a.synergyScore);
 
@@ -121,7 +136,9 @@ const AlliancePredicterPage = () => {
       for (let i = 0; i < 8; i++) {
         const captain = alliancesSim[i];
         const pick = averageScores.find((candidate) => {
-          if (picked.find((teamNumPicked) => teamNumPicked === candidate.team)) return false;
+          picked.push(captain.team);
+          if (picked.find((teamNumPicked) => teamNumPicked === candidate.team))
+            return false;
           if (captain.role === "coral")
             return candidate.role === "algae" || candidate.role === "hybrid";
           if (captain.role === "algae")
@@ -132,7 +149,6 @@ const AlliancePredicterPage = () => {
         if (pick) {
           captain.firstPick = pick.team;
           picked.push(pick.team);
-          picked.push(captain.team);
         }
       }
 
@@ -140,7 +156,8 @@ const AlliancePredicterPage = () => {
       for (let i = 7; i >= 0; i--) {
         const captain = alliancesSim[i];
         const pick = averageScores.find((candidate) => {
-          if (picked.find((teamNumPicked) => teamNumPicked === candidate.team)) return false;
+          if (picked.find((teamNumPicked) => teamNumPicked === candidate.team))
+            return false;
           if (captain.role === "coral")
             return candidate.role === "algae" || candidate.role === "hybrid";
           if (captain.role === "algae")
@@ -156,6 +173,7 @@ const AlliancePredicterPage = () => {
 
       console.log("Predicted Alliances:");
       console.log(alliancesSim);
+      setPredictedAlliances(alliancesSim)
     };
 
     getTeams();
@@ -173,7 +191,65 @@ const AlliancePredicterPage = () => {
     >
       AlliancePredicterPage
       <button onClick={() => click()}>Test</button>
-    </div>
+      <div style={{width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: "5%"}}>
+      {predictedAlliances && (
+  <div>
+    <h2>Predicted Alliances</h2>
+    <table style={{ borderCollapse: "collapse", width: "100%" }}>
+      <thead>
+        <tr>
+          <th style={cellStyle}>#</th>
+          <th style={cellStyle}>Captain</th>
+          <th style={cellStyle}>1st Pick</th>
+          <th style={cellStyle}>2nd Pick</th>
+        </tr>
+      </thead>
+      <tbody>
+        {predictedAlliances.map((alliance, index) => (
+          <tr key={index}>
+            <td style={cellStyle}>{index + 1}</td>
+            <td style={cellStyle}>{alliance.captain}</td>
+            <td style={cellStyle}>{alliance.firstPick || "TBD"}</td>
+            <td style={cellStyle}>{alliance.secondPick || "TBD"}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
+{predictedAlliances && (
+  <div>
+    <h2>Predicted Alliances</h2>
+    <table style={{ borderCollapse: "collapse", width: "100%" }}>
+      <thead>
+        <tr>
+          <th style={cellStyle}>#</th>
+          <th style={cellStyle}>Captain</th>
+          <th style={cellStyle}>1st Pick</th>
+          <th style={cellStyle}>2nd Pick</th>
+        </tr>
+      </thead>
+      <tbody>
+        {realAlliances.map((alliance, index) => (
+          <tr key={index}>
+            <td style={cellStyle}>{index + 1}</td>
+            <td style={cellStyle}>{alliance["picks"][0]}</td>
+            <td style={cellStyle}>{alliance["picks"][1]}</td>
+            <td style={cellStyle}>{alliance["picks"][2]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
+    </div></div>
   );
 };
 

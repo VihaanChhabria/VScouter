@@ -7,15 +7,48 @@ const AlliancePredicterPage = () => {
   const API_KEY =
     "KwqzvVJmggZH9hIncNA49xoqdPhrhTYvMXpn5LnS6rbNXsCr11kDvvYJHg0z6WoW";
   const [predictedAlliances, setPredictedAlliances] = useState(null);
-  const [realAlliances, setRealAlliances] = useState(null)
+  const [realAlliances, setRealAlliances] = useState(null);
 
   const cellStyle = {
     border: "1px solid #ccc",
     padding: "8px",
     textAlign: "center",
+    color: "black",
+  };
+
+  const headerStyleText = {
+    border: "1px solid #ccc",
+    padding: "8px",
+    textAlign: "center",
     color: "white",
   };
-  
+
+  const buttonStyle = {
+    padding: "10px 20px",
+    backgroundColor: "#298a43",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontSize: "16px",
+    margin: "20px 0",
+  };
+
+  const tableStyle = {
+    borderCollapse: "collapse",
+    width: "80%",
+    marginTop: "20px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  };
+
+  const headerStyle = {
+    backgroundColor: "#343a40",
+    color: "white",
+  };
+
+  const rowStyle = {
+    backgroundColor: "#f8f9fa",
+  };
 
   const click = () => {
     const getTeams = async () => {
@@ -149,6 +182,7 @@ const AlliancePredicterPage = () => {
         if (pick) {
           captain.firstPick = pick.team;
           picked.push(pick.team);
+          picked.push(captain.captain);
         }
       }
 
@@ -173,7 +207,7 @@ const AlliancePredicterPage = () => {
 
       console.log("Predicted Alliances:");
       console.log(alliancesSim);
-      setPredictedAlliances(alliancesSim)
+      setPredictedAlliances(alliancesSim);
     };
 
     getTeams();
@@ -189,67 +223,65 @@ const AlliancePredicterPage = () => {
         alignItems: "center",
       }}
     >
-      AlliancePredicterPage
-      <button onClick={() => click()}>Test</button>
-      <div style={{width: "100%",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "5%"}}>
-      {predictedAlliances && (
-  <div>
-    <h2>Predicted Alliances</h2>
-    <table style={{ borderCollapse: "collapse", width: "100%" }}>
-      <thead>
-        <tr>
-          <th style={cellStyle}>#</th>
-          <th style={cellStyle}>Captain</th>
-          <th style={cellStyle}>1st Pick</th>
-          <th style={cellStyle}>2nd Pick</th>
-        </tr>
-      </thead>
-      <tbody>
-        {predictedAlliances.map((alliance, index) => (
-          <tr key={index}>
-            <td style={cellStyle}>{index + 1}</td>
-            <td style={cellStyle}>{alliance.captain}</td>
-            <td style={cellStyle}>{alliance.firstPick || "TBD"}</td>
-            <td style={cellStyle}>{alliance.secondPick || "TBD"}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-{predictedAlliances && (
-  <div>
-    <h2>Predicted Alliances</h2>
-    <table style={{ borderCollapse: "collapse", width: "100%" }}>
-      <thead>
-        <tr>
-          <th style={cellStyle}>#</th>
-          <th style={cellStyle}>Captain</th>
-          <th style={cellStyle}>1st Pick</th>
-          <th style={cellStyle}>2nd Pick</th>
-        </tr>
-      </thead>
-      <tbody>
-        {realAlliances.map((alliance, index) => (
-          <tr key={index}>
-            <td style={cellStyle}>{index + 1}</td>
-            <td style={cellStyle}>{alliance["picks"][0]}</td>
-            <td style={cellStyle}>{alliance["picks"][1]}</td>
-            <td style={cellStyle}>{alliance["picks"][2]}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-    </div></div>
+      <div
+        style={{
+          width: "80%",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            width: "80%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          AlliancePredicterPage
+          <button onClick={() => click()} style={buttonStyle}>
+            Generate Predicted Alliances
+          </button>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "5%",
+          }}
+        >
+          {predictedAlliances && (
+            <div>
+              <h2 style={{ color: "#343a40" }}>Predicted Alliances</h2>
+              <table style={tableStyle}>
+                <thead>
+                  <tr style={headerStyle}>
+                    <th style={headerStyleText}>#</th>
+                    <th style={headerStyleText}>Captain</th>
+                    <th style={headerStyleText}>1st Pick</th>
+                    <th style={headerStyleText}>2nd Pick</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {predictedAlliances.map((alliance, index) => (
+                    <tr key={index} style={rowStyle}>
+                      <td style={cellStyle}>{index + 1}</td>
+                      <td style={cellStyle}>{alliance.captain}</td>
+                      <td style={cellStyle}>{alliance.firstPick || "TBD"}</td>
+                      <td style={cellStyle}>{alliance.secondPick || "TBD"}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Papa from "papaparse";
-import { toast } from "react-toastify";
+import kmeans from "skmeans"
 
 const AlliancePredicterPage = () => {
   const EVENT_KEY = "2025njtab";
@@ -74,22 +74,24 @@ const AlliancePredicterPage = () => {
       const scoutingData = Papa.parse(rawCSV).data;
 
       const teamDataParsed = {};
+      console.log("Processing team:", scoutingData);
       scoutingData.slice(1).forEach((match) => {
         const team = match[3];
+        
         const totalAutoCoralPlace =
           parseInt(match[10]) +
           parseInt(match[11]) +
           parseInt(match[12]) +
           parseInt(match[13]);
         const totalTeleopCoralPlace =
+          parseInt(match[28]) +
           parseInt(match[29]) +
           parseInt(match[30]) +
-          parseInt(match[31]) +
-          parseInt(match[32]);
+          parseInt(match[31]);
         const totalAutoAlgaePlace =
-          (parseInt(match[20]) || 0) + (parseInt(match[21]) || 0);
+          (parseInt(match[20]) || 0);
         const totalTeleopAlgaePlace =
-          (parseInt(match[36]) || 0) + (parseInt(match[37]) || 0);
+          (parseInt(match[35]) || 0);
 
         if (!teamDataParsed[team]) {
           teamDataParsed[team] = {
@@ -112,43 +114,134 @@ const AlliancePredicterPage = () => {
           totalTeleopAlgaePlace;
       });
 
-      // Step 1: Create average scores and classify roles
-      const averageScores = Object.entries(teamDataParsed).map(
-        ([team, data]) => {
-          const avgAutoCoral = data.totalAutoCoralPlace / data.totalMatches;
-          const avgTeleopCoral = data.totalTeleopCoralPlace / data.totalMatches;
-          const avgAutoAlgae = data.totalAutoAlgaePlace / data.totalMatches;
-          const avgTeleopAlgae = data.totalTeleopAlgaePlace / data.totalMatches;
+      const averageScores = Object.values(teamDataParsed).map((team) => {
+        const avgAutoCoral = team.totalAutoCoralPlace / team.totalMatches;
+        const avgTeleopCoral = team.totalTeleopCoralPlace / team.totalMatches;
+        const avgAutoAlgae = team.totalAutoAlgaePlace / team.totalMatches;
+        const avgTeleopAlgae = team.totalTeleopAlgaePlace / team.totalMatches;
+      
+        return {
+          team: team.team,
+          avgAutoCoral,
+          avgTeleopCoral,
+          avgAutoAlgae,
+          avgTeleopAlgae,
+          totalCoral: avgAutoCoral + avgTeleopCoral,
+          totalAlgae: avgAutoAlgae + avgTeleopAlgae,
+        };
+      });
+      
+      
 
-          const totalCoral = avgAutoCoral + avgTeleopCoral;
-          const totalAlgae = avgAutoAlgae + avgTeleopAlgae;
+      // Extract only numerical features for clustering
+      const vectors = averageScores.map((team) => [
+        team.avgAutoCoral,
+        team.avgTeleopCoral,
+        team.avgAutoAlgae,
+        team.avgTeleopAlgae,
+      ]);
 
-          let role;
-          if (totalCoral > totalAlgae + 3) {
-            role = "coral";
-          } else if (totalAlgae > totalCoral + 3) {
-            role = "algae";
-          } else {
-            role = "hybrid";
-          }
+      // Perform K-Means clustering
+      const kmeansResult = kmeans(vectors, 3);
+      console.log(kmeansResult);
 
-          const synergyScore = totalCoral + totalAlgae;
-
-          return {
-            team: `frc${team}`,
-            avgAutoCoral,
-            avgTeleopCoral,
-            avgAutoAlgae,
-            avgTeleopAlgae,
-            totalCoral,
-            totalAlgae,
-            synergyScore,
-            role,
+      // {
+      //   "it": 6,
+      //   "k": 3,
+      //   "idxs": [
+      //     2,
+      //     0,
+      //     2,
+      //     0,
+      //     1,
+      //     1,
+      //     1,
+      //     2,
+      //     2,
+      //     1,
+      //     2,
+      //     2,
+      //     0,
+      //     1,
+      //     2,
+      //     0,
+      //     1,
+      //     2,
+      //     2,
+      //     0,
+      //     1,
+      //     1,
+      //     2,
+      //     0,
+      //     2,
+      //     0,
+      //     2,
+      //     0,
+      //     0,
+      //     2,
+      //     0,
+      //     0,
+      //     0,
+      //     2,
+      //     2,
+      //     2
+      //   ],
+      //   "centroids": [
+      //     [
+      //       0.10300925925925926,
+      //       0.43042328042328043,
+      //       0,
+      //       0.08101851851851852
+      //     ],
+      //     [
+      //       0.6579861111111112,
+      //       6.819444444444444,
+      //       0,
+      //       0.015625
+      //     ],
+      //     [
+      //       0.39821428571428563,
+      //       3.2598214285714286,
+      //       0,
+      //       0.017857142857142856
+      //     ]
+      //   ]
+      // }
+      // Group by cluster to compute average coral/algae
+      const clusterAverages = {};
+      kmeansResult.clusters.forEach((clusterID, index) => {
+        const team = averageScores[index];
+        if (!clusterAverages[clusterID]) {
+          clusterAverages[clusterID] = {
+            totalCoral: 0,
+            totalAlgae: 0,
+            count: 0,
           };
         }
-      );
+        clusterAverages[clusterID].totalCoral += team.totalCoral;
+        clusterAverages[clusterID].totalAlgae += team.totalAlgae;
+        clusterAverages[clusterID].count += 1;
+      });
 
-      averageScores.sort((a, b) => b.synergyScore - a.synergyScore);
+      // Determine role for each cluster
+      const clusterToRole = {};
+      Object.entries(clusterAverages).forEach(([clusterID, data]) => {
+        const avgCoral = data.totalCoral / data.count;
+        const avgAlgae = data.totalAlgae / data.count;
+        if (Math.abs(avgCoral - avgAlgae) < 2) {
+          clusterToRole[clusterID] = "hybrid";
+        } else if (avgCoral > avgAlgae) {
+          clusterToRole[clusterID] = "coral";
+        } else {
+          clusterToRole[clusterID] = "algae";
+        }
+      });
+
+      // Add role to averageScores
+      averageScores.forEach((team, i) => {
+        const cluster = kmeansResult.clusters[i];
+        team.role = clusterToRole[cluster];
+      });
 
       const captainsData = allianceCaptains.map((teamNum) => ({
         team: teamNum,

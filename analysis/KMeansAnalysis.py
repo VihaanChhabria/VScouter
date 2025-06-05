@@ -17,7 +17,7 @@ y_test = None
 X_train_norm = preprocessing.normalize(X_train)
 X_test_norm = preprocessing.normalize(X_test)
 
-kmeans = KMeans(n_clusters=2, random_state=0, n_init='auto')
+kmeans = KMeans(n_clusters=3, random_state=0, n_init='auto')
 kmeans.fit(X_train_norm)
 plt.figure(figsize=(12, 6))
 sns.scatterplot(data=X_train, x='teleopCoralPlaceL4Count', y='teleopAlgaePlaceNetShot', hue=kmeans.labels_, legend=False)
@@ -44,3 +44,4 @@ plt.xlabel('teleopCoralPlaceL4Count')
 plt.ylabel('teleopAlgaePlaceNetShot')
 
 plt.show()
+home_data['totalCoralCount'] = home_data[['teleopCoralPlaceL1Count', 'teleopCoralPlaceL2Count', 'teleopCoralPlaceL3Count', 'teleopCoralPlaceL4Count']].sum(axis=1)

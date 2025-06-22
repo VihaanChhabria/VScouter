@@ -4,6 +4,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/ui/",
   plugins: [
     react(),
     VitePWA({
@@ -43,7 +44,6 @@ export default defineConfig({
           },
         ],
       },
-      base: "/ui/",
     }),
   ],
   server: {

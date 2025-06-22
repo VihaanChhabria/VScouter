@@ -17,12 +17,16 @@ const MainLayout = () => {
     ) {
       localStorage.setItem("lastWebsiteGet", new Date().getTime());
 
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (const registration of registrations) {
-        // Unregister the service worker
-        registration.unregister();
+      try {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const registration of registrations) {
+            // Unregister the service worker
+            registration.unregister();
+          }
+        });
+      } catch (error) {
+        console.error("Error during service worker update:", error);
       }
-      });
 
       location.reload();
     }

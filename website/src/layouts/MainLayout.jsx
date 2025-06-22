@@ -11,7 +11,6 @@ const MainLayout = () => {
     // if online
     // reloading to get website recached if there is a new update of the website
     if (
-      window.location.pathname === "/" &&
       new Date().getTime() - localStorage.getItem("lastWebsiteGet") >= 10000 &&
       navigator.onLine
     ) {

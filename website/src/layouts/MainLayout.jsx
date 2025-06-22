@@ -12,11 +12,22 @@ const MainLayout = () => {
     if (navigator.onLine) {
       if (!localStorage.getItem("lastWebsiteGet")) {
         localStorage.setItem("lastWebsiteGet", new Date().getTime());
-        location.reload();
+        // location.reload();
       }
       // reloading to get website recached if there is a new update of the website
-      if (new Date().getTime() - localStorage.getItem("lastWebsiteGet") >= 10000) {
+      if (
+        new Date().getTime() - localStorage.getItem("lastWebsiteGet") >=
+        10000
+      ) {
         localStorage.setItem("lastWebsiteGet", new Date().getTime());
+
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const registration of registrations) {
+            // Unregister the service worker
+            registration.unregister();
+          }
+        });
+
         location.reload();
       }
     }

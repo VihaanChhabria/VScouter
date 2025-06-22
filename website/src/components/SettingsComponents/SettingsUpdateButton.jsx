@@ -23,7 +23,7 @@ const SettingsUpdateButton = () => {
     toast.success("Website Updated");
   };
   return (
-    <>
+    <div>
       {/* Container for the update button */}
       <div
         style={{
@@ -55,9 +55,31 @@ const SettingsUpdateButton = () => {
           Update Website
         </h1>
       </div>
-    </>
+
+      <h1
+        style={{
+          color: "#FFFFFF",
+          fontSize: "3dvh",
+          textAlign: "center",
+          width: "90dvw",
+          height: "17.84dvh",
+          transform: "translateX(-50%)",
+          position: "absolute",
+          top: "21dvh",
+          left: "50%",
+        }}
+      >
+        {(function () {
+          const ts = localStorage.getItem("lastWebsiteGet");
+          if (ts && !isNaN(ts)) {
+            const date = new Date(Number(ts));
+            return date.toString();
+          }
+          return "No update available";
+        })()}
+      </h1>
+    </div>
   );
 };
-
 
 export default SettingsUpdateButton;

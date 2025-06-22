@@ -43,6 +43,7 @@ export default defineConfig({
           },
         ],
       },
+      base: "/ui/",
     }),
   ],
   server: {

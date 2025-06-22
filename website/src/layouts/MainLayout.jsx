@@ -18,10 +18,10 @@ const MainLayout = () => {
       localStorage.setItem("lastWebsiteGet", new Date().getTime());
 
       navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (const registration of registrations) {
-        // Unregister the service worker
-        registration.unregister();
-      }
+        for (const registration of registrations) {
+          // Unregister the service worker
+          registration.unregister();
+        }
       });
 
       location.reload();

@@ -139,11 +139,11 @@ const GameStartPage = () => {
                 }}
               >
                 <div style={{ flexBasis: "30%" }}>
-                  <ProceedBackButton nextPage={`/`} back={true} />
+                  <ProceedBackButton nextPage={`/ui/`} back={true} />
                 </div>
                 <div style={{ flexBasis: "70%" }}>
                   <ProceedBackButton
-                    nextPage={`/auto-start`}
+                    nextPage={`/ui/auto-start`}
                     inputs={{
                       ...(states?.inputs || {}),
                       matchNumber: matchNumber,

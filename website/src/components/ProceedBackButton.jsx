@@ -70,8 +70,8 @@ const ProceedBackButton = ({
         toast.error("Fill In All Fields To Proceed");
       } else {
         if (
-          nextPage == "/game-start" &&
-          location.pathname == "/endgame-scoring"
+          nextPage == "/ui/game-start" &&
+          location.pathname == "/ui/endgame-scoring"
         ) {
           // If the next page is the game start page and the current page is the endgame scoring page
           const fullData = {
@@ -93,7 +93,7 @@ const ProceedBackButton = ({
               },
             },
           });
-        } else if (nextPage == "/game-start" &&
+        } else if (nextPage == "/ui/game-start" &&
           location.pathname == "/") {
           // for undo button for scoring pages
           // if the user leaves in the middle of the match, this will reset their history

@@ -62,7 +62,7 @@ const SettingsPage = () => {
             justifyContent: "center",
             alignItems: "center",
           }}
-          onClick={() => navigate("/match-data")} // Toggles the state when the button is clicked
+          onClick={() => navigate("/ui/match-data")} // Toggles the state when the button is clicked
         >
           <h1
             style={{
@@ -145,7 +145,7 @@ const SettingsPage = () => {
               height: "17.84dvh",
             }}
           >
-            <ProceedBackButton nextPage={"/"} back={true} />
+            <ProceedBackButton nextPage={"/ui/"} back={true} />
           </div>
 
           <div
@@ -158,7 +158,7 @@ const SettingsPage = () => {
             }}
           >
             <ProceedBackButton
-              nextPage={"/parse-data"}
+              nextPage={"/ui/parse-data"}
               message={"Parse Data"}
             />
           </div>

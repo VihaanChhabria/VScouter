@@ -60,7 +60,7 @@ const MatchDataPage = () => {
           left: "2.33dvw",
         }}
         onClick={() => {
-          navigate("/settings");
+          navigate("/ui/settings");
         }}
       >
         <h1
@@ -106,9 +106,9 @@ const MatchDataPage = () => {
             Are You Online (Using QR Code) or Offline (Using Match Schedule File)?
           </h1>
         <div style={{width: "100%", height: "40%",  display: "flex", gap: "4%", paddingLeft: "10%", paddingRight: "10%"}}>
-          <ProceedBackButton nextPage={"/match-data/online"} message={"Online"} />
+          <ProceedBackButton nextPage={"/ui/match-data/online"} message={"Online"} />
           
-          <ProceedBackButton nextPage={"/match-data/offline"} message={"Offline"} />
+          <ProceedBackButton nextPage={"/ui/match-data/offline"} message={"Offline"} />
         </div>
       </div>
     </div>

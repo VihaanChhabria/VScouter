@@ -44,18 +44,18 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/ui/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/game-start" element={<GameStartPage />} />
-        <Route path="/auto-start" element={<AutoStartPage />} />
-        <Route path="/auto-scoring" element={<AutoScoringPage />} />
-        <Route path="/teleop-scoring" element={<TeleopScoringPage />} />
-        <Route path="/endgame-scoring" element={<EndgameScoringPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/parse-data" element={<ParseDataPage />} />
-        <Route path="/match-data" element={<MatchDataPage />} />
-        <Route path="/match-data/online" element={<MatchDataOnlinePage />} />
-        <Route path="/match-data/offline" element={<MatchDataOfflinePage />} />
+        <Route path="game-start" element={<GameStartPage />} />
+        <Route path="auto-start" element={<AutoStartPage />} />
+        <Route path="auto-scoring" element={<AutoScoringPage />} />
+        <Route path="teleop-scoring" element={<TeleopScoringPage />} />
+        <Route path="/ui/endgame-scoring" element={<EndgameScoringPage />} />
+        <Route path="settings" element={<SettingsPage />} />
+        <Route path="parse-data" element={<ParseDataPage />} />
+        <Route path="match-data" element={<MatchDataPage />} />
+        <Route path="match-data/online" element={<MatchDataOnlinePage />} />
+        <Route path="match-data/offline" element={<MatchDataOfflinePage />} />
       </Route>
     )
   );

@@ -106,7 +106,7 @@ const AutoStartPage = () => {
         <div style={{ width: "100%", height: "30%" }}>
           <ProceedBackButton
             back={true}
-            nextPage="/game-start"
+            nextPage="/ui/game-start"
             inputs={{
               ...(states?.inputs || {}),
               startPoses: startPoses.every((pos) => pos === null)
@@ -117,7 +117,7 @@ const AutoStartPage = () => {
         </div>
         <div style={{ width: "100%", height: "50%" }}>
           <ProceedBackButton
-            nextPage={"/auto-scoring"}
+            nextPage={"/ui/auto-scoring"}
             inputs={{
               ...(states?.inputs || {}),
               startPoses: startPoses.every((pos) => pos === false)

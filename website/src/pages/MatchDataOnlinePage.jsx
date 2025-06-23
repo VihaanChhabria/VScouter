@@ -71,7 +71,7 @@ const MatchDataOnlinePage = () => {
           left: "2.33dvw",
         }}
         onClick={() => {
-          navigate("/match-data");
+          navigate("/ui/match-data");
         }}
       >
         <h1

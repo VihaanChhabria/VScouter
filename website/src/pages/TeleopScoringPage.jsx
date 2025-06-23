@@ -53,8 +53,8 @@ const TeleopScoringPage = () => {
       pickAlgaePositions={["Reef", "Carpet"]}
       statePath={states?.inputs?.teleop || null}
       mode="teleop"
-      nextPage="/endgame-scoring"
-      pastPage="/auto-scoring"
+      nextPage="/ui/endgame-scoring"
+      pastPage="/ui/auto-scoring"
       pickCoralCounts={[pickCoralStationCount, pickCoralCarpetCount]}
       pickCoralData={pickCoralData}
       pickAlgaeCounts={[pickAlgaeReefCount, pickAlgaeCarpetCount]}

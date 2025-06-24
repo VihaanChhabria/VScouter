@@ -53,7 +53,9 @@ const AutoStartPage = () => {
   ];
 
   useEffect(() => {
-    const newStartPoses = startPoses.map((pos, index) => (pos === null ? setStartPoses[index](false) : pos));
+    const newStartPoses = startPoses.map((pos, index) =>
+      pos === null ? setStartPoses[index](false) : pos
+    );
   }, [startPoses]);
 
   return (
@@ -69,9 +71,12 @@ const AutoStartPage = () => {
         gap: "5dvw",
       }}
     >
-      
       <div style={{ width: "70%", height: "100%" }}>
-        <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} alliance={states?.inputs?.alliance || "redAlliance"}/>
+        <AutoStartMap
+          startPoses={startPoses}
+          setStartPoses={setStartPoses}
+          alliance={states?.inputs?.alliance || "redAlliance"}
+        />
       </div>
 
       <div
@@ -106,7 +111,7 @@ const AutoStartPage = () => {
         <div style={{ width: "100%", height: "30%" }}>
           <ProceedBackButton
             back={true}
-            nextPage="/ui/game-start"
+            nextPage="game-start"
             inputs={{
               ...(states?.inputs || {}),
               startPoses: startPoses.every((pos) => pos === null)
@@ -117,7 +122,7 @@ const AutoStartPage = () => {
         </div>
         <div style={{ width: "100%", height: "50%" }}>
           <ProceedBackButton
-            nextPage={"/ui/auto-scoring"}
+            nextPage={"auto-scoring"}
             inputs={{
               ...(states?.inputs || {}),
               startPoses: startPoses.every((pos) => pos === false)

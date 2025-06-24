@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { toast } from "react-toastify";
+import { useNavigateWithBase } from "../utils/useNavigateWithBase";
 
 const MatchDataOnlinePage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
 
   const [qrCodeMatchData, setQRCodeMatchData] = useState({}); // The URL to the match data
 
   const doneClick = async () => {
-    const qrCodeMatchDataParsed = JSON.parse(qrCodeMatchData)
+    const qrCodeMatchDataParsed = JSON.parse(qrCodeMatchData);
     try {
       const headers = {
         "X-TBA-Auth-Key": qrCodeMatchDataParsed.apiKey,
@@ -71,7 +71,7 @@ const MatchDataOnlinePage = () => {
           left: "2.33dvw",
         }}
         onClick={() => {
-          navigate("/ui/match-data");
+          navigate("match-data");
         }}
       >
         <h1

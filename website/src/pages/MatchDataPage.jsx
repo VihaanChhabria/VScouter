@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
+import { useNavigateWithBase } from "../utils/useNavigateWithBase";
 
 const MatchDataPage = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
   const [useManual, setUseManual] = useState(false); // Indicating if the text box should be used to get the URL
 
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
 
   useEffect(() => {
     if (useManual) {
@@ -44,7 +44,7 @@ const MatchDataPage = () => {
   };
 
   return (
-    <div style={{width: "100%", height: "100%"}}>
+    <div style={{ width: "100%", height: "100%" }}>
       <div
         style={{
           border: "1.63dvh solid #1D1E1E",
@@ -60,7 +60,7 @@ const MatchDataPage = () => {
           left: "2.33dvw",
         }}
         onClick={() => {
-          navigate("/ui/settings");
+          navigate("settings");
         }}
       >
         <h1
@@ -86,29 +86,44 @@ const MatchDataPage = () => {
         }}
       >
         <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "8dvh",
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
-            Load Match Data
-          </h1>
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
-            Are You Online (Using QR Code) or Offline (Using Match Schedule File)?
-          </h1>
-        <div style={{width: "100%", height: "40%",  display: "flex", gap: "4%", paddingLeft: "10%", paddingRight: "10%"}}>
-          <ProceedBackButton nextPage={"/ui/match-data/online"} message={"Online"} />
-          
-          <ProceedBackButton nextPage={"/ui/match-data/offline"} message={"Offline"} />
+          style={{
+            color: "#FFFFFF",
+            fontSize: "8dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Load Match Data
+        </h1>
+        <h1
+          style={{
+            color: "#FFFFFF",
+            fontSize: "5.58dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Are You Online (Using QR Code) or Offline (Using Match Schedule File)?
+        </h1>
+        <div
+          style={{
+            width: "100%",
+            height: "40%",
+            display: "flex",
+            gap: "4%",
+            paddingLeft: "10%",
+            paddingRight: "10%",
+          }}
+        >
+          <ProceedBackButton
+            nextPage={"match-data/online"}
+            message={"Online"}
+          />
+
+          <ProceedBackButton
+            nextPage={"match-data/offline"}
+            message={"Offline"}
+          />
         </div>
       </div>
     </div>

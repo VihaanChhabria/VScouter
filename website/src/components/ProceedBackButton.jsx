@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { toast } from "react-toastify";
+import { useNavigateWithBase } from "../utils/useNavigateWithBase";
 
 /**
  * A button component that navigates to the next page in the app.
@@ -30,9 +31,9 @@ const ProceedBackButton = ({
   message = null,
   blink = false,
   stateStack = {},
-  mode = ""
+  mode = "",
 }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
   const location = useLocation();
 
   const [turnBoxRed, setTurnBoxRed] = useState(false);
@@ -47,7 +48,7 @@ const ProceedBackButton = ({
   /** Handler for the button being clicked */
   const proceedClick = () => {
     if (stateStack != {}) {
-      localStorage.setItem(mode+"History", JSON.stringify(stateStack));
+      localStorage.setItem(mode + "History", JSON.stringify(stateStack));
     }
     if (back) {
       // If the back prop is set to true, pass the inputs as props to the previous page
@@ -70,8 +71,8 @@ const ProceedBackButton = ({
         toast.error("Fill In All Fields To Proceed");
       } else {
         if (
-          nextPage == "/ui/game-start" &&
-          location.pathname == "/ui/endgame-scoring"
+          nextPage == "game-start" &&
+          location.pathname == "endgame-scoring"
         ) {
           // If the next page is the game start page and the current page is the endgame scoring page
           const fullData = {
@@ -93,8 +94,7 @@ const ProceedBackButton = ({
               },
             },
           });
-        } else if (nextPage == "/ui/game-start" &&
-          location.pathname == "/") {
+        } else if (nextPage == "game-start" && location.pathname == "/") {
           // for undo button for scoring pages
           // if the user leaves in the middle of the match, this will reset their history
           localStorage.setItem("autoHistory", "[]");

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 const MainLayoutPortraitWarning = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
   const location = useLocation();
 
   const [opacity, setOpacity] = useState(0.3);

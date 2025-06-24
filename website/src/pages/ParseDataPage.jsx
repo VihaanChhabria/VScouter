@@ -43,7 +43,7 @@ const ParseDataPage = () => {
       <ParseDataSelector />
 
       <div style={{ width: "15%", height: "15%" }}>
-        <ProceedBackButton nextPage={`/ui/settings`} back={true} />
+        <ProceedBackButton nextPage={`settings`} back={true} />
       </div>
     </>
   );

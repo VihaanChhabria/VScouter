@@ -5,7 +5,7 @@ import { Scanner } from "@yudiel/react-qr-scanner";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ToggleButton from "../ToggleButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 /**
  * This component is used to fetch match data from a given URL.
@@ -17,7 +17,7 @@ const SettingsMatchDataScanner = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
   const [useManual, setUseManual] = useState(false); // Indicating if the text box should be used to get the URL
 
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
 
   useEffect(() => {
     if (useManual) {

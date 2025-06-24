@@ -62,7 +62,7 @@ const SettingsUpdateButton = () => {
           fontSize: "3dvh",
           textAlign: "center",
           width: "90dvw",
-          height: "17.84dvh",
+          height: "2dvh",
           transform: "translateX(-50%)",
           position: "absolute",
           top: "21dvh",

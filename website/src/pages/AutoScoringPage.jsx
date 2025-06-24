@@ -101,8 +101,8 @@ const AutoScoringPage = () => {
     <ScoringPage
       statePath={states?.inputs?.auto || null}
       mode="auto"
-      nextPage="/ui/teleop-scoring"
-      pastPage="/ui/auto-start"
+      nextPage="teleop-scoring"
+      pastPage="auto-start"
       pickCoralData={pickCoralData}
       pickAlgaeData={pickAlgaeData}
     />

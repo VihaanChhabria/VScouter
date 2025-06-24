@@ -42,15 +42,17 @@ function App() {
     };
   }, []);
 
+  const basePath = import.meta.env.DEV ? "/" : "/ui/";
+
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/ui/" element={<MainLayout />}>
+      <Route path={basePath} element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="game-start" element={<GameStartPage />} />
         <Route path="auto-start" element={<AutoStartPage />} />
         <Route path="auto-scoring" element={<AutoScoringPage />} />
         <Route path="teleop-scoring" element={<TeleopScoringPage />} />
-        <Route path="/ui/endgame-scoring" element={<EndgameScoringPage />} />
+        <Route path="endgame-scoring" element={<EndgameScoringPage />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="parse-data" element={<ParseDataPage />} />
         <Route path="match-data" element={<MatchDataPage />} />
@@ -62,7 +64,7 @@ function App() {
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js");
+      navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
     }
   }, []);
 

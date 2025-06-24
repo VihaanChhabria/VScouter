@@ -43,6 +43,14 @@ export default defineConfig(({ mode }) => {
           ],
         },
       }),
+      viteStaticCopy({
+        targets: [
+          {
+            src: "public/_redirects",
+            dest: "../", // goes to dist/ instead of dist/ui/ so that netlify can find it
+          },
+        ],
+      }),
     ],
     server: {
       host: "localhost",

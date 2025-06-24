@@ -8,10 +8,11 @@ export default defineConfig(({ mode }) => {
   const isProd = mode === "production";
 
   return {
-    base: isProd ? "/ui/" : "/",
-    build: {
-      outDir: "dist/ui",
-    },
+    // base: isProd ? "/ui/" : "/",
+    // build: {
+    //   outDir: "dist/ui",
+    // },
+    base: "/",
     plugins: [
       react(),
       VitePWA({
@@ -43,14 +44,6 @@ export default defineConfig(({ mode }) => {
             },
           ],
         },
-      }),
-      viteStaticCopy({
-        targets: [
-          {
-            src: "public/_redirects",
-            dest: "../", // goes to dist/ instead of dist/ui/ so that netlify can find it
-          },
-        ],
       }),
     ],
     server: {

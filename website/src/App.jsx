@@ -42,11 +42,11 @@ function App() {
     };
   }, []);
 
-  const basePath = import.meta.env.DEV ? "/" : "/ui/";
+  // const basePath = import.meta.env.DEV ? "/" : "/ui/";
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path={basePath} element={<MainLayout />}>
+      <Route path={"/"} element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="game-start" element={<GameStartPage />} />
         <Route path="auto-start" element={<AutoStartPage />} />

@@ -63,7 +63,7 @@ const SettingsPage = () => {
             alignItems: "center",
           }}
           onClick={() => {
-            navigate("/match-data");
+            navigate("match-data");
           }}
         >
           <h1

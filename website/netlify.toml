@@ -6,7 +6,7 @@
 
 [[redirects]]
   from = "/docs/*"
-  to = "https://vscouterdocs.readthedocs.io/en/latest/:splat"
+  to = "https://vscouter-docs.netlify.app/docs/:splat"
   status = 200
   force = true
 

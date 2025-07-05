@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/home/*"
-  to = "https://vscouter-landing.netlify.app/:splat"
+  to = "https://vscouter-landing.netlify.app/home/:splat"
   status = 200
   force = true
 

@@ -15,6 +15,7 @@
       plugins: [
         react(),
         VitePWA({
+          scope: "/ui/",
           registerType: "autoUpdate",
           devOptions: {
             enabled: false,

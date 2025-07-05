@@ -8,6 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const MainLayout = () => {
   useEffect(() => {
+    if (window.location.pathname === "/") {
+      window.location.replace("/home");
+      return;
+    }
+
+
     // if online
     // reloading to get website recached if there is a new update of the website
     if (

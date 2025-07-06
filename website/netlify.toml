@@ -19,3 +19,9 @@
   from = "/ui/*"
   to = "/:splat"
   status = 200
+
+[[redirects]]
+  from = "/docs"
+  to = "/docs/"
+  status = 301
+  force = true

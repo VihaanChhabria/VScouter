@@ -30,41 +30,34 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-      document.body.style.display = "none"; // Trigger reflow
-      document.body.offsetHeight; // Force reflow
-      document.body.style.display = ""; // Restore display
+      document.body.style.display = "none";
+      document.body.offsetHeight;
+      document.body.style.display = "";
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/game-start" element={<GameStartPage />} />
-        <Route path="/auto-start" element={<AutoStartPage />} />
-        <Route path="/auto-scoring" element={<AutoScoringPage />} />
-        <Route path="/teleop-scoring" element={<TeleopScoringPage />} />
-        <Route path="/endgame-scoring" element={<EndgameScoringPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/parse-data" element={<ParseDataPage />} />
-        <Route path="/match-data" element={<MatchDataPage />} />
-        <Route path="/match-data/online" element={<MatchDataOnlinePage />} />
-        <Route path="/match-data/offline" element={<MatchDataOfflinePage />} />
-      </Route>
-    )
-  );
+  const basePaths = ["/", "/ui/"];
 
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js");
-    }
-  }, []);
+  const routes = basePaths.map((base) => (
+    <Route path={base} element={<MainLayout />} key={base}>
+      <Route index element={<HomePage />} />
+      <Route path="game-start" element={<GameStartPage />} />
+      <Route path="auto-start" element={<AutoStartPage />} />
+      <Route path="auto-scoring" element={<AutoScoringPage />} />
+      <Route path="teleop-scoring" element={<TeleopScoringPage />} />
+      <Route path="endgame-scoring" element={<EndgameScoringPage />} />
+      <Route path="settings" element={<SettingsPage />} />
+      <Route path="parse-data" element={<ParseDataPage />} />
+      <Route path="match-data" element={<MatchDataPage />} />
+      <Route path="match-data/online" element={<MatchDataOnlinePage />} />
+      <Route path="match-data/offline" element={<MatchDataOfflinePage />} />
+    </Route>
+  ));
+
+  const router = createBrowserRouter(createRoutesFromElements(routes));
 
   return <RouterProvider router={router} />;
 }

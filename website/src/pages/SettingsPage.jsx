@@ -6,7 +6,7 @@ import SettingsMatchDataScanner from "../components/SettingsComponents/SettingsM
 import SettingsButton from "../components/SettingsComponents/SettingsButton";
 import SettingsViewMatchData from "../components/SettingsComponents/SettingsViewMatchData";
 import SettingsUpdateButton from "../components/SettingsComponents/SettingsUpdateButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigateWithBase } from "../utils/useNavigateWithBase";
 
 /**
  * A page for the user to access settings such as clearing match data, viewing match data, and getting match data.
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
  * @return {JSX.Element} The rendered component.
  */
 const SettingsPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
   const [matchDataGetClicked, setMatchDataGetClicked] = useState(false);
   const [matchDataClearClicked, setMatchDataClearClicked] = useState(false);
   const [scoutDataClearClicked, setScoutDataClearClicked] = useState(false);
@@ -62,7 +62,9 @@ const SettingsPage = () => {
             justifyContent: "center",
             alignItems: "center",
           }}
-          onClick={() => navigate("/match-data")} // Toggles the state when the button is clicked
+          onClick={() => {
+            navigate("match-data");
+          }}
         >
           <h1
             style={{
@@ -157,10 +159,7 @@ const SettingsPage = () => {
               height: "17.84dvh",
             }}
           >
-            <ProceedBackButton
-              nextPage={"/parse-data"}
-              message={"Parse Data"}
-            />
+            <ProceedBackButton nextPage={"parse-data"} message={"Parse Data"} />
           </div>
         </>
       )}

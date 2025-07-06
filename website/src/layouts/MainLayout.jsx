@@ -8,17 +8,33 @@ import "react-toastify/dist/ReactToastify.css";
 
 const MainLayout = () => {
   useEffect(() => {
+
+    if (window.location.pathname === "/") {
+      window.location.replace("/home");
+      return;
+    }
+
     // if online
-    if (navigator.onLine) {
-      if (!localStorage.getItem("lastWebsiteGet")) {
-        localStorage.setItem("lastWebsiteGet", new Date().getTime());
-        location.reload();
+    // reloading to get website recached if there is a new update of the website
+    if (
+      window.location.pathname === "/ui/" &&
+      new Date().getTime() - localStorage.getItem("lastWebsiteGet") >= 10000 &&
+      navigator.onLine
+    ) {
+      localStorage.setItem("lastWebsiteGet", new Date().getTime());
+
+      try {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const registration of registrations) {
+            // Unregister the service worker
+            registration.unregister();
+          }
+        });
+      } catch (error) {
+        console.error("Error during service worker update:", error);
       }
-      // reloading to get website recached if there is a new update of the website
-      if (new Date().getTime() - localStorage.getItem("lastWebsiteGet") >= 10000) {
-        localStorage.setItem("lastWebsiteGet", new Date().getTime());
-        location.reload();
-      }
+
+      location.reload();
     }
   }, []);
   return (

@@ -149,7 +149,7 @@ const EndgameScoringPage = () => {
           <div style={{ flex: "0.25", width: "100%" }}>
             <ProceedBackButton
               back={true}
-              nextPage="/teleop-scoring"
+              nextPage="teleop-scoring"
               inputs={{
                 ...(states?.inputs || {}),
                 shallowClimbAttempted,
@@ -164,7 +164,7 @@ const EndgameScoringPage = () => {
           </div>
           <div style={{ flex: "1", width: "100%" }}>
             <ProceedBackButton
-              nextPage={`/game-start`}
+              nextPage={`game-start`}
               inputs={{
                 ...(states?.inputs || {}),
                 shallowClimbAttempted,

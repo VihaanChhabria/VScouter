@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-ac6e1177'], (function (workbox) { 'use strict';
+define(['./workbox-2fd1e3b5'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -82,7 +82,7 @@ define(['./workbox-ac6e1177'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "index.html",
-    "revision": "0.4cp623qrijo"
+    "revision": "0.hsvl0imm2fo"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
@@ -90,30 +90,27 @@ define(['./workbox-ac6e1177'], (function (workbox) { 'use strict';
   }));
   workbox.registerRoute(({
     request
-  }) => request.destination === "document", new workbox.NetworkFirst({
+  }) => request.destination === "document", new workbox.StaleWhileRevalidate({
     "cacheName": "html-cache",
     plugins: []
   }), 'GET');
   workbox.registerRoute(({
     request
-  }) => request.destination === "script", new workbox.NetworkFirst({
+  }) => request.destination === "script", new workbox.StaleWhileRevalidate({
     "cacheName": "js-cache",
     plugins: []
   }), 'GET');
   workbox.registerRoute(({
     request
-  }) => request.destination === "style", new workbox.NetworkFirst({
+  }) => request.destination === "style", new workbox.StaleWhileRevalidate({
     "cacheName": "css-cache",
     plugins: []
   }), 'GET');
   workbox.registerRoute(({
     request
-  }) => request.destination === "image", new workbox.NetworkFirst({
+  }) => request.destination === "image", new workbox.StaleWhileRevalidate({
     "cacheName": "image-cache",
-    plugins: [new workbox.ExpirationPlugin({
-      maxEntries: 50,
-      maxAgeSeconds: 2592000
-    })]
+    plugins: []
   }), 'GET');
 
 }));

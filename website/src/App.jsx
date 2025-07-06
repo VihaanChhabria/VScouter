@@ -61,7 +61,7 @@ function App() {
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+      navigator.serviceWorker.register("/ui/sw.js", { scope: "/ui/" });
     }
   }, []);
 

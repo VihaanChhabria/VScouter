@@ -16,6 +16,7 @@
         react(),
         VitePWA({
           scope: "/ui/",
+          base: "/ui/",
           registerType: "autoUpdate",
           devOptions: {
             enabled: false,

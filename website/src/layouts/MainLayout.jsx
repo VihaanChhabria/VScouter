@@ -8,20 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const MainLayout = () => {
   useEffect(() => {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (const registration of registrations) {
-        // Unregister the service worker that is not scoped to /ui/
-        // This is to ensure that the service worker is only active for the /ui/ path
-        if (!registration.scope.includes("/ui/")) {
-          registration.unregister();
-          console.log(
-            "Unregistered service worker not scoped to /ui/:",
-            registration.scope
-          );
-          setTimeout(() => {}, 200);
-        }
-      }
-    });
 
     if (window.location.pathname === "/") {
       window.location.replace("/home");
@@ -31,7 +17,7 @@ const MainLayout = () => {
     // if online
     // reloading to get website recached if there is a new update of the website
     if (
-      window.location.pathname === "/" &&
+      window.location.pathname === "/ui/" &&
       new Date().getTime() - localStorage.getItem("lastWebsiteGet") >= 10000 &&
       navigator.onLine
     ) {

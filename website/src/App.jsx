@@ -62,6 +62,21 @@ function App() {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/ui/sw.js", { scope: "/ui/" });
+
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (const registration of registrations) {
+        // Unregister the service worker that is not scoped to /ui/
+        // This is to ensure that the service worker is only active for the /ui/ path
+        if (!registration.scope.includes("/ui/")) {
+          registration.unregister();
+          console.log(
+            "Unregistered service worker not scoped to /ui/:",
+            registration.scope
+          );
+          setTimeout(() => {}, 200);
+        }
+      }
+    });
     }
   }, []);
 

@@ -143,7 +143,10 @@ const TeamNumberPromptPage = () => {
             <ProceedBackButton
               message={"Submit"}
               onClick={() => {
-                if (teamNumber === null || teamNumber === "") {
+                if (skip) {
+                  toast.success("Skipping team number submission.");
+                  return true;
+                } else if (teamNumber === null || teamNumber === "") {
                   toast.error("Please enter a team number before submitting.");
                   return false; // Indicate that the submission failed
                 }

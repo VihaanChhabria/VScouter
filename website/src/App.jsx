@@ -20,6 +20,7 @@ import ParseDataPage from "./pages/ParseDataPage";
 import MatchDataPage from "./pages/MatchDataPage";
 import MatchDataOnlinePage from "./pages/MatchDataOnlinePage";
 import MatchDataOfflinePage from "./pages/MatchDataOfflinePage";
+import TeamNumberPromptPage from "./pages/TeamNumberPromptPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -42,29 +43,26 @@ function App() {
     };
   }, []);
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/game-start" element={<GameStartPage />} />
-        <Route path="/auto-start" element={<AutoStartPage />} />
-        <Route path="/auto-scoring" element={<AutoScoringPage />} />
-        <Route path="/teleop-scoring" element={<TeleopScoringPage />} />
-        <Route path="/endgame-scoring" element={<EndgameScoringPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/parse-data" element={<ParseDataPage />} />
-        <Route path="/match-data" element={<MatchDataPage />} />
-        <Route path="/match-data/online" element={<MatchDataOnlinePage />} />
-        <Route path="/match-data/offline" element={<MatchDataOfflinePage />} />
-      </Route>
-    )
-  );
+  const basePaths = ["/", "/ui/"];
 
-  useEffect(() => {
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("/sw.js");
-    }
-  }, []);
+  const routes = basePaths.map((base) => (
+    <Route path={base} element={<MainLayout />} key={base}>
+      <Route index element={<HomePage />} />
+      <Route path="game-start" element={<GameStartPage />} />
+      <Route path="auto-start" element={<AutoStartPage />} />
+      <Route path="auto-scoring" element={<AutoScoringPage />} />
+      <Route path="teleop-scoring" element={<TeleopScoringPage />} />
+      <Route path="endgame-scoring" element={<EndgameScoringPage />} />
+      <Route path="settings" element={<SettingsPage />} />
+      <Route path="parse-data" element={<ParseDataPage />} />
+      <Route path="match-data" element={<MatchDataPage />} />
+      <Route path="match-data/online" element={<MatchDataOnlinePage />} />
+      <Route path="match-data/offline" element={<MatchDataOfflinePage />} />
+      <Route path="team-number-prompt" element={<TeamNumberPromptPage />} />
+    </Route>
+  ));
+
+  const router = createBrowserRouter(createRoutesFromElements(routes));
 
   return <RouterProvider router={router} />;
 }

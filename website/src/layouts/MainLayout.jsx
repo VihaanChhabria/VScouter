@@ -8,6 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const MainLayout = () => {
   useEffect(() => {
+
+    if (window.location.hostname.includes("vscouter-docs.netlify.app")) {
+      window.location.replace("https://vscouter.netlify.app/home/");
+      return;
+    }
+
     // if online
     if (navigator.onLine) {
       if (!localStorage.getItem("lastWebsiteGet")) {

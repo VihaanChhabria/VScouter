@@ -1,0 +1,140 @@
+import React, { useState } from "react";
+import EndgameScoringToggle from "../components/EndgameScoringComponents/EndgameScoringToggle";
+import ProceedBackButton from "../components/ProceedBackButton";
+import { toast } from "react-toastify";
+
+const TeamNumberPromptPage = () => {
+  const [skip, setSkip] = useState(false);
+
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "90%",
+          height: "90%",
+          backgroundColor: "#3B3B3B",
+          borderColor: "#1D1E1E",
+          borderWidth: "2dvh",
+          borderRadius: "3.49dvh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "3dvh 2dvw",
+          gap: "1dvw", //edit this
+        }}
+      >
+        <h1
+          style={{
+            color: "#FFFFFF",
+            fontSize: "7dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Help Improve VScouter for Everyone!
+        </h1>
+        <h2
+          style={{
+            color: "#FFFFFF",
+            fontSize: "3dvh",
+            width: "80%",
+            textAlign: "center",
+            marginTop: "3dvh",
+          }}
+        >
+          We noticed you've used VScouter a few times now; awesome!
+        </h2>
+
+        <h2
+          style={{
+            color: "#FFFFFF",
+            fontSize: "3dvh",
+            textAlign: "center",
+            width: "80%",
+          }}
+        >
+          If you're part of an FRC team, we'd love it if you could share your
+          team number. This helps us understand how teams are using the app and
+          improve it for everyone.
+        </h2>
+
+        <div
+          style={{
+            width: "80%",
+            height: "40%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "2dvw",
+            marginTop: "4%",
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Team #"
+            style={{
+              width: "20%",
+              height: "25%",
+              padding: "1dvh",
+              fontSize: "3dvh",
+              borderRadius: "0.5dvh",
+              border: "1px solid #1D1E1E",
+            }}
+          />
+
+          <div style={{ height: "60%", width: "20%" }}>
+            <EndgameScoringToggle
+              question={"I am not part of a FRC team or am just looking."}
+              selected={skip}
+              setSelected={setSkip}
+              fontSize="2.25dvh"
+            />
+          </div>
+
+          <div
+            style={{
+              width: "30%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              gap: "5%",
+              marginLeft: "15%",
+            }}
+          >
+            <div style={{ width: "100%", height: "50%" }}>
+              <ProceedBackButton
+                message={"Remind Me Later"}
+                onClick={() => {
+                  toast.success("We will remind you later!");
+                }}
+                back={true}
+                textSize="2.5dvh"
+              />
+            </div>
+
+            <ProceedBackButton
+              message={"Submit"}
+              onClick={() => {
+                toast.success("Thank you for your input!");
+              }}
+              textSize="5dvh"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TeamNumberPromptPage;

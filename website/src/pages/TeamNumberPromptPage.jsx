@@ -3,8 +3,23 @@ import EndgameScoringToggle from "../components/EndgameScoringComponents/Endgame
 import ProceedBackButton from "../components/ProceedBackButton";
 import { toast } from "react-toastify";
 
+import supabase from "../utils/supabase.js";
+
 const TeamNumberPromptPage = () => {
   const [skip, setSkip] = useState(false);
+  const [teamNumber, setTeamNumber] = useState("");
+
+  const handleSubmit = async () => {
+    const { data, error } = await supabase
+      .from("teams")
+      .insert([{ team_num: parseInt(teamNumber) }]);
+
+    if (error) {
+      toast.error("Error submitting team number: " + error);
+    }
+
+    toast.success("Thank you for submitting your team number!");
+  };
 
   return (
     <div
@@ -79,7 +94,7 @@ const TeamNumberPromptPage = () => {
           }}
         >
           <input
-            type="text"
+            type="number"
             placeholder="Team #"
             style={{
               width: "20%",
@@ -89,6 +104,8 @@ const TeamNumberPromptPage = () => {
               borderRadius: "0.5dvh",
               border: "1px solid #1D1E1E",
             }}
+            value={teamNumber}
+            onChange={(e) => setTeamNumber(e.target.value)}
           />
 
           <div style={{ height: "60%", width: "20%" }}>
@@ -126,7 +143,12 @@ const TeamNumberPromptPage = () => {
             <ProceedBackButton
               message={"Submit"}
               onClick={() => {
-                toast.success("Thank you for your input!");
+                if (teamNumber === null || teamNumber === "") {
+                  toast.error("Please enter a team number before submitting.");
+                  return false; // Indicate that the submission failed
+                }
+                handleSubmit();
+                return true;
               }}
               textSize="5dvh"
             />

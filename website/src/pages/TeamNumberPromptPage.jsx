@@ -19,6 +19,8 @@ const TeamNumberPromptPage = () => {
     }
 
     toast.success("Thank you for submitting your team number!");
+
+    localStorage.setItem("teamNumber", teamNumber);
   };
 
   return (
@@ -133,7 +135,8 @@ const TeamNumberPromptPage = () => {
               <ProceedBackButton
                 message={"Remind Me Later"}
                 onClick={() => {
-                  toast.success("We will remind you later!");
+                  toast.success("We will remind you after you next 5 visits!");
+                  localStorage.setItem("lastRemindMeLater", localStorage.getItem("siteVisits"));
                 }}
                 back={true}
                 textSize="2.5dvh"

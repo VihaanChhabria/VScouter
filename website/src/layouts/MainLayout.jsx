@@ -5,6 +5,7 @@ import MainLayoutPortraitWarning from "../components/MainLayoutComponents/MainLa
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import supabase from "../utils/supabase";
 
 const MainLayout = () => {
   const navigate = useNavigate();
@@ -27,9 +28,28 @@ const MainLayout = () => {
         window.location.pathname === "/ui/") &&
       parseInt(localStorage.getItem("siteVisits") || "0") >=
         parseInt(localStorage.getItem("lastRemindMeLater") || "0") + 5 &&
-      (localStorage.getItem("teamNumber") || "") === ""
+      (localStorage.getItem("sentTeamNumber") || "false") === "false"
     ) {
       navigate("/team-number-prompt");
+    }
+
+    if (
+      navigator.onLine &&
+      (localStorage.getItem("sentTeamNumber") || "false") === "false" &&
+      (localStorage.getItem("teamNumber") || "") !== ""
+    ) {
+      const submitTeamNumber = async () => {
+        const { data, error } = await supabase
+          .from("teams")
+          .insert([{ team_num: parseInt(localStorage.getItem("teamNumber") || "0000") }]);
+
+        if (error) {
+          console.log("Error submitting team number:", error);
+          return;
+        }
+        localStorage.setItem("sentTeamNumber", "true");
+      };
+      submitTeamNumber();
     }
 
     // if online

@@ -10,12 +10,19 @@ const TeamNumberPromptPage = () => {
   const [teamNumber, setTeamNumber] = useState("");
 
   const handleSubmit = async () => {
-    const { data, error } = await supabase
-      .from("teams")
-      .insert([{ team_num: parseInt(teamNumber) }]);
+    if (navigator.onLine) {
+      const { data, error } = await supabase
+        .from("teams")
+        .insert([{ team_num: parseInt(teamNumber) }]);
 
-    if (error) {
-      toast.error("Error submitting team number: " + error);
+      if (error) {
+        toast.error("Error submitting team number: " + error);
+      } else {
+        localStorage.setItem("sentTeamNumber", "true");
+      }
+      
+    } else {  // offline
+      localStorage.setItem("sentTeamNumber", "false");
     }
 
     toast.success("Thank you for submitting your team number!");
@@ -136,7 +143,10 @@ const TeamNumberPromptPage = () => {
                 message={"Remind Me Later"}
                 onClick={() => {
                   toast.success("We will remind you after you next 5 visits!");
-                  localStorage.setItem("lastRemindMeLater", localStorage.getItem("siteVisits"));
+                  localStorage.setItem(
+                    "lastRemindMeLater",
+                    localStorage.getItem("siteVisits")
+                  );
                 }}
                 back={true}
                 textSize="2.5dvh"

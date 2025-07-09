@@ -64,7 +64,7 @@ const MainLayout = () => {
         10000
       ) {
         localStorage.setItem("lastWebsiteGet", new Date().getTime());
-        // location.reload();
+        location.reload();
       }
     }
   }, []);

@@ -67,7 +67,7 @@ const HomePage = () => {
             }}
           >
             <ProceedBackButton
-              nextPage={`/game-start`}
+              nextPage={`game-start`}
               message={"Start Scouting"}
             />
           </div>
@@ -87,7 +87,7 @@ const HomePage = () => {
               height: "100%",
             }}
           >
-            <ProceedBackButton nextPage={`/settings`} message={"Settings"} />
+            <ProceedBackButton nextPage={`settings`} message={"Settings"} />
           </div>
 
           <div

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useNavigateWithBase } from "../utils/useNavigateWithBase";
 
 const MatchDataOfflinePage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigateWithBase();
 
   const [selectedData, setSelectedData] = useState("");
 
@@ -13,7 +13,7 @@ const MatchDataOfflinePage = () => {
     const getText = async () => {
       try {
         const text = await file.text();
-        
+
         setSelectedData(JSON.stringify(JSON.parse(text).matches));
         toast.success("Data Loaded");
       } catch {
@@ -25,8 +25,7 @@ const MatchDataOfflinePage = () => {
 
   const doneClick = () => {
     localStorage.setItem("matchData", selectedData);
-    
-    
+
     toast.success(
       "Data Submitted: " +
         JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
@@ -59,7 +58,7 @@ const MatchDataOfflinePage = () => {
           left: "2.33dvw",
         }}
         onClick={() => {
-          navigate("/match-data");
+          navigate("match-data");
         }}
       >
         <h1

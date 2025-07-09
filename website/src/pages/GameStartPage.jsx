@@ -17,7 +17,6 @@ const GameStartPage = () => {
   const location = useLocation();
   const states = location.state;
   console.log(states.inputs);
-  
 
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
   const [alliance, setAlliance] = useState(states?.inputs?.alliance || null);
@@ -143,7 +142,7 @@ const GameStartPage = () => {
                 </div>
                 <div style={{ flexBasis: "70%" }}>
                   <ProceedBackButton
-                    nextPage={`/auto-start`}
+                    nextPage={`auto-start`}
                     inputs={{
                       ...(states?.inputs || {}),
                       matchNumber: matchNumber,

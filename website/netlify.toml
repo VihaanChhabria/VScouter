@@ -1,0 +1,27 @@
+[[redirects]]
+  from = "/home/*"
+  to = "https://vscouter-landing.netlify.app/home/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/docs/*"
+  to = "https://vscouter-docs.netlify.app/docs/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ui"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/ui/*"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/docs"
+  to = "/docs/"
+  status = 301
+  force = true

@@ -31,16 +31,13 @@ function App() {
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-      document.body.style.display = "none"; // Trigger reflow
-      document.body.offsetHeight; // Force reflow
-      document.body.style.display = ""; // Restore display
+      document.body.style.display = "none";
+      document.body.offsetHeight;
+      document.body.style.display = "";
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const basePaths = ["/", "/ui/"];

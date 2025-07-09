@@ -32,6 +32,8 @@ const ProceedBackButton = ({
   blink = false,
   stateStack = {},
   mode = "",
+  onClick = () => {},
+  textSize = "5.58dvh",
 }) => {
   const navigate = useNavigateWithBase();
   const location = useLocation();
@@ -47,6 +49,14 @@ const ProceedBackButton = ({
 
   /** Handler for the button being clicked */
   const proceedClick = () => {
+
+    const continueRunning = onClick();
+    if (continueRunning === false) {
+      // If the onClick function returns false, do not proceed
+      console.log("onClick returned false, not proceeding");
+      return;
+    }
+
     if (stateStack != {}) {
       localStorage.setItem(mode + "History", JSON.stringify(stateStack));
     }
@@ -131,12 +141,12 @@ const ProceedBackButton = ({
         <h1
           style={{
             color: "#FFFFFF",
-            fontSize: "5.58dvh",
+            fontSize: textSize,
             fontWeight: "bold",
             textAlign: "center",
           }}
         >
-          {back ? "Back" : message ? message : "Proceed"}
+          {message ? message : back ? "Back" : "Proceed"}
         </h1>
       </div>
     </div>

@@ -20,6 +20,7 @@ import ParseDataPage from "./pages/ParseDataPage";
 import MatchDataPage from "./pages/MatchDataPage";
 import MatchDataOnlinePage from "./pages/MatchDataOnlinePage";
 import MatchDataOfflinePage from "./pages/MatchDataOfflinePage";
+import TeamNumberPromptPage from "./pages/TeamNumberPromptPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -54,6 +55,7 @@ function App() {
       <Route path="match-data" element={<MatchDataPage />} />
       <Route path="match-data/online" element={<MatchDataOnlinePage />} />
       <Route path="match-data/offline" element={<MatchDataOfflinePage />} />
+      <Route path="team-number-prompt" element={<TeamNumberPromptPage />} />
     </Route>
   ));
 

@@ -1,6 +1,11 @@
 import React from "react";
 
-const EndgameScoringToggle = ({ question, selected, setSelected }) => {
+const EndgameScoringToggle = ({
+  question,
+  selected,
+  setSelected,
+  fontSize = "6dvh",
+}) => {
   return (
     <div
       style={{
@@ -13,12 +18,13 @@ const EndgameScoringToggle = ({ question, selected, setSelected }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        padding: "2dvh 1dvw",
       }}
       onClick={() => {
         setSelected(!selected);
       }}
     >
-      <h1 style={{ color: "#FFFFFF", fontSize: "6dvh", fontWeight: "bold" }}>
+      <h1 style={{ color: "#FFFFFF", fontSize: fontSize, fontWeight: "bold", textAlign: "center" }}>
         {question}
       </h1>
     </div>

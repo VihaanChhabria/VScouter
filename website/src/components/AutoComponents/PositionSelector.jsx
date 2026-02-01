@@ -4,7 +4,7 @@ import DriveIcon from "../../assets/DriveIcon.svg";
 import ShotIcon from "../../assets/ShotIcon.svg";
 import { toast } from "react-toastify";
 
-const PositionSelector = ({ driveType, robotPositions, setRobotPositions }) => {
+const PositionSelector = ({ driveType, robotPositions, setRobotPositions, showShotInfo}) => {
   const fieldWidthPercent = 75;
   const robotSize = 50;
 
@@ -184,6 +184,28 @@ const PositionSelector = ({ driveType, robotPositions, setRobotPositions }) => {
 
     return d;
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // glow effect on the last robot position that is a shot
+      const lastIndex = robotPositions.length - 1;
+
+      if (lastIndex < 0) return;
+      if (robotPositions[lastIndex].driveType !== "Shot" || showShotInfo) return;
+
+      const lastDiv = robotPositionsDivRef.current.querySelector(
+        `robot-position-${lastIndex}`,
+      );
+      if (lastDiv) {
+        lastDiv.style.boxShadow = `0 0 10px 5px rgba(255, 152, 0, 0.7)`;
+        setTimeout(() => {
+          lastDiv.style.boxShadow = "none";
+        }, 500);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [robotPositions]);
 
   return (
     <div style={{ width: "100%", height: "100%" }}>

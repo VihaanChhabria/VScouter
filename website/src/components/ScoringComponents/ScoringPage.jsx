@@ -44,7 +44,7 @@ const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
   //   JSON.parse(localStorage.getItem(mode + "History"))?.slice(0, -1) || [],
   // );
 
-  const [driveType, setDriveType] = useState("");
+  const [driveType, setDriveType] = useState("Shot");
   const [robotPositions, setRobotPositions] = useState([]);
   const [showShotInfo, setShowShotInfo] = useState(false);
 
@@ -123,6 +123,7 @@ const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
             driveType={driveType}
             robotPositions={robotPositions}
             setRobotPositions={setRobotPositions}
+            showShotInfo={showShotInfo}
           />
         </div>
       </div>

@@ -5,7 +5,7 @@ import HomeFullscreenButton from "../components/HomeComponents/HomeFullscreenBut
 import HomeDumpDataButton from "../components/HomeComponents/HomeDumpDataButton";
 
 import VScouterLogo from "../assets/VScouterLogo.png";
-import FRCReefscapeLogo from "../assets/FRCReefscapeLogo.svg";
+import FRCLogo from "../assets/FRCLogo.svg";
 
 const HomePage = () => {
   return (
@@ -37,16 +37,15 @@ const HomePage = () => {
             src={VScouterLogo}
             style={{
               width: "auto",
-              height: "85%",
+              height: "80%",
               borderRadius: "6dvh",
             }}
           />
           <img
-            src={FRCReefscapeLogo}
+            src={FRCLogo}
             style={{
               width: "auto",
-              height: "15%",
-              filter: "invert(100%)",
+              height: "20%",
             }}
           />
         </div>

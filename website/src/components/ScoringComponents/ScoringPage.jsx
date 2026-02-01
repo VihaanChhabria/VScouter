@@ -4,252 +4,82 @@ import ScoringCoralSection from "./ScoringCoral/ScoringCoralSection";
 import ScoringAlgaeSection from "./ScoringAlgae/ScoringAlgaeSection";
 import ProceedBackButton from "../ProceedBackButton";
 
-const ScoringPage = ({
-  statePath,
-  mode,
-  nextPage,
-  pastPage,
-  pickCoralData,
-  pickAlgaeData,
-}) => {
+import SelectOptions from "../SelectOptions";
+import PositionSelector from "../AutoComponents/PositionSelector";
+import ScoringPickup from "./ScoringPickup";
+
+const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
   const location = useLocation();
   const states = location.state;
 
   const [placeCoralL1Count, setPlaceCoralL1Count] = useState(
-    statePath?.coral?.placeL1Count || 0
+    statePath?.coral?.placeL1Count || 0,
   );
   const [placeCoralL2Count, setPlaceCoralL2Count] = useState(
-    statePath?.coral?.placeL2Count || 0
+    statePath?.coral?.placeL2Count || 0,
   );
   const [placeCoralL3Count, setPlaceCoralL3Count] = useState(
-    statePath?.coral?.placeL3Count || 0
+    statePath?.coral?.placeL3Count || 0,
   );
   const [placeCoralL4Count, setPlaceCoralL4Count] = useState(
-    statePath?.coral?.placeL4Count || 0
+    statePath?.coral?.placeL4Count || 0,
   );
   const [placeCoralDropMissCount, setPlaceCoralDropMissCount] = useState(
-    statePath?.coral?.placeDropMissCount || 0
+    statePath?.coral?.placeDropMissCount || 0,
   );
-
-  const placeCoralData = [
-    {
-      position: "L4",
-      count: placeCoralL4Count,
-      setCount: setPlaceCoralL4Count,
-    },
-    {
-      position: "L3",
-      count: placeCoralL3Count,
-      setCount: setPlaceCoralL3Count,
-    },
-    {
-      position: "L2",
-      count: placeCoralL2Count,
-      setCount: setPlaceCoralL2Count,
-    },
-    {
-      position: "L1",
-      count: placeCoralL1Count,
-      setCount: setPlaceCoralL1Count,
-    },
-    {
-      position: "Drop/Miss",
-      count: placeCoralDropMissCount,
-      setCount: setPlaceCoralDropMissCount,
-    },
-  ];
 
   // Algae States
-
   const [placeAlgaeNetShot, setPlaceAlgaeNetShot] = useState(
-    statePath?.algae?.placeNetShot || 0
+    statePath?.algae?.placeNetShot || 0,
   );
   const [placeAlgaeProcessor, setPlaceAlgaeProcessor] = useState(
-    statePath?.algae?.placeProcessor || 0
+    statePath?.algae?.placeProcessor || 0,
   );
   const [placeAlgaeDropMiss, setPlaceAlgaeDropMiss] = useState(
-    statePath?.algae?.placeDropMiss || 0
+    statePath?.algae?.placeDropMiss || 0,
   );
 
-  const placeAlgaeData = [
-    {
-      position: "Net Shot",
-      count: placeAlgaeNetShot,
-      setCount: setPlaceAlgaeNetShot,
-    },
-    {
-      position: "Processor",
-      count: placeAlgaeProcessor,
-      setCount: setPlaceAlgaeProcessor,
-    },
-    {
-      position: "Drop/Miss",
-      count: placeAlgaeDropMiss,
-      setCount: setPlaceAlgaeDropMiss,
-    },
-  ];
+  // // State stack for undo functionality
+  // const [stateStack, setStateStack] = useState(
+  //   JSON.parse(localStorage.getItem(mode + "History"))?.slice(0, -1) || [],
+  // );
 
-  // only for auto scoring
-  const [passedStartLine, setPassedStartLine] = useState(
-    statePath?.passedStartLine || false
-  );
-  const [coralPreloaded, setCoralPreloaded] = useState(
-    statePath?.coralPreloaded || true
-  );
+  const [driveType, setDriveType] = useState("");
+  const [robotPositions, setRobotPositions] = useState([]);
+  const [showShotInfo, setShowShotInfo] = useState(false);
 
-  // State stack for undo functionality
-  const [stateStack, setStateStack] = useState(
-    JSON.parse(localStorage.getItem(mode + "History"))?.slice(0, -1) || []
-  );
+  const [hopperPercent, setHopperPercent] = useState("80%");
+  const [shotsPercent, setShotsPercent] = useState("80%");
 
-  const [autoEnded, setAutoEnded] = useState(false);
+  const [stateStack, setStateStack] = useState([]);
 
-  // Function to handle state changes and push current state to stack
+  // function to handle state changes and push current state to stack
   useEffect(() => {
-    // default passing the starting line because you cant do anything without moving
-    if (mode == "auto" && (placeAlgaeData.some(item => item.count > 0) || placeCoralData.some(item => item.count > 0))) {
-      setPassedStartLine(true);
-      setTimeout(() => {
-        setAutoEnded(true);
-      }, 15000);
-    } else {
-      setPassedStartLine(false)
-    }
-    setStateStack([
-      ...stateStack,
-      Object.assign(
-        {
-          placeCoralL1Count,
-          placeCoralL2Count,
-          placeCoralL3Count,
-          placeCoralL4Count,
-          placeCoralDropMissCount,
-
-          placeAlgaeNetShot,
-          placeAlgaeProcessor,
-          placeAlgaeDropMiss,
-
-          coralPreloaded,
-        },
-        ...pickCoralData.map((singleCoralData) => {
-          return {
-            ["pickCoral" + singleCoralData.position + "Count"]:
-              singleCoralData.count,
-          };
-        }),
-        ...pickAlgaeData.map((singleAlgaeData) => {
-          return {
-            ["pickAlgae" + singleAlgaeData.position + "Count"]:
-              singleAlgaeData.count,
-          };
-        })
-      ),
-    ]);
-  }, [
-    ...pickCoralData.map((singleCoralData) => {
-      return singleCoralData.count;
-    }),
-    placeCoralL1Count,
-    placeCoralL2Count,
-    placeCoralL3Count,
-    placeCoralL4Count,
-    placeCoralDropMissCount,
-    ...pickAlgaeData.map((singleAlgaeData) => {
-      return singleAlgaeData.count;
-    }),
-    placeAlgaeNetShot,
-    placeAlgaeProcessor,
-    placeAlgaeDropMiss,
-    coralPreloaded,
-  ]);
+    setStateStack((prev) => [...prev, robotPositions]);
+  }, [robotPositions]);
 
   // Function to handle undo operation
   const handleUndo = () => {
-    console.log(stateStack)
     if (stateStack.length > 1) {
-      console.log("Undo1");
       stateStack.pop();
       const previousState = stateStack.pop();
-      for (let i = 0; i < pickCoralData.length; i++) {
-        pickCoralData[i].setCount(
-          previousState["pickCoral" + pickCoralData[i].position + "Count"]
-        );
-      }
-      setPlaceCoralL1Count(previousState.placeCoralL1Count);
-      setPlaceCoralL2Count(previousState.placeCoralL2Count);
-      setPlaceCoralL3Count(previousState.placeCoralL3Count);
-      setPlaceCoralL4Count(previousState.placeCoralL4Count);
-      setPlaceCoralDropMissCount(previousState.placeCoralDropMissCount);
-
-      for (let i = 0; i < pickAlgaeData.length; i++) {
-        pickAlgaeData[i].setCount(
-          previousState["pickAlgae" + pickAlgaeData[i].position + "Count"]
-        );
-      }
-
-      setPlaceAlgaeNetShot(previousState.placeAlgaeNetShot);
-      setPlaceAlgaeProcessor(previousState.placeAlgaeProcessor);
-      setPlaceAlgaeDropMiss(previousState.placeAlgaeDropMiss);
-      setPassedStartLine(previousState.passedStartLine);
-      setStateStack([...stateStack]);
-
-      setCoralPreloaded(previousState.coralPreloaded);
+      
+      setRobotPositions(previousState);
     }
   };
 
-  const pickCoralKeybinds = ["q", "w", "e", "r"];
-  const pickAlgaeKeybinds = ["u", "i", "o", "p"];
   useEffect(() => {
-    const onEvent = (event) => {
-      const buttonClicked = event?.key || null;
-      let idToClick = null;
-      switch (buttonClicked) {
-        case "1":
-          idToClick = "L1CoralPlace";
-          break;
-        case "2":
-          idToClick = "L2CoralPlace";
-          break;
-        case "3":
-          idToClick = "L3CoralPlace";
-          break;
-        case "4":
-          idToClick = "L4CoralPlace";
-          break;
-        case "`":
-          idToClick = "Drop/MissCoralPlace";
-          break;
-        case "9":
-          idToClick = "Net ShotAlgaePlace";
-          break;
-        case "0":
-          idToClick = "ProcessorAlgaePlace";
-          break;
-        case "-":
-          idToClick = "Drop/MissAlgaePlace";
-          break;
-        default:
-          pickCoralData.map((singleCoralPickData, index) => {
-            buttonClicked == pickCoralKeybinds[index] &&
-              (idToClick = singleCoralPickData.position + "CoralPick");
-          });
-          pickAlgaeData.map((singleAlgaePickData, index) => {
-            buttonClicked == pickAlgaeKeybinds[index] &&
-              (idToClick = singleAlgaePickData.position + "AlgaePick");
-          });
-          break;
-      }
-      if (idToClick) {
-        document.getElementById(idToClick).click();
-      }
-    };
-
-    document.addEventListener("keyup", onEvent);
-
-    return () => {
-      document.removeEventListener("keyup", onEvent);
-    };
-  }, []);
+    if (
+      robotPositions.length > 0 &&
+      robotPositions[robotPositions.length - 1].driveType === "Shot" &&
+      !robotPositions[robotPositions.length - 1].shotInfo
+    ) {
+      setShowShotInfo(true);
+    } else {
+      setShowShotInfo(false);
+      setDriveType("Drive");
+    }
+  }, [robotPositions]);
 
   return (
     <div
@@ -266,7 +96,7 @@ const ScoringPage = ({
     >
       <div
         style={{
-          width: "50%",
+          width: "60%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -275,38 +105,30 @@ const ScoringPage = ({
           gap: "1.5dvh",
         }}
       >
-        {mode == "auto" && (
-          <div
-            style={{
-              width: "100%",
-              height: "15%",
-              backgroundColor: passedStartLine ? "#507144" : "#242424",
-              border: "1.63dvh solid #1D1E1E",
-              borderRadius: "2dvh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            onClick={() => setPassedStartLine(!passedStartLine)}
-          >
-            <h1
-              style={{ color: "white", fontSize: "3.5dvh", fontWeight: "700" }}
-            >
-              Passed Starting Line
-            </h1>
-          </div>
-        )}
-
-        <div style={{ width: "100%", height: mode == "auto" ? "85%" : "100%" }}>
-          <ScoringCoralSection
-            pickData={pickCoralData}
-            placeData={placeCoralData}
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#3B3B3B",
+            borderColor: "#1D1E1E",
+            borderWidth: "2dvh",
+            borderRadius: "3.49dvh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <PositionSelector
+            driveType={driveType}
+            robotPositions={robotPositions}
+            setRobotPositions={setRobotPositions}
           />
         </div>
       </div>
       <div
         style={{
-          width: "50%",
+          width: "40%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -318,7 +140,6 @@ const ScoringPage = ({
         <div
           style={{
             width: "100%",
-            height: "35%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -342,7 +163,7 @@ const ScoringPage = ({
                 fontWeight: "bold",
               }}
             >
-              {mode.charAt(0).toUpperCase() + mode.slice(1)}
+              Auto
             </h1>
           </div>
 
@@ -378,44 +199,44 @@ const ScoringPage = ({
               >
                 <ProceedBackButton
                   mode={mode}
-                  stateStack={stateStack}
+                  // stateStack={stateStack}
                   nextPage={pastPage}
                   back={true}
-                  inputs={{
-                    ...(states?.inputs || {}),
-                    [mode]: {
-                      coral: Object.assign(
-                        {
-                          placeL1Count: placeCoralL1Count,
-                          placeL2Count: placeCoralL2Count,
-                          placeL3Count: placeCoralL3Count,
-                          placeL4Count: placeCoralL4Count,
-                          placeDropMissCount: placeCoralDropMissCount,
-                        },
-                        ...pickCoralData.map((singleCoralData) => ({
-                          ["pick" +
-                            singleCoralData.position.replace(" ", "") +
-                            "Count"]: singleCoralData.count,
-                        }))
-                      ),
-                      algae: Object.assign(
-                        {
-                          placeNetShot: placeAlgaeNetShot,
-                          placeProcessor: placeAlgaeProcessor,
-                          placeDropMiss: placeAlgaeDropMiss,
-                        },
-                        ...pickAlgaeData.map((singleAlgaeData) => ({
-                          ["pick" +
-                            singleAlgaeData.position.replace(" ", "") +
-                            "Count"]: singleAlgaeData.count,
-                        }))
-                      ),
-                      ...(mode === "auto" && {
-                        passedStartLine,
-                        coralPreloaded,
-                      }),
-                    },
-                  }}
+                  // inputs={{
+                  //   ...(states?.inputs || {}),
+                  //   [mode]: {
+                  //     coral: Object.assign(
+                  //       {
+                  //         placeL1Count: placeCoralL1Count,
+                  //         placeL2Count: placeCoralL2Count,
+                  //         placeL3Count: placeCoralL3Count,
+                  //         placeL4Count: placeCoralL4Count,
+                  //         placeDropMissCount: placeCoralDropMissCount,
+                  //       },
+                  //       ...pickCoralData.map((singleCoralData) => ({
+                  //         ["pick" +
+                  //         singleCoralData.position.replace(" ", "") +
+                  //         "Count"]: singleCoralData.count,
+                  //       })),
+                  //     ),
+                  //     algae: Object.assign(
+                  //       {
+                  //         placeNetShot: placeAlgaeNetShot,
+                  //         placeProcessor: placeAlgaeProcessor,
+                  //         placeDropMiss: placeAlgaeDropMiss,
+                  //       },
+                  //       ...pickAlgaeData.map((singleAlgaeData) => ({
+                  //         ["pick" +
+                  //         singleAlgaeData.position.replace(" ", "") +
+                  //         "Count"]: singleAlgaeData.count,
+                  //       })),
+                  //     ),
+                  //     ...(mode === "auto" && {
+                  //       passedStartLine,
+                  //       coralPreloaded,
+                  //     }),
+                  //   },
+                  // }}
                 />
               </div>
               <div
@@ -447,51 +268,168 @@ const ScoringPage = ({
             <div style={{ width: "50%", height: "100%" }}>
               <ProceedBackButton
                 mode={mode}
-                stateStack={stateStack}
+                // stateStack={stateStack}
                 nextPage={nextPage}
-                blink={autoEnded}
-                inputs={{
-                  ...(states?.inputs || {}),
-                  [mode]: {
-                    coral: Object.assign(
-                      {
-                        placeL1Count: placeCoralL1Count,
-                        placeL2Count: placeCoralL2Count,
-                        placeL3Count: placeCoralL3Count,
-                        placeL4Count: placeCoralL4Count,
-                        placeDropMissCount: placeCoralDropMissCount,
-                      },
-                      ...pickCoralData.map((singleCoralData) => ({
-                        ["pick" +
-                          singleCoralData.position.replace(" ", "") +
-                          "Count"]: singleCoralData.count,
-                      }))
-                    ),
-                    algae: Object.assign(
-                      {
-                        placeNetShot: placeAlgaeNetShot,
-                        placeProcessor: placeAlgaeProcessor,
-                        placeDropMiss: placeAlgaeDropMiss,
-                      },
-                      ...pickAlgaeData.map((singleAlgaeData) => ({
-                        ["pick" +
-                          singleAlgaeData.position.replace(" ", "") +
-                          "Count"]: singleAlgaeData.count,
-                      }))
-                    ),
-                    ...(mode === "auto" && { passedStartLine }),
-                  },
-                }}
+                // inputs={{
+                //   ...(states?.inputs || {}),
+                //   [mode]: {
+                //     coral: Object.assign(
+                //       {
+                //         placeL1Count: placeCoralL1Count,
+                //         placeL2Count: placeCoralL2Count,
+                //         placeL3Count: placeCoralL3Count,
+                //         placeL4Count: placeCoralL4Count,
+                //         placeDropMissCount: placeCoralDropMissCount,
+                //       },
+                //       ...pickCoralData.map((singleCoralData) => ({
+                //         ["pick" +
+                //         singleCoralData.position.replace(" ", "") +
+                //         "Count"]: singleCoralData.count,
+                //       })),
+                //     ),
+                //     algae: Object.assign(
+                //       {
+                //         placeNetShot: placeAlgaeNetShot,
+                //         placeProcessor: placeAlgaeProcessor,
+                //         placeDropMiss: placeAlgaeDropMiss,
+                //       },
+                //       ...pickAlgaeData.map((singleAlgaeData) => ({
+                //         ["pick" +
+                //         singleAlgaeData.position.replace(" ", "") +
+                //         "Count"]: singleAlgaeData.count,
+                //       })),
+                //     ),
+                //     ...(mode === "auto" && { passedStartLine }),
+                //   },
+                // }}
               />
             </div>
           </div>
         </div>
-        <div style={{ width: "100%", height: "65%" }}>
-          <ScoringAlgaeSection
-            pickData={pickAlgaeData}
-            placeData={placeAlgaeData}
-          />
-        </div>
+        {showShotInfo ? (
+          <div
+            style={{
+              backgroundColor: "#3B3B3B",
+              borderColor: "#1D1E1E",
+              borderWidth: "2dvh",
+              borderRadius: "3.49dvh",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-start",
+              alignItems: "center",
+              gap: "1dvh",
+              padding: "2.5dvh",
+            }}
+          >
+            {/* Title */}
+            <h2
+              style={{
+                color: "#FFFFFF",
+                fontSize: "3.5dvh",
+                fontWeight: "bold",
+              }}
+            >
+              Select Shooting Data
+            </h2>
+
+            {/* Percent of Hopper Filled */}
+            <div
+              style={{
+                width: "90%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1dvh",
+              }}
+            >
+              <h1
+                style={{
+                  color: "#FFFFFF",
+                  fontSize: "3dvh",
+                  fontWeight: "500",
+                }}
+              >
+                Percent of Hopper Filled ±10%
+              </h1>
+
+              <SelectOptions
+                optionsData={["20%", "50%", "80%"]}
+                optionSelected={hopperPercent}
+                setOptionSelected={setHopperPercent}
+                flexDirection="row"
+              />
+            </div>
+
+            {/* Percent of Shots Successful */}
+            <div
+              style={{
+                width: "90%",
+                display: "flex",
+                flexDirection: "column",
+                gap: "1dvh",
+              }}
+            >
+              <h1
+                style={{
+                  color: "#FFFFFF",
+                  fontSize: "3dvh",
+                  fontWeight: "500",
+                }}
+              >
+                Percent of Shots Successful ±10%
+              </h1>
+
+              <SelectOptions
+                optionsData={["20%", "50%", "80%"]}
+                optionSelected={shotsPercent}
+                setOptionSelected={setShotsPercent}
+                flexDirection="row"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              onClick={() => {
+                setRobotPositions((prev) => [
+                  ...prev.slice(0, prev.length - 1),
+                  {
+                    x: robotPositions[robotPositions.length - 1].x,
+                    y: robotPositions[robotPositions.length - 1].y,
+                    driveType: "Shot",
+                    shotInfo: {
+                      hopperPercent: hopperPercent,
+                      shotsPercent: shotsPercent,
+                    },
+                  },
+                ]);
+              }}
+              style={{
+                marginTop: "1dvh",
+                padding: "1.5dvh 4dvh",
+                fontSize: "3.5dvh",
+                fontWeight: "bold",
+                color: "#FFFFFF",
+                backgroundColor: "#507144",
+                border: "none",
+                borderRadius: "2dvh",
+                cursor: "pointer",
+                transition: "background-color 0.2s",
+              }}
+            >
+              Submit
+            </button>
+          </div>
+        ) : (
+          <div style={{ height: "65%", width: "100%" }}>
+            <SelectOptions
+              optionsData={["Drive", "Shot"]}
+              optionSelected={driveType}
+              setOptionSelected={setDriveType}
+              flexDirection="column"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

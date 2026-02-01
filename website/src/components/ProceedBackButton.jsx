@@ -29,7 +29,6 @@ const ProceedBackButton = ({
   nextPage = "/",
   inputs = {},
   message = null,
-  blink = false,
   stateStack = {},
   mode = "",
   onClick = () => {},
@@ -38,18 +37,8 @@ const ProceedBackButton = ({
   const navigate = useNavigateWithBase();
   const location = useLocation();
 
-  const [turnBoxRed, setTurnBoxRed] = useState(false);
-  useEffect(() => {
-    if (blink) {
-      setTimeout(() => {
-        setTurnBoxRed(!turnBoxRed);
-      }, 600);
-    }
-  }, [blink, turnBoxRed]);
-
   /** Handler for the button being clicked */
   const proceedClick = () => {
-
     const continueRunning = onClick();
     if (continueRunning === false) {
       // If the onClick function returns false, do not proceed
@@ -63,7 +52,7 @@ const ProceedBackButton = ({
     if (back) {
       // If the back prop is set to true, pass the inputs as props to the previous page
       inputs = Object.fromEntries(
-        Object.entries(inputs).filter(([key, value]) => value !== null)
+        Object.entries(inputs).filter(([key, value]) => value !== null),
       );
       console.log(inputs);
       navigate(nextPage, { state: { inputs } });
@@ -127,7 +116,7 @@ const ProceedBackButton = ({
           width: "100%",
           height: "100%",
           border: "1.63dvh solid #1D1E1E",
-          backgroundColor: turnBoxRed ? "#8B0000" : "#242424",
+          backgroundColor: "#242424",
           borderRadius: "3.49dvh",
           display: "flex",
           justifyContent: "center",

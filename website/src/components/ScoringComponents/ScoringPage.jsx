@@ -22,6 +22,18 @@ const ScoringPage = () => {
   const [hopperPercent, setHopperPercent] = useState("80%");
   const [shotsPercent, setShotsPercent] = useState("80%");
 
+  useEffect(() => {
+    const savedStack = JSON.parse(
+      localStorage.getItem("autoHistory") || "[[]]",
+    );
+
+    setStateStack(savedStack);
+
+    if (savedStack.length > 0) {
+      setRobotPositions(savedStack[savedStack.length - 1]);
+    }
+  }, []);
+
   // Function to handle undo operation
   const handleUndo = () => {
     if (stateStack.length <= 1) {

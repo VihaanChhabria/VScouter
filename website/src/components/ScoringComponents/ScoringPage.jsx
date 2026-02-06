@@ -1,48 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import ScoringCoralSection from "./ScoringCoral/ScoringCoralSection";
-import ScoringAlgaeSection from "./ScoringAlgae/ScoringAlgaeSection";
 import ProceedBackButton from "../ProceedBackButton";
 
 import SelectOptions from "../SelectOptions";
 import PositionSelector from "../AutoComponents/PositionSelector";
-import ScoringPickup from "./ScoringPickup";
+import { toast } from "react-toastify";
 
-const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
+const ScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
-  const [placeCoralL1Count, setPlaceCoralL1Count] = useState(
-    statePath?.coral?.placeL1Count || 0,
+  const [stateStack, setStateStack] = useState(
+    JSON.parse(localStorage.getItem("autoHistory") || "[[]]"),
   );
-  const [placeCoralL2Count, setPlaceCoralL2Count] = useState(
-    statePath?.coral?.placeL2Count || 0,
-  );
-  const [placeCoralL3Count, setPlaceCoralL3Count] = useState(
-    statePath?.coral?.placeL3Count || 0,
-  );
-  const [placeCoralL4Count, setPlaceCoralL4Count] = useState(
-    statePath?.coral?.placeL4Count || 0,
-  );
-  const [placeCoralDropMissCount, setPlaceCoralDropMissCount] = useState(
-    statePath?.coral?.placeDropMissCount || 0,
-  );
-
-  // Algae States
-  const [placeAlgaeNetShot, setPlaceAlgaeNetShot] = useState(
-    statePath?.algae?.placeNetShot || 0,
-  );
-  const [placeAlgaeProcessor, setPlaceAlgaeProcessor] = useState(
-    statePath?.algae?.placeProcessor || 0,
-  );
-  const [placeAlgaeDropMiss, setPlaceAlgaeDropMiss] = useState(
-    statePath?.algae?.placeDropMiss || 0,
-  );
-
-  // // State stack for undo functionality
-  // const [stateStack, setStateStack] = useState(
-  //   JSON.parse(localStorage.getItem(mode + "History"))?.slice(0, -1) || [],
-  // );
+  const isUndoingRef = useRef(false);
 
   const [driveType, setDriveType] = useState("Shot");
   const [robotPositions, setRobotPositions] = useState([]);
@@ -51,23 +22,34 @@ const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
   const [hopperPercent, setHopperPercent] = useState("80%");
   const [shotsPercent, setShotsPercent] = useState("80%");
 
-  const [stateStack, setStateStack] = useState([]);
-
-  // function to handle state changes and push current state to stack
-  useEffect(() => {
-    setStateStack((prev) => [...prev, robotPositions]);
-  }, [robotPositions]);
-
   // Function to handle undo operation
   const handleUndo = () => {
-    if (stateStack.length > 1) {
-      stateStack.pop();
-      const previousState = stateStack.pop();
-      
-      setRobotPositions(previousState);
+    if (stateStack.length <= 1) {
+      toast.error("No more actions to undo!");
+      return;
     }
+
+    isUndoingRef.current = true;
+
+    const newStack = stateStack.slice(0, -1);
+    const previousState = newStack[newStack.length - 1];
+
+    setStateStack(newStack);
+    setRobotPositions(previousState);
   };
 
+  // function to handle undo operation and update state stack
+  useEffect(() => {
+    if (isUndoingRef.current) {
+      isUndoingRef.current = false;
+      return;
+    }
+
+    if (robotPositions.length === 0) return;
+
+    setStateStack((prev) => [...prev, [...robotPositions]]);
+  }, [robotPositions]);
+  // function to handle state changes and push current state to stack
   useEffect(() => {
     if (
       robotPositions.length > 0 &&
@@ -199,9 +181,9 @@ const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
                 }}
               >
                 <ProceedBackButton
-                  mode={mode}
-                  // stateStack={stateStack}
-                  nextPage={pastPage}
+                  mode={"auto"}
+                  stateStack={stateStack}
+                  nextPage={"game-start"}
                   back={true}
                   // inputs={{
                   //   ...(states?.inputs || {}),
@@ -268,9 +250,9 @@ const ScoringPage = ({ statePath, mode, nextPage, pastPage }) => {
             </div>
             <div style={{ width: "50%", height: "100%" }}>
               <ProceedBackButton
-                mode={mode}
-                // stateStack={stateStack}
-                nextPage={nextPage}
+                mode={"auto"}
+                stateStack={stateStack}
+                nextPage={"teleop-scoring"}
                 // inputs={{
                 //   ...(states?.inputs || {}),
                 //   [mode]: {

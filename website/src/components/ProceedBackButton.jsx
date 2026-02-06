@@ -41,7 +41,6 @@ const ProceedBackButton = ({
   const proceedClick = () => {
     const continueRunning = onClick();
     if (continueRunning === false) {
-      // If the onClick function returns false, do not proceed
       console.log("onClick returned false, not proceeding");
       return;
     }

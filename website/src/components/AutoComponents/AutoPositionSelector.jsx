@@ -4,7 +4,12 @@ import DriveIcon from "../../assets/DriveIcon.svg";
 import ShotIcon from "../../assets/ShotIcon.svg";
 import { toast } from "react-toastify";
 
-const PositionSelector = ({ driveType, robotPositions, setRobotPositions, showShotInfo}) => {
+const AutoPositionSelector = ({
+  driveType,
+  robotPositions,
+  setRobotPositions,
+  showShotInfo,
+}) => {
   const fieldWidthPercent = 75;
   const robotSize = 50;
 
@@ -191,7 +196,8 @@ const PositionSelector = ({ driveType, robotPositions, setRobotPositions, showSh
       const lastIndex = robotPositions.length - 1;
 
       if (lastIndex < 0) return;
-      if (robotPositions[lastIndex].driveType !== "Shot" || showShotInfo) return;
+      if (robotPositions[lastIndex].driveType !== "Shot" || showShotInfo)
+        return;
 
       const lastDiv = robotPositionsDivRef.current.querySelector(
         `robot-position-${lastIndex}`,
@@ -220,6 +226,7 @@ const PositionSelector = ({ driveType, robotPositions, setRobotPositions, showSh
           backgroundPosition: "left center",
           backgroundSize: `${fieldWidthPercent + 100}% 100%`,
           cursor: "crosshair",
+          borderRadius: "1.5dvh",
         }}
       >
         <svg
@@ -250,4 +257,4 @@ const PositionSelector = ({ driveType, robotPositions, setRobotPositions, showSh
   );
 };
 
-export default PositionSelector;
+export default AutoPositionSelector;

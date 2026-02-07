@@ -113,6 +113,8 @@ const AutoScoringPage = () => {
             fuelShotAndSourceInfo: fuelShotAndSourceInfo,
           }}
           pageTitle={"Teleop"}
+          nextPage={"endgame-scoring"}
+          backPage={"auto-scoring"}
         />
 
         <ShotInfoSection

@@ -130,6 +130,8 @@ const AutoScoringPage = () => {
             autoRobotPositions: robotPositions,
           }}
           pageTitle={"Auto"}
+          nextPage={"teleop-scoring"}
+          backPage={"game-start"}
         />
 
         {showShotInfo ? (

@@ -7,6 +7,8 @@ const PageControlSection = ({
   states,
   extraInputs,
   pageTitle,
+  backPage,
+  nextPage,
 }) => {
   return (
     <div
@@ -72,7 +74,7 @@ const PageControlSection = ({
             <ProceedBackButton
               mode={pageTitle.toLowerCase()}
               stateStack={stateStack}
-              nextPage={pageTitle === "Auto" ? "game-start" : "teleop-scoring"}
+              nextPage={backPage}
               back={true}
               inputs={{
                 ...(states?.inputs || {}),
@@ -111,7 +113,7 @@ const PageControlSection = ({
             mode={pageTitle.toLowerCase()}
             stateStack={stateStack}
             nextPage={
-              pageTitle === "Auto" ? "teleop-scoring" : "endgame-scoring"
+              nextPage
             }
             inputs={{
               ...(states?.inputs || {}),

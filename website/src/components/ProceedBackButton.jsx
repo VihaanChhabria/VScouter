@@ -70,13 +70,15 @@ const ProceedBackButton = ({
       } else {
         if (
           nextPage == "game-start" &&
-          location.pathname == "endgame-scoring"
+          location.pathname.endsWith("endgame-scoring")
         ) {
           // If the next page is the game start page and the current page is the endgame scoring page
           const fullData = {
             data: JSON.parse(localStorage.getItem("scoutingData"))?.data || [],
           };
+          console.log("inputs:", inputs);
           fullData.data.push({ ...inputs });
+          console.log("fullData:", fullData);
           // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
           // for undo button for scoring pages
@@ -92,7 +94,10 @@ const ProceedBackButton = ({
               },
             },
           });
-        } else if (nextPage == "game-start" && location.pathname == "/") {
+        } else if (
+          nextPage == "game-start" &&
+          (location.pathname === "/" || location.pathname === "/ui/")
+        ) {
           // for undo button for scoring pages
           // if the user leaves in the middle of the match, this will reset their history
           localStorage.setItem("autoHistory", "[]");

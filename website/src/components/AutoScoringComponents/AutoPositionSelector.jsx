@@ -111,12 +111,12 @@ const AutoPositionSelector = ({
     const fieldX = pixelsToMetersX(
       imageX,
       imagePixelSize.width,
-      REAL_FIELD_SIZE.width
+      REAL_FIELD_SIZE.width,
     );
     const fieldY = pixelsToMetersY(
       imageY,
       imagePixelSize.height,
-      REAL_FIELD_SIZE.height
+      REAL_FIELD_SIZE.height,
     );
     const newPosition = { x: fieldX, y: fieldY };
 
@@ -130,13 +130,8 @@ const AutoPositionSelector = ({
       return;
     }
 
-    console.log(
-      `Meters: X: ${fieldX.toFixed(2)} m, Y: ${fieldY.toFixed(2)} m`
-    );
-    setRobotPositions((prev) => [
-      ...prev,
-      { ...newPosition, driveType },
-    ]);
+    console.log(`Meters: X: ${fieldX.toFixed(2)} m, Y: ${fieldY.toFixed(2)} m`);
+    setRobotPositions((prev) => [...prev, { ...newPosition, driveType }]);
   };
 
   // ---------------------------------------------------------------------------
@@ -146,7 +141,7 @@ const AutoPositionSelector = ({
   const splinePathD = generateSplinePath(
     robotPositions,
     imagePixelSize,
-    ROBOT_SIZE
+    ROBOT_SIZE,
   );
 
   const lastIndex = robotPositions.length - 1;
@@ -217,17 +212,17 @@ const AutoPositionSelector = ({
               position,
               targetPos,
               imagePixelSize,
-              REAL_FIELD_SIZE
+              REAL_FIELD_SIZE,
             );
             const left = metersToPixelsX(
               position.x,
               imagePixelSize.width,
-              REAL_FIELD_SIZE.width
+              REAL_FIELD_SIZE.width,
             );
             const top = metersToPixelsY(
               position.y,
               imagePixelSize.height,
-              REAL_FIELD_SIZE.height
+              REAL_FIELD_SIZE.height,
             );
             const showGlow =
               lastIsShotAndHidden && index === lastIndex && glowOn;

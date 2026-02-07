@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 import ProceedBackButton from "../components/ProceedBackButton";
 
 import SelectOptions from "../components/SelectOptions";
-import AutoPositionSelector from "../components/AutoComponents/AutoPositionSelector";
+import AutoPositionSelector from "../components/AutoScoringComponents/AutoPositionSelector";
 import { toast } from "react-toastify";
-import AutoShotInfoSection from "../components/AutoComponents/AutoShotInfoSection";
-import PageControlSection from "../components/AutoComponents/PageControlSection";
+import AutoShotInfoSection from "../components/AutoScoringComponents/AutoShotInfoSection";
+import PageControlSection from "../components/AutoScoringComponents/PageControlSection";
 
 const AutoScoringPage = () => {
   const location = useLocation();

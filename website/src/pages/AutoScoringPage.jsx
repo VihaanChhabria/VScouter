@@ -6,7 +6,7 @@ import SelectOptions from "../components/SelectOptions";
 import AutoPositionSelector from "../components/AutoComponents/AutoPositionSelector";
 import { toast } from "react-toastify";
 import AutoShotInfoSection from "../components/AutoComponents/AutoShotInfoSection";
-import AutoPageControlSection from "../components/AutoComponents/AutoPageControlSection";
+import PageControlSection from "../components/AutoComponents/PageControlSection";
 
 const AutoScoringPage = () => {
   const location = useLocation();
@@ -122,10 +122,13 @@ const AutoScoringPage = () => {
           gap: "2.5dvh",
         }}
       >
-        <AutoPageControlSection
+        <PageControlSection
           stateStack={stateStack}
-          robotPositions={robotPositions}
           handleUndo={handleUndo}
+          states={states}
+          extraInputs={{
+            autoRobotPositions: robotPositions,
+          }}
         />
 
         {showShotInfo ? (

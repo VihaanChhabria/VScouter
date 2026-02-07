@@ -1,7 +1,7 @@
 import React from "react";
 import ProceedBackButton from "../ProceedBackButton";
 
-const AutoPageControlSection = ({ stateStack, robotPositions, handleUndo, states}) => {
+const PageControlSection = ({ stateStack, handleUndo, states, extraInputs}) => {
   return (
     <div
       style={{
@@ -70,7 +70,7 @@ const AutoPageControlSection = ({ stateStack, robotPositions, handleUndo, states
               back={true}
               inputs={{
                 ...(states?.inputs || {}),
-                autoRobotPositions: robotPositions,
+                ...extraInputs,
               }}
             />
           </div>
@@ -107,7 +107,7 @@ const AutoPageControlSection = ({ stateStack, robotPositions, handleUndo, states
             nextPage={"teleop-scoring"}
             inputs={{
               ...(states?.inputs || {}),
-              autoRobotPositions: robotPositions,
+              ...extraInputs,
             }}
           />
         </div>
@@ -116,4 +116,4 @@ const AutoPageControlSection = ({ stateStack, robotPositions, handleUndo, states
   );
 };
 
-export default AutoPageControlSection;
+export default PageControlSection;

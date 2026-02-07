@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EndgameScoringToggle from "../components/EndgameScoringComponents/EndgameScoringToggle";
+import ToggleButton from "../components/ToggleButton.jsx";
 import ProceedBackButton from "../components/ProceedBackButton";
 import { toast } from "react-toastify";
 
@@ -20,8 +20,8 @@ const TeamNumberPromptPage = () => {
       } else {
         localStorage.setItem("sentTeamNumber", "true");
       }
-      
-    } else {  // offline
+    } else {
+      // offline
       localStorage.setItem("sentTeamNumber", "false");
     }
 
@@ -118,7 +118,7 @@ const TeamNumberPromptPage = () => {
           />
 
           <div style={{ height: "60%", width: "20%" }}>
-            <EndgameScoringToggle
+            <ToggleButton
               question={"I am not part of a FRC team or am just looking."}
               selected={skip}
               setSelected={setSkip}
@@ -145,7 +145,7 @@ const TeamNumberPromptPage = () => {
                   toast.success("We will remind you after you next 5 visits!");
                   localStorage.setItem(
                     "lastRemindMeLater",
-                    localStorage.getItem("siteVisits")
+                    localStorage.getItem("siteVisits"),
                   );
                 }}
                 back={true}

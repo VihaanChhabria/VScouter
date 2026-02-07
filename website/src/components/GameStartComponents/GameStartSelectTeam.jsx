@@ -31,19 +31,19 @@ const InitialSelectTeam = ({
 
   // States for the team selection
   const [team1Status, setTeam1Status] = useState(
-    defaultSelectTeam === baseTeams[0]
+    defaultSelectTeam === baseTeams[0],
   );
   const [team2Status, setTeam2Status] = useState(
-    defaultSelectTeam === baseTeams[1]
+    defaultSelectTeam === baseTeams[1],
   );
   const [team3Status, setTeam3Status] = useState(
-    defaultSelectTeam === baseTeams[2]
+    defaultSelectTeam === baseTeams[2],
   );
   const [customTeamStatus, setCustomTeamStatus] = useState(
     defaultSelectTeam != baseTeams[0] &&
       defaultSelectTeam != baseTeams[1] &&
       defaultSelectTeam != baseTeams[2] &&
-      defaultSelectTeam != null
+      defaultSelectTeam != null,
   );
 
   // State for the custom team value
@@ -53,7 +53,7 @@ const InitialSelectTeam = ({
       defaultSelectTeam != baseTeams[2] &&
       defaultSelectTeam != null
       ? defaultSelectTeam
-      : ""
+      : "",
   );
 
   // Function to handle team selection
@@ -123,7 +123,7 @@ const InitialSelectTeam = ({
         {/* when the text is selected on mobile, when clicking off of typing user doesn't accidentally click on something else */}
         {textSelected &&
           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-            navigator.userAgent
+            navigator.userAgent,
           ) && (
             <div
               style={{
@@ -198,11 +198,12 @@ const InitialSelectTeam = ({
             <h1
               style={{
                 color: "#FFFFFF",
-                fontSize: "4.2dvh",
+                fontSize: "3.75dvh",
                 width: "100%",
                 flexBasis: 1,
                 flexGrow: 1,
                 marginRight: "1dvw",
+                marginLeft: "0.7dvw",
                 height: "8.88dvh",
               }}
             >
@@ -219,6 +220,7 @@ const InitialSelectTeam = ({
                 fontSize: "4.0dvh",
                 flexBasis: 1,
                 flexGrow: 1,
+                paddingLeft: "1dvw",
               }}
               value={customTeamValue}
               onChange={(e) => setCustomTeamValue(e.target.value)}

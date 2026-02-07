@@ -21,13 +21,13 @@ const GameStartPage = () => {
   // Initialize the state with the passed in state from the previous page, or null if no state was passed in
   const [alliance, setAlliance] = useState(states?.inputs?.alliance || null);
   const [matchNumber, setMatchNumber] = useState(
-    states?.inputs?.matchNumber || null
+    states?.inputs?.matchNumber || null,
   );
   const [scouterInitials, setScouterInitials] = useState(
-    states?.inputs?.scouterInitials || null
+    states?.inputs?.scouterInitials || null,
   );
   const [selectTeam, setSelectTeam] = useState(
-    states?.inputs?.selectTeam || null
+    states?.inputs?.selectTeam || null,
   );
 
   return (
@@ -142,7 +142,7 @@ const GameStartPage = () => {
                 </div>
                 <div style={{ flexBasis: "70%" }}>
                   <ProceedBackButton
-                    nextPage={`auto-start`}
+                    nextPage={`auto-scoring`}
                     inputs={{
                       ...(states?.inputs || {}),
                       matchNumber: matchNumber,

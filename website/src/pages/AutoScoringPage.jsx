@@ -5,7 +5,7 @@ import ProceedBackButton from "../components/ProceedBackButton";
 import SelectOptions from "../components/SelectOptions";
 import AutoPositionSelector from "../components/AutoScoringComponents/AutoPositionSelector";
 import { toast } from "react-toastify";
-import AutoShotInfoSection from "../components/AutoScoringComponents/AutoShotInfoSection";
+import ShotInfoSection from "../components/ShotInfoSection";
 import PageControlSection from "../components/AutoScoringComponents/PageControlSection";
 
 const AutoScoringPage = () => {
@@ -133,7 +133,7 @@ const AutoScoringPage = () => {
         />
 
         {showShotInfo ? (
-          <AutoShotInfoSection
+          <ShotInfoSection
             hopperPercent={hopperPercent}
             setHopperPercent={setHopperPercent}
             shotsPercent={shotsPercent}

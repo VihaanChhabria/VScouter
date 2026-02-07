@@ -1,7 +1,13 @@
 import React from "react";
 import ProceedBackButton from "../ProceedBackButton";
 
-const PageControlSection = ({ stateStack, handleUndo, states, extraInputs}) => {
+const PageControlSection = ({
+  stateStack,
+  handleUndo,
+  states,
+  extraInputs,
+  pageTitle,
+}) => {
   return (
     <div
       style={{
@@ -29,7 +35,7 @@ const PageControlSection = ({ stateStack, handleUndo, states, extraInputs}) => {
             fontWeight: "bold",
           }}
         >
-          Auto
+          {pageTitle}
         </h1>
       </div>
 
@@ -64,9 +70,9 @@ const PageControlSection = ({ stateStack, handleUndo, states, extraInputs}) => {
             }}
           >
             <ProceedBackButton
-              mode={"auto"}
+              mode={pageTitle.toLowerCase()}
               stateStack={stateStack}
-              nextPage={"game-start"}
+              nextPage={pageTitle === "Auto" ? "game-start" : "teleop-scoring"}
               back={true}
               inputs={{
                 ...(states?.inputs || {}),
@@ -102,9 +108,11 @@ const PageControlSection = ({ stateStack, handleUndo, states, extraInputs}) => {
         </div>
         <div style={{ width: "50%", height: "100%" }}>
           <ProceedBackButton
-            mode={"auto"}
+            mode={pageTitle.toLowerCase()}
             stateStack={stateStack}
-            nextPage={"teleop-scoring"}
+            nextPage={
+              pageTitle === "Auto" ? "teleop-scoring" : "endgame-scoring"
+            }
             inputs={{
               ...(states?.inputs || {}),
               ...extraInputs,

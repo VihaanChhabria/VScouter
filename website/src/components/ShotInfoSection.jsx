@@ -1,7 +1,7 @@
 import React from "react";
-import SelectOptions from "../SelectOptions";
+import SelectOptions from "./SelectOptions";
 
-const AutoShotInfoSection = ({
+const ShotInfoSection = ({
   hopperPercent,
   setHopperPercent,
   shotsPercent,
@@ -92,7 +92,9 @@ const AutoShotInfoSection = ({
 
       {/* Submit Button */}
       <button
-        onClick={() => {submitOnClick(hopperPercent, shotsPercent);}}
+        onClick={() => {
+          submitOnClick(hopperPercent, shotsPercent);
+        }}
         style={{
           marginTop: "1dvh",
           padding: "1.5dvh 4dvh",
@@ -112,4 +114,4 @@ const AutoShotInfoSection = ({
   );
 };
 
-export default AutoShotInfoSection;
+export default ShotInfoSection;

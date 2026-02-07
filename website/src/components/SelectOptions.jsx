@@ -5,6 +5,8 @@ const SelectOptions = ({
   optionSelected,
   setOptionSelected,
   flexDirection = "row",
+  images = null,
+  numberData = null,
 }) => {
   return (
     <div
@@ -31,7 +33,7 @@ const SelectOptions = ({
                 border: "1.63dvh solid #1D1E1E",
                 borderRadius: "2dvh",
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: numberData ? "space-between" : "center",
                 alignItems: "center",
               }}
               onClick={() => {
@@ -49,10 +51,35 @@ const SelectOptions = ({
                   fontSize: "3.25dvh",
                   fontWeight: "700",
                   padding: "0dvh 1dvw",
+                  marginLeft: images ? "1dvw" : "0",
                 }}
               >
                 {singleOptionsData}
               </h1>
+              {images && (
+                <img
+                  src={images[index]}
+                  alt={singleOptionsData}
+                  style={{
+                    width: "auto",
+                    height: "9dvh",
+                    marginLeft: "1dvw",
+                  }}
+                />
+              )}
+              {numberData && (
+                <h1
+                  style={{
+                    color: "white",
+                    fontSize: "4dvh",
+                    fontWeight: "700",
+                    padding: "0dvh 1dvw",
+                    marginRight: "1dvw",
+                  }}
+                >
+                  {numberData[index]}
+                </h1>
+              )}
             </div>
           </div>
         );

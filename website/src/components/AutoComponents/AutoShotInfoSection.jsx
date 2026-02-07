@@ -1,4 +1,5 @@
 import React from "react";
+import SelectOptions from "../SelectOptions";
 
 const AutoShotInfoSection = ({ hopperPercent, setHopperPercent, shotsPercent, setShotsPercent, setRobotPositions }) => {
   return (

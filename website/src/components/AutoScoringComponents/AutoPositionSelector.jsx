@@ -70,7 +70,7 @@ const AutoPositionSelector = ({
   useEffect(() => {
     const lastIndex = robotPositions.length - 1;
     if (lastIndex < 0) return;
-    if (robotPositions[lastIndex].driveType !== "Shot" || showShotInfo) return;
+    if (robotPositions[lastIndex].driveType !== "Shot" || !showShotInfo) return;
 
     let timeoutId;
     const id = setInterval(() => {
@@ -145,10 +145,10 @@ const AutoPositionSelector = ({
   );
 
   const lastIndex = robotPositions.length - 1;
-  const lastIsShotAndHidden =
+  const lastIsShotAndNeedsInfo =
     lastIndex >= 0 &&
     robotPositions[lastIndex].driveType === "Shot" &&
-    !showShotInfo;
+    showShotInfo;
 
   // ---------------------------------------------------------------------------
   // Render
@@ -225,7 +225,7 @@ const AutoPositionSelector = ({
               REAL_FIELD_SIZE.height,
             );
             const showGlow =
-              lastIsShotAndHidden && index === lastIndex && glowOn;
+              lastIsShotAndNeedsInfo && index === lastIndex && glowOn;
 
             return (
               <RobotMarker

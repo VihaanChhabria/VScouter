@@ -1,7 +1,13 @@
 import React from "react";
 import SelectOptions from "../SelectOptions";
 
-const AutoShotInfoSection = ({ hopperPercent, setHopperPercent, shotsPercent, setShotsPercent, setRobotPositions }) => {
+const AutoShotInfoSection = ({
+  hopperPercent,
+  setHopperPercent,
+  shotsPercent,
+  setShotsPercent,
+  submitOnClick = () => {},
+}) => {
   return (
     <div
       style={{
@@ -86,20 +92,7 @@ const AutoShotInfoSection = ({ hopperPercent, setHopperPercent, shotsPercent, se
 
       {/* Submit Button */}
       <button
-        onClick={() => {
-          setRobotPositions((prev) => [
-            ...prev.slice(0, prev.length - 1),
-            {
-              x: robotPositions[robotPositions.length - 1].x,
-              y: robotPositions[robotPositions.length - 1].y,
-              driveType: "Shot",
-              shotInfo: {
-                hopperPercent: hopperPercent,
-                shotsPercent: shotsPercent,
-              },
-            },
-          ]);
-        }}
+        onClick={() => {submitOnClick(hopperPercent, shotsPercent);}}
         style={{
           marginTop: "1dvh",
           padding: "1.5dvh 4dvh",

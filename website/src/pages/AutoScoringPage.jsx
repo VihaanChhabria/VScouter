@@ -129,6 +129,7 @@ const AutoScoringPage = () => {
           extraInputs={{
             autoRobotPositions: robotPositions,
           }}
+          pageTitle={"Auto"}
         />
 
         {showShotInfo ? (
@@ -137,8 +138,20 @@ const AutoScoringPage = () => {
             setHopperPercent={setHopperPercent}
             shotsPercent={shotsPercent}
             setShotsPercent={setShotsPercent}
-            setRobotPositions={setRobotPositions}
-            states={states}
+            submitOnClick={() => {
+              setRobotPositions((prev) => [
+                ...prev.slice(0, prev.length - 1),
+                {
+                  x: robotPositions[robotPositions.length - 1].x,
+                  y: robotPositions[robotPositions.length - 1].y,
+                  driveType: "Shot",
+                  shotInfo: {
+                    hopperPercent: hopperPercent,
+                    shotsPercent: shotsPercent,
+                  },
+                },
+              ]);
+            }}
           />
         ) : (
           <div style={{ height: "65%", width: "100%" }}>

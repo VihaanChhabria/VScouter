@@ -6,7 +6,7 @@ import ShotInfoSection from "../components/ShotInfoSection";
 import PageControlSection from "../components/PageControlSection";
 import TeleopFuelSourceSection from "../components/TeleopScoringComponents/TeleopFuelSourceSection";
 
-const AutoScoringPage = () => {
+const TeleopScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
@@ -22,14 +22,18 @@ const AutoScoringPage = () => {
 
   useEffect(() => {
     const savedStack = JSON.parse(
-      localStorage.getItem("autoHistory") || "[[]]",
+      localStorage.getItem("teleopHistory") || "[]",
     );
+
+    if (savedStack.length === 0) {
+      savedStack.push([]);
+    }
 
     setStateStack(savedStack);
 
     if (savedStack.length > 0) {
       // update states with the most recent state in the stack
-      setFuelOptionSelected(savedStack[savedStack.length - 1]);
+      setFuelShotAndSourceInfo(savedStack[savedStack.length - 1]);
     }
   }, []);
 
@@ -57,6 +61,13 @@ const AutoScoringPage = () => {
     }
 
     if (fuelShotAndSourceInfo.length === 0) return;
+
+    const areSame =
+      stateStack.length > 0 &&
+      JSON.stringify(fuelShotAndSourceInfo) ===
+        JSON.stringify(stateStack[stateStack.length - 1]);
+
+    if (areSame) return;
 
     setStateStack((prev) => [...prev, [...fuelShotAndSourceInfo]]);
   }, [fuelShotAndSourceInfo]);
@@ -123,6 +134,10 @@ const AutoScoringPage = () => {
           shotsPercent={shotsPercent}
           setShotsPercent={setShotsPercent}
           submitOnClick={() => {
+            if (fuelOptionSelected === "" || fuelOptionSelected === null) {
+              toast.error("Please select a fuel source!");
+              return;
+            }
             setFuelShotAndSourceInfo((prev) => [
               ...prev,
               {
@@ -139,4 +154,4 @@ const AutoScoringPage = () => {
   );
 };
 
-export default AutoScoringPage;
+export default TeleopScoringPage;

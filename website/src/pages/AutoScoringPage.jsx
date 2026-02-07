@@ -17,7 +17,7 @@ const AutoScoringPage = () => {
 
   const [driveType, setDriveType] = useState("Shot");
   const [robotPositions, setRobotPositions] = useState(
-    states?.autoRobotPositions || [],
+    states?.inputs?.autoRobotPositions || [],
   );
   const [showShotInfo, setShowShotInfo] = useState(false);
 
@@ -25,9 +25,13 @@ const AutoScoringPage = () => {
   const [shotsPercent, setShotsPercent] = useState("80%");
 
   useEffect(() => {
-    const savedStack = JSON.parse(
-      localStorage.getItem("autoHistory") || "[[]]",
-    );
+    const savedStack = JSON.parse(localStorage.getItem("autoHistory") || "[]");
+
+    if (savedStack.length === 0) {
+      savedStack.push([]);
+    }
+
+    console.log("savedstack:", savedStack);
 
     setStateStack(savedStack);
 
@@ -60,6 +64,13 @@ const AutoScoringPage = () => {
     }
 
     if (robotPositions.length === 0) return;
+
+    const areSame =
+      stateStack.length > 0 &&
+      JSON.stringify(robotPositions) ===
+        JSON.stringify(stateStack[stateStack.length - 1]);
+
+    if (areSame) return;
 
     setStateStack((prev) => [...prev, [...robotPositions]]);
   }, [robotPositions]);

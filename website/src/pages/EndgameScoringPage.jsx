@@ -2,19 +2,46 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import EndgamePageControlSection from "../components/EndgameScoringComponents/EndgamePageControlSection";
-import ToggleButton from "../components/ToggleButton";
-import SelectOptions from "../components/SelectOptions";
+import EndgameBrokenSection from "../components/EndgameScoringComponents/EndgameBrokenSection";
+import EndgameDefenseSection from "../components/EndgameScoringComponents/EndgameDefenseSection";
 
 const EndgameScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
-  const [comment, setComment] = useState(states?.inputs?.comment || "");
+  const [comments, setComments] = useState(states?.inputs?.comment || "");
 
   const [brokenDown, setBrokenDown] = useState(states?.inputs?.broken || false);
   const [brokenDownTime, setBrokenDownTime] = useState(
-    states?.inputs?.brokenDownTime || null,
+    states?.inputs?.brokenDownTime || "",
   );
+
+  const [playedDefense, setPlayedDefense] = useState(
+    states?.inputs?.playedDefense || false,
+  );
+  const [defenseTime, setDefenseTime] = useState(
+    states?.inputs?.defenseTime || "",
+  );
+  const [defenseSkill, setDefenseSkill] = useState(
+    states?.inputs?.defenseSkill || "",
+  );
+  const [playedDefenseOn, setPlayedDefenseOn] = useState(
+    states?.inputs?.playedDefenseOn || 0,
+  );
+
+  useEffect(() => {
+    if (!brokenDown) {
+      setBrokenDownTime("");
+    }
+  }, [brokenDown]);
+
+  useEffect(() => {
+    if (!playedDefense) {
+      setDefenseTime("");
+      setDefenseSkill("");
+      setPlayedDefenseOn(0);
+    }
+  }, [playedDefense]);
 
   return (
     <div
@@ -29,95 +56,24 @@ const EndgameScoringPage = () => {
         padding: "4dvh 2dvw",
       }}
     >
-      <div
-        style={{
-          height: "100%",
-          flex: 0.75 / 2,
-          backgroundColor: "#3B3B3B",
-          borderColor: "#1D1E1E",
-          borderWidth: "2dvh",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.5dvh",
-            fontWeight: "bold",
-          }}
-        >
-          Defense
-        </h1>
-      </div>
-      <div
-        style={{
-          height: "100%",
-          flex: 0.75 / 2,
-          backgroundColor: "#3B3B3B",
-          borderColor: "#1D1E1E",
-          borderWidth: "2dvh",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.5dvh",
-            fontWeight: "bold",
-            marginBottom: "2dvh",
-            marginTop: "1dvh",
-          }}
-        >
-          Broken
-        </h1>
+      <EndgameDefenseSection
+        playedDefense={playedDefense}
+        setPlayedDefense={setPlayedDefense}
+        defenseTime={defenseTime}
+        setDefenseTime={setDefenseTime}
+        defenseSkill={defenseSkill}
+        setDefenseSkill={setDefenseSkill}
+        playedDefenseOn={playedDefenseOn}
+        setPlayedDefenseOn={setPlayedDefenseOn}
+      />
 
-        <div
-          style={{
-            paddingLeft: "1.5dvw",
-            paddingRight: "1.5dvw",
-            width: "100%",
-            height: "20%",
-          }}
-        >
-          <ToggleButton
-            question={"Broken Down?"}
-            selected={brokenDown}
-            setSelected={(value) => setBrokenDown(value)}
-            fontSize={"4dvh"}
-          />
-        </div>
+      <EndgameBrokenSection
+        brokenDown={brokenDown}
+        setBrokenDown={setBrokenDown}
+        brokenDownTime={brokenDownTime}
+        setBrokenDownTime={setBrokenDownTime}
+      />
 
-        {brokenDown && (
-          <div style={{ width: "100%", height: "80%", padding: "0 1.5dvw" }}>
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "3dvh",
-                fontWeight: "500",
-                margin: "1.5dvh 0",
-              }}
-            >
-              How Long Was the Robot Broken Down For?
-            </h1>
-            <div style={{ width: "100%", height: "75%" }}>
-              <SelectOptions
-                optionsData={["Shortly", "A Lot", "Whole Match"]}
-                optionSelected={brokenDownTime}
-                setOptionSelected={(value) => setBrokenDownTime(value)}
-                flexDirection={"column"}
-              />
-            </div>
-          </div>
-        )}
-      </div>
       <div
         style={{
           height: "100%",
@@ -140,15 +96,23 @@ const EndgameScoringPage = () => {
             fontSize: "3.0dvh",
             padding: "1.56dvh",
           }}
-          onChange={(e) => setComment(e.target.value)}
+          onChange={(e) => setComments(e.target.value)}
           id="comments"
-          defaultValue={comment}
+          defaultValue={comments}
           placeholder="Enter Comments Here"
         />
         <div style={{ flex: 0.4, width: "100%" }}>
           <EndgamePageControlSection
             states={states}
-            extraInputs={{ comment }}
+            extraInputs={{
+              comments,
+              broken: brokenDown,
+              brokenDownTime,
+              playedDefense,
+              defenseTime,
+              defenseSkill,
+              playedDefenseOn,
+            }}
           />
         </div>
       </div>

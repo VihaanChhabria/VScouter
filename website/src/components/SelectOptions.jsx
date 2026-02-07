@@ -50,8 +50,9 @@ const SelectOptions = ({
                   color: "white",
                   fontSize: "3.25dvh",
                   fontWeight: "700",
-                  padding: "0dvh 1dvw",
+                  padding: "1dvh 1dvw",
                   marginLeft: images ? "1dvw" : "0",
+                  textAlign: "center",
                 }}
               >
                 {singleOptionsData}

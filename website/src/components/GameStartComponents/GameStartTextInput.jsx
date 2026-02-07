@@ -90,6 +90,7 @@ const TextInput = ({
               width: "97%",
               height: "8.88dvh",
               fontSize: "4.0dvh",
+              paddingLeft: "1dvw"
             }}
           />
         </div>

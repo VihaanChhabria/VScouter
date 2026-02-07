@@ -1,8 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import FullFieldMap from "../../assets/FullFieldMap.png";
-import DriveIcon from "../../assets/DriveIcon.svg";
-import ShotIcon from "../../assets/ShotIcon.svg";
 import { toast } from "react-toastify";
+
+import {
+  REAL_FIELD_SIZE,
+  pixelsToMetersX,
+  pixelsToMetersY,
+  metersToPixelsX,
+  metersToPixelsY,
+  getAngleToNext,
+  isWithinPositionRange,
+  isPointInsideField,
+} from "./fieldMath.js";
+import { generateSplinePath } from "./pathUtils.js";
+import RobotMarker, { ROBOT_SIZE } from "./RobotMarker.jsx";
+
+// -----------------------------------------------------------------------------
+// Constants
+// -----------------------------------------------------------------------------
+
+const FIELD_WIDTH_PERCENT = 75;
+const POSITION_RANGE_METERS = 0.3;
+const GOAL_POSITION = { x: 4.633, y: 4.04 };
+
+// -----------------------------------------------------------------------------
+// Component
+// -----------------------------------------------------------------------------
 
 const AutoPositionSelector = ({
   driveType,
@@ -10,208 +33,131 @@ const AutoPositionSelector = ({
   setRobotPositions,
   showShotInfo,
 }) => {
-  const fieldWidthPercent = 75;
-  const robotSize = 50;
-
-  const realFieldSize = {
-    width: 17.3736,
-    height: 7.9248,
-  };
-
   const imageDivRef = useRef(null);
-  const robotPositionsDivRef = useRef(null);
 
   const [imagePixelSize, setImagePixelSize] = useState({
     width: 0,
     height: 0,
   });
+  const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 });
+  const [glowOn, setGlowOn] = useState(false);
 
-  const [imageOffset, setImageOffset] = useState({
-    x: 0,
-    y: 0,
-  });
+  // ---------------------------------------------------------------------------
+  // Effects
+  // ---------------------------------------------------------------------------
 
   useEffect(() => {
     const div = imageDivRef.current;
     if (!div) return;
 
-    const rect = div.getBoundingClientRect();
+    const updateSize = () => {
+      const rect = div.getBoundingClientRect();
+      const imageWidthPixels = rect.width * ((FIELD_WIDTH_PERCENT + 100) / 100);
+      const imageHeightPixels = rect.height;
+      const offsetX = 0;
+      const offsetY = (rect.height - imageHeightPixels) / 2;
 
-    const imageWidthPixels = rect.width * ((fieldWidthPercent + 100) / 100);
-    const imageHeightPixels = rect.height;
+      setImagePixelSize({ width: imageWidthPixels, height: imageHeightPixels });
+      setImageOffset({ x: offsetX, y: offsetY });
+    };
 
-    // background-position: left center
-    const offsetX = 0;
-    const offsetY = (rect.height - imageHeightPixels) / 2;
+    updateSize();
+    const resizeObserver = new ResizeObserver(updateSize);
+    resizeObserver.observe(div);
+    return () => resizeObserver.disconnect();
+  }, []);
 
-    setImagePixelSize({
-      width: imageWidthPixels,
-      height: imageHeightPixels,
-    });
+  useEffect(() => {
+    const lastIndex = robotPositions.length - 1;
+    if (lastIndex < 0) return;
+    if (robotPositions[lastIndex].driveType !== "Shot" || showShotInfo) return;
 
-    setImageOffset({
-      x: offsetX,
-      y: offsetY,
-    });
-  }, [window.innerWidth, window.innerHeight]);
+    let timeoutId;
+    const id = setInterval(() => {
+      setGlowOn(true);
+      timeoutId = setTimeout(() => setGlowOn(false), 500);
+    }, 1000);
 
-  const pixelsToMetersX = (px) =>
-    (px / imagePixelSize.width) * realFieldSize.width;
-  const pixelsToMetersY = (py) =>
-    ((imagePixelSize.height - py) / imagePixelSize.height) *
-    realFieldSize.height;
+    return () => {
+      clearInterval(id);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [robotPositions, showShotInfo]);
 
-  const metersToPixelsX = (mx) =>
-    (mx / realFieldSize.width) * imagePixelSize.width;
-  const metersToPixelsY = (my) =>
-    imagePixelSize.height - (my / realFieldSize.height) * imagePixelSize.height;
+  // ---------------------------------------------------------------------------
+  // Event handlers
+  // ---------------------------------------------------------------------------
 
   const handleClick = (event) => {
     if (!driveType) {
       toast.error("Drive type not specified.");
       return;
     }
-    const rect = imageDivRef.current.getBoundingClientRect();
+
+    const rect = imageDivRef.current?.getBoundingClientRect();
+    if (!rect) return;
 
     const clickX = event.clientX - rect.left + 25;
     const clickY = event.clientY - rect.top + 25;
-
     const imageX = clickX - imageOffset.x;
     const imageY = clickY - imageOffset.y;
 
-    if (
-      imageX < 0 ||
-      imageY < 0 ||
-      imageX > imagePixelSize.width ||
-      imageY > imagePixelSize.height
-    ) {
+    if (!isPointInsideField(imageX, imageY, imagePixelSize)) {
       console.log("Clicked outside field image");
       toast.error("Please click within the field area.");
       return;
     }
 
-    const positionRange = 0.3; // meters
-    if (robotPositions.length > 0) {
-      const lastPos = robotPositions[robotPositions.length - 1];
-      const distanceX = Math.abs(pixelsToMetersX(imageX) - lastPos.x);
-      const distanceY = Math.abs(pixelsToMetersY(imageY) - lastPos.y);
+    const fieldX = pixelsToMetersX(
+      imageX,
+      imagePixelSize.width,
+      REAL_FIELD_SIZE.width
+    );
+    const fieldY = pixelsToMetersY(
+      imageY,
+      imagePixelSize.height,
+      REAL_FIELD_SIZE.height
+    );
+    const newPosition = { x: fieldX, y: fieldY };
 
-      if (distanceX < positionRange && distanceY < positionRange) {
-        console.log("Clicked too close to the last robot position");
-        toast.error("Position is too close to the last robot placement.");
-        return;
-      }
+    const lastPos =
+      robotPositions.length > 0
+        ? robotPositions[robotPositions.length - 1]
+        : null;
+    if (isWithinPositionRange(newPosition, lastPos, POSITION_RANGE_METERS)) {
+      console.log("Clicked too close to the last robot position");
+      toast.error("Position is too close to the last robot placement.");
+      return;
     }
 
-    const fieldX = pixelsToMetersX(imageX);
-    const fieldY = pixelsToMetersY(imageY);
-
-    console.log(`Meters: X: ${fieldX.toFixed(2)} m, Y: ${fieldY.toFixed(2)} m`);
+    console.log(
+      `Meters: X: ${fieldX.toFixed(2)} m, Y: ${fieldY.toFixed(2)} m`
+    );
     setRobotPositions((prev) => [
       ...prev,
-      { x: fieldX, y: fieldY, driveType: driveType },
+      { ...newPosition, driveType },
     ]);
   };
 
-  useEffect(() => {
-    robotPositionsDivRef.current.innerHTML = "";
-    robotPositions.forEach((position, index) => {
-      var div = document.createElement(`robot-position-${index}`);
-      div.style.width = `${robotSize}px`;
-      div.style.height = `${robotSize}px`;
+  // ---------------------------------------------------------------------------
+  // Derived values (for render)
+  // ---------------------------------------------------------------------------
 
-      const styles = {
-        Drive: { bg: "#9E9E9E", icon: DriveIcon },
-        Shot: { bg: "#2196F3", icon: ShotIcon },
-      };
+  const splinePathD = generateSplinePath(
+    robotPositions,
+    imagePixelSize,
+    ROBOT_SIZE
+  );
 
-      const style = styles[position.driveType];
-      if (style) {
-        div.style.background = style.bg;
-        div.style.backgroundImage = `url(${style.icon})`;
-        div.style.backgroundRepeat = "no-repeat";
-        div.style.backgroundPosition = "center";
-        div.style.backgroundSize = "70%";
+  const lastIndex = robotPositions.length - 1;
+  const lastIsShotAndHidden =
+    lastIndex >= 0 &&
+    robotPositions[lastIndex].driveType === "Shot" &&
+    !showShotInfo;
 
-        const targetPos =
-          position.driveType === "Drive"
-            ? robotPositions[index + 1] // next position for drive
-            : { x: 4.633, y: 4.04 }; // goal position for shot
-        const angle = getAngleToNext(position, targetPos);
-        div.style.transform = `rotate(${angle}deg)`;
-      }
-
-      div.style.border = "4px solid black";
-      div.style.borderRadius = "10%";
-      div.style.position = "absolute";
-      div.style.left = `${metersToPixelsX(position.x)}px`;
-      div.style.top = `${metersToPixelsY(position.y)}px`;
-      div.style.zIndex = 10;
-
-      robotPositionsDivRef.current.appendChild(div);
-    });
-  }, [robotPositions, window.innerWidth, window.innerHeight]);
-
-  const getAngleToNext = (current, next) => {
-    if (!next) return 0;
-    const dx = metersToPixelsX(next.x) - metersToPixelsX(current.x);
-    const dy = metersToPixelsY(next.y) - metersToPixelsY(current.y);
-    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-    return angle;
-  };
-
-  const generateSplinePath = (points) => {
-    if (points.length < 2) return "";
-
-    const toPx = (p) => ({
-      x: metersToPixelsX(p.x) + robotSize / 2,
-      y: metersToPixelsY(p.y) + robotSize / 2,
-    });
-
-    const pts = points.map(toPx);
-
-    let d = `M ${pts[0].x} ${pts[0].y}`;
-
-    for (let i = 0; i < pts.length - 1; i++) {
-      const p0 = pts[i - 1] || pts[i];
-      const p1 = pts[i];
-      const p2 = pts[i + 1];
-      const p3 = pts[i + 2] || p2;
-
-      const cp1x = p1.x + (p2.x - p0.x) / 6;
-      const cp1y = p1.y + (p2.y - p0.y) / 6;
-
-      const cp2x = p2.x - (p3.x - p1.x) / 6;
-      const cp2y = p2.y - (p3.y - p1.y) / 6;
-
-      d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
-    }
-
-    return d;
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // glow effect on the last robot position that is a shot
-      const lastIndex = robotPositions.length - 1;
-
-      if (lastIndex < 0) return;
-      if (robotPositions[lastIndex].driveType !== "Shot" || showShotInfo)
-        return;
-
-      const lastDiv = robotPositionsDivRef.current.querySelector(
-        `robot-position-${lastIndex}`,
-      );
-      if (lastDiv) {
-        lastDiv.style.boxShadow = `0 0 10px 5px rgba(255, 152, 0, 0.7)`;
-        setTimeout(() => {
-          lastDiv.style.boxShadow = "none";
-        }, 500);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [robotPositions]);
+  // ---------------------------------------------------------------------------
+  // Render
+  // ---------------------------------------------------------------------------
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
@@ -224,7 +170,7 @@ const AutoPositionSelector = ({
           backgroundImage: `url(${FullFieldMap})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "left center",
-          backgroundSize: `${fieldWidthPercent + 100}% 100%`,
+          backgroundSize: `${FIELD_WIDTH_PERCENT + 100}% 100%`,
           cursor: "crosshair",
           borderRadius: "1.5dvh",
         }}
@@ -241,7 +187,7 @@ const AutoPositionSelector = ({
           }}
         >
           <path
-            d={generateSplinePath(robotPositions)}
+            d={splinePathD}
             fill="none"
             stroke="#ff9800"
             strokeWidth={6}
@@ -251,7 +197,53 @@ const AutoPositionSelector = ({
           />
         </svg>
 
-        <div ref={robotPositionsDivRef}></div>
+        <div
+          style={{
+            position: "absolute",
+            left: imageOffset.x,
+            top: imageOffset.y,
+            width: imagePixelSize.width,
+            height: imagePixelSize.height,
+            pointerEvents: "none",
+            zIndex: 10,
+          }}
+        >
+          {robotPositions.map((position, index) => {
+            const targetPos =
+              position.driveType === "Drive"
+                ? robotPositions[index + 1]
+                : GOAL_POSITION;
+            const angle = getAngleToNext(
+              position,
+              targetPos,
+              imagePixelSize,
+              REAL_FIELD_SIZE
+            );
+            const left = metersToPixelsX(
+              position.x,
+              imagePixelSize.width,
+              REAL_FIELD_SIZE.width
+            );
+            const top = metersToPixelsY(
+              position.y,
+              imagePixelSize.height,
+              REAL_FIELD_SIZE.height
+            );
+            const showGlow =
+              lastIsShotAndHidden && index === lastIndex && glowOn;
+
+            return (
+              <RobotMarker
+                key={index}
+                left={left}
+                top={top}
+                driveType={position.driveType}
+                angle={angle}
+                showGlow={showGlow}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

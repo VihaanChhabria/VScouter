@@ -128,27 +128,57 @@ const TeleopScoringPage = () => {
           backPage={"auto-scoring"}
         />
 
-        <ShotInfoSection
-          hopperPercent={hopperPercent}
-          setHopperPercent={setHopperPercent}
-          shotsPercent={shotsPercent}
-          setShotsPercent={setShotsPercent}
-          submitOnClick={() => {
-            if (fuelOptionSelected === "" || fuelOptionSelected === null) {
-              toast.error("Please select a fuel source!");
-              return;
-            }
-            setFuelShotAndSourceInfo((prev) => [
-              ...prev,
-              {
-                source: fuelOptionSelected,
-                hopperPercent: hopperPercent,
-                shotsPercent: shotsPercent,
-              },
-            ]);
-            setFuelOptionSelected("");
-          }}
-        />
+        {fuelOptionSelected == "" || fuelOptionSelected == null ? (
+          <div
+            style={{
+              backgroundColor: "#3B3B3B",
+              borderColor: "#1D1E1E",
+              borderWidth: "2dvh",
+              borderRadius: "3.49dvh",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "1dvh",
+              padding: "2.5dvh",
+            }}
+          >
+            {/* Title */}
+            <h2
+              style={{
+                color: "#FFFFFF",
+                fontSize: "3.5dvh",
+                fontWeight: "bold",
+              }}
+            >
+              Please Select a Fuel Source
+            </h2>
+          </div>
+        ) : (
+          <ShotInfoSection
+            hopperPercent={hopperPercent}
+            setHopperPercent={setHopperPercent}
+            shotsPercent={shotsPercent}
+            setShotsPercent={setShotsPercent}
+            submitOnClick={() => {
+              if (fuelOptionSelected === "" || fuelOptionSelected === null) {
+                toast.error("Please select a fuel source!");
+                return;
+              }
+              setFuelShotAndSourceInfo((prev) => [
+                ...prev,
+                {
+                  source: fuelOptionSelected,
+                  hopperPercent: hopperPercent,
+                  shotsPercent: shotsPercent,
+                },
+              ]);
+              setFuelOptionSelected("");
+            }}
+          />
+        )}
       </div>
     </div>
   );

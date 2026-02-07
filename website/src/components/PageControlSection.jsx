@@ -1,5 +1,5 @@
 import React from "react";
-import ProceedBackButton from "../ProceedBackButton";
+import ProceedBackButton from "./ProceedBackButton";
 
 const PageControlSection = ({
   stateStack,

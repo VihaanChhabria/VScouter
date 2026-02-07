@@ -6,7 +6,7 @@ import SelectOptions from "../components/SelectOptions";
 import AutoPositionSelector from "../components/AutoScoringComponents/AutoPositionSelector";
 import { toast } from "react-toastify";
 import ShotInfoSection from "../components/ShotInfoSection";
-import PageControlSection from "../components/AutoScoringComponents/PageControlSection";
+import PageControlSection from "../components/PageControlSection";
 
 const AutoScoringPage = () => {
   const location = useLocation();

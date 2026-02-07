@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import ShotInfoSection from "../components/ShotInfoSection";
-import PageControlSection from "../components/AutoScoringComponents/PageControlSection";
+import PageControlSection from "../components/PageControlSection";
 import TeleopFuelSourceSection from "../components/TeleopScoringComponents/TeleopFuelSourceSection";
 
 const AutoScoringPage = () => {

@@ -67,7 +67,7 @@ const TeleopFuelSourceSection = ({
           fontWeight: "bold",
         }}
       >
-        Select Shooting Data
+        Select Majority Fuel Source
       </h1>
       <div
         style={{

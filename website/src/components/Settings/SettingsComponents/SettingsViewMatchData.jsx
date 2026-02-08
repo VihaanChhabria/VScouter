@@ -20,7 +20,7 @@ const SettingsViewMatchData = () => {
         }}
       >
         <h1 style={{ color: "#FFFFFF", fontSize: "2dvh" }}>
-          {localStorage.getItem("matchData")}
+          {localStorage.getItem("scoutingData")}
         </h1>
       </div>
     </>

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import EndgamePageControlSection from "../../components/EndgameScoringComponents/EndgamePageControlSection";
-import EndgameBrokenSection from "../../components/EndgameScoringComponents/EndgameBrokenSection";
-import EndgameDefenseSection from "../../components/EndgameScoringComponents/EndgameDefenseSection";
+import EndgamePageControlSection from "../../components/MatchScouting/EndgameScoringComponents/EndgamePageControlSection";
+import EndgameBrokenSection from "../../components/MatchScouting/EndgameScoringComponents/EndgameBrokenSection";
+import EndgameDefenseSection from "../../components/MatchScouting/EndgameScoringComponents/EndgameDefenseSection";
 
 const EndgameScoringPage = () => {
   const location = useLocation();

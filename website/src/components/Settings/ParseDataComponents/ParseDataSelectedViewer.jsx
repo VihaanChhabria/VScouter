@@ -1,4 +1,4 @@
-import React from "react"; // Imports the React library to create components
+import React from "react";
 
 /**
  * A component that displays a list of selected files, with the ability to remove

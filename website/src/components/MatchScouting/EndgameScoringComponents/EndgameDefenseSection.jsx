@@ -1,6 +1,6 @@
 import React from "react";
-import SelectOptions from "../SelectOptions";
-import ToggleButton from "../ToggleButton";
+import SelectOptions from "../../SelectOptions";
+import ToggleButton from "../../ToggleButton";
 
 const EndgameDefenseSection = ({
   playedDefense,

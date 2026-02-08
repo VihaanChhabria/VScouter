@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
-import MainLayoutPortraitWarning from "../components/MainLayoutComponents/MainLayoutPortraitWarning";
+import MainLayoutPortraitWarning from "../components/Settings/MainLayoutComponents/MainLayoutPortraitWarning";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,7 +41,11 @@ const MainLayout = () => {
       const submitTeamNumber = async () => {
         const { data, error } = await supabase
           .from("teams")
-          .insert([{ team_num: parseInt(localStorage.getItem("teamNumber") || "0000") }]);
+          .insert([
+            {
+              team_num: parseInt(localStorage.getItem("teamNumber") || "0000"),
+            },
+          ]);
 
         if (error) {
           console.log("Error submitting team number:", error);

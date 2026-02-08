@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import ProceedBackButton from "../../components/ProceedBackButton";
-import SettingsMatchDataScanner from "../../components/SettingsComponents/SettingsMatchDataScanner";
-import SettingsButton from "../../components/SettingsComponents/SettingsButton";
-import SettingsViewMatchData from "../../components/SettingsComponents/SettingsViewMatchData";
-import SettingsUpdateButton from "../../components/SettingsComponents/SettingsUpdateButton";
+import SettingsMatchDataScanner from "../../components/Settings/SettingsComponents/SettingsMatchDataScanner";
+import SettingsButton from "../../components/Settings/SettingsComponents/SettingsButton";
+import SettingsViewMatchData from "../../components/Settings/SettingsComponents/SettingsViewMatchData";
+import SettingsUpdateButton from "../../components/Settings/SettingsComponents/SettingsUpdateButton";
 import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 /**

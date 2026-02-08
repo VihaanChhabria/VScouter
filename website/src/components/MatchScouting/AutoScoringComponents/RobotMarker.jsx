@@ -1,6 +1,6 @@
 import React from "react";
-import DriveIcon from "../../assets/DriveIcon.svg";
-import ShotIcon from "../../assets/ShotIcon.svg";
+import DriveIcon from "../../../assets/DriveIcon.svg";
+import ShotIcon from "../../../assets/ShotIcon.svg";
 
 const ROBOT_SIZE = 50;
 

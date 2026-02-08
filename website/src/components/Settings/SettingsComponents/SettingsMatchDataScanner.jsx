@@ -4,8 +4,8 @@ import { Scanner } from "@yudiel/react-qr-scanner";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ToggleButton from "../ToggleButton";
-import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
+import ToggleButton from "../../ToggleButton";
+import { useNavigateWithBase } from "../../../utils/useNavigateWithBase";
 
 /**
  * This component is used to fetch match data from a given URL.

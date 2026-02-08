@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import FullFieldMap from "../../assets/FullFieldMap.png";
+import FullFieldMap from "../../../assets/FullFieldMap.png";
 import { toast } from "react-toastify";
 
 import {

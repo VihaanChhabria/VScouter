@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import ShotInfoSection from "../../components/ShotInfoSection";
 import PageControlSection from "../../components/PageControlSection";
-import TeleopFuelSourceSection from "../../components/TeleopScoringComponents/TeleopFuelSourceSection";
+import TeleopFuelSourceSection from "../../components/MatchScouting/TeleopScoringComponents/TeleopFuelSourceSection";
 
 const TeleopScoringPage = () => {
   const location = useLocation();

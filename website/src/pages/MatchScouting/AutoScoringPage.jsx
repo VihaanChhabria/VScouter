@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import SelectOptions from "../../components/SelectOptions";
-import AutoPositionSelector from "../../components/AutoScoringComponents/AutoPositionSelector";
+import AutoPositionSelector from "../../components/MatchScouting/AutoScoringComponents/AutoPositionSelector";
 import { toast } from "react-toastify";
 import ShotInfoSection from "../../components/ShotInfoSection";
 import PageControlSection from "../../components/PageControlSection";

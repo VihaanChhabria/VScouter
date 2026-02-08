@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import SelectOptions from "../SelectOptions";
-import CenterPickUp from "../../assets/TeleopScoringImages/CenterPickUp.png";
-import CenterShuttle from "../../assets/TeleopScoringImages/CenterShuttle.png";
-import ReceivedShuttle from "../../assets/TeleopScoringImages/ReceivedShuttle.png";
-import DepotOrOutpost from "../../assets/TeleopScoringImages/DepotOrOutpost.png";
+import SelectOptions from "../../SelectOptions";
+import CenterPickUp from "../../../assets/TeleopScoringImages/CenterPickUp.png";
+import CenterShuttle from "../../../assets/TeleopScoringImages/CenterShuttle.png";
+import ReceivedShuttle from "../../../assets/TeleopScoringImages/ReceivedShuttle.png";
+import DepotOrOutpost from "../../../assets/TeleopScoringImages/DepotOrOutpost.png";
 
 const FUEL_SOURCE_OPTIONS = [
   "Center Pick Up",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
+import { useNavigateWithBase } from "../../../utils/useNavigateWithBase";
 
 const MainLayoutPortraitWarning = () => {
   const navigate = useNavigateWithBase();
@@ -10,7 +10,7 @@ const MainLayoutPortraitWarning = () => {
   const [isIncreasing, setIsIncreasing] = useState(true);
 
   const [isPortrait, setIsPortrait] = useState(
-    window.matchMedia("(orientation: portrait)").matches
+    window.matchMedia("(orientation: portrait)").matches,
   );
   const [forcePortrait, setForcePortrait] = useState(false);
 

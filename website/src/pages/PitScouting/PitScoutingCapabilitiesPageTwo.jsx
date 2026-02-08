@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import PitScoutingTemplate from "../../components/PitScouting/PitScoutingTemplate";
-import TextInput from "../../components/TextInput";
-import Dropdown from "../../components/Dropdown";
 import ToggleButton from "../../components/ToggleButton";
 
 const PitScoutingCapabilitiesPageTwo = () => {

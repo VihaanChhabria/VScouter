@@ -23,6 +23,7 @@ import TeamNumberPromptPage from "./pages/Settings/TeamNumberPromptPage";
 import PitScoutingInitialDataPage from "./pages/PitScouting/PitScoutingInitialDataPage";
 import PitScoutingCapabilitiesPageOne from "./pages/PitScouting/PitScoutingCapabilitiesPageOne";
 import PitScoutingCapabilitiesPageTwo from "./pages/PitScouting/PitScoutingCapabilitiesPageTwo";
+import PitScoutingPhotoPage from "./pages/PitScouting/PitScoutingPhotoPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -68,6 +69,10 @@ function App() {
       <Route
         path="pit-scouting/capabilities-page-two"
         element={<PitScoutingCapabilitiesPageTwo />}
+      />
+      <Route
+        path="pit-scouting/photo"
+        element={<PitScoutingPhotoPage />}
       />
     </Route>
   ));

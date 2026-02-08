@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import ProceedBackButton from "../../components/ProceedBackButton";
 import GameStartSelectAlliance from "../../components/MatchScouting/GameStartComponents/GameStartSelectAlliance";
-import GameStartTextInput from "../../components/MatchScouting/GameStartComponents/GameStartTextInput";
+import GameStartTextInput from "../../components/TextInput";
 import GameStartSelectTeam from "../../components/MatchScouting/GameStartComponents/GameStartSelectTeam";
 
 /**

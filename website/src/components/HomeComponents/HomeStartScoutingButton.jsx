@@ -50,7 +50,7 @@ const HomeStartScoutingButton = () => {
             onClick={() => setStartScoutingClicked(false)}
           />
           <ProceedBackButton
-            nextPage={`pit-scouting`}
+            nextPage={`pit-scouting/start-info`}
             message={"Pit Scouting"}
             onClick={() => setStartScoutingClicked(false)}
           />

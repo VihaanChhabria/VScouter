@@ -6,6 +6,7 @@ import HomeDumpDataButton from "../components/HomeComponents/HomeDumpDataButton"
 
 import VScouterLogo from "../assets/VScouterLogo.png";
 import FRCLogo from "../assets/FRCLogo.svg";
+import HomeStartScoutingButton from "../components/HomeComponents/HomeStartScoutingButton";
 
 const HomePage = () => {
   return (
@@ -65,10 +66,7 @@ const HomePage = () => {
               height: "250%",
             }}
           >
-            <ProceedBackButton
-              nextPage={`game-start`}
-              message={"Start Scouting"}
-            />
+            <HomeStartScoutingButton />
           </div>
 
           <div

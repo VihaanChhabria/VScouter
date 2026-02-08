@@ -40,6 +40,8 @@ const PitScoutingInitialDataPage = () => {
             defaultText={scouterInitials}
           />,
         ]}
+        backPage=""
+        nextPage="pit-scouting/capabilities-page-one"
       />
     </div>
   );

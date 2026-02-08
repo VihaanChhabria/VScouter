@@ -21,6 +21,7 @@ import MatchDataOnlinePage from "./pages/Settings/MatchDataOnlinePage";
 import MatchDataOfflinePage from "./pages/Settings/MatchDataOfflinePage";
 import TeamNumberPromptPage from "./pages/Settings/TeamNumberPromptPage";
 import PitScoutingInitialDataPage from "./pages/PitScouting/PitScoutingInitialDataPage";
+import PitScoutingCapabilitiesPageOne from "./pages/PitScouting/PitScoutingCapabilitiesPageOne";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -58,6 +59,10 @@ function App() {
       <Route
         path="pit-scouting/start-info"
         element={<PitScoutingInitialDataPage />}
+      />
+      <Route
+        path="pit-scouting/capabilities-page-one"
+        element={<PitScoutingCapabilitiesPageOne />}
       />
     </Route>
   ));

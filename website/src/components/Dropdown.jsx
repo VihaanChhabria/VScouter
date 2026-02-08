@@ -6,19 +6,19 @@ const Dropdown = ({
   defaultValue = null,
   setSelectedValue = () => {},
 }) => {
-  const [upperValue, setUpperValue] = useState(
-    defaultValue === null ? "" : defaultValue.toUpperCase()
+  const [value, setValue] = useState(
+    defaultValue === null ? "" : defaultValue
   );
 
   const [dropdownSelected, setDropdownSelected] = useState(false);
 
   useEffect(() => {
-    if (upperValue !== "") {
-      setSelectedValue(upperValue);
+    if (value !== "") {
+      setSelectedValue(value);
     } else {
       setSelectedValue(null);
     }
-  }, [upperValue]);
+  }, [value]);
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
@@ -65,7 +65,6 @@ const Dropdown = ({
             {question}
           </h1>
 
-          {/* Select wrapper for arrow positioning */}
           <div
             style={{
               position: "relative",
@@ -73,8 +72,8 @@ const Dropdown = ({
             }}
           >
             <select
-              value={upperValue}
-              onChange={(e) => setUpperValue(e.target.value.toUpperCase())}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
               onFocus={() => setDropdownSelected(true)}
               onBlur={() => setDropdownSelected(false)}
               style={{
@@ -86,18 +85,18 @@ const Dropdown = ({
                 height: "8.88dvh",
                 fontSize: "4.0dvh",
                 paddingLeft: "1dvw",
-                paddingRight: "4dvw", // space for arrow
+                paddingRight: "4dvw",
                 appearance: "none",
                 WebkitAppearance: "none",
                 MozAppearance: "none",
               }}
             >
               <option value="" disabled>
-                Select an Option
+                Select an option
               </option>
               {options.map((option, index) => (
-                <option key={index} value={option.toUpperCase()}>
-                  {option.toUpperCase()}
+                <option key={index} value={option}>
+                  {option}
                 </option>
               ))}
             </select>

@@ -3,7 +3,7 @@ import ProceedBackButton from "../ProceedBackButton";
 import PitScoutingTemplateNavigation from "./PitScoutingTemplateComponents/PitScoutingTemplateNavigation";
 import PitScoutingTemplateTitle from "./PitScoutingTemplateComponents/PitScoutingTemplateTitle";
 
-const PitScoutingTemplate = ({ title, components }) => {
+const PitScoutingTemplate = ({ title, components, backPage, nextPage}) => {
   return (
     <div
       style={{
@@ -15,7 +15,7 @@ const PitScoutingTemplate = ({ title, components }) => {
         flexDirection: "column",
       }}
     >
-      <PitScoutingTemplateNavigation />
+      <PitScoutingTemplateNavigation backPage={backPage} nextPage={nextPage} />
 
       <div
         style={{
@@ -25,7 +25,7 @@ const PitScoutingTemplate = ({ title, components }) => {
           gridTemplateColumns: "repeat(2, 1fr)",
           alignItems: "center",
           justifyContent: "center",
-          padding: "0 15dvw",
+          padding: "2dvh 15dvw",
           gap: "2dvw",
         }}
       >
@@ -34,7 +34,7 @@ const PitScoutingTemplate = ({ title, components }) => {
             key={index}
             style={{
               width: "100%",
-              height: components.length + 1 > 2 ? "50%" : "100%",
+              height: components.length === 2 ? "50%" : "100%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

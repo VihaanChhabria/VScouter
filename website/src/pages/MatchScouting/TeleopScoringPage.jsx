@@ -1,42 +1,39 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import ProceedBackButton from "../components/ProceedBackButton";
 
-import SelectOptions from "../components/SelectOptions";
-import AutoPositionSelector from "../components/AutoScoringComponents/AutoPositionSelector";
 import { toast } from "react-toastify";
-import ShotInfoSection from "../components/ShotInfoSection";
-import PageControlSection from "../components/PageControlSection";
+import ShotInfoSection from "../../components/ShotInfoSection";
+import PageControlSection from "../../components/PageControlSection";
+import TeleopFuelSourceSection from "../../components/TeleopScoringComponents/TeleopFuelSourceSection";
 
-const AutoScoringPage = () => {
+const TeleopScoringPage = () => {
   const location = useLocation();
   const states = location.state;
 
   const [stateStack, setStateStack] = useState([[]]);
   const isUndoingRef = useRef(false);
 
-  const [driveType, setDriveType] = useState("Shot");
-  const [robotPositions, setRobotPositions] = useState(
-    states?.inputs?.autoRobotPositions || [],
-  );
-  const [showShotInfo, setShowShotInfo] = useState(false);
-
   const [hopperPercent, setHopperPercent] = useState("80%");
   const [shotsPercent, setShotsPercent] = useState("80%");
 
+  const [fuelOptionSelected, setFuelOptionSelected] = useState("");
+
+  const [fuelShotAndSourceInfo, setFuelShotAndSourceInfo] = useState([]);
+
   useEffect(() => {
-    const savedStack = JSON.parse(localStorage.getItem("autoHistory") || "[]");
+    const savedStack = JSON.parse(
+      localStorage.getItem("teleopHistory") || "[]",
+    );
 
     if (savedStack.length === 0) {
       savedStack.push([]);
     }
 
-    console.log("savedstack:", savedStack);
-
     setStateStack(savedStack);
 
     if (savedStack.length > 0) {
-      setRobotPositions(savedStack[savedStack.length - 1]);
+      // update states with the most recent state in the stack
+      setFuelShotAndSourceInfo(savedStack[savedStack.length - 1]);
     }
   }, []);
 
@@ -53,7 +50,7 @@ const AutoScoringPage = () => {
     const previousState = newStack[newStack.length - 1];
 
     setStateStack(newStack);
-    setRobotPositions(previousState);
+    setFuelShotAndSourceInfo(previousState);
   };
 
   // function to handle undo operation and update state stack
@@ -63,30 +60,17 @@ const AutoScoringPage = () => {
       return;
     }
 
-    if (robotPositions.length === 0) return;
+    if (fuelShotAndSourceInfo.length === 0) return;
 
     const areSame =
       stateStack.length > 0 &&
-      JSON.stringify(robotPositions) ===
+      JSON.stringify(fuelShotAndSourceInfo) ===
         JSON.stringify(stateStack[stateStack.length - 1]);
 
     if (areSame) return;
 
-    setStateStack((prev) => [...prev, [...robotPositions]]);
-  }, [robotPositions]);
-  // function to handle state changes and push current state to stack
-  useEffect(() => {
-    if (
-      robotPositions.length > 0 &&
-      robotPositions[robotPositions.length - 1].driveType === "Shot" &&
-      !robotPositions[robotPositions.length - 1].shotInfo
-    ) {
-      setShowShotInfo(true);
-    } else {
-      setShowShotInfo(false);
-      setDriveType("Drive");
-    }
-  }, [robotPositions]);
+    setStateStack((prev) => [...prev, [...fuelShotAndSourceInfo]]);
+  }, [fuelShotAndSourceInfo]);
 
   return (
     <div
@@ -103,7 +87,7 @@ const AutoScoringPage = () => {
     >
       <div
         style={{
-          width: "60%",
+          width: "55%",
           height: "100%",
           backgroundColor: "#3B3B3B",
           borderColor: "#1D1E1E",
@@ -115,16 +99,15 @@ const AutoScoringPage = () => {
           alignItems: "center",
         }}
       >
-        <AutoPositionSelector
-          driveType={driveType}
-          robotPositions={robotPositions}
-          setRobotPositions={setRobotPositions}
-          showShotInfo={showShotInfo}
+        <TeleopFuelSourceSection
+          fuelShotAndSourceInfo={fuelShotAndSourceInfo}
+          optionSelected={fuelOptionSelected}
+          setOptionSelected={setFuelOptionSelected}
         />
       </div>
       <div
         style={{
-          width: "40%",
+          width: "45%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
@@ -138,47 +121,67 @@ const AutoScoringPage = () => {
           handleUndo={handleUndo}
           states={states}
           extraInputs={{
-            autoRobotPositions: robotPositions,
+            fuelShotAndSourceInfo: fuelShotAndSourceInfo,
           }}
-          pageTitle={"Auto"}
-          nextPage={"teleop-scoring"}
-          backPage={"game-start"}
+          pageTitle={"Teleop"}
+          nextPage={"endgame-scoring"}
+          backPage={"auto-scoring"}
         />
 
-        {showShotInfo ? (
+        {fuelOptionSelected == "" || fuelOptionSelected == null ? (
+          <div
+            style={{
+              backgroundColor: "#3B3B3B",
+              borderColor: "#1D1E1E",
+              borderWidth: "2dvh",
+              borderRadius: "3.49dvh",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "1dvh",
+              padding: "2.5dvh",
+            }}
+          >
+            {/* Title */}
+            <h2
+              style={{
+                color: "#FFFFFF",
+                fontSize: "3.5dvh",
+                fontWeight: "bold",
+              }}
+            >
+              Please Select a Fuel Source
+            </h2>
+          </div>
+        ) : (
           <ShotInfoSection
             hopperPercent={hopperPercent}
             setHopperPercent={setHopperPercent}
             shotsPercent={shotsPercent}
             setShotsPercent={setShotsPercent}
             submitOnClick={() => {
-              setRobotPositions((prev) => [
-                ...prev.slice(0, prev.length - 1),
+              if (fuelOptionSelected === "" || fuelOptionSelected === null) {
+                toast.error("Please select a fuel source!");
+                return;
+              }
+              setFuelShotAndSourceInfo((prev) => [
+                ...prev,
                 {
-                  x: robotPositions[robotPositions.length - 1].x,
-                  y: robotPositions[robotPositions.length - 1].y,
-                  driveType: "Shot",
-                  shotInfo: {
-                    hopperPercent: hopperPercent,
-                    shotsPercent: shotsPercent,
-                  },
+                  source: fuelOptionSelected,
+                  hopperPercent: hopperPercent,
+                  shotsPercent: shotsPercent,
                 },
               ]);
+              setFuelOptionSelected("");
             }}
           />
-        ) : (
-          <div style={{ height: "65%", width: "100%" }}>
-            <SelectOptions
-              optionsData={["Drive", "Shot"]}
-              optionSelected={driveType}
-              setOptionSelected={setDriveType}
-              flexDirection="column"
-            />
-          </div>
         )}
       </div>
     </div>
   );
 };
 
-export default AutoScoringPage;
+export default TeleopScoringPage;

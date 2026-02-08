@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigateWithBase } from "../utils/useNavigateWithBase";
+import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 const MatchDataOfflinePage = () => {
   const navigate = useNavigateWithBase();
@@ -28,7 +28,7 @@ const MatchDataOfflinePage = () => {
 
     toast.success(
       "Data Submitted: " +
-        JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
+        JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0],
     );
     navigate("/");
   };

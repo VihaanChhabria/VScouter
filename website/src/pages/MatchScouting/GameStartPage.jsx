@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import ProceedBackButton from "../components/ProceedBackButton";
-import GameStartSelectAlliance from "../components/GameStartComponents/GameStartSelectAlliance";
-import GameStartTextInput from "../components/GameStartComponents/GameStartTextInput";
-import GameStartSelectTeam from "../components/GameStartComponents/GameStartSelectTeam";
+import ProceedBackButton from "../../components/ProceedBackButton";
+import GameStartSelectAlliance from "../../components/GameStartComponents/GameStartSelectAlliance";
+import GameStartTextInput from "../../components/GameStartComponents/GameStartTextInput";
+import GameStartSelectTeam from "../../components/GameStartComponents/GameStartSelectTeam";
 
 /**
  * Renders a component representing the Game Start Page.

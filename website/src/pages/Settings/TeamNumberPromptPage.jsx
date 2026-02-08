@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ToggleButton from "../components/ToggleButton.jsx";
-import ProceedBackButton from "../components/ProceedBackButton";
+import ToggleButton from "../../components/ToggleButton.jsx";
+import ProceedBackButton from "../../components/ProceedBackButton.jsx";
 import { toast } from "react-toastify";
 
-import supabase from "../utils/supabase.js";
+import supabase from "../../utils/supabase.js";
 
 const TeamNumberPromptPage = () => {
   const [skip, setSkip] = useState(false);

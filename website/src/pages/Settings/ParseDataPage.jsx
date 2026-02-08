@@ -1,6 +1,6 @@
 import React from "react";
-import ParseDataSelector from "../components/ParseDataComponents/ParseDataSelector";
-import ProceedBackButton from "../components/ProceedBackButton";
+import ParseDataSelector from "../../components/ParseDataComponents/ParseDataSelector";
+import ProceedBackButton from "../../components/ProceedBackButton";
 
 const ParseDataPage = () => {
   return (

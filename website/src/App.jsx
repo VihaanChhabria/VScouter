@@ -8,18 +8,18 @@ import {
 import MainLayout from "./layouts/MainLayout";
 
 import HomePage from "./pages/HomePage";
-import GameStartPage from "./pages/GameStartPage";
-import AutoScoringPage from "./pages/AutoScoringPage";
-import TeleopScoringPage from "./pages/TeleopScoringPage";
-import EndgameScoringPage from "./pages/EndgameScoringPage";
-import SettingsPage from "./pages/SettingsPage";
+import GameStartPage from "./pages/MatchScouting/GameStartPage";
+import AutoScoringPage from "./pages/MatchScouting/AutoScoringPage";
+import TeleopScoringPage from "./pages/MatchScouting/TeleopScoringPage";
+import EndgameScoringPage from "./pages/MatchScouting/EndgameScoringPage";
+import SettingsPage from "./pages/Settings/SettingsPage";
 
 import { useEffect, useState } from "react";
-import ParseDataPage from "./pages/ParseDataPage";
-import MatchDataPage from "./pages/MatchDataPage";
-import MatchDataOnlinePage from "./pages/MatchDataOnlinePage";
-import MatchDataOfflinePage from "./pages/MatchDataOfflinePage";
-import TeamNumberPromptPage from "./pages/TeamNumberPromptPage";
+import ParseDataPage from "./pages/Settings/ParseDataPage";
+import MatchDataPage from "./pages/Settings/MatchDataPage";
+import MatchDataOnlinePage from "./pages/Settings/MatchDataOnlinePage";
+import MatchDataOfflinePage from "./pages/Settings/MatchDataOfflinePage";
+import TeamNumberPromptPage from "./pages/Settings/TeamNumberPromptPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({

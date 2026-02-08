@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { toast } from "react-toastify";
-import { useNavigateWithBase } from "../utils/useNavigateWithBase";
+import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 const MatchDataOnlinePage = () => {
   const navigate = useNavigateWithBase();
@@ -16,7 +16,7 @@ const MatchDataOnlinePage = () => {
       };
       const res = await fetch(
         `https://www.thebluealliance.com/api/v3/event/${qrCodeMatchDataParsed.eventKey}/matches/simple`,
-        { headers }
+        { headers },
       ); // Fetching the data from the URL
       const fullData = await res.json();
 
@@ -27,10 +27,10 @@ const MatchDataOnlinePage = () => {
           qualMatchesCleaned.push({
             matchNum: match["match_number"],
             redAlliance: match.alliances.red.team_keys.map((team) =>
-              team.replace("frc", "")
+              team.replace("frc", ""),
             ),
             blueAlliance: match.alliances.blue.team_keys.map((team) =>
-              team.replace("frc", "")
+              team.replace("frc", ""),
             ),
           });
         }
@@ -42,7 +42,7 @@ const MatchDataOnlinePage = () => {
 
       toast.success(
         "Match Data Fetched: " +
-          JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
+          JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0],
       ); // Notifying the user that the data has been fetched
 
       navigate("/"); // Navigating back to the home page

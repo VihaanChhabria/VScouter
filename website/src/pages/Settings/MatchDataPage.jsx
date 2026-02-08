@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import ProceedBackButton from "../components/ProceedBackButton";
-import { useNavigateWithBase } from "../utils/useNavigateWithBase";
+import ProceedBackButton from "../../components/ProceedBackButton";
+import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 const MatchDataPage = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
@@ -32,7 +32,7 @@ const MatchDataPage = () => {
 
       toast.success(
         "Match Data Fetched: " +
-          JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0]
+          JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0],
       ); // Notifying the user that the data has been fetched
 
       navigate("/"); // Navigating back to the home page

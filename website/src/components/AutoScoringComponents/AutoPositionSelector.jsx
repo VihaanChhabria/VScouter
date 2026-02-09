@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import FullFieldMap from "../../assets/FullFieldMap.png";
 import { toast } from "react-toastify";
+
+// Use Vite's URL constructor so asset paths resolve correctly in production (Netlify)
+const FullFieldMapUrl = new URL("../../assets/FullFieldMap.png", import.meta.url).href;
+const DriveIconUrl = new URL("../../assets/DriveIcon.svg", import.meta.url).href;
+const ShotIconUrl = new URL("../../assets/ShotIcon.svg", import.meta.url).href;
 
 import {
   REAL_FIELD_SIZE,
@@ -41,10 +45,23 @@ const AutoPositionSelector = ({
   });
   const [imageOffset, setImageOffset] = useState({ x: 0, y: 0 });
   const [glowOn, setGlowOn] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   // ---------------------------------------------------------------------------
   // Effects
   // ---------------------------------------------------------------------------
+
+  // Preload map and robot icons immediately so they're ready when needed (fixes slow icon/map load)
+  useEffect(() => {
+    const mapImg = new Image();
+    mapImg.onload = () => setMapLoaded(true);
+    mapImg.src = FullFieldMapUrl;
+
+    [DriveIconUrl, ShotIconUrl].forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
 
   useEffect(() => {
     const div = imageDivRef.current;
@@ -155,19 +172,37 @@ const AutoPositionSelector = ({
   // ---------------------------------------------------------------------------
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ width: "100%", height: "100%", position: "relative" }}>
+      {!mapLoaded && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#2a2a2a",
+            borderRadius: "1.5dvh",
+            color: "#888",
+          }}
+        >
+          Loading field…
+        </div>
+      )}
       <div
         ref={imageDivRef}
         onClick={handleClick}
         style={{
           width: "100%",
           height: "100%",
-          backgroundImage: `url(${FullFieldMap})`,
+          backgroundImage: mapLoaded ? `url(${FullFieldMapUrl})` : "none",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "left center",
           backgroundSize: `${FIELD_WIDTH_PERCENT + 100}% 100%`,
           cursor: "crosshair",
           borderRadius: "1.5dvh",
+          opacity: mapLoaded ? 1 : 0,
+          transition: "opacity 0.15s ease-out",
         }}
       >
         <svg

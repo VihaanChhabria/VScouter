@@ -1,12 +1,14 @@
 import React from "react";
-import DriveIcon from "../../assets/DriveIcon.svg";
-import ShotIcon from "../../assets/ShotIcon.svg";
 
 const ROBOT_SIZE = 50;
 
+// Use Vite URL() so SVGs resolve correctly in production (Netlify); import fails for these as CSS url()
+const DriveIconUrl = new URL("../../assets/DriveIcon.svg", import.meta.url).href;
+const ShotIconUrl = new URL("../../assets/ShotIcon.svg", import.meta.url).href;
+
 const DRIVE_TYPE_STYLES = {
-  Drive: { bg: "#9E9E9E", icon: DriveIcon },
-  Shot: { bg: "#2196F3", icon: ShotIcon },
+  Drive: { bg: "#9E9E9E", icon: DriveIconUrl },
+  Shot: { bg: "#2196F3", icon: ShotIconUrl },
 };
 
 /**

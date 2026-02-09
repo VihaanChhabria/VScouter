@@ -1,14 +1,12 @@
 import React from "react";
+import DriveIcon from "../../assets/DriveIcon.svg";
+import ShotIcon from "../../assets/ShotIcon.svg";
 
 const ROBOT_SIZE = 50;
 
-// Use Vite's URL constructor so asset paths resolve correctly in production (Netlify)
-const DriveIconUrl = new URL("../../assets/DriveIcon.svg", import.meta.url).href;
-const ShotIconUrl = new URL("../../assets/ShotIcon.svg", import.meta.url).href;
-
 const DRIVE_TYPE_STYLES = {
-  Drive: { bg: "#9E9E9E", icon: DriveIconUrl },
-  Shot: { bg: "#2196F3", icon: ShotIconUrl },
+  Drive: { bg: "#9E9E9E", icon: DriveIcon },
+  Shot: { bg: "#2196F3", icon: ShotIcon },
 };
 
 /**
@@ -32,11 +30,10 @@ function RobotMarker({ left, top, driveType, angle, showGlow }) {
       : {}),
   };
 
-  const iconUrl = style?.icon ?? null;
-  const backgroundStyle = style && iconUrl
+  const backgroundStyle = style
     ? {
         background: style.bg,
-        backgroundImage: `url(${iconUrl})`,
+        backgroundImage: `url(${style.icon})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "70%",

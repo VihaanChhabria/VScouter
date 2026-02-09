@@ -1,10 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-
-// Use Vite's URL constructor so asset paths resolve correctly in production (Netlify)
-const FullFieldMapUrl = new URL("../../assets/FullFieldMap.png", import.meta.url).href;
-const DriveIconUrl = new URL("../../assets/DriveIcon.svg", import.meta.url).href;
-const ShotIconUrl = new URL("../../assets/ShotIcon.svg", import.meta.url).href;
+import FullFieldMap from "../../assets/FullFieldMap.png";
 
 import {
   REAL_FIELD_SIZE,
@@ -51,16 +47,11 @@ const AutoPositionSelector = ({
   // Effects
   // ---------------------------------------------------------------------------
 
-  // Preload map and robot icons immediately so they're ready when needed (fixes slow icon/map load)
+  // Detect when map image is loaded so we can show it (images are preloaded globally in App)
   useEffect(() => {
     const mapImg = new Image();
     mapImg.onload = () => setMapLoaded(true);
-    mapImg.src = FullFieldMapUrl;
-
-    [DriveIconUrl, ShotIconUrl].forEach((url) => {
-      const img = new Image();
-      img.src = url;
-    });
+    mapImg.src = FullFieldMap;
   }, []);
 
   useEffect(() => {
@@ -195,7 +186,7 @@ const AutoPositionSelector = ({
         style={{
           width: "100%",
           height: "100%",
-          backgroundImage: mapLoaded ? `url(${FullFieldMapUrl})` : "none",
+          backgroundImage: mapLoaded ? `url(${FullFieldMap})` : "none",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "left center",
           backgroundSize: `${FIELD_WIDTH_PERCENT + 100}% 100%`,

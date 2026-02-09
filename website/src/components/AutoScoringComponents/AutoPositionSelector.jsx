@@ -114,8 +114,8 @@ const AutoPositionSelector = ({
     const rect = imageDivRef.current?.getBoundingClientRect();
     if (!rect) return;
 
-    const clickX = event.clientX - rect.left + 25;
-    const clickY = event.clientY - rect.top + 25;
+    const clickX = event.clientX - rect.left - 25;
+    const clickY = event.clientY - rect.top - 25;
     const imageX = clickX - imageOffset.x;
     const imageY = clickY - imageOffset.y;
 

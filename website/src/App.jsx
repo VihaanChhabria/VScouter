@@ -15,6 +15,7 @@ import EndgameScoringPage from "./pages/EndgameScoringPage";
 import SettingsPage from "./pages/SettingsPage";
 
 import { useEffect, useState } from "react";
+import { preloadAppImages } from "./utils/preloadImages";
 import ParseDataPage from "./pages/ParseDataPage";
 import MatchDataPage from "./pages/MatchDataPage";
 import MatchDataOnlinePage from "./pages/MatchDataOnlinePage";
@@ -26,6 +27,10 @@ function App() {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+
+  useEffect(() => {
+    preloadAppImages();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {

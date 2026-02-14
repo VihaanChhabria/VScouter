@@ -9,8 +9,8 @@ const ASSET_URLS = [
   new URL("../assets/FRCLogo.svg", import.meta.url).href,
   // Auto scoring
   new URL("../assets/FullFieldMap.png", import.meta.url).href,
-  new URL("../assets/DriveIcon.svg", import.meta.url).href,
-  new URL("../assets/ShotIcon.svg", import.meta.url).href,
+  `${import.meta.env.BASE_URL}AutoScoringImages/DriveIcon.svg`,
+  `${import.meta.env.BASE_URL}AutoScoringImages/ShotIcon.svg`,
   // Teleop scoring
   new URL("../assets/TeleopScoringImages/CenterPickUp.png", import.meta.url).href,
   new URL("../assets/TeleopScoringImages/CenterShuttle.png", import.meta.url).href,

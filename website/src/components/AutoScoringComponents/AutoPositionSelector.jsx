@@ -15,6 +15,9 @@ import {
 import { generateSplinePath } from "./pathUtils.js";
 import RobotMarker, { ROBOT_SIZE } from "./RobotMarker.jsx";
 
+// Icons are in public/AutoScoringImages/ so they are always in dist (see RobotMarker.jsx).
+const AUTO_ICONS_BASE = `${import.meta.env.BASE_URL}AutoScoringImages`;
+
 // -----------------------------------------------------------------------------
 // Constants
 // -----------------------------------------------------------------------------
@@ -164,6 +167,16 @@ const AutoPositionSelector = ({
 
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
+      <img
+        src={`${AUTO_ICONS_BASE}/DriveIcon.svg`}
+        alt="Drive Icon"
+        style={{ display: "none", position: "absolute" }}
+      />
+      <img
+        src={`${AUTO_ICONS_BASE}/ShotIcon.svg`}
+        alt="Shot Icon"
+        style={{ display: "none", position: "absolute" }}
+      />
       {!mapLoaded && (
         <div
           style={{

@@ -1,12 +1,32 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import PitScoutingTemplate from "../../components/PitScouting/PitScoutingTemplate";
 import ToggleButton from "../../components/ToggleButton";
 
 const PitScoutingCapabilitiesPageTwo = () => {
-  const [trenchDriveAbility, setTrenchDriveAbility] = useState(false);
-  const [rotatableShooter, setRotatableShooter] = useState(false);
-  const [intakeFromDepot, setIntakeFromDepot] = useState(false);
-  const [intakeFromOutpost, setIntakeFromOutpost] = useState(false);
+  const location = useLocation();
+  const pitScouting = location.state?.pitScouting || {};
+
+  const [trenchDriveAbility, setTrenchDriveAbility] = useState(
+    pitScouting.trenchDriveAbility ?? false,
+  );
+  const [rotatableShooter, setRotatableShooter] = useState(
+    pitScouting.rotatableShooter ?? false,
+  );
+  const [intakeFromDepot, setIntakeFromDepot] = useState(
+    pitScouting.intakeFromDepot ?? false,
+  );
+  const [intakeFromOutpost, setIntakeFromOutpost] = useState(
+    pitScouting.intakeFromOutpost ?? false,
+  );
+
+  const pitScoutingState = {
+    ...pitScouting,
+    trenchDriveAbility,
+    rotatableShooter,
+    intakeFromDepot,
+    intakeFromOutpost,
+  };
 
   return (
     <div style={{ width: "100%", height: "100%" }}>
@@ -40,6 +60,7 @@ const PitScoutingCapabilitiesPageTwo = () => {
         ]}
         backPage="pit-scouting/capabilities-page-one"
         nextPage="pit-scouting/photo"
+        pitScoutingState={pitScoutingState}
       />
     </div>
   );

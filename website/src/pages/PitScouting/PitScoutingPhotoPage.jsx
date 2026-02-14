@@ -1,15 +1,23 @@
 import React, { useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import PitScoutingTemplate from "../../components/PitScouting/PitScoutingTemplate";
 import ToggleButton from "../../components/ToggleButton";
 import Webcam from "react-webcam";
 
 const PitScoutingPhotoPage = () => {
-  const [robotNotPresent, setRobotNotPresent] = useState(false);
-  const [photoTaken, setPhotoTaken] = useState(false);
+  const location = useLocation();
+  const pitScouting = location.state?.pitScouting || {};
+
+  const [robotNotPresent, setRobotNotPresent] = useState(
+    pitScouting.robotNotPresent ?? false,
+  );
+  const [photoTaken, setPhotoTaken] = useState(
+    pitScouting.photoTaken ?? false,
+  );
   const [flipCamera, setFlipCamera] = useState(false);
 
   const webcamRef = useRef(null);
-  const [imageSrc, setImageSrc] = useState(null);
+  const [imageSrc, setImageSrc] = useState(pitScouting.imageSrc ?? null);
 
   const takePhoto = () => {
     if (photoTaken) {
@@ -23,12 +31,20 @@ const PitScoutingPhotoPage = () => {
     }
   };
 
+  const pitScoutingState = {
+    ...pitScouting,
+    robotNotPresent,
+    photoTaken,
+    imageSrc,
+  };
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <PitScoutingTemplate
         title="Pit Scouting Photo Page"
         backPage="pit-scouting/capabilities-page-two"
-        nextPage="pit-scouting/photo"
+        nextPage=""
+        pitScoutingState={pitScoutingState}
         gridOrganize={false}
         customComponent={
           <div
@@ -56,33 +72,38 @@ const PitScoutingPhotoPage = () => {
                 flex: 0.65,
               }}
             >
-              {!robotNotPresent ? !photoTaken ? (
-                <Webcam
-                  audio={false}
-                  ref={webcamRef}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    maxHeight: "100%",
-                    aspectRatio: "16 / 9",
-                    objectFit: "contain",
-                  }}
-                  videoConstraints={{
-                    facingMode: flipCamera ? "user" : "environment",
-                  }}
-                />
-              ) : (
-                <img
-                  src={imageSrc}
-                  alt="Captured"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    maxHeight: "100%",
-                    aspectRatio: "16 / 9",
-                    objectFit: "contain",
-                  }}
-                />
+              {!robotNotPresent ? (
+                !photoTaken ? (
+                  <Webcam
+                    audio={false}
+                    ref={webcamRef}
+                    screenshotQuality={0.8}
+                    screenshotWidth={1280}
+                    screenshotHeight={720}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxHeight: "100%",
+                      aspectRatio: "16 / 9",
+                      objectFit: "contain",
+                    }}
+                    videoConstraints={{
+                      facingMode: flipCamera ? "user" : "environment",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={imageSrc}
+                    alt="Captured"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      maxHeight: "100%",
+                      aspectRatio: "16 / 9",
+                      objectFit: "contain",
+                    }}
+                  />
+                )
               ) : (
                 <h1
                   style={{

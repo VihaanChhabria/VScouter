@@ -10,6 +10,7 @@ const PitScoutingTemplate = ({
   nextPage,
   gridOrganize = true,
   customComponent = null,
+  pitScoutingState = {},
 }) => {
   return (
     <div
@@ -22,7 +23,11 @@ const PitScoutingTemplate = ({
         flexDirection: "column",
       }}
     >
-      <PitScoutingTemplateNavigation backPage={backPage} nextPage={nextPage} />
+      <PitScoutingTemplateNavigation
+        backPage={backPage}
+        nextPage={nextPage}
+        pitScoutingState={pitScoutingState}
+      />
 
       {gridOrganize ? (
         <div

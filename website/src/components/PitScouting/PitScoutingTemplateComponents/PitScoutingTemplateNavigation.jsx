@@ -1,7 +1,11 @@
 import React from "react";
 import ProceedBackButton from "../../ProceedBackButton";
 
-const PitScoutingTemplateNavigation = ({ backPage, nextPage }) => {
+const PitScoutingTemplateNavigation = ({
+  backPage,
+  nextPage,
+  pitScoutingState = {},
+}) => {
   return (
     <div
       style={{
@@ -20,7 +24,12 @@ const PitScoutingTemplateNavigation = ({ backPage, nextPage }) => {
           padding: "2dvh 1.5dvw",
         }}
       >
-        <ProceedBackButton back={true} nextPage={backPage} />
+        <ProceedBackButton
+          back={true}
+          nextPage={backPage}
+          inputs={pitScoutingState}
+          stateKey="pitScouting"
+        />
       </div>
       <div
         style={{
@@ -49,7 +58,11 @@ const PitScoutingTemplateNavigation = ({ backPage, nextPage }) => {
           padding: "2dvh 1.5dvw",
         }}
       >
-        <ProceedBackButton nextPage={nextPage} />
+        <ProceedBackButton
+          nextPage={nextPage}
+          inputs={pitScoutingState}
+          stateKey="pitScouting"
+        />
       </div>
     </div>
   );

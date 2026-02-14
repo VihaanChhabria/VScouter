@@ -31,11 +31,15 @@ const ProceedBackButton = ({
   message = null,
   stateStack = {},
   mode = "",
+  stateKey = null,
   onClick = () => {},
   textSize = "5.58dvh",
 }) => {
   const navigate = useNavigateWithBase();
   const location = useLocation();
+
+  const buildState = (payload) =>
+    stateKey ? { [stateKey]: payload } : { inputs: payload };
 
   /** Handler for the button being clicked */
   const proceedClick = () => {
@@ -54,7 +58,7 @@ const ProceedBackButton = ({
         Object.entries(inputs).filter(([key, value]) => value !== null),
       );
       console.log(inputs);
-      navigate(nextPage, { state: { inputs } });
+      navigate(nextPage, { state: buildState(inputs) });
     } else {
       // If the back prop is set to false, check if all inputs have been filled in
       const hasNull = Object.values(inputs).some((val) => {
@@ -86,13 +90,11 @@ const ProceedBackButton = ({
           localStorage.setItem("autoHistory", "[]");
           localStorage.setItem("teleopHistory", "[]");
           navigate(nextPage, {
-            state: {
-              inputs: {
-                matchNumber: (parseInt(inputs.matchNumber) + 1).toString(),
-                alliance: inputs.alliance,
-                scouterInitials: inputs.scouterInitials,
-              },
-            },
+            state: buildState({
+              matchNumber: (parseInt(inputs.matchNumber) + 1).toString(),
+              alliance: inputs.alliance,
+              scouterInitials: inputs.scouterInitials,
+            }),
           });
         } else if (
           nextPage == "game-start" &&
@@ -102,12 +104,12 @@ const ProceedBackButton = ({
           // if the user leaves in the middle of the match, this will reset their history
           localStorage.setItem("autoHistory", "[]");
           localStorage.setItem("teleopHistory", "[]");
-          navigate(nextPage, { state: { inputs } });
+          navigate(nextPage, { state: buildState(inputs) });
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
           console.log(inputs);
 
-          navigate(nextPage, { state: { inputs } });
+          navigate(nextPage, { state: buildState(inputs) });
         }
       }
     }

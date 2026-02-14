@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
       react(),
       VitePWA({
         base: "/",
-        scope: "/ui/",
+        scope: "/",
         registerType: "autoUpdate",
         manifest: {
           theme_color: "#3A3B3E",

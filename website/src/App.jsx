@@ -24,6 +24,7 @@ import PitScoutingInitialDataPage from "./pages/PitScouting/PitScoutingInitialDa
 import PitScoutingCapabilitiesPageOne from "./pages/PitScouting/PitScoutingCapabilitiesPageOne";
 import PitScoutingCapabilitiesPageTwo from "./pages/PitScouting/PitScoutingCapabilitiesPageTwo";
 import PitScoutingPhotoPage from "./pages/PitScouting/PitScoutingPhotoPage";
+import { preloadAppImages } from "./utils/preloadImages";
 
 function App() {
   const [windowSize, setWindowSize] = useState({

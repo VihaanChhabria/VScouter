@@ -32,6 +32,10 @@ function App() {
   });
 
   useEffect(() => {
+    preloadAppImages();
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
       document.body.style.display = "none";

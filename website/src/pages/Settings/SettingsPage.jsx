@@ -17,8 +17,8 @@ const SettingsPage = () => {
       {/* Top section: back button (left) and title (centered) */}
       <div
         style={{
-          flex: "0 0 17.5dvh",
-          minHeight: "17.5dvh",
+          flex: "0 0 20dvh",
+          minHeight: "20dvh",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",

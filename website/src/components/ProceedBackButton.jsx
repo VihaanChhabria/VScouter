@@ -96,6 +96,13 @@ const ProceedBackButton = ({
               scouterInitials: inputs.scouterInitials,
             }),
           });
+        } else if (nextPage=="pit-scouting/start-info" && location.pathname == "/pit-scouting/photo") {
+          const fullData = {
+            data: JSON.parse(localStorage.getItem("pitScoutingData"))?.data || [],
+          };
+          fullData.data.push({ ...inputs });
+          localStorage.setItem("pitScoutingData", JSON.stringify(fullData));
+          navigate(nextPage);
         } else if (
           nextPage == "game-start" &&
           (location.pathname === "/" || location.pathname === "/ui/")

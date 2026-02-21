@@ -1,8 +1,12 @@
 import React from "react";
+import ProceedBackButton from "../ProceedBackButton";
+import { toast } from "react-toastify";
 
-import ProceedBackButton from "../../components/ProceedBackButton";
-
-const SettingsPage = () => {
+const SettingsScoutingTemplate = ({title, localStorageKey}) => {
+    const clearData = () => {
+        localStorage.removeItem(localStorageKey);
+        toast.success("Data Cleared");
+    }
   return (
     <div
       style={{
@@ -14,7 +18,6 @@ const SettingsPage = () => {
         boxSizing: "border-box",
       }}
     >
-      {/* Top section: back button (left) and title (centered) */}
       <div
         style={{
           flex: "0 0 17.5dvh",
@@ -34,7 +37,7 @@ const SettingsPage = () => {
             flexShrink: 0,
           }}
         >
-          <ProceedBackButton nextPage="/" back={true} />
+          <ProceedBackButton nextPage="/settings" back={true} />
         </div>
         <h1
           style={{
@@ -45,12 +48,11 @@ const SettingsPage = () => {
             textAlign: "center",
           }}
         >
-          Settings
+          {title}
         </h1>
         <div style={{ width: "17.5dvw", minWidth: "17.5dvw", flexShrink: 0 }} />
       </div>
 
-      {/* Content section: 75dvh - 2x2 grid of buttons */}
       <div
         style={{
           flex: "1",
@@ -58,14 +60,14 @@ const SettingsPage = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "10dvh 2dvw",
+          padding: "20dvh 2dvw",
         }}
       >
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "1fr 1fr",
+            gridTemplateRows: "1fr",
             gap: "2.5dvh",
             width: "100%",
             maxWidth: "88dvw",
@@ -73,28 +75,38 @@ const SettingsPage = () => {
             maxHeight: "100%",
           }}
         >
+          <div
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "1.63dvh solid #1D1E1E",
+          backgroundColor: "#242424",
+          borderRadius: "3.49dvh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word",
+        }}
+        onClick={clearData}
+      >
+        <h1
+          style={{
+            color: "#FFFFFF",
+            fontSize: "5.58dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Clear Data
+        </h1>
+      </div>
+          
           <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
             <ProceedBackButton
-              nextPage="settings/match-scouting"
-              message="Match Scout"
-            />
-          </div>
-          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
-            <ProceedBackButton
-              nextPage="settings/pit-scouting"
-              message="Pit Scout"
-            />
-          </div>
-          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
-            <ProceedBackButton
-              nextPage="parse-data"
-              message="Parse Data"
-            />
-          </div>
-          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
-            <ProceedBackButton
-              nextPage="match-data"
-              message="Upload Match Data"
+              nextPage="settings/view-data"
+              message="View Data"
+              inputs={{ localStorageKey }}
             />
           </div>
         </div>
@@ -103,4 +115,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default SettingsScoutingTemplate;

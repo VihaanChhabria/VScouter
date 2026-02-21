@@ -43,7 +43,7 @@ const PitScoutingPhotoPage = () => {
       <PitScoutingTemplate
         title="Pit Scouting Photo Page"
         backPage="pit-scouting/capabilities-page-two"
-        nextPage=""
+        nextPage="pit-scouting/start-info"
         pitScoutingState={pitScoutingState}
         gridOrganize={false}
         customComponent={

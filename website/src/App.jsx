@@ -25,6 +25,8 @@ import PitScoutingCapabilitiesPageOne from "./pages/PitScouting/PitScoutingCapab
 import PitScoutingCapabilitiesPageTwo from "./pages/PitScouting/PitScoutingCapabilitiesPageTwo";
 import PitScoutingPhotoPage from "./pages/PitScouting/PitScoutingPhotoPage";
 import { preloadAppImages } from "./utils/preloadImages";
+import SettingsScoutingTemplate from "./components/Settings/SettingsScoutingTemplate";
+import SettingsViewDataPage from "./pages/Settings/SettingsViewDataPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -78,6 +80,28 @@ function App() {
       <Route
         path="pit-scouting/photo"
         element={<PitScoutingPhotoPage />}
+      />
+      <Route
+        path="settings/match-scouting"
+        element={
+          <SettingsScoutingTemplate
+            title="Match Scouting"
+            localStorageKey="scoutingData"
+          />
+        }
+      />
+      <Route
+        path="settings/pit-scouting"
+        element={
+          <SettingsScoutingTemplate
+            title="Pit Scouting"
+            localStorageKey="pitScoutingData"
+          />
+        }
+      />
+      <Route
+        path="settings/view-data"
+        element={<SettingsViewDataPage />}
       />
     </Route>
   ));

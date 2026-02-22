@@ -50,7 +50,7 @@ const SettingsScoutingTemplate = ({title, localStorageKey}) => {
         >
           {title}
         </h1>
-        <div style={{ width: "17.5dvw", minWidth: "17.5dvw", flexShrink: 0 }} />
+        <div style={{ width: "15dvw", minWidth: "15dvw", flexShrink: 0 }} />
       </div>
 
       <div

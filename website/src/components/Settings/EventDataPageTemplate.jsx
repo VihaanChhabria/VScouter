@@ -45,7 +45,7 @@ const EventDataPageTemplate = ({ backTo, title, question, children }) => {
         >
           {title}
         </h1>
-        <div style={{ width: "17.5dvw", minWidth: "17.5dvw", flexShrink: 0 }} />
+        <div style={{ width: "15dvw", minWidth: "15dvw", flexShrink: 0 }} />
       </div>
 
       <div
@@ -55,7 +55,7 @@ const EventDataPageTemplate = ({ backTo, title, question, children }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "20dvh 2dvw",
+          padding: "5dvh 2dvw",
         }}
       >
         <div

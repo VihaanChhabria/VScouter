@@ -2,10 +2,7 @@ import React from "react";
 import EventDataPageTemplate from "../../../components/Settings/EventDataPageTemplate";
 
 const EventDataLoadQRFPage = () => (
-  <EventDataPageTemplate
-    backTo="event-data/load/offline"
-    title="Load QRFs"
-  >
+  <EventDataPageTemplate backTo="event-data/load/offline" title="Load QRFs">
     <p
       style={{
         color: "#AAAAAA",
@@ -14,7 +11,7 @@ const EventDataLoadQRFPage = () => (
         width: "80%",
       }}
     >
-      (Placeholder — functionality to be added)
+      To be added soon!
     </p>
   </EventDataPageTemplate>
 );

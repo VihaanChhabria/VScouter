@@ -2,10 +2,7 @@ import React from "react";
 import EventDataPageTemplate from "../../../components/Settings/EventDataPageTemplate";
 
 const EventDataLoadFilePage = () => (
-  <EventDataPageTemplate
-    backTo="event-data/load/offline"
-    title="Load File"
-  >
+  <EventDataPageTemplate backTo="event-data/load/offline" title="Load File">
     <p
       style={{
         color: "#AAAAAA",
@@ -14,7 +11,7 @@ const EventDataLoadFilePage = () => (
         width: "80%",
       }}
     >
-      (Placeholder — functionality to be added)
+      To be added soon!
     </p>
   </EventDataPageTemplate>
 );

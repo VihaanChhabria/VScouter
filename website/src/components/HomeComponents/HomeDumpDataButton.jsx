@@ -24,11 +24,16 @@ const HomeDumpDataButton = () => {
     return word1 + (word2.charAt(0).toUpperCase() + word2.slice(1));
   };
 
+  const KEEP_AS_SINGLE_COLUMN = ["autoRobotPositions", "fuelShotAndSourceInfo"];
+
   const addHeaders = (data, previousKey = "") => {
     let headers = [];
     for (const [key, value] of Object.entries(data)) {
-      if (isOneDimensional(value)) {
-        headers.push(convertToCamelCase(previousKey, key));
+      const fullKey = convertToCamelCase(previousKey, key);
+      if (KEEP_AS_SINGLE_COLUMN.includes(fullKey) || KEEP_AS_SINGLE_COLUMN.includes(key)) {
+        headers.push(fullKey);
+      } else if (isOneDimensional(value)) {
+        headers.push(fullKey);
       } else if (Array.isArray(value)) {
         for (let arrayIndex = 0; arrayIndex < value.length; arrayIndex++) {
           if (isOneDimensional(value[arrayIndex])) {
@@ -60,10 +65,13 @@ const HomeDumpDataButton = () => {
     return headers;
   };
 
-  const addRow = (data) => {
+  const addRow = (data, previousKey = "") => {
     let row = [];
     for (const [key, value] of Object.entries(data)) {
-      if (isOneDimensional(value)) {
+      const fullKey = convertToCamelCase(previousKey, key);
+      if (KEEP_AS_SINGLE_COLUMN.includes(fullKey) || KEEP_AS_SINGLE_COLUMN.includes(key)) {
+        row.push(typeof value === "object" ? JSON.stringify(value ?? []) : value);
+      } else if (isOneDimensional(value)) {
         row.push(value);
       } else if (Array.isArray(value)) {
         for (let arrayIndex = 0; arrayIndex < value.length; arrayIndex++) {

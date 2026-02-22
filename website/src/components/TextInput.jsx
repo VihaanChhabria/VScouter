@@ -23,6 +23,11 @@ const TextInput = ({
   const [textSelected, setTextSelected] = useState(false);
 
   useEffect(() => {
+    const next = defaultText == null ? "" : String(defaultText).toUpperCase();
+    setUpperText(next);
+  }, [defaultText]);
+
+  useEffect(() => {
     // If the upperText is not empty, set the textValue to the upperText, otherwise set it to null
     if (upperText != "") {
       setTextValue(upperText);

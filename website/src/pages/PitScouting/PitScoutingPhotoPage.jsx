@@ -33,9 +33,8 @@ const PitScoutingPhotoPage = () => {
 
   const pitScoutingState = {
     ...pitScouting,
-    robotNotPresent,
-    photoTaken,
-    imageSrc,
+    photoTaken: robotNotPresent ? false : photoTaken,
+    imageSrc: robotNotPresent ? "" : imageSrc,
   };
 
   return (
@@ -43,7 +42,7 @@ const PitScoutingPhotoPage = () => {
       <PitScoutingTemplate
         title="Pit Scouting Photo Page"
         backPage="pit-scouting/capabilities-page-two"
-        nextPage=""
+        nextPage="pit-scouting/start-info"
         pitScoutingState={pitScoutingState}
         gridOrganize={false}
         customComponent={

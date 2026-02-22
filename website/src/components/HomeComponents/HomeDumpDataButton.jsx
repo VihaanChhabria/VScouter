@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
+const emptyDataJson = '{"data":[]}';
+
 const HomeDumpDataButton = () => {
+  const [dumpDataClicked, setDumpDataClicked] = useState(false);
+
   const isOneDimensional = (value) => {
     if (
       typeof value == "string" ||
@@ -20,11 +24,16 @@ const HomeDumpDataButton = () => {
     return word1 + (word2.charAt(0).toUpperCase() + word2.slice(1));
   };
 
+  const KEEP_AS_SINGLE_COLUMN = ["autoRobotPositions", "fuelShotAndSourceInfo"];
+
   const addHeaders = (data, previousKey = "") => {
     let headers = [];
     for (const [key, value] of Object.entries(data)) {
-      if (isOneDimensional(value)) {
-        headers.push(convertToCamelCase(previousKey, key));
+      const fullKey = convertToCamelCase(previousKey, key);
+      if (KEEP_AS_SINGLE_COLUMN.includes(fullKey) || KEEP_AS_SINGLE_COLUMN.includes(key)) {
+        headers.push(fullKey);
+      } else if (isOneDimensional(value)) {
+        headers.push(fullKey);
       } else if (Array.isArray(value)) {
         for (let arrayIndex = 0; arrayIndex < value.length; arrayIndex++) {
           if (isOneDimensional(value[arrayIndex])) {
@@ -32,7 +41,10 @@ const HomeDumpDataButton = () => {
           } else {
             headers = [
               ...headers,
-              ...addHeaders(value[arrayIndex], convertToCamelCase(key, subKey)),
+              ...addHeaders(
+                value[arrayIndex],
+                convertToCamelCase(previousKey, key) + arrayIndex,
+              ),
             ];
           }
         }
@@ -53,20 +65,20 @@ const HomeDumpDataButton = () => {
     return headers;
   };
 
-  const addRow = (data) => {
+  const addRow = (data, previousKey = "") => {
     let row = [];
     for (const [key, value] of Object.entries(data)) {
-      if (isOneDimensional(value)) {
+      const fullKey = convertToCamelCase(previousKey, key);
+      if (KEEP_AS_SINGLE_COLUMN.includes(fullKey) || KEEP_AS_SINGLE_COLUMN.includes(key)) {
+        row.push(typeof value === "object" ? JSON.stringify(value ?? []) : value);
+      } else if (isOneDimensional(value)) {
         row.push(value);
       } else if (Array.isArray(value)) {
         for (let arrayIndex = 0; arrayIndex < value.length; arrayIndex++) {
           if (isOneDimensional(value[arrayIndex])) {
             row.push(value[arrayIndex]);
           } else {
-            row = [
-              ...row,
-              ...addRow(value[arrayIndex]),
-            ];
+            row = [...row, ...addRow(value[arrayIndex])];
           }
         }
       } else {
@@ -75,76 +87,113 @@ const HomeDumpDataButton = () => {
           if (isOneDimensional(subValue)) {
             row.push(subValue); // key + subKey = keySubKey
           } else {
-            row = [
-              ...row,
-              ...addRow(subValue),
-            ];
+            row = [...row, ...addRow(subValue)];
           }
         }
       }
     }
     return row;
   };
+
+  const dumpData = (localStorageKey, filenamePrefix) => {
+    const data = localStorage.getItem(localStorageKey);
+    if (data == null || data === emptyDataJson) {
+      toast.error("No Data To Dump");
+      return;
+    }
+    const jsonData = JSON.parse(data).data;
+    if (!jsonData.length) {
+      toast.error("No Data To Dump");
+      return;
+    }
+    const csvConvertedData = [];
+    csvConvertedData.push(addHeaders(jsonData[0]));
+    for (const value of Object.values(jsonData)) {
+      csvConvertedData.push(addRow(value));
+    }
+    const element = document.createElement("a");
+    element.setAttribute(
+      "href",
+      "data:application/json;charset=utf-8," +
+        encodeURIComponent(JSON.stringify(csvConvertedData)),
+    );
+    const now = new Date();
+    const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    const formattedTime = `${String(now.getHours()).padStart(2, "0")}_${String(now.getMinutes()).padStart(2, "0")}_${String(now.getSeconds()).padStart(2, "0")}_${String(now.getMilliseconds()).padStart(3, "0")}`;
+    element.setAttribute(
+      "download",
+      `${filenamePrefix}-${formattedDate}-${formattedTime}.json`,
+    );
+    element.style.display = "none";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
+  const buttonStyle = {
+    border: "1.63dvh solid #1D1E1E",
+    flex: 1,
+    height: "100%",
+    backgroundColor: "#242424",
+    borderRadius: "3.49dvh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
+    cursor: "pointer",
+  };
+
+  const titleStyle = {
+    color: "#FFFFFF",
+    fontSize: "5.58dvh",
+    fontWeight: "bold",
+    textAlign: "center",
+  };
+
   return (
-    <div
-      style={{
-        border: "1.63dvh solid #1D1E1E",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#242424",
-        borderRadius: "3.49dvh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        whiteSpace: "pre-wrap",
-        wordWrap: "break-word",
-      }}
-      onClick={() => {
-        const data = localStorage.getItem("scoutingData");
-        if (data == '{"data":[]}') {
-          toast.error("No Data To Dump");
-          return;
-        }
-
-        const jsonData = JSON.parse(data).data;
-        console.log(jsonData);
-        const csvConvertedData = [];
-        csvConvertedData.push(addHeaders(jsonData[0]))
-        for (const value of Object.values(jsonData)) {
-          csvConvertedData.push(addRow(value))
-        }
-
-        var element = document.createElement("a");
-        element.setAttribute(
-          "href",
-          "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(csvConvertedData))
-        );
-        const now = new Date();
-        const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-        const formattedTime = `${String(now.getHours()).padStart(2, '0')}_${String(now.getMinutes()).padStart(2, '0')}_${String(now.getSeconds()).padStart(2, '0')}_${String(now.getMilliseconds()).padStart(3, '0')}`;
-        element.setAttribute(
-          "download",
-          `VScouterData-${formattedDate}-${formattedTime}.json`
-        );
-
-        element.style.display = "none";
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
-      }}
-    >
-      <h1
-        style={{
-          color: "#FFFFFF",
-          fontSize: "5.58dvh",
-          fontWeight: "bold",
-          textAlign: "center",
-        }}
-      >
-        Dump Data
-      </h1>
+    <div style={{ width: "100%", height: "100%" }}>
+      {!dumpDataClicked ? (
+        <div
+          style={{
+            ...buttonStyle,
+            width: "100%",
+          }}
+          onClick={() => setDumpDataClicked(true)}
+        >
+          <h1 style={titleStyle}>Dump Data</h1>
+        </div>
+      ) : (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "2dvh",
+          }}
+        >
+          <div
+            style={buttonStyle}
+            onClick={() => {
+              dumpData("scoutingData", "VScouterMatchData");
+              setDumpDataClicked(false);
+            }}
+          >
+            <h1 style={titleStyle}>Match Dump Data</h1>
+          </div>
+          <div
+            style={buttonStyle}
+            onClick={() => {
+              dumpData("pitScoutingData", "VScouterPitData");
+              setDumpDataClicked(false);
+            }}
+          >
+            <h1 style={titleStyle}>Pit Dump Data</h1>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

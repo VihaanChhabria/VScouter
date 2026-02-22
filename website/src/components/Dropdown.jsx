@@ -12,6 +12,12 @@ const Dropdown = ({
 
   const [dropdownSelected, setDropdownSelected] = useState(false);
 
+  const normalizedOptions = options.map((option) =>
+    typeof option === "string"
+      ? { value: option, label: option }
+      : option,
+  );
+
   useEffect(() => {
     if (value !== "") {
       setSelectedValue(value);
@@ -94,9 +100,9 @@ const Dropdown = ({
               <option value="" disabled>
                 Select an option
               </option>
-              {options.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
+              {normalizedOptions.map((option, index) => (
+                <option key={index} value={option.value}>
+                  {option.label}
                 </option>
               ))}
             </select>

@@ -16,15 +16,25 @@ import SettingsPage from "./pages/Settings/SettingsPage";
 
 import { useEffect, useState } from "react";
 import ParseDataPage from "./pages/Settings/ParseDataPage";
-import MatchDataPage from "./pages/Settings/MatchDataPage";
-import MatchDataOnlinePage from "./pages/Settings/MatchDataOnlinePage";
-import MatchDataOfflinePage from "./pages/Settings/MatchDataOfflinePage";
+import EventDataSettingsPage from "./pages/Settings/EventData/EventDataSettingsPage";
+import EventDataLoadChoicePage from "./pages/Settings/EventData/EventDataLoadChoicePage";
+import EventDataLoadOfflineChoicePage from "./pages/Settings/EventData/EventDataLoadOfflineChoicePage";
+import EventDataLoadOnlinePage from "./pages/Settings/EventData/EventDataLoadOnlinePage";
+import EventDataLoadQRFPage from "./pages/Settings/EventData/EventDataLoadQRFPage";
+import EventDataLoadFilePage from "./pages/Settings/EventData/EventDataLoadFilePage";
+import EventDataGenerateChoicePage from "./pages/Settings/EventData/EventDataGenerateChoicePage";
+import EventDataGenerateQRFPage from "./pages/Settings/EventData/EventDataGenerateQRFPage";
+import EventDataGenerateFilePage from "./pages/Settings/EventData/EventDataGenerateFilePage";
 import TeamNumberPromptPage from "./pages/Settings/TeamNumberPromptPage";
 import PitScoutingInitialDataPage from "./pages/PitScouting/PitScoutingInitialDataPage";
 import PitScoutingCapabilitiesPageOne from "./pages/PitScouting/PitScoutingCapabilitiesPageOne";
 import PitScoutingCapabilitiesPageTwo from "./pages/PitScouting/PitScoutingCapabilitiesPageTwo";
 import PitScoutingPhotoPage from "./pages/PitScouting/PitScoutingPhotoPage";
 import { preloadAppImages } from "./utils/preloadImages";
+import SettingsScoutingTemplate from "./components/Settings/SettingsScoutingTemplate";
+import SettingsViewDataPage from "./pages/Settings/SettingsViewDataPage";
+import PitScoutingSettingsPage from "./pages/Settings/PitScoutingSettingsPage";
+import PitScoutingSettingsAssignTeamPage from "./pages/Settings/PitScoutingSettingsAssignTeamPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -59,9 +69,15 @@ function App() {
       <Route path="endgame-scoring" element={<EndgameScoringPage />} />
       <Route path="settings" element={<SettingsPage />} />
       <Route path="parse-data" element={<ParseDataPage />} />
-      <Route path="match-data" element={<MatchDataPage />} />
-      <Route path="match-data/online" element={<MatchDataOnlinePage />} />
-      <Route path="match-data/offline" element={<MatchDataOfflinePage />} />
+      <Route path="event-data" element={<EventDataSettingsPage />} />
+      <Route path="event-data/load" element={<EventDataLoadChoicePage />} />
+      <Route path="event-data/load/online" element={<EventDataLoadOnlinePage />} />
+      <Route path="event-data/load/offline" element={<EventDataLoadOfflineChoicePage />} />
+      <Route path="event-data/load/offline/qrf" element={<EventDataLoadQRFPage />} />
+      <Route path="event-data/load/offline/file" element={<EventDataLoadFilePage />} />
+      <Route path="event-data/generate" element={<EventDataGenerateChoicePage />} />
+      <Route path="event-data/generate/qrf" element={<EventDataGenerateQRFPage />} />
+      <Route path="event-data/generate/file" element={<EventDataGenerateFilePage />} />
       <Route path="team-number-prompt" element={<TeamNumberPromptPage />} />
       <Route
         path="pit-scouting/start-info"
@@ -79,6 +95,32 @@ function App() {
         path="pit-scouting/photo"
         element={<PitScoutingPhotoPage />}
       />
+      <Route
+        path="settings/match-scouting"
+        element={
+          <SettingsScoutingTemplate
+            title="Match Scouting"
+            localStorageKey="scoutingData"
+          />
+        }
+      />
+      <Route
+        path="settings/pit-scouting"
+        element={
+          <PitScoutingSettingsPage />
+        }
+      />
+      <Route
+        path="settings/pit-scouting/assign-teams"
+        element={
+          <PitScoutingSettingsAssignTeamPage />
+        }
+      />
+      <Route
+        path="settings/view-data"
+        element={<SettingsViewDataPage />}
+      />
+      
     </Route>
   ));
 

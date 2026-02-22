@@ -1,171 +1,105 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import React from "react";
 
 import ProceedBackButton from "../../components/ProceedBackButton";
-import SettingsMatchDataScanner from "../../components/Settings/SettingsComponents/SettingsMatchDataScanner";
-import SettingsButton from "../../components/Settings/SettingsComponents/SettingsButton";
-import SettingsViewMatchData from "../../components/Settings/SettingsComponents/SettingsViewMatchData";
-import SettingsUpdateButton from "../../components/Settings/SettingsComponents/SettingsUpdateButton";
-import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
-/**
- * A page for the user to access settings such as clearing match data, viewing match data, and getting match data.
- *
- * @return {JSX.Element} The rendered component.
- */
 const SettingsPage = () => {
-  const navigate = useNavigateWithBase();
-  const [matchDataGetClicked, setMatchDataGetClicked] = useState(false);
-  const [matchDataClearClicked, setMatchDataClearClicked] = useState(false);
-  const [scoutDataClearClicked, setScoutDataClearClicked] = useState(false);
-  const [viewScoutingData, setViewScoutingData] = useState(false);
-
-  useEffect(() => {
-    /**
-     * If the user has clicked the clear match data button, clear the local storage for match data and notify the user.
-     * If the user has clicked the clear scouting data button, clear the local storage for scouting data and notify the user.
-     */
-    if (matchDataClearClicked) {
-      localStorage.setItem("matchData", "");
-      setMatchDataClearClicked(false);
-      toast.success("Cleared Match Data");
-    } else if (scoutDataClearClicked) {
-      localStorage.setItem("scoutingData", JSON.stringify({ data: [] }));
-      setScoutDataClearClicked(false);
-      toast.success("Cleared Scouting Data");
-    }
-  }, [matchDataClearClicked, scoutDataClearClicked]);
-
   return (
-    <>
-      {/* Container for the settings buttons */}
+    <div
+      style={{
+        height: "100dvh",
+        width: "100dvw",
+        display: "flex",
+        flexDirection: "column",
+        padding: "2dvh 2dvw",
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Top section: back button (left) and title (centered) */}
       <div
         style={{
+          flex: "0 0 20dvh",
+          minHeight: "17.5dvh",
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "row",
           alignItems: "center",
-          justifyContent: "center",
-          height: "100dvh",
-          gap: "2dvh",
-          marginTop: "10dvh",
+          justifyContent: "space-between",
+          padding: "2dvh 2dvw",
+          gap: "2dvw",
         }}
       >
-        {/* Settings Buttons */}
         <div
           style={{
-            width: `90dvw`,
-            height: `15dvh`,
-            backgroundColor: "#4A4A4A",
-            border: "1.63dvh solid #1D1E1E",
-            borderRadius: "3.49dvh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onClick={() => {
-            navigate("match-data");
+            width: "15dvw",
+            height: "100%",
+            flexShrink: 0,
           }}
         >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Get Match Data
-          </h1>
+          <ProceedBackButton nextPage="/" back={true} />
         </div>
-        <SettingsButton
-          question="Clear Match Data"
-          state={matchDataClearClicked}
-          setState={setMatchDataClearClicked}
-        />
-        <SettingsButton
-          question="Clear Scouting Data"
-          state={scoutDataClearClicked}
-          setState={setScoutDataClearClicked}
-        />
-
-        <SettingsButton
-          question="View Matches Data"
-          state={viewScoutingData}
-          setState={setViewScoutingData}
-        />
+        <h1
+          style={{
+            flex: 1,
+            color: "#FFFFFF",
+            fontSize: "8dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          Settings
+        </h1>
+        <div style={{ width: "17.5dvw", minWidth: "17.5dvw", flexShrink: 0 }} />
       </div>
 
-      {/* If the user has clicked the get match data button, render the SettingsMatchDataScanner component */}
-      {matchDataGetClicked && (
-        <SettingsMatchDataScanner
-          state={matchDataGetClicked}
-          setState={setMatchDataGetClicked}
-        />
-      )}
-
-      {/* If the user has clicked the view matches data button, render the SettingsViewMatchData component */}
-      {viewScoutingData && <SettingsViewMatchData />}
-
-      {/* If the user has clicked the back button, render the ProceedBackButton component to navigate back to the main page */}
-      {matchDataGetClicked || viewScoutingData ? (
+      {/* Content section: 75dvh - 2x2 grid of buttons */}
+      <div
+        style={{
+          flex: "1",
+          minHeight: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "10dvh 2dvw",
+        }}
+      >
         <div
           style={{
-            border: "1.63dvh solid #1D1E1E",
-            width: "14.91dvw",
-            height: "17.84dvh",
-            backgroundColor: "#242424",
-            borderRadius: "3.49dvh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            top: "1.07dvh",
-            left: "2.33dvw",
-          }}
-          onClick={() => {
-            setMatchDataGetClicked(false);
-            setViewScoutingData(false);
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gridTemplateRows: "1fr 1fr",
+            gap: "2.5dvh",
+            width: "100%",
+            maxWidth: "88dvw",
+            height: "100%",
+            maxHeight: "100%",
           }}
         >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Back
-          </h1>
+          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
+            <ProceedBackButton
+              nextPage="settings/match-scouting"
+              message="Match Scout"
+            />
+          </div>
+          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
+            <ProceedBackButton
+              nextPage="settings/pit-scouting"
+              message="Pit Scout"
+            />
+          </div>
+          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
+            <ProceedBackButton
+              nextPage="parse-data"
+              message="Parse Data"
+            />
+          </div>
+          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
+            <ProceedBackButton
+              nextPage="event-data"
+              message="Event Data Settings"
+            />
+          </div>
         </div>
-      ) : (
-        <>
-          <div
-            style={{
-              position: "absolute",
-              top: "2.33dvh",
-              left: "1.07dvw",
-              width: "14.91dvw",
-              height: "17.84dvh",
-            }}
-          >
-            <ProceedBackButton nextPage={"/"} back={true} />
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              top: "2.33dvh",
-              right: "1.07dvw",
-              width: "18dvw",
-              height: "17.84dvh",
-            }}
-          >
-            <ProceedBackButton nextPage={"parse-data"} message={"Parse Data"} />
-          </div>
-        </>
-      )}
-      {/* Render a button to update service workers */}
-      <SettingsUpdateButton />
-    </>
+      </div>
+    </div>
   );
 };
 

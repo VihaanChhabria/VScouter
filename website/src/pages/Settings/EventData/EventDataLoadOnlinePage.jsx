@@ -3,10 +3,7 @@ import { toast } from "react-toastify";
 import { useNavigateWithBase } from "../../../utils/useNavigateWithBase";
 import EventDataPageTemplate from "../../../components/Settings/EventDataPageTemplate";
 
-const TBA_API_KEY = import.meta.env.VITE_TBA_API_KEY;
-const NEXUS_API_KEY = import.meta.env.VITE_NEXUS_API_KEY;
-const TBA_BASE = "https://www.thebluealliance.com/api/v3";
-const NEXUS_MAP_BASE = "https://frc.nexus/api/v1/event";
+const API_BASE = "/.netlify/functions";
 
 export const EVENT_DATA_KEYS = {
   EVENT_KEY: "eventDataEventKey",
@@ -34,9 +31,9 @@ const EventDataLoadOnlinePage = () => {
       setEventsLoading(true);
       setEventsError(null);
       try {
-        const res = await fetch(`${TBA_BASE}/events/${currentYear}/simple`, {
-          headers: { "X-TBA-Auth-Key": TBA_API_KEY },
-        });
+        const res = await fetch(
+          `${API_BASE}/tba-events?year=${encodeURIComponent(currentYear)}`,
+        );
         if (!res.ok) throw new Error("Failed to load events");
         const data = await res.json();
         setEvents(data);
@@ -84,13 +81,10 @@ const EventDataLoadOnlinePage = () => {
     setSubmitting(true);
     const eventKey = selectedEvent.key;
     try {
+      const eventKeyParam = encodeURIComponent(eventKey);
       const [matchesRes, teamsRes] = await Promise.all([
-        fetch(`${TBA_BASE}/event/${eventKey}/matches/simple`, {
-          headers: { "X-TBA-Auth-Key": TBA_API_KEY },
-        }),
-        fetch(`${TBA_BASE}/event/${eventKey}/teams/simple`, {
-          headers: { "X-TBA-Auth-Key": TBA_API_KEY },
-        }),
+        fetch(`${API_BASE}/tba-event-matches?eventKey=${eventKeyParam}`),
+        fetch(`${API_BASE}/tba-event-teams?eventKey=${eventKeyParam}`),
       ]);
 
       if (!matchesRes.ok) throw new Error("Failed to fetch match data");
@@ -124,8 +118,7 @@ const EventDataLoadOnlinePage = () => {
       localStorage.setItem(EVENT_DATA_KEYS.TEAMS_LIST, JSON.stringify(teamsList));
 
       const mapRes = await fetch(
-        `${NEXUS_MAP_BASE}/${eventKey}/map`,
-        { headers: { "Nexus-Api-Key": NEXUS_API_KEY || "" } },
+        `${API_BASE}/nexus-event-map?eventKey=${eventKeyParam}`,
       );
 
       const mapText = await mapRes.text();

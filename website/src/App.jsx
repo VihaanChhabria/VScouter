@@ -33,6 +33,8 @@ import PitScoutingPhotoPage from "./pages/PitScouting/PitScoutingPhotoPage";
 import { preloadAppImages } from "./utils/preloadImages";
 import SettingsScoutingTemplate from "./components/Settings/SettingsScoutingTemplate";
 import SettingsViewDataPage from "./pages/Settings/SettingsViewDataPage";
+import PitScoutingSettingsPage from "./pages/Settings/PitScoutingSettingsPage";
+import PitScoutingSettingsAssignTeamPage from "./pages/Settings/PitScoutingSettingsAssignTeamPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -105,16 +107,20 @@ function App() {
       <Route
         path="settings/pit-scouting"
         element={
-          <SettingsScoutingTemplate
-            title="Pit Scouting"
-            localStorageKey="pitScoutingData"
-          />
+          <PitScoutingSettingsPage />
+        }
+      />
+      <Route
+        path="settings/pit-scouting/assign-teams"
+        element={
+          <PitScoutingSettingsAssignTeamPage />
         }
       />
       <Route
         path="settings/view-data"
         element={<SettingsViewDataPage />}
       />
+      
     </Route>
   ));
 

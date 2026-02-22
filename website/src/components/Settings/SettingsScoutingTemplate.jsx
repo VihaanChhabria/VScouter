@@ -2,11 +2,11 @@ import React from "react";
 import ProceedBackButton from "../ProceedBackButton";
 import { toast } from "react-toastify";
 
-const SettingsScoutingTemplate = ({title, localStorageKey}) => {
-    const clearData = () => {
-        localStorage.removeItem(localStorageKey);
-        toast.success("Data Cleared");
-    }
+const SettingsScoutingTemplate = ({ title, localStorageKey, children }) => {
+  const clearData = () => {
+    localStorage.removeItem(localStorageKey);
+    toast.success("Data Cleared");
+  };
   return (
     <div
       style={{
@@ -58,16 +58,16 @@ const SettingsScoutingTemplate = ({title, localStorageKey}) => {
           flex: "1",
           minHeight: "0",
           display: "flex",
-          alignItems: "center",
+          alignItems: "stretch", // allow child to take full height
           justifyContent: "center",
-          padding: "20dvh 2dvw",
+          padding: children? "5dvh 2dvw": "20dvh 2dvw",
         }}
       >
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gridTemplateRows: "1fr",
+            gridAutoRows: "1fr",
             gap: "2.5dvh",
             width: "100%",
             maxWidth: "88dvw",
@@ -75,34 +75,49 @@ const SettingsScoutingTemplate = ({title, localStorageKey}) => {
             maxHeight: "100%",
           }}
         >
+          {children && (
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {children}
+            </div>
+          )}
+
           <div
-        style={{
-          width: "100%",
-          height: "100%",
-          border: "1.63dvh solid #1D1E1E",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
-        }}
-        onClick={clearData}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Clear Data
-        </h1>
-      </div>
-          
-          <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "1.63dvh solid #1D1E1E",
+              backgroundColor: "#242424",
+              borderRadius: "3.49dvh",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              whiteSpace: "pre-wrap",
+              wordWrap: "break-word",
+            }}
+            onClick={clearData}
+          >
+            <h1
+              style={{
+                color: "#FFFFFF",
+                fontSize: "5.58dvh",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              Clear Data
+            </h1>
+          </div>
+
+          <div style={{ width: "100%", height: "100%" }}>
             <ProceedBackButton
               nextPage="settings/view-data"
               message="View Data"

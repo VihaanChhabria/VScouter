@@ -11,7 +11,7 @@ const EventDataSettingsPage = () => (
     <div
       style={{
         width: "100%",
-        height: "100%",
+        height: "40%",
         display: "flex",
         gap: "4%",
         paddingLeft: "10%",

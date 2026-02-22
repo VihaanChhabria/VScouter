@@ -96,12 +96,34 @@ const ProceedBackButton = ({
               scouterInitials: inputs.scouterInitials,
             }),
           });
-        } else if (nextPage=="pit-scouting/start-info" && location.pathname == "/pit-scouting/photo") {
-          const fullData = {
-            data: JSON.parse(localStorage.getItem("pitScoutingData"))?.data || [],
-          };
-          fullData.data.push({ ...inputs });
-          localStorage.setItem("pitScoutingData", JSON.stringify(fullData));
+        } else if (
+          nextPage == "pit-scouting/start-info" &&
+          location.pathname == "/pit-scouting/photo"
+        ) {
+          const existing = JSON.parse(
+            localStorage.getItem("pitScoutingData"),
+          );
+          const existingDataArray = Array.isArray(existing?.data)
+            ? existing.data
+            : Array.isArray(existing)
+              ? existing
+              : [];
+
+          const updatedData = [...existingDataArray];
+          const existingIndex = updatedData.findIndex(
+            (entry) => entry?.teamNumber === inputs.teamNumber,
+          );
+
+          if (existingIndex !== -1) {
+            updatedData[existingIndex] = { ...inputs };
+          } else {
+            updatedData.push({ ...inputs });
+          }
+
+          localStorage.setItem(
+            "pitScoutingData",
+            JSON.stringify({ data: updatedData }),
+          );
           navigate(nextPage);
         } else if (
           nextPage == "game-start" &&

@@ -33,9 +33,8 @@ const PitScoutingPhotoPage = () => {
 
   const pitScoutingState = {
     ...pitScouting,
-    robotNotPresent,
-    photoTaken,
-    imageSrc,
+    photoTaken: robotNotPresent ? false : photoTaken,
+    imageSrc: robotNotPresent ? "" : imageSrc,
   };
 
   return (

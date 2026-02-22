@@ -36,7 +36,10 @@ const HomeDumpDataButton = () => {
           } else {
             headers = [
               ...headers,
-              ...addHeaders(value[arrayIndex], convertToCamelCase(previousKey, key) + arrayIndex),
+              ...addHeaders(
+                value[arrayIndex],
+                convertToCamelCase(previousKey, key) + arrayIndex,
+              ),
             ];
           }
         }
@@ -67,10 +70,7 @@ const HomeDumpDataButton = () => {
           if (isOneDimensional(value[arrayIndex])) {
             row.push(value[arrayIndex]);
           } else {
-            row = [
-              ...row,
-              ...addRow(value[arrayIndex]),
-            ];
+            row = [...row, ...addRow(value[arrayIndex])];
           }
         }
       } else {
@@ -79,10 +79,7 @@ const HomeDumpDataButton = () => {
           if (isOneDimensional(subValue)) {
             row.push(subValue); // key + subKey = keySubKey
           } else {
-            row = [
-              ...row,
-              ...addRow(subValue),
-            ];
+            row = [...row, ...addRow(subValue)];
           }
         }
       }
@@ -109,12 +106,16 @@ const HomeDumpDataButton = () => {
     const element = document.createElement("a");
     element.setAttribute(
       "href",
-      "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(csvConvertedData))
+      "data:application/json;charset=utf-8," +
+        encodeURIComponent(JSON.stringify(csvConvertedData)),
     );
     const now = new Date();
     const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
     const formattedTime = `${String(now.getHours()).padStart(2, "0")}_${String(now.getMinutes()).padStart(2, "0")}_${String(now.getSeconds()).padStart(2, "0")}_${String(now.getMilliseconds()).padStart(3, "0")}`;
-    element.setAttribute("download", `${filenamePrefix}-${formattedDate}-${formattedTime}.json`);
+    element.setAttribute(
+      "download",
+      `${filenamePrefix}-${formattedDate}-${formattedTime}.json`,
+    );
     element.style.display = "none";
     document.body.appendChild(element);
     element.click();

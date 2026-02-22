@@ -101,6 +101,7 @@ const MatchDataPage = () => {
             fontSize: "5.58dvh",
             fontWeight: "bold",
             textAlign: "center",
+            width: "80%",
           }}
         >
           Are You Online (Using QR Code) or Offline (Using Match Schedule File)?

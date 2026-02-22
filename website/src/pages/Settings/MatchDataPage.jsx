@@ -44,40 +44,50 @@ const MatchDataPage = () => {
   };
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <div
         style={{
-          border: "1.63dvh solid #1D1E1E",
-          width: "14.91dvw",
-          height: "17.84dvh",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
+          flex: "0 0 auto",
+          padding: "1.07dvh 2.33dvw",
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          position: "absolute",
-          top: "1.07dvh",
-          left: "2.33dvw",
-        }}
-        onClick={() => {
-          navigate("settings");
         }}
       >
-        <h1
+        <div
           style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
+            border: "1.63dvh solid #1D1E1E",
+            width: "14.91dvw",
+            height: "17.84dvh",
+            backgroundColor: "#242424",
+            borderRadius: "3.49dvh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
+          onClick={() => navigate("settings")}
         >
-          Back
-        </h1>
+          <h1
+            style={{
+              color: "#FFFFFF",
+              fontSize: "5.58dvh",
+              fontWeight: "bold",
+            }}
+          >
+            Back
+          </h1>
+        </div>
       </div>
-      {/* Container */}
       <div
         style={{
-          width: "100%",
-          height: "100%",
+          flex: 1,
+          minHeight: 0,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

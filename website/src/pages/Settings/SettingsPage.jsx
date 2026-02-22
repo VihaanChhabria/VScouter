@@ -18,7 +18,7 @@ const SettingsPage = () => {
       <div
         style={{
           flex: "0 0 20dvh",
-          minHeight: "20dvh",
+          minHeight: "17.5dvh",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
@@ -94,7 +94,7 @@ const SettingsPage = () => {
           <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
             <ProceedBackButton
               nextPage="match-data"
-              message="Upload Match Data"
+              message="Event Data Settings"
             />
           </div>
         </div>

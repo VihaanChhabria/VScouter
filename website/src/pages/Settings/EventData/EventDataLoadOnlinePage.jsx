@@ -4,7 +4,16 @@ import { useNavigateWithBase } from "../../../utils/useNavigateWithBase";
 import EventDataPageTemplate from "../../../components/Settings/EventDataPageTemplate";
 
 const TBA_API_KEY = import.meta.env.VITE_TBA_API_KEY;
+const NEXUS_API_KEY = import.meta.env.VITE_NEXUS_API_KEY;
 const TBA_BASE = "https://www.thebluealliance.com/api/v3";
+const NEXUS_MAP_BASE = "https://frc.nexus/api/v1/event";
+
+export const EVENT_DATA_KEYS = {
+  EVENT_KEY: "eventDataEventKey",
+  PIT_MAP: "eventDataPitMap",
+  PIT_MAP_AVAILABLE: "eventDataPitMapAvailable",
+  TEAMS_LIST: "eventDataTeamsList",
+};
 
 const eventOptionLabel = (event) => `${event.name} (${event.key})`;
 
@@ -73,13 +82,19 @@ const EventDataLoadOnlinePage = () => {
       return;
     }
     setSubmitting(true);
+    const eventKey = selectedEvent.key;
     try {
-      const res = await fetch(
-        `${TBA_BASE}/event/${selectedEvent.key}/matches/simple`,
-        { headers: { "X-TBA-Auth-Key": TBA_API_KEY } },
-      );
-      if (!res.ok) throw new Error("Failed to fetch match data");
-      const fullData = await res.json();
+      const [matchesRes, teamsRes] = await Promise.all([
+        fetch(`${TBA_BASE}/event/${eventKey}/matches/simple`, {
+          headers: { "X-TBA-Auth-Key": TBA_API_KEY },
+        }),
+        fetch(`${TBA_BASE}/event/${eventKey}/teams/simple`, {
+          headers: { "X-TBA-Auth-Key": TBA_API_KEY },
+        }),
+      ]);
+
+      if (!matchesRes.ok) throw new Error("Failed to fetch match data");
+      const fullData = await matchesRes.json();
 
       const qualMatchesCleaned = [];
 
@@ -100,10 +115,57 @@ const EventDataLoadOnlinePage = () => {
       qualMatchesCleaned.sort((a, b) => a.matchNum - b.matchNum);
       localStorage.setItem("matchData", JSON.stringify(qualMatchesCleaned));
 
-      toast.success(
-        "Match Data Fetched: " +
-          JSON.parse(localStorage.getItem("matchData"))[0].redAlliance[0],
+      const teamsList = teamsRes.ok
+        ? (await teamsRes.json()).map((t) =>
+            String(t.team_number ?? t.key?.replace(/^frc/i, "") ?? t.key),
+          )
+        : [];
+      localStorage.setItem(EVENT_DATA_KEYS.EVENT_KEY, eventKey);
+      localStorage.setItem(EVENT_DATA_KEYS.TEAMS_LIST, JSON.stringify(teamsList));
+
+      const mapRes = await fetch(
+        `${NEXUS_MAP_BASE}/${eventKey}/map`,
+        { headers: { "Nexus-Api-Key": NEXUS_API_KEY || "" } },
       );
+
+      const mapText = await mapRes.text();
+      let pitMapAvailable = false;
+      let pitMapData = null;
+
+      if (mapRes.ok) {
+        try {
+          const parsed = JSON.parse(mapText);
+          if (parsed && typeof parsed === "object" && !parsed.message) {
+            pitMapAvailable = true;
+            pitMapData = parsed;
+          } else if (
+            parsed?.message &&
+            String(parsed.message).toLowerCase().includes("no map")
+          ) {
+            pitMapAvailable = false;
+          } else {
+            pitMapAvailable = true;
+            pitMapData = parsed;
+          }
+        } catch {
+          pitMapAvailable = false;
+        }
+      } else if (mapRes.status === 404 || mapText.toLowerCase().includes("no map")) {
+        pitMapAvailable = false;
+      } else {
+        pitMapAvailable = false;
+      }
+
+      localStorage.setItem(
+        EVENT_DATA_KEYS.PIT_MAP_AVAILABLE,
+        JSON.stringify(pitMapAvailable),
+      );
+      localStorage.setItem(
+        EVENT_DATA_KEYS.PIT_MAP,
+        pitMapData ? JSON.stringify(pitMapData) : "null",
+      );
+
+      toast.success("Event data loaded successfully");
 
       navigate("/");
     } catch (err) {

@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { toast } from "react-toastify";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import EventDataPageTemplate from "../../components/Settings/EventDataPageTemplate";
+import { EVENT_DATA_KEYS } from "./EventData/EventDataLoadOnlinePage";
 
-const NEXUS_API_KEY = import.meta.env.VITE_NEXUS_API_KEY;
-const EVENT_KEY = "demo4329";
-const NEXUS_MAP_URL = `https://frc.nexus/api/v1/event/${EVENT_KEY}/map`;
 const ASSIGNED_TEAMS_KEY = "pitScoutingAssignedTeams";
 
 const loadAssignedTeams = () => {
@@ -22,34 +19,64 @@ const saveAssignedTeams = (teams) => {
   localStorage.setItem(ASSIGNED_TEAMS_KEY, JSON.stringify(teams));
 };
 
+const loadEventData = () => {
+  try {
+    const eventKey = localStorage.getItem(EVENT_DATA_KEYS.EVENT_KEY);
+    const pitMapRaw = localStorage.getItem(EVENT_DATA_KEYS.PIT_MAP);
+    const pitMapAvailableRaw = localStorage.getItem(
+      EVENT_DATA_KEYS.PIT_MAP_AVAILABLE,
+    );
+    const teamsRaw = localStorage.getItem(EVENT_DATA_KEYS.TEAMS_LIST);
+
+    const pitMap =
+      pitMapRaw && pitMapRaw !== "null"
+        ? JSON.parse(pitMapRaw)
+        : null;
+    const pitMapAvailable =
+      pitMapAvailableRaw === "true" || pitMapAvailableRaw === true;
+    const teamsList = teamsRaw
+      ? (() => {
+          try {
+            const arr = JSON.parse(teamsRaw);
+            return Array.isArray(arr) ? arr.map(String) : [];
+          } catch {
+            return [];
+          }
+        })()
+      : [];
+
+    return {
+      eventKey,
+      pitMap: pitMapAvailable ? pitMap : null,
+      teamsList,
+      hasMap: pitMapAvailable && pitMap,
+      hasTeamsList: Array.isArray(teamsList) && teamsList.length > 0,
+    };
+  } catch {
+    return {
+      eventKey: null,
+      pitMap: null,
+      teamsList: [],
+      hasMap: false,
+      hasTeamsList: false,
+    };
+  }
+};
+
 const PitScoutingSettingsAssignTeamPage = () => {
-  const [mapData, setMapData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [eventData, setEventData] = useState(loadEventData);
   const [assignedTeams, setAssignedTeams] = useState(loadAssignedTeams);
+  const [useMapView, setUseMapView] = useState(true);
 
   useEffect(() => {
-    const fetchMap = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = await fetch(NEXUS_MAP_URL, {
-          headers: {
-            "Nexus-Api-Key": NEXUS_API_KEY || "",
-          },
-        });
-        if (!res.ok) throw new Error("Failed to load pit map");
-        const data = await res.json();
-        setMapData(data);
-      } catch (err) {
-        setError(err.message || "Failed to load pit map");
-        toast.error("Could not load pit map");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchMap();
+    setEventData(loadEventData());
   }, []);
+
+  const { pitMap: mapData, teamsList, hasMap, hasTeamsList } = eventData;
+
+  const canToggle = hasMap && hasTeamsList;
+  const showMap = hasMap && (useMapView || !hasTeamsList);
+  const showTeamList = hasTeamsList && (!useMapView || !hasMap);
 
   const toggleTeam = useCallback((teamNumber) => {
     if (!teamNumber) return;
@@ -63,44 +90,27 @@ const PitScoutingSettingsAssignTeamPage = () => {
     });
   }, []);
 
-  if (loading) {
-    return (
-      <EventDataPageTemplate
-        backTo={"settings/pit-scouting"}
-        title={"Assign Pit Scouting Teams"}
-      >
-        <p style={{ color: "#AAAAAA", fontSize: "3.5dvh" }}>Loading pit map…</p>
-      </EventDataPageTemplate>
-    );
-  }
-
-  if (error || !mapData) {
+  if (!hasMap && !hasTeamsList) {
     return (
       <EventDataPageTemplate
         backTo={"settings/pit-scouting"}
         title={"Assign Pit Scouting Teams"}
       >
         <p style={{ color: "#e74c3c", fontSize: "3.5dvh" }}>
-          {error || "No map data"}
+          No pit map or team list available. Load event data online first from
+          Settings → Event Data → Load Online.
         </p>
       </EventDataPageTemplate>
     );
   }
 
-  const {
-    areas = {},
-    arrows = {},
-    labels = {},
-    pits = {},
-    walls = {},
-    size,
-  } = mapData;
-  const width = size?.x ?? 1200;
-  const height = size?.y ?? 913;
-  const padding = 60;
-  const viewWidth = width + 2 * padding;
-  const viewHeight = height + 2 * padding;
-  const isTall = height > width;
+  const sortedTeamsList = useMemo(
+    () =>
+      [...(teamsList || [])].sort(
+        (a, b) => parseInt(a, 10) - parseInt(b, 10),
+      ),
+    [teamsList],
+  );
 
   return (
     <EventDataPageTemplate
@@ -113,11 +123,72 @@ const PitScoutingSettingsAssignTeamPage = () => {
           flex: 1,
           minHeight: 0,
           display: "flex",
-          flexDirection: "row",
-          gap: "2dvw",
+          flexDirection: "column",
+          gap: "2dvh",
         }}
       >
-        {/* Left: pit map — 50% width, scrollable if overflow */}
+        {canToggle && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "2dvw",
+              flexShrink: 0,
+            }}
+          >
+            <span style={{ color: "#FFFFFF", fontSize: "3.5dvh" }}>
+              Assign from:
+            </span>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "1dvw",
+                cursor: "pointer",
+                color: "#FFFFFF",
+                fontSize: "3.5dvh",
+              }}
+            >
+              <input
+                type="radio"
+                name="assignSource"
+                checked={useMapView}
+                onChange={() => setUseMapView(true)}
+              />
+              Pit map
+            </label>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "1dvw",
+                cursor: "pointer",
+                color: "#FFFFFF",
+                fontSize: "3.5dvh",
+              }}
+            >
+              <input
+                type="radio"
+                name="assignSource"
+                checked={!useMapView}
+                onChange={() => setUseMapView(false)}
+              />
+              Team list
+            </label>
+          </div>
+        )}
+
+        <div
+          style={{
+            width: "100%",
+            flex: 1,
+            minHeight: 0,
+            display: "flex",
+            flexDirection: "row",
+            gap: "2dvw",
+          }}
+        >
+        {/* Left: pit map or team list — 50% width */}
         <div
           style={{
             width: "50%",
@@ -134,9 +205,139 @@ const PitScoutingSettingsAssignTeamPage = () => {
               overflow: "auto",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center",
+              alignItems: "flex-start",
             }}
           >
+            {showMap && mapData ? (
+            <PitMapView
+              mapData={mapData}
+              assignedTeams={assignedTeams}
+              toggleTeam={toggleTeam}
+            />
+            ) : showTeamList && sortedTeamsList.length > 0 ? (
+            <div
+              style={{
+                width: "100%",
+                padding: "2dvh 2dvw",
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "1dvh 2dvw",
+                alignContent: "flex-start",
+              }}
+            >
+              {sortedTeamsList.map((team) => {
+                const isAssigned = assignedTeams.includes(String(team));
+                return (
+                  <label
+                    key={team}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "1dvw",
+                      padding: "1dvh 1.5dvw",
+                      backgroundColor: isAssigned ? "#507144" : "#3a3a3a",
+                      borderRadius: "2.33dvh",
+                      cursor: "pointer",
+                      color: isAssigned ? "#fff" : "#ccc",
+                      fontSize: "3.5dvh",
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isAssigned}
+                      onChange={() => toggleTeam(team)}
+                    />
+                    {team}
+                  </label>
+                );
+              })}
+            </div>
+            ) : null}
+          </div>
+        </div>
+
+        {/* Right: assigned teams — 50% width */}
+        <div
+          style={{
+            width: "50%",
+            display: "flex",
+            flexDirection: "column",
+            border: "1.3dvh solid #1D1E1E",
+            backgroundColor: "#242424",
+            borderRadius: "3.49dvh",
+            padding: "2dvh 2dvw",
+            overflow: "auto",
+          }}
+        >
+          <h2
+            style={{
+              color: "#FFFFFF",
+              fontSize: "4dvh",
+              fontWeight: "bold",
+              marginBottom: "1.5dvh",
+              flexShrink: 0,
+            }}
+          >
+            Assigned teams ({assignedTeams.length})
+          </h2>
+          {assignedTeams.length === 0 ? (
+            <p style={{ color: "#888", fontSize: "3dvh" }}>
+              {showMap
+                ? "Tap pits on the map to assign teams."
+                : "Check teams in the list to assign."}
+            </p>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "1dvh 2dvw",
+              }}
+            >
+              {assignedTeams.map((team) => (
+                <button
+                  key={team}
+                  type="button"
+                  onClick={() => toggleTeam(team)}
+                  style={{
+                    padding: "1dvh 2dvw",
+                    backgroundColor: "#507144",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "2.33dvh",
+                    fontSize: "3.5dvh",
+                    cursor: "pointer",
+                  }}
+                >
+                  {team} ×
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+        </div>
+      </div>
+    </EventDataPageTemplate>
+  );
+};
+
+const PitMapView = ({ mapData, assignedTeams, toggleTeam }) => {
+  const {
+    areas = {},
+    arrows = {},
+    labels = {},
+    pits = {},
+    walls = {},
+    size,
+  } = mapData;
+  const width = size?.x ?? 1200;
+  const height = size?.y ?? 913;
+  const padding = 60;
+  const viewWidth = width + 2 * padding;
+  const viewHeight = height + 2 * padding;
+  const isTall = height > width;
+
+  return (
             <div
               style={
                 isTall
@@ -262,68 +463,6 @@ const PitScoutingSettingsAssignTeamPage = () => {
               })}
               </svg>
             </div>
-          </div>
-        </div>
-
-        {/* Right: assigned teams — 50% width */}
-        <div
-          style={{
-            width: "50%",
-            display: "flex",
-            flexDirection: "column",
-            border: "1.3dvh solid #1D1E1E",
-            backgroundColor: "#242424",
-            borderRadius: "3.49dvh",
-            padding: "2dvh 2dvw",
-            overflow: "auto",
-          }}
-        >
-          <h2
-            style={{
-              color: "#FFFFFF",
-              fontSize: "4dvh",
-              fontWeight: "bold",
-              marginBottom: "1.5dvh",
-              flexShrink: 0,
-            }}
-          >
-            Assigned teams ({assignedTeams.length})
-          </h2>
-          {assignedTeams.length === 0 ? (
-            <p style={{ color: "#888", fontSize: "3dvh" }}>
-              Tap pits on the map to assign teams.
-            </p>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1dvh 2dvw",
-              }}
-            >
-              {assignedTeams.map((team) => (
-                <button
-                  key={team}
-                  type="button"
-                  onClick={() => toggleTeam(team)}
-                  style={{
-                    padding: "1dvh 2dvw",
-                    backgroundColor: "#507144",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "2.33dvh",
-                    fontSize: "3.5dvh",
-                    cursor: "pointer",
-                  }}
-                >
-                  {team} ×
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-    </EventDataPageTemplate>
   );
 };
 

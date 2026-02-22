@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ProceedBackButton from "../../components/ProceedBackButton";
+import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
 
 const isImageSrc = (value) =>
   typeof value === "string" && value.startsWith("data:image/");
@@ -91,23 +92,61 @@ const SettingsViewDataPage = () => {
   const localStorageKey =
     location.state?.inputs?.localStorageKey ?? location.state?.localStorageKey;
 
-  const { rows, columns } = useMemo(() => {
-    if (!localStorageKey) return { rows: [], columns: [] };
+  const [rows, setRows] = useState([]);
+  const [rawStorage, setRawStorage] = useState(null);
+
+  useEffect(() => {
+    if (!localStorageKey) {
+      setRows([]);
+      setRawStorage(null);
+      return;
+    }
     try {
       const raw = localStorage.getItem(localStorageKey);
-      if (!raw) return { rows: [], columns: [] };
+      if (!raw) {
+        setRows([]);
+        setRawStorage(null);
+        return;
+      }
       const parsed = JSON.parse(raw);
       const data = Array.isArray(parsed?.data) ? parsed.data : Array.isArray(parsed) ? parsed : [];
-      const columnSet = new Set();
-      data.forEach((row) => Object.keys(row).forEach((k) => columnSet.add(k)));
-      const cols = [...columnSet];
-      return { rows: data, columns: cols };
+      setRows(data);
+      setRawStorage(parsed);
     } catch {
-      return { rows: [], columns: [] };
+      setRows([]);
+      setRawStorage(null);
     }
   }, [localStorageKey]);
 
+  const columns = useMemo(() => {
+    const columnSet = new Set();
+    rows.forEach((row) => Object.keys(row).forEach((k) => columnSet.add(k)));
+    return [...columnSet];
+  }, [rows]);
+
+  const handleDeleteRow = (index) => {
+    const newRows = rows.filter((_, i) => i !== index);
+    setRows(newRows);
+    if (!localStorageKey) return;
+    try {
+      const parsed = rawStorage;
+      const toSave =
+        parsed && typeof parsed === "object" && Array.isArray(parsed.data)
+          ? { ...parsed, data: newRows }
+          : newRows;
+      localStorage.setItem(localStorageKey, JSON.stringify(toSave));
+    } catch {
+      // ignore
+    }
+  };
+
+  const navigate = useNavigateWithBase();
   const backPath = localStorageKey === "pitScoutingData" ? "settings/pit-scouting" : "settings/match-scouting";
+  const canEdit = localStorageKey === "pitScoutingData";
+
+  const handleEditRow = (row) => {
+    navigate("pit-scouting/start-info", { state: { pitScouting: row } });
+  };
 
   return (
     <div
@@ -201,6 +240,40 @@ const SettingsViewDataPage = () => {
                       {col}
                     </th>
                   ))}
+                  {canEdit && (
+                    <th
+                      style={{
+                        ...cellStyle,
+                        backgroundColor: "#1D1E1E",
+                        color: "#fff",
+                        fontWeight: "bold",
+                        position: "sticky",
+                        top: 0,
+                        zIndex: 1,
+                        whiteSpace: "nowrap",
+                        maxWidth: "none",
+                        width: "60px",
+                      }}
+                    >
+                      Edit
+                    </th>
+                  )}
+                  <th
+                    style={{
+                      ...cellStyle,
+                      backgroundColor: "#1D1E1E",
+                      color: "#fff",
+                      fontWeight: "bold",
+                      position: "sticky",
+                      top: 0,
+                      zIndex: 1,
+                      whiteSpace: "nowrap",
+                      maxWidth: "none",
+                      width: "60px",
+                    }}
+                  >
+                    Delete
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -218,6 +291,42 @@ const SettingsViewDataPage = () => {
                         value={row[col]}
                       />
                     ))}
+                    {canEdit && (
+                      <td style={cellStyle}>
+                        <button
+                          type="button"
+                          onClick={() => handleEditRow(row)}
+                          style={{
+                            padding: "4px 8px",
+                            backgroundColor: "#507144",
+                            color: "#fff",
+                            border: "none",
+                            borderRadius: "4px",
+                            cursor: "pointer",
+                            fontSize: "2dvh",
+                          }}
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    )}
+                    <td style={cellStyle}>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteRow(idx)}
+                        style={{
+                          padding: "4px 8px",
+                          backgroundColor: "#c0392b",
+                          color: "#fff",
+                          border: "none",
+                          borderRadius: "4px",
+                          cursor: "pointer",
+                          fontSize: "2dvh",
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

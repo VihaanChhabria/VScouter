@@ -65,23 +65,7 @@ const PitScoutingInitialDataPage = () => {
     teamNumber,
   };
 
-  const teamOptions = [
-    "111",
-    "222",
-    "333",
-    "444",
-    "555",
-    "666",
-    "777",
-    "888",
-    "999",
-    "123",
-    "456",
-    "789",
-    "321",
-    "654",
-    "987",
-  ];
+  const teamOptions = JSON.parse(localStorage.getItem("pitScoutingAssignedTeams")) || [];
 
   const dropdownOptions = teamOptions.map((team) => {
     const existing = storedPitScoutingByTeam[team];

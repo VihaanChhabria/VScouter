@@ -4,7 +4,7 @@ import EventDataPageTemplate from "../../../components/Settings/EventDataPageTem
 
 const EventDataLoadChoicePage = () => (
   <EventDataPageTemplate
-    backTo="match-data"
+    backTo="event-data"
     title="Load Event Data"
     question="Do you want to load the data as Online or Offline?"
   >
@@ -19,11 +19,11 @@ const EventDataLoadChoicePage = () => (
       }}
     >
       <ProceedBackButton
-        nextPage="match-data/load/online"
+        nextPage="event-data/load/online"
         message="Online"
       />
       <ProceedBackButton
-        nextPage="match-data/load/offline"
+        nextPage="event-data/load/offline"
         message="Offline"
       />
     </div>

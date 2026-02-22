@@ -93,7 +93,7 @@ const SettingsPage = () => {
           </div>
           <div style={{ width: "100%", height: "100%", minHeight: "0" }}>
             <ProceedBackButton
-              nextPage="match-data"
+              nextPage="event-data"
               message="Event Data Settings"
             />
           </div>

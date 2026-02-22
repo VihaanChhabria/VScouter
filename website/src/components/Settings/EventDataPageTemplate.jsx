@@ -1,63 +1,42 @@
 import React from "react";
-import { useNavigateWithBase } from "../../utils/useNavigateWithBase";
+import ProceedBackButton from "../ProceedBackButton";
 
 const EventDataPageTemplate = ({ backTo, title, question, children }) => {
-  const navigate = useNavigateWithBase();
-
   return (
     <div
       style={{
-        width: "100%",
-        height: "100%",
+        height: "100dvh",
+        width: "100dvw",
         display: "flex",
         flexDirection: "column",
+        padding: "2dvh 2dvw",
+        boxSizing: "border-box",
       }}
     >
       <div
         style={{
-          flex: "0 0 auto",
-          padding: "1.07dvh 2.33dvw",
+          flex: "0 0 20dvh",
+          minHeight: "20dvh",
           display: "flex",
+          flexDirection: "row",
           alignItems: "center",
+          justifyContent: "space-between",
+          padding: "2dvh 2dvw",
+          gap: "2dvw",
         }}
       >
         <div
           style={{
-            border: "1.63dvh solid #1D1E1E",
-            width: "14.91dvw",
-            height: "17.84dvh",
-            backgroundColor: "#242424",
-            borderRadius: "3.49dvh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            width: "15dvw",
+            height: "100%",
+            flexShrink: 0,
           }}
-          onClick={() => navigate(backTo)}
         >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Back
-          </h1>
+          <ProceedBackButton nextPage={backTo} back={true} />
         </div>
-      </div>
-      <div
-        style={{
-          flex: 1,
-          minHeight: 0,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "10%",
-        }}
-      >
         <h1
           style={{
+            flex: 1,
             color: "#FFFFFF",
             fontSize: "8dvh",
             fontWeight: "bold",
@@ -66,20 +45,46 @@ const EventDataPageTemplate = ({ backTo, title, question, children }) => {
         >
           {title}
         </h1>
-        {question && (
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-              textAlign: "center",
-              width: "80%",
-            }}
-          >
-            {question}
-          </h1>
-        )}
-        {children}
+        <div style={{ width: "17.5dvw", minWidth: "17.5dvw", flexShrink: 0 }} />
+      </div>
+
+      <div
+        style={{
+          flex: "1",
+          minHeight: "0",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20dvh 2dvw",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "10%",
+            width: "100%",
+            maxWidth: "88dvw",
+            height: "100%",
+          }}
+        >
+          {question && (
+            <h1
+              style={{
+                color: "#FFFFFF",
+                fontSize: "5.58dvh",
+                fontWeight: "bold",
+                textAlign: "center",
+                width: "80%",
+              }}
+            >
+              {question}
+            </h1>
+          )}
+          {children}
+        </div>
       </div>
     </div>
   );

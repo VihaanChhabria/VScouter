@@ -19,7 +19,7 @@ import ParseDataPage from "./pages/Settings/ParseDataPage";
 import EventDataSettingsPage from "./pages/Settings/EventData/EventDataSettingsPage";
 import EventDataLoadChoicePage from "./pages/Settings/EventData/EventDataLoadChoicePage";
 import EventDataLoadOfflineChoicePage from "./pages/Settings/EventData/EventDataLoadOfflineChoicePage";
-import MatchDataOnlinePage from "./pages/Settings/EventData/MatchDataOnlinePage";
+import EventDataLoadOnlinePage from "./pages/Settings/EventData/EventDataLoadOnlinePage";
 import EventDataLoadQRFPage from "./pages/Settings/EventData/EventDataLoadQRFPage";
 import EventDataLoadFilePage from "./pages/Settings/EventData/EventDataLoadFilePage";
 import EventDataGenerateChoicePage from "./pages/Settings/EventData/EventDataGenerateChoicePage";
@@ -67,15 +67,15 @@ function App() {
       <Route path="endgame-scoring" element={<EndgameScoringPage />} />
       <Route path="settings" element={<SettingsPage />} />
       <Route path="parse-data" element={<ParseDataPage />} />
-      <Route path="match-data" element={<EventDataSettingsPage />} />
-      <Route path="match-data/load" element={<EventDataLoadChoicePage />} />
-      <Route path="match-data/load/online" element={<MatchDataOnlinePage />} />
-      <Route path="match-data/load/offline" element={<EventDataLoadOfflineChoicePage />} />
-      <Route path="match-data/load/offline/qrf" element={<EventDataLoadQRFPage />} />
-      <Route path="match-data/load/offline/file" element={<EventDataLoadFilePage />} />
-      <Route path="match-data/generate" element={<EventDataGenerateChoicePage />} />
-      <Route path="match-data/generate/qrf" element={<EventDataGenerateQRFPage />} />
-      <Route path="match-data/generate/file" element={<EventDataGenerateFilePage />} />
+      <Route path="event-data" element={<EventDataSettingsPage />} />
+      <Route path="event-data/load" element={<EventDataLoadChoicePage />} />
+      <Route path="event-data/load/online" element={<EventDataLoadOnlinePage />} />
+      <Route path="event-data/load/offline" element={<EventDataLoadOfflineChoicePage />} />
+      <Route path="event-data/load/offline/qrf" element={<EventDataLoadQRFPage />} />
+      <Route path="event-data/load/offline/file" element={<EventDataLoadFilePage />} />
+      <Route path="event-data/generate" element={<EventDataGenerateChoicePage />} />
+      <Route path="event-data/generate/qrf" element={<EventDataGenerateQRFPage />} />
+      <Route path="event-data/generate/file" element={<EventDataGenerateFilePage />} />
       <Route path="team-number-prompt" element={<TeamNumberPromptPage />} />
       <Route
         path="pit-scouting/start-info"

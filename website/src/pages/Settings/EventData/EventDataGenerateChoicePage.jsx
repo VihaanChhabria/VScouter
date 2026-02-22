@@ -4,7 +4,7 @@ import EventDataPageTemplate from "../../../components/Settings/EventDataPageTem
 
 const EventDataGenerateChoicePage = () => (
   <EventDataPageTemplate
-    backTo="match-data"
+    backTo="event-data"
     title="Generate Event Data"
     question="Are you generating QRFs or a file?"
   >
@@ -19,11 +19,11 @@ const EventDataGenerateChoicePage = () => (
       }}
     >
       <ProceedBackButton
-        nextPage="match-data/generate/qrf"
+        nextPage="event-data/generate/qrf"
         message="QRFs"
       />
       <ProceedBackButton
-        nextPage="match-data/generate/file"
+        nextPage="event-data/generate/file"
         message="File"
       />
     </div>

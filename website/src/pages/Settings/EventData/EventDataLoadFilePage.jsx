@@ -3,7 +3,7 @@ import EventDataPageTemplate from "../../../components/Settings/EventDataPageTem
 
 const EventDataLoadFilePage = () => (
   <EventDataPageTemplate
-    backTo="match-data/load/offline"
+    backTo="event-data/load/offline"
     title="Load File"
   >
     <p

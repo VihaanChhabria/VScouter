@@ -3,7 +3,7 @@ import EventDataPageTemplate from "../../../components/Settings/EventDataPageTem
 
 const EventDataGenerateFilePage = () => (
   <EventDataPageTemplate
-    backTo="match-data/generate"
+    backTo="event-data/generate"
     title="Generate File"
   >
     <p

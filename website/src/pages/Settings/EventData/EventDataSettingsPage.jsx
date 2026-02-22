@@ -11,15 +11,15 @@ const EventDataSettingsPage = () => (
     <div
       style={{
         width: "100%",
-        height: "40%",
+        height: "100%",
         display: "flex",
         gap: "4%",
         paddingLeft: "10%",
         paddingRight: "10%",
       }}
     >
-      <ProceedBackButton nextPage="match-data/load" message="Load" />
-      <ProceedBackButton nextPage="match-data/generate" message="Generate" />
+      <ProceedBackButton nextPage="event-data/load" message="Load" />
+      <ProceedBackButton nextPage="event-data/generate" message="Generate" />
     </div>
   </EventDataPageTemplate>
 );

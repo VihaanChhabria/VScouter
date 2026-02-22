@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigateWithBase } from "../../../utils/useNavigateWithBase";
 import EventDataPageTemplate from "../../../components/Settings/EventDataPageTemplate";
 
-const MatchDataOnlinePage = () => {
+const EventDataLoadOnlinePage = () => {
   const navigate = useNavigateWithBase();
   const [qrCodeMatchData, setQRCodeMatchData] = useState({});
 
@@ -54,7 +54,7 @@ const MatchDataOnlinePage = () => {
 
   return (
     <EventDataPageTemplate
-      backTo="match-data/load"
+      backTo="event-data/load"
       title="Scan QR Code To Load Match Suggestions"
     >
       <div
@@ -108,4 +108,4 @@ const MatchDataOnlinePage = () => {
   );
 };
 
-export default MatchDataOnlinePage;
+export default EventDataLoadOnlinePage;

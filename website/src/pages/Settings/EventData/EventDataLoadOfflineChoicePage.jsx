@@ -4,7 +4,7 @@ import EventDataPageTemplate from "../../../components/Settings/EventDataPageTem
 
 const EventDataLoadOfflineChoicePage = () => (
   <EventDataPageTemplate
-    backTo="match-data/load"
+    backTo="event-data/load"
     title="Load Offline"
     question="Will you be loading using QRFs or through a file?"
   >
@@ -19,11 +19,11 @@ const EventDataLoadOfflineChoicePage = () => (
       }}
     >
       <ProceedBackButton
-        nextPage="match-data/load/offline/qrf"
+        nextPage="event-data/load/offline/qrf"
         message="QRFs"
       />
       <ProceedBackButton
-        nextPage="match-data/load/offline/file"
+        nextPage="event-data/load/offline/file"
         message="File"
       />
     </div>

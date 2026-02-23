@@ -15,8 +15,8 @@ const PitScoutingCapabilitiesPageOne = () => {
   const [climbingAbility, setClimbingAbility] = useState(
     pitScouting.climbingAbility ?? null,
   );
-  const [rateOfShooting, setRateOfShooting] = useState(
-    pitScouting.rateOfShooting ?? "",
+  const [maxFuelStorage, setMaxFuelStorage] = useState(
+    pitScouting.maxFuelStorage ?? "",
   );
 
   const pitScoutingState = {
@@ -24,7 +24,7 @@ const PitScoutingCapabilitiesPageOne = () => {
     drivetrainType,
     weight,
     climbingAbility,
-    rateOfShooting,
+    maxFuelStorage,
   };
 
   return (
@@ -50,9 +50,9 @@ const PitScoutingCapabilitiesPageOne = () => {
             setSelectedValue={setClimbingAbility}
           />,
           <TextInput
-            question="Rate of Shooting (Fuels Per Second)"
-            setTextValue={setRateOfShooting}
-            defaultText={rateOfShooting}
+            question="Max Fuel Storage"
+            setTextValue={setMaxFuelStorage}
+            defaultText={maxFuelStorage}
           />,
         ]}
         backPage="pit-scouting/start-info"

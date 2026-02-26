@@ -35,6 +35,7 @@ const AutoPositionSelector = ({
   robotPositions,
   setRobotPositions,
   showShotInfo,
+  timerStarted = false,
 }) => {
   const imageDivRef = useRef(null);
 
@@ -100,6 +101,11 @@ const AutoPositionSelector = ({
   // ---------------------------------------------------------------------------
 
   const handleClick = (event) => {
+    if (!timerStarted) {
+      toast.error("Start the timer before adding robot positions.");
+      return;
+    }
+
     if (!driveType) {
       toast.error("Drive type not specified.");
       return;

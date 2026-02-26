@@ -9,6 +9,8 @@ const PageControlSection = ({
   pageTitle,
   backPage,
   nextPage,
+  proceedOnClick = () => {},
+  proceedIsAlert = false,
 }) => {
   return (
     <div
@@ -119,6 +121,8 @@ const PageControlSection = ({
               ...(states?.inputs || {}),
               ...extraInputs,
             }}
+            onClick={proceedOnClick}
+            isAlert={proceedIsAlert}
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import ProceedBackButton from "../../ProceedBackButton";
 
-const EndgamePageControlSection = ({ states, extraInputs }) => {
+const EndgamePageControlSection = ({ states, extraInputs, onSubmitClick = () => {} }) => {
   return (
     <div
       style={{
@@ -32,6 +32,7 @@ const EndgamePageControlSection = ({ states, extraInputs }) => {
             ...extraInputs,
           }}
           message={"Submit"}
+          onClick={onSubmitClick}
         />
       </div>
     </div>

@@ -35,6 +35,7 @@ const AutoPositionSelector = ({
   robotPositions,
   setRobotPositions,
   showShotInfo,
+  timerStarted = false,
 }) => {
   const imageDivRef = useRef(null);
 
@@ -100,6 +101,21 @@ const AutoPositionSelector = ({
   // ---------------------------------------------------------------------------
 
   const handleClick = (event) => {
+    const last =
+      robotPositions.length > 0
+        ? robotPositions[robotPositions.length - 1]
+        : null;
+
+    if (last && last.driveType === "Shot" && !last.shotInfo) {
+      toast.error("Complete the current shot's data before adding another position.");
+      return;
+    }
+
+    if (!timerStarted) {
+      toast.error("Start the timer before adding robot positions.");
+      return;
+    }
+
     if (!driveType) {
       toast.error("Drive type not specified.");
       return;
@@ -131,11 +147,7 @@ const AutoPositionSelector = ({
     );
     const newPosition = { x: fieldX, y: fieldY };
 
-    const lastPos =
-      robotPositions.length > 0
-        ? robotPositions[robotPositions.length - 1]
-        : null;
-    if (isWithinPositionRange(newPosition, lastPos, POSITION_RANGE_METERS)) {
+    if (isWithinPositionRange(newPosition, last, POSITION_RANGE_METERS)) {
       console.log("Clicked too close to the last robot position");
       toast.error("Position is too close to the last robot placement.");
       return;

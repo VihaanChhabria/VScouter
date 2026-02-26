@@ -34,6 +34,7 @@ const ProceedBackButton = ({
   stateKey = null,
   onClick = () => {},
   textSize = "5.58dvh",
+  isAlert = false,
 }) => {
   const navigate = useNavigateWithBase();
   const location = useLocation();
@@ -89,6 +90,7 @@ const ProceedBackButton = ({
           // reset history when done with scouting one match
           localStorage.setItem("autoHistory", "[]");
           localStorage.setItem("teleopHistory", "[]");
+          localStorage.removeItem("matchTimerStart");
           navigate(nextPage, {
             state: buildState({
               matchNumber: (parseInt(inputs.matchNumber) + 1).toString(),
@@ -133,6 +135,7 @@ const ProceedBackButton = ({
           // if the user leaves in the middle of the match, this will reset their history
           localStorage.setItem("autoHistory", "[]");
           localStorage.setItem("teleopHistory", "[]");
+          localStorage.removeItem("matchTimerStart");
           navigate(nextPage, { state: buildState(inputs) });
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
@@ -150,8 +153,8 @@ const ProceedBackButton = ({
         style={{
           width: "100%",
           height: "100%",
-          border: "1.63dvh solid #1D1E1E",
-          backgroundColor: "#242424",
+          border: `1.63dvh solid ${isAlert && !back ? "#FF4C4C" : "#1D1E1E"}`,
+          backgroundColor: isAlert && !back ? "#7F0000" : "#242424",
           borderRadius: "3.49dvh",
           display: "flex",
           justifyContent: "center",

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import ShotInfoSection from "../../components/ShotInfoSection";
 import PageControlSection from "../../components/PageControlSection";
 import TeleopFuelSourceSection from "../../components/MatchScouting/TeleopScoringComponents/TeleopFuelSourceSection";
+import { useMatchTimer } from "../../utils/useMatchTimer";
 
 const TeleopScoringPage = () => {
   const location = useLocation();
@@ -19,6 +20,9 @@ const TeleopScoringPage = () => {
   const [fuelOptionSelected, setFuelOptionSelected] = useState("");
 
   const [fuelShotAndSourceInfo, setFuelShotAndSourceInfo] = useState([]);
+
+  const { timerStarted, elapsedSeconds, start: startTimer } = useMatchTimer();
+  const currentTimeSeconds = () => Number(elapsedSeconds.toFixed(2));
 
   useEffect(() => {
     const savedStack = JSON.parse(
@@ -83,8 +87,42 @@ const TeleopScoringPage = () => {
         alignItems: "center",
         padding: "5dvh",
         gap: "5dvh",
+        position: "relative",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          top: "2dvh",
+          right: "1.5dvw",
+          padding: "1dvh 1.5dvw",
+          borderRadius: "2dvh",
+          backgroundColor: "#242424",
+          border: "0.8dvh solid #1D1E1E",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minWidth: "7dvw",
+          cursor: timerStarted ? "default" : "pointer",
+          opacity: timerStarted ? 1 : 0.9,
+        }}
+        onClick={() => {
+          if (!timerStarted) {
+            startTimer();
+          }
+        }}
+      >
+        <span
+          style={{
+            color: "#FFFFFF",
+            fontSize: "3dvh",
+            fontWeight: "bold",
+            textAlign: "center",
+          }}
+        >
+          {timerStarted ? `${currentTimeSeconds().toFixed(1)}s` : "Start Timer"}
+        </span>
+      </div>
       <div
         style={{
           width: "55%",
@@ -163,6 +201,11 @@ const TeleopScoringPage = () => {
             shotsPercent={shotsPercent}
             setShotsPercent={setShotsPercent}
             submitOnClick={() => {
+              if (!timerStarted) {
+                toast.error("Start the timer before logging teleop shots!");
+                return;
+              }
+              const timeSeconds = currentTimeSeconds();
               if (fuelOptionSelected === "" || fuelOptionSelected === null) {
                 toast.error("Please select a fuel source!");
                 return;
@@ -173,6 +216,7 @@ const TeleopScoringPage = () => {
                   source: fuelOptionSelected,
                   hopperPercent: hopperPercent,
                   shotsPercent: shotsPercent,
+                  timeSeconds,
                 },
               ]);
               setFuelOptionSelected("");

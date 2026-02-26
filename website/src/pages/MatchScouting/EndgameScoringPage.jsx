@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import EndgamePageControlSection from "../../components/MatchScouting/EndgameScoringComponents/EndgamePageControlSection";
 import EndgameBrokenSection from "../../components/MatchScouting/EndgameScoringComponents/EndgameBrokenSection";
@@ -13,20 +14,20 @@ const EndgameScoringPage = () => {
 
   const [brokenDown, setBrokenDown] = useState(states?.inputs?.broken || false);
   const [brokenDownTime, setBrokenDownTime] = useState(
-    states?.inputs?.brokenDownTime || "",
+    states?.inputs?.brokenDownTime,
   );
 
   const [playedDefense, setPlayedDefense] = useState(
     states?.inputs?.playedDefense || false,
   );
   const [defenseTime, setDefenseTime] = useState(
-    states?.inputs?.defenseTime || "",
+    states?.inputs?.defenseTime,
   );
   const [defenseSkill, setDefenseSkill] = useState(
-    states?.inputs?.defenseSkill || "",
+    states?.inputs?.defenseSkill,
   );
   const [playedDefenseOn, setPlayedDefenseOn] = useState(
-    states?.inputs?.playedDefenseOn || 0,
+    states?.inputs?.playedDefenseOn,
   );
 
   useEffect(() => {
@@ -42,6 +43,42 @@ const EndgameScoringPage = () => {
       setPlayedDefenseOn(0);
     }
   }, [playedDefense]);
+
+  const handleBeforeSubmit = () => {
+    if (playedDefense) {
+      const defenseTimeMissing =
+        defenseTime === null || defenseTime === undefined || defenseTime === "";
+      const defenseSkillMissing =
+        defenseSkill === null ||
+        defenseSkill === undefined ||
+        defenseSkill === "";
+      const playedDefenseOnMissing =
+        playedDefenseOn === null ||
+        playedDefenseOn === undefined ||
+        playedDefenseOn === 0;
+
+      if (defenseTimeMissing || defenseSkillMissing || playedDefenseOnMissing) {
+        toast.error(
+          "Fill in defense time, skill, and target when defense is played before submitting.",
+        );
+        return false;
+      }
+    }
+
+    if (brokenDown) {
+      const brokenDownTimeMissing =
+        brokenDownTime === null ||
+        brokenDownTime === undefined ||
+        brokenDownTime === "";
+
+      if (brokenDownTimeMissing) {
+        toast.error(
+          "Fill in the time the robot broke down before submitting.",
+        );
+        return false;
+      }
+    }
+  };
 
   return (
     <div
@@ -113,6 +150,7 @@ const EndgameScoringPage = () => {
               defenseSkill,
               playedDefenseOn,
             }}
+            onSubmitClick={handleBeforeSubmit}
           />
         </div>
       </div>

@@ -135,6 +135,15 @@ const AutoScoringPage = () => {
       toast.error("Start the timer before proceeding.");
       return false;
     }
+
+    if (
+      robotPositions.length > 0 &&
+      robotPositions[robotPositions.length - 1].driveType === "Shot" &&
+      !robotPositions[robotPositions.length - 1].shotInfo
+    ) {
+      toast.error("Complete the current shot's data before proceeding.");
+      return false;
+    }
   };
 
   // function to handle state changes and push current state to stack

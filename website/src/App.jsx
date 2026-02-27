@@ -35,6 +35,8 @@ import SettingsScoutingTemplate from "./components/Settings/SettingsScoutingTemp
 import SettingsViewDataPage from "./pages/Settings/SettingsViewDataPage";
 import PitScoutingSettingsPage from "./pages/Settings/PitScoutingSettingsPage";
 import PitScoutingSettingsAssignTeamPage from "./pages/Settings/PitScoutingSettingsAssignTeamPage";
+import MatchScoutingSettingsPage from "./pages/Settings/MatchScoutingSettingsPage";
+import FlipFieldSettingsPage from "./pages/Settings/FlipFieldSettingsPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -71,13 +73,34 @@ function App() {
       <Route path="parse-data" element={<ParseDataPage />} />
       <Route path="event-data" element={<EventDataSettingsPage />} />
       <Route path="event-data/load" element={<EventDataLoadChoicePage />} />
-      <Route path="event-data/load/online" element={<EventDataLoadOnlinePage />} />
-      <Route path="event-data/load/offline" element={<EventDataLoadOfflineChoicePage />} />
-      <Route path="event-data/load/offline/qrf" element={<EventDataLoadQRFPage />} />
-      <Route path="event-data/load/offline/file" element={<EventDataLoadFilePage />} />
-      <Route path="event-data/generate" element={<EventDataGenerateChoicePage />} />
-      <Route path="event-data/generate/qrf" element={<EventDataGenerateQRFPage />} />
-      <Route path="event-data/generate/file" element={<EventDataGenerateFilePage />} />
+      <Route
+        path="event-data/load/online"
+        element={<EventDataLoadOnlinePage />}
+      />
+      <Route
+        path="event-data/load/offline"
+        element={<EventDataLoadOfflineChoicePage />}
+      />
+      <Route
+        path="event-data/load/offline/qrf"
+        element={<EventDataLoadQRFPage />}
+      />
+      <Route
+        path="event-data/load/offline/file"
+        element={<EventDataLoadFilePage />}
+      />
+      <Route
+        path="event-data/generate"
+        element={<EventDataGenerateChoicePage />}
+      />
+      <Route
+        path="event-data/generate/qrf"
+        element={<EventDataGenerateQRFPage />}
+      />
+      <Route
+        path="event-data/generate/file"
+        element={<EventDataGenerateFilePage />}
+      />
       <Route path="team-number-prompt" element={<TeamNumberPromptPage />} />
       <Route
         path="pit-scouting/start-info"
@@ -91,36 +114,24 @@ function App() {
         path="pit-scouting/capabilities-page-two"
         element={<PitScoutingCapabilitiesPageTwo />}
       />
-      <Route
-        path="pit-scouting/photo"
-        element={<PitScoutingPhotoPage />}
-      />
+      <Route path="pit-scouting/photo" element={<PitScoutingPhotoPage />} />
       <Route
         path="settings/match-scouting"
-        element={
-          <SettingsScoutingTemplate
-            title="Match Scouting"
-            localStorageKey="scoutingData"
-          />
-        }
+        element={<MatchScoutingSettingsPage />}
+      />
+      <Route
+        path="settings/match-scouting/flip-field"
+        element={<FlipFieldSettingsPage />}
       />
       <Route
         path="settings/pit-scouting"
-        element={
-          <PitScoutingSettingsPage />
-        }
+        element={<PitScoutingSettingsPage />}
       />
       <Route
         path="settings/pit-scouting/assign-teams"
-        element={
-          <PitScoutingSettingsAssignTeamPage />
-        }
+        element={<PitScoutingSettingsAssignTeamPage />}
       />
-      <Route
-        path="settings/view-data"
-        element={<SettingsViewDataPage />}
-      />
-      
+      <Route path="settings/view-data" element={<SettingsViewDataPage />} />
     </Route>
   ));
 

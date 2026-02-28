@@ -282,6 +282,7 @@ const AutoScoringPage = () => {
             setRobotPositions={updateRobotPositions}
             showShotInfo={showShotInfo}
             timerStarted={timerStarted}
+            alliance={states?.inputs?.alliance}
           />
         )}
       </div>

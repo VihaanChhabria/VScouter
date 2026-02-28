@@ -17,6 +17,7 @@ import RobotMarker, { ROBOT_SIZE } from "./RobotMarker.jsx";
 
 // Icons are in public/AutoScoringImages/ so they are always in dist (see RobotMarker.jsx).
 const AUTO_ICONS_BASE = `${import.meta.env.BASE_URL}AutoScoringImages`;
+const FLIP_FIELD_KEY = "flipField";
 
 // -----------------------------------------------------------------------------
 // Constants
@@ -36,8 +37,18 @@ const AutoPositionSelector = ({
   setRobotPositions,
   showShotInfo,
   timerStarted = false,
+  alliance,
 }) => {
   const imageDivRef = useRef(null);
+  const [flipField] = useState(() => {
+    if (typeof window === "undefined" || !window.localStorage) return false;
+    const stored = window.localStorage.getItem(FLIP_FIELD_KEY);
+    return stored !== null ? stored === "true" : false;
+  });
+
+  const applyVerticalFlip = !flipField;
+  const applyHorizontalFlip = !flipField;
+  const centerOnRight = alliance === "blueAlliance";
 
   const [imagePixelSize, setImagePixelSize] = useState({
     width: 0,
@@ -66,7 +77,7 @@ const AutoPositionSelector = ({
       const rect = div.getBoundingClientRect();
       const imageWidthPixels = rect.width * ((FIELD_WIDTH_PERCENT + 100) / 100);
       const imageHeightPixels = rect.height;
-      const offsetX = 0;
+      const offsetX = centerOnRight ? rect.width - imageWidthPixels : 0;
       const offsetY = (rect.height - imageHeightPixels) / 2;
 
       setImagePixelSize({ width: imageWidthPixels, height: imageHeightPixels });
@@ -77,7 +88,7 @@ const AutoPositionSelector = ({
     const resizeObserver = new ResizeObserver(updateSize);
     resizeObserver.observe(div);
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [centerOnRight]);
 
   useEffect(() => {
     const lastIndex = robotPositions.length - 1;
@@ -107,7 +118,9 @@ const AutoPositionSelector = ({
         : null;
 
     if (last && last.driveType === "Shot" && !last.shotInfo) {
-      toast.error("Complete the current shot's data before adding another position.");
+      toast.error(
+        "Complete the current shot's data before adding another position.",
+      );
       return;
     }
 
@@ -135,13 +148,20 @@ const AutoPositionSelector = ({
       return;
     }
 
+    const canonicalImageX = applyHorizontalFlip
+      ? imagePixelSize.width - imageX
+      : imageX;
+    const canonicalImageY = applyVerticalFlip
+      ? imagePixelSize.height - imageY
+      : imageY;
+
     const fieldX = pixelsToMetersX(
-      imageX,
+      canonicalImageX,
       imagePixelSize.width,
       REAL_FIELD_SIZE.width,
     );
     const fieldY = pixelsToMetersY(
-      imageY,
+      canonicalImageY,
       imagePixelSize.height,
       REAL_FIELD_SIZE.height,
     );
@@ -176,6 +196,13 @@ const AutoPositionSelector = ({
   // ---------------------------------------------------------------------------
   // Render
   // ---------------------------------------------------------------------------
+
+  const scaleX = applyHorizontalFlip ? -1 : 1;
+  const scaleY = applyVerticalFlip ? -1 : 1;
+  const fieldTransform =
+    scaleX === 1 && scaleY === 1
+      ? "none"
+      : `scaleX(${scaleX}) scaleY(${scaleY})`;
 
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
@@ -213,10 +240,12 @@ const AutoPositionSelector = ({
           height: "100%",
           backgroundImage: mapLoaded ? `url(${FullFieldMap})` : "none",
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "left center",
+          backgroundPosition: centerOnRight ? "right center" : "left center",
           backgroundSize: `${FIELD_WIDTH_PERCENT + 100}% 100%`,
           cursor: "crosshair",
           borderRadius: "1.5dvh",
+          transform: fieldTransform,
+          transformOrigin: "center center",
           opacity: mapLoaded ? 1 : 0,
           transition: "opacity 0.15s ease-out",
         }}

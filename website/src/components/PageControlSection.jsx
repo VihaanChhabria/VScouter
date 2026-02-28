@@ -114,9 +114,7 @@ const PageControlSection = ({
           <ProceedBackButton
             mode={pageTitle.toLowerCase()}
             stateStack={stateStack}
-            nextPage={
-              nextPage
-            }
+            nextPage={nextPage}
             inputs={{
               ...(states?.inputs || {}),
               ...extraInputs,

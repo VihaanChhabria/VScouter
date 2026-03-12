@@ -162,7 +162,7 @@ const TeleopScoringPage = () => {
             fuelShotAndSourceInfo: fuelShotAndSourceInfo,
           }}
           pageTitle={"Teleop"}
-          nextPage={"endgame-scoring"}
+          nextPage={"endgame-climb"}
           backPage={"auto-scoring"}
         />
 

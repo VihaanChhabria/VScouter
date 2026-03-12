@@ -37,6 +37,7 @@ import PitScoutingSettingsPage from "./pages/Settings/PitScoutingSettingsPage";
 import PitScoutingSettingsAssignTeamPage from "./pages/Settings/PitScoutingSettingsAssignTeamPage";
 import MatchScoutingSettingsPage from "./pages/Settings/MatchScoutingSettingsPage";
 import FlipFieldSettingsPage from "./pages/Settings/FlipFieldSettingsPage";
+import EndgameClimbPage from "./pages/MatchScouting/EndgameClimbPage";
 
 function App() {
   const [windowSize, setWindowSize] = useState({
@@ -68,6 +69,7 @@ function App() {
       <Route path="game-start" element={<GameStartPage />} />
       <Route path="auto-scoring" element={<AutoScoringPage />} />
       <Route path="teleop-scoring" element={<TeleopScoringPage />} />
+      <Route path="endgame-climb" element={<EndgameClimbPage />} />
       <Route path="endgame-scoring" element={<EndgameScoringPage />} />
       <Route path="settings" element={<SettingsPage />} />
       <Route path="parse-data" element={<ParseDataPage />} />

@@ -17,7 +17,7 @@ const EndgamePageControlSection = ({ states, extraInputs, onSubmitClick = () => 
       <div style={{ flex: "0.25", width: "100%" }}>
         <ProceedBackButton
           back={true}
-          nextPage="teleop-scoring"
+          nextPage="endgame-climb"
           inputs={{
             ...(states?.inputs || {}),
             ...extraInputs,

@@ -29,9 +29,7 @@ const loadEventData = () => {
     const teamsRaw = localStorage.getItem(EVENT_DATA_KEYS.TEAMS_LIST);
 
     const pitMap =
-      pitMapRaw && pitMapRaw !== "null"
-        ? JSON.parse(pitMapRaw)
-        : null;
+      pitMapRaw && pitMapRaw !== "null" ? JSON.parse(pitMapRaw) : null;
     const pitMapAvailable =
       pitMapAvailableRaw === "true" || pitMapAvailableRaw === true;
     const teamsList = teamsRaw
@@ -106,9 +104,7 @@ const PitScoutingSettingsAssignTeamPage = () => {
 
   const sortedTeamsList = useMemo(
     () =>
-      [...(teamsList || [])].sort(
-        (a, b) => parseInt(a, 10) - parseInt(b, 10),
-      ),
+      [...(teamsList || [])].sort((a, b) => parseInt(a, 10) - parseInt(b, 10)),
     [teamsList],
   );
 
@@ -188,133 +184,133 @@ const PitScoutingSettingsAssignTeamPage = () => {
             gap: "2dvw",
           }}
         >
-        {/* Left: pit map or team list — 50% width */}
-        <div
-          style={{
-            width: "50%",
-            height: "100%",
-            border: "1.3dvh solid #1D1E1E",
-            borderRadius: "3.49dvh",
-            backgroundColor: "#1a1a1a",
-          }}
-        >
+          {/* Left: pit map or team list — 50% width */}
           <div
             style={{
-              width: "100%",
+              width: "50%",
               height: "100%",
-              overflow: "auto",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-start",
+              border: "1.3dvh solid #1D1E1E",
+              borderRadius: "3.49dvh",
+              backgroundColor: "#1a1a1a",
             }}
           >
-            {showMap && mapData ? (
-            <PitMapView
-              mapData={mapData}
-              assignedTeams={assignedTeams}
-              toggleTeam={toggleTeam}
-            />
-            ) : showTeamList && sortedTeamsList.length > 0 ? (
             <div
               style={{
                 width: "100%",
-                padding: "2dvh 2dvw",
+                height: "100%",
+                overflow: "auto",
                 display: "flex",
-                flexWrap: "wrap",
-                gap: "1dvh 2dvw",
-                alignContent: "flex-start",
+                justifyContent: "center",
+                alignItems: "flex-start",
               }}
             >
-              {sortedTeamsList.map((team) => {
-                const isAssigned = assignedTeams.includes(String(team));
-                return (
-                  <label
-                    key={team}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1dvw",
-                      padding: "1dvh 1.5dvw",
-                      backgroundColor: isAssigned ? "#507144" : "#3a3a3a",
-                      borderRadius: "2.33dvh",
-                      cursor: "pointer",
-                      color: isAssigned ? "#fff" : "#ccc",
-                      fontSize: "3.5dvh",
-                    }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isAssigned}
-                      onChange={() => toggleTeam(team)}
-                    />
-                    {team}
-                  </label>
-                );
-              })}
-            </div>
-            ) : null}
-          </div>
-        </div>
-
-        {/* Right: assigned teams — 50% width */}
-        <div
-          style={{
-            width: "50%",
-            display: "flex",
-            flexDirection: "column",
-            border: "1.3dvh solid #1D1E1E",
-            backgroundColor: "#242424",
-            borderRadius: "3.49dvh",
-            padding: "2dvh 2dvw",
-            overflow: "auto",
-          }}
-        >
-          <h2
-            style={{
-              color: "#FFFFFF",
-              fontSize: "4dvh",
-              fontWeight: "bold",
-              marginBottom: "1.5dvh",
-              flexShrink: 0,
-            }}
-          >
-            Assigned teams ({assignedTeams.length})
-          </h2>
-          {assignedTeams.length === 0 ? (
-            <p style={{ color: "#888", fontSize: "3dvh" }}>
-              {showMap
-                ? "Tap pits on the map to assign teams."
-                : "Check teams in the list to assign."}
-            </p>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1dvh 2dvw",
-              }}
-            >
-              {assignedTeams.map((team) => (
-                <button
-                  key={team}
-                  type="button"
-                  onClick={() => toggleTeam(team)}
+              {showMap && mapData ? (
+                <PitMapView
+                  mapData={mapData}
+                  assignedTeams={assignedTeams}
+                  toggleTeam={toggleTeam}
+                />
+              ) : showTeamList && sortedTeamsList.length > 0 ? (
+                <div
                   style={{
-                    padding: "1dvh 2dvw",
-                    backgroundColor: "#507144",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "2.33dvh",
-                    fontSize: "3.5dvh",
-                    cursor: "pointer",
+                    width: "100%",
+                    padding: "2dvh 2dvw",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "1dvh 2dvw",
+                    alignContent: "flex-start",
                   }}
                 >
-                  {team} ×
-                </button>
-              ))}
+                  {sortedTeamsList.map((team) => {
+                    const isAssigned = assignedTeams.includes(String(team));
+                    return (
+                      <label
+                        key={team}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "1dvw",
+                          padding: "1dvh 1.5dvw",
+                          backgroundColor: isAssigned ? "#507144" : "#3a3a3a",
+                          borderRadius: "2.33dvh",
+                          cursor: "pointer",
+                          color: isAssigned ? "#fff" : "#ccc",
+                          fontSize: "3.5dvh",
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isAssigned}
+                          onChange={() => toggleTeam(team)}
+                        />
+                        {team}
+                      </label>
+                    );
+                  })}
+                </div>
+              ) : null}
             </div>
-          )}
-        </div>
+          </div>
+
+          {/* Right: assigned teams — 50% width */}
+          <div
+            style={{
+              width: "50%",
+              display: "flex",
+              flexDirection: "column",
+              border: "1.3dvh solid #1D1E1E",
+              backgroundColor: "#242424",
+              borderRadius: "3.49dvh",
+              padding: "2dvh 2dvw",
+              overflow: "auto",
+            }}
+          >
+            <h2
+              style={{
+                color: "#FFFFFF",
+                fontSize: "4dvh",
+                fontWeight: "bold",
+                marginBottom: "1.5dvh",
+                flexShrink: 0,
+              }}
+            >
+              Assigned teams ({assignedTeams.length})
+            </h2>
+            {assignedTeams.length === 0 ? (
+              <p style={{ color: "#888", fontSize: "3dvh" }}>
+                {showMap
+                  ? "Tap pits on the map to assign teams."
+                  : "Check teams in the list to assign."}
+              </p>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "1dvh 2dvw",
+                }}
+              >
+                {assignedTeams.map((team) => (
+                  <button
+                    key={team}
+                    type="button"
+                    onClick={() => toggleTeam(team)}
+                    style={{
+                      padding: "1dvh 2dvw",
+                      backgroundColor: "#507144",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "2.33dvh",
+                      fontSize: "3.5dvh",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {team} ×
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </EventDataPageTemplate>
@@ -338,131 +334,129 @@ const PitMapView = ({ mapData, assignedTeams, toggleTeam }) => {
   const isTall = height > width;
 
   return (
-            <div
-              style={
-                isTall
-                  ? {
-                      width: "100%",
-                      aspectRatio: `${viewWidth} / ${viewHeight}`,
-                    }
-                  : {
-                      height: "100%",
-                      aspectRatio: `${viewWidth} / ${viewHeight}`,
-                    }
-              }
+    <div
+      style={
+        isTall
+          ? {
+              width: "100%",
+              aspectRatio: `${viewWidth} / ${viewHeight}`,
+            }
+          : {
+              height: "100%",
+              aspectRatio: `${viewWidth} / ${viewHeight}`,
+            }
+      }
+    >
+      <svg
+        viewBox={`${-padding} 0 ${viewWidth} ${viewHeight}`}
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
+      >
+        {/* Walls */}
+        {Object.entries(walls).map(([id, w]) => (
+          <rect
+            key={`wall-${id}`}
+            x={w.position?.x - w.size?.x / 2 ?? 0}
+            y={w.position?.y + w.size?.y / 2 ?? 0}
+            width={w.size?.x ?? 0}
+            height={w.size?.y ?? 0}
+            fill="#555"
+            stroke="#333"
+          />
+        ))}
+
+        {/* Labels */}
+        {Object.entries(labels).map(([id, l]) => (
+          <g key={`label-${id}`}>
+            <rect
+              x={l.position?.x ?? 0}
+              y={l.position?.y ?? 0}
+              width={l.size?.x ?? 0}
+              height={l.size?.y ?? 0}
+              fill="transparent"
+            />
+            <text
+              x={(l.position?.x ?? 0) + (l.size?.x ?? 0) / 2}
+              y={(l.position?.y ?? 0) + (l.size?.y ?? 0) / 2}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fill="#999"
+              fontSize={20}
             >
-              <svg
-                viewBox={`${-padding*7} 0 ${viewWidth} ${viewHeight}`}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "block",
-                }}
-              >
-              {/* Walls */}
-              {Object.entries(walls).map(([id, w]) => (
-                <rect
-                  key={`wall-${id}`}
-                  x={w.position?.x - w.size?.x / 2 ?? 0}
-                  y={w.position?.y + w.size?.y / 2 ?? 0}
-                  width={w.size?.x ?? 0}
-                  height={w.size?.y ?? 0}
-                  fill="#555"
-                  stroke="#333"
-                />
-              ))}
+              {l.label}
+            </text>
+          </g>
+        ))}
 
-              {/* Labels */}
-              {Object.entries(labels).map(([id, l]) => (
-                <g key={`label-${id}`}>
-                  <rect
-                    x={l.position?.x ?? 0}
-                    y={l.position?.y ?? 0}
-                    width={l.size?.x ?? 0}
-                    height={l.size?.y ?? 0}
-                    fill="transparent"
-                  />
-                  <text
-                    x={(l.position?.x ?? 0) + (l.size?.x ?? 0) / 2}
-                    y={(l.position?.y ?? 0) + (l.size?.y ?? 0) / 2}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill="#999"
-                    fontSize={20}
-                  >
-                    {l.label}
-                  </text>
-                </g>
-              ))}
+        {/* Arrows */}
+        {Object.entries(arrows).map(([id, ar]) => {
+          const px = ar.position?.x ?? 0;
+          const py = ar.position?.y ?? 0;
+          const sx = ar.size?.x ?? 46;
+          const sy = ar.size?.y ?? 86;
+          const angle = ar.angle - 90 ?? 0;
+          const cx = px + sx / 2;
+          const cy = py + sy / 2;
+          const head = Math.min(sx, sy) * 0.4;
+          const wingSpan = sy * 0.3;
+          const wingTop = sy / 2 - wingSpan / 2;
+          const wingBot = sy / 2 + wingSpan / 2;
+          const path = `M 0 ${sy / 2} L ${sx - head} ${sy / 2} L ${sx - head} ${wingTop} L ${sx} ${sy / 2} L ${sx - head} ${wingBot} L ${sx - head} ${sy / 2} Z`;
+          return (
+            <g
+              key={`arrow-${id}`}
+              transform={`translate(${cx}, ${cy}) rotate(${angle}) translate(${-sx / 2}, ${-sy / 2})`}
+            >
+              <path d={path} fill="#666" stroke="#888" strokeWidth={1} />
+            </g>
+          );
+        })}
 
-              {/* Arrows */}
-              {Object.entries(arrows).map(([id, ar]) => {
-                const px = ar.position?.x ?? 0;
-                const py = ar.position?.y ?? 0;
-                const sx = ar.size?.x ?? 46;
-                const sy = ar.size?.y ?? 86;
-                const angle = ar.angle - 90 ?? 0;
-                const cx = px + sx / 2;
-                const cy = py + sy / 2;
-                const head = Math.min(sx, sy) * 0.4;
-                const wingSpan = sy * 0.3;
-                const wingTop = sy / 2 - wingSpan / 2;
-                const wingBot = sy / 2 + wingSpan / 2;
-                const path = `M 0 ${sy / 2} L ${sx - head} ${sy / 2} L ${sx - head} ${wingTop} L ${sx} ${sy / 2} L ${sx - head} ${wingBot} L ${sx - head} ${sy / 2} Z`;
-                return (
-                  <g
-                    key={`arrow-${id}`}
-                    transform={`translate(${cx}, ${cy}) rotate(${angle}) translate(${-sx / 2}, ${-sy / 2})`}
-                  >
-                    <path d={path} fill="#666" stroke="#888" strokeWidth={1} />
-                  </g>
-                );
-              })}
-
-              {/* Pits */}
-              {Object.entries(pits).map(([pitId, pit]) => {
-                const team = pit.team;
-                const isAssigned = team && assignedTeams.includes(String(team));
-                const hasTeam = !!team;
-                const px = pit.position?.x ?? 0;
-                const py = pit.position?.y ?? 0;
-                const sx = pit.size?.x ?? 0;
-                const sy = pit.size?.y ?? 0;
-                return (
-                  <g
-                    key={`pit-${pitId}`}
-                    style={{ cursor: hasTeam ? "pointer" : "default" }}
-                    onClick={() => hasTeam && toggleTeam(team)}
-                  >
-                    <rect
-                      x={px}
-                      y={py}
-                      width={sx}
-                      height={sy}
-                      fill={
-                        isAssigned ? "#507144" : hasTeam ? "#3a3a3a" : "#2a2a2a"
-                      }
-                      stroke={isAssigned ? "#507144" : "#555"}
-                      strokeWidth={hasTeam ? 2 : 1}
-                    />
-                    {team && (
-                      <text
-                        x={px + sx / 2}
-                        y={py + sy / 2}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        fill={isAssigned ? "#fff" : "#ccc"}
-                        fontSize={sx / 4}
-                        fontWeight={isAssigned ? "bold" : "normal"}
-                      >
-                        {team}
-                      </text>
-                    )}
-                  </g>
-                );
-              })}
-              </svg>
-            </div>
+        {/* Pits */}
+        {Object.entries(pits).map(([pitId, pit]) => {
+          const team = pit.team;
+          const isAssigned = team && assignedTeams.includes(String(team));
+          const hasTeam = !!team;
+          const px = pit.position?.x ?? 0;
+          const py = pit.position?.y ?? 0;
+          const sx = pit.size?.x ?? 0;
+          const sy = pit.size?.y ?? 0;
+          return (
+            <g
+              key={`pit-${pitId}`}
+              style={{ cursor: hasTeam ? "pointer" : "default" }}
+              onClick={() => hasTeam && toggleTeam(team)}
+            >
+              <rect
+                x={px}
+                y={py}
+                width={sx}
+                height={sy}
+                fill={isAssigned ? "#507144" : hasTeam ? "#3a3a3a" : "#2a2a2a"}
+                stroke={isAssigned ? "#507144" : "#555"}
+                strokeWidth={hasTeam ? 2 : 1}
+              />
+              {team && (
+                <text
+                  x={px + sx / 2}
+                  y={py + sy / 2}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill={isAssigned ? "#fff" : "#ccc"}
+                  fontSize={sx / 4}
+                  fontWeight={isAssigned ? "bold" : "normal"}
+                >
+                  {team}
+                </text>
+              )}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
   );
 };
 

@@ -115,7 +115,10 @@ const EventDataLoadOnlinePage = () => {
           )
         : [];
       localStorage.setItem(EVENT_DATA_KEYS.EVENT_KEY, eventKey);
-      localStorage.setItem(EVENT_DATA_KEYS.TEAMS_LIST, JSON.stringify(teamsList));
+      localStorage.setItem(
+        EVENT_DATA_KEYS.TEAMS_LIST,
+        JSON.stringify(teamsList),
+      );
 
       const mapRes = await fetch(
         `${API_BASE}/nexus-event-map?eventKey=${eventKeyParam}`,
@@ -143,7 +146,10 @@ const EventDataLoadOnlinePage = () => {
         } catch {
           pitMapAvailable = false;
         }
-      } else if (mapRes.status === 404 || mapText.toLowerCase().includes("no map")) {
+      } else if (
+        mapRes.status === 404 ||
+        mapText.toLowerCase().includes("no map")
+      ) {
         pitMapAvailable = false;
       } else {
         pitMapAvailable = false;

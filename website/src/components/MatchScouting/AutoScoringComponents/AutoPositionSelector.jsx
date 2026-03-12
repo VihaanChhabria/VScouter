@@ -43,7 +43,7 @@ const AutoPositionSelector = ({
   const [flipField] = useState(() => {
     if (typeof window === "undefined" || !window.localStorage) return false;
     const stored = window.localStorage.getItem(FLIP_FIELD_KEY);
-    return stored !== null ? stored === "true" : false;
+    return stored !== null ? stored === "false" : true;
   });
 
   const applyVerticalFlip = !flipField;
